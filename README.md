@@ -1,12 +1,15 @@
 Tablesaw
 =======
 
-[![Apache 2.0](https://img.shields.io/github/license/nebula-plugins/nebula-project-plugin.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Build Status](https://travis-ci.org/jtablesaw/tablesaw.svg?branch=master)](https://travis-ci.org/jtablesaw/tablesaw)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3ebd154b5253466b932cb17dda737293)](https://www.codacy.com/gh/jtablesaw/tablesaw/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jtablesaw/tablesaw&amp;utm_campaign=Badge_Grade)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jtablesaw_tablesaw&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jtablesaw_tablesaw)
+[![Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://github.com/tlabs-data/tablesaw/actions/workflows/ci.yml/badge.svg)](https://github.com/tlabs-data/tablesaw/actions)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=tlabs-data_tablesaw-&metric=coverage)](https://sonarcloud.io/dashboard?id=tlabs-data_tablesaw)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=tlabs-data_tablesaw&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=tlabs-data_tablesaw)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=tlabs-data_tablesaw&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=tlabs-data_tablesaw)
 
 ### Overview
+
+__This is a maintenance fork of the original project__
 
 __Tablesaw__ is a dataframe and visualization library, as well as utilities for loading, transforming, filtering, and summarizing data. It's fast and careful with memory. If you work with data in Java, it may save you time and effort. Tablesaw also supports descriptive statistics and integrates well with the Smile machine learning library.
 

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>tech.tablesaw</groupId>
+        <groupId>net.tlabs-data</groupId>
         <artifactId>tablesaw-parent</artifactId>
         <version>0.43.2-SNAPSHOT</version>
     </parent>
