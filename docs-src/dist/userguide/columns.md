@@ -1,4 +1,4 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 Columns
 =======
@@ -109,7 +109,7 @@ Just about anything you can do with an individual LocalDate you can do with an e
 DateColumn weekLater = dates.plusDays(7);
 ```
 
-This is an example of a mapping function. You can find the date mapping functions in the interface [DateMapFunctions](https://jtablesaw.github.io/tablesaw/apidocs/tech/tablesaw/columns/dates/DateMapFunctions.html). Many of the methods there deal with adding and subtracting units of time (days, weeks, months, etc), and calculating the column-wise differences between two date columns. Others provide access to elements of a date. The method *month()*, for example, returns a StringColumn containing the month for a given date. The methods *year()*, *dayOfWeek()*, *dayOfMonth()*, etc. function similarly.
+This is an example of a mapping function. You can find the date mapping functions in the interface [DateMapFunctions](https://www.javadoc.io/doc/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/dates/DateMapFunctions.html). Many of the methods there deal with adding and subtracting units of time (days, weeks, months, etc), and calculating the column-wise differences between two date columns. Others provide access to elements of a date. The method *month()*, for example, returns a StringColumn containing the month for a given date. The methods *year()*, *dayOfWeek()*, *dayOfMonth()*, etc. function similarly.
 
 Other columns have similar mapping functions. 
 
@@ -187,6 +187,6 @@ NOTE: When working with missing values, always test with the isMissing() method,
 You can print data as individual values, columns or tables. The output format can be controlled by setting a type-specific formatter on a column. For example, to change how numbers are displayed you can call setPrintFormatter() on a NumberColumn, passing in a NumberColumnFormatter. Each formatter serves two functions, displaying true values and handling of  missing ones. NumberColumnFormatter has several pre-configured options, including printing as currency or percents.
 
 
-See the [Table](https://jtablesaw.github.io/tablesaw/userguide/tables) documentation for how to add and remove columns
+See the [Table](https://tlabs-data.github.io/tablesaw/userguide/tables) documentation for how to add and remove columns
 
  

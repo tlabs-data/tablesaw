@@ -6,7 +6,7 @@ One of the best known applications of regression comes from the book <a href="ht
 
 Moneyball is a great example of how to apply data science to solve a business problem. For the A's, the business problem was "How do we make the playoffs?" They break that problem down into simpler problems that can be solved with data. Their approach is summarized in the diagram below:
 
-![Moneyball model](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/moneyball-3_1.png)
+![Moneyball model](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/moneyball-3_1.png)
 
 In baseball, you make the playoffs by winning more games than your rivals, but you can't control the number of games your rivals win. How should you proceed? The A's needed to find controllable variables that affected their likelihood of making the playoffs. 
 
@@ -18,7 +18,7 @@ To do regression modeling in Tablesaw, we'll first need to import Smile:
 <dependency>
   <groupId>com.github.haifengl</groupId>
   <artifactId>smile-core</artifactId>
-  <version>2.0.0</version>
+  <version>1.5.3</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ Column playoffs = moneyball.column("Playoffs");
 ScatterPlot.show("Regular season wins by year", moneyball, "W", "year", "playoffs");
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/wins by year.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/wins by year.png)
 
 Teams that made the playoffs are shown as yellow points.  If you draw a vertical line at 95 wins, you can see that it's likely a team that wins more than 95 games will make the playoffs. So far so good.
 
@@ -98,7 +98,7 @@ Now lets see if Run Difference is correlated with Wins. We use a scatter plot ag
 ScatterPlot.show("Run Difference x Wins", moneyball, "Run Difference","W");
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/run diff vs wins.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/run diff vs wins.png)
 
 Our plot shows a strong linear relation between the two. 
 
@@ -107,7 +107,7 @@ Our plot shows a strong linear relation between the two.
 Let's create our first predictive model using linear regression, with runDifference as the sole explanatory variable. Here we use Smile's OLS (Ordinary Least Squares) regression model.
 
 ```Java
-LinearModel winsModel = OLS.fit(Formula.lhs("RD"), moneyball.select("W", "RD").smile().toDataFrame());
+OLS winsModel = new OLS(moneyball.select("W", "RD").smile().numericDataset("RD"));
 ```
 
 If we print our "winsModel", it produces the output below:
@@ -152,7 +152,7 @@ We'd expect 95 wins when we outscore opponents by 135 runs.
 It's time to go deeper again and see how we can model Runs Scored and Runs Allowed. The approach the A's took was to model Runs Scored using team On-base percent (OBP) and team Slugging Average (SLG). In Tablesaw, we write:
 
 ```java
-LinearModel runsScored = OLS.fit(Formula.lhs("RS"), moneyball.select("RS", "OBP", "SLG").smile().toDataFrame());
+OLS runsScored = new OLS(moneyball.smile().numericDataset("RS", "OBP", "SLG"));
 ```
 
 
@@ -181,20 +181,20 @@ Again we have a model with excellent explanatory power with an R-squared of 92.�
 Histogram.show(runsScored2.residuals());
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/histogram.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/histogram.png)
 
 It looks great.  It's also important to plot the predicted (or "fitted") values against the residuals. We want to see if the model fits some values better than others, which will influence whether we can trust its predictions or not. Ideally, we want to see a cloud of random dots around zero on the y axis.
 
 Our Scatter class can create this plot directly from the model:
 
 ```java
-double[] fitted = runsScored2.fittedValues();
+double[] fitted = runsScored2.fitted();
 double[] resids = runsScored2.residuals();
 
 ScatterPlot.show("Runs Scored from OBP and SLG", "Fitted", fitted, "Residuals", resids);
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/runs scored model.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/runs scored model.png)
 
 Again, the plot looks good.
 
@@ -207,7 +207,7 @@ SLG &amp; OBP -&gt; Runs Scored -&gt; Run Difference -&gt; Regular Season Wins
 Of course, we haven't modeled the Runs Allowed side of Run Difference. We could use pitching and field stats to do this, but the A's cleverly used the same two variables (SLG and OBP), but now looked at how their opponent's performed against the A's. We could do the same as these data are encoded in the dataset as OOBP and OSLG.
 
 ```java
-LinearModel runsAllowed = OLS.fit(Formula.lhs("RA"), moneyball.select("RA", "OOBP", "OSLG").smile().toDataFrame());
+OLS runsAllowed = new OLS(moneyball.smile().numericDataset("RA", "OOBP", "OSLG"));
 
 > Linear Model:
 
@@ -233,7 +233,7 @@ This model also looks good, but you'd want to look at the plots again, and do ot
 Finally, we can tie this all together and see how well wins is predicted when we consider both offensive and defensive stats. 
 
 ```java
-LinearModel winsFinal = new OLS(Formula.lhs("W"), moneyball.select("W", "OOBP", "OBP", "OSLG", "SLG").smile().toDataFrame());
+OLS winsFinal = new OLS(moneyball.smile().numericDataset("W", "OOBP", "OBP", "OSLG", "SLG"));
 ```
 
 The output isn't shown, but we get an R squared of .89. Again this is quite good. 

@@ -15,7 +15,7 @@ Table property = Table.read().csv("sacremento_real_estate_transactions.csv");
 
 A one dimensional histogram of property prices is shown below. 
 
-![Histogram of prices](https://jtablesaw.github.io/tablesaw/userguide/images/eda/histogram1.png)
+![Histogram of prices](https://tlabs-data.github.io/tablesaw/userguide/images/eda/histogram1.png)
 
 This plot shows the distribution of injury counts for the most powerful tornadoes. To produce it, we simply filter the table to include only level 5, and call *Histogram.create()*;
 
@@ -32,7 +32,7 @@ sqft.set(sqft.isEqualTo(0), DoubleColumnType.missingValueIndicator());
 Plot.show(Histogram.create("Distribution of property sizes", property, "sq__ft"));
 ```
 
-![Histogram of Property sizes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/histogram2.png)
+![Histogram of Property sizes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/histogram2.png)
 
 ## 2D Histograms
 
@@ -43,13 +43,13 @@ Plot.show(
     Histogram2D.create("Distribution of price and size", property, "price", "sq__ft"));
 ```
 
-![aHistogram of price and size](https://jtablesaw.github.io/tablesaw/userguide/images/eda/histogram2d.png)
+![aHistogram of price and size](https://tlabs-data.github.io/tablesaw/userguide/images/eda/histogram2d.png)
 
 ## Box plots: Comparing the distributions of sub-groups
 
 Comparing distributions of sub-groups is also really useful.  The box plot is ideal for that:  
 
-![Box plot of price by type](https://jtablesaw.github.io/tablesaw/userguide/images/eda/box1.png)
+![Box plot of price by type](https://tlabs-data.github.io/tablesaw/userguide/images/eda/box1.png)
 
 And here's the code:
 

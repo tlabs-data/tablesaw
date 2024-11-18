@@ -23,7 +23,7 @@ Plot.show(
                        champagne, "mean retail", "vintage"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_simple_scatter.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_simple_scatter.png)
 
 This kind of plot is easy to interpret but limited in expressiveness. By modifying it, you can show complex relationships between up to five variables (four numeric and one categorical).
 
@@ -37,7 +37,7 @@ Plot.show(
                        wines, "Mean Retail", "highest pro score", "wine type"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_category_scatter.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_category_scatter.png)
 
 The legend on the right serves a dual purpose. It associates the colors with their categories, and it also allows you to remove or add a category to the plot by clicking its name. 
 
@@ -52,7 +52,7 @@ Plot.show(
                 "Mean Retail")); 		// bubble size
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_simple_bubble.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_simple_bubble.png)
 
 The size of the bubble is given by the last column "mean retail." By default, values are mapped to the diameter of the bubble, but it's possible to use area when creating a custom scatter plot.  
 
@@ -67,7 +67,7 @@ Plot.show(
                 "Mean Retail")); 		// z 
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_simple_3dScatter.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_simple_3dScatter.png)
 
 We can't show it here, but these plots are rotatable in 3D space, and supporting panning and zooming like the 2D plots. Hovering over a point produces a label and draws a box connecting the highlighted point to each of the three axes. 
 
@@ -87,7 +87,7 @@ Plot.show(
 
 The grouping column is added to the end of the method. The result is shown below.
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_bubble_with_groups.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_bubble_with_groups.png)
 
 Let's see the same four variables using a 3D scatter. First the code, and then the plot:
 
@@ -101,7 +101,7 @@ Plot.show(
                 "appellation"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_category_3dScatter.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_category_3dScatter.png)
 
 ## Five variables
 
@@ -118,8 +118,8 @@ Plot.show(
                 "appellation"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_bubble_3d.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_bubble_3d.png)
 
 ## Going Further
 
-Use the code in the api package as a starting for your own explorations. The process of creating custom visualizations is covered [here](https://jtablesaw.github.io/tablesaw/userguide/Visualization_custom). Also be sure to look at related api classes for specialized plots like time series, line plots, or area plots. 
+Use the code in the api package as a starting for your own explorations. The process of creating custom visualizations is covered [here](https://tlabs-data.github.io/tablesaw/userguide/Visualization_custom). Also be sure to look at related api classes for specialized plots like time series, line plots, or area plots. 

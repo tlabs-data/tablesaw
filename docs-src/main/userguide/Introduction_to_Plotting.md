@@ -1,4 +1,4 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 # Introduction to Plotting with Tablesaw
 
@@ -29,7 +29,7 @@ There are two ways to work with plotting. You can use the predefined "canned" pl
 
 The api package contains simplified interfaces for producing a number of common plot types. The goal for these plots is that they can be created and displayed in one or two lines of code. Here's an example bubble plot: 
 
-![bubbleplot](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_bubble.png)
+![bubbleplot](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_bubble.png)
 
 And here's the code to create and display it. In the simple API, rendering a bubble plot requires two steps. First, a call to BubblePlot.create() returns a Figure object, and then the figure is rendered by passing it to a *Plot.show()* method. 
 
@@ -43,7 +43,7 @@ This writes a generated HTML page containing the necessary JavaScript to a file 
 
 ### Custom visualizations 
 
-Custom visualizations are assembled using "figures", "traces", and "layouts". Custom visualizations are described [here](https://jtablesaw.github.io/tablesaw/userguide/Visualization_custom). 
+Custom visualizations are assembled using "figures", "traces", and "layouts". Custom visualizations are described [here](https://tlabs-data.github.io/tablesaw/userguide/Visualization_custom). 
 
 ## Ways of working 
 

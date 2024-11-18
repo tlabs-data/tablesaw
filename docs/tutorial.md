@@ -5,6 +5,7 @@
 Tablesaw is a large library. We'll use Tablesaw to look at data about Tornadoes. If you haven't already done so,
 we strongly recommend that you read the Getting Started guide, before continuing here. 
 
+The code can be found in the core project, in the test folder under tech/tablesaw/examples/TornadoExample
 ## Exploring Tornadoes 
 
 To give a better sense of how Tablesaw works, we’ll use a tornado data set from NOAA. Here’s what we’ll cover:
@@ -47,7 +48,7 @@ The *shape()* method displays the row and column counts:
 ```java
 tornadoes.shape()
 
-59945 rows X 11 cols
+tornadoes_1950-2014.csv: 59945 rows X 11 cols
 ```
 
 *structure()* shows the index, name and type of each column
@@ -107,9 +108,9 @@ tornadoes.first(3)
                                                          tornadoes_1950-2014.csv                                                         
     Date     |    Time    |  State  |  State No  |  Scale  |  Injuries  |  Fatalities  |  Start Lat  |  Start Lon  |  Length  |  Width  |
 -----------------------------------------------------------------------------------------------------------------------------------------
- 1950-01-03  |  11:00:00  |     MO  |         1  |      3  |         3  |           0  |      38.77  |     -90.22  |     9.5  |    150  |
- 1950-01-03  |  11:00:00  |     MO  |         1  |      3  |         3  |           0  |      38.77  |     -90.22  |     6.2  |    150  |
- 1950-01-03  |  11:10:00  |     IL  |         1  |      3  |         0  |           0  |      38.82  |     -90.12  |     3.3  |    100  |
+ 1950-01-03  |  11:00:00  |     MO  |         1  |      3  |         3  |           0  |      38,77  |     -90,22  |     9,5  |    150  |
+ 1950-01-03  |  11:00:00  |     MO  |         1  |      3  |         3  |           0  |      38,77  |     -90,22  |     6,2  |    150  |
+ 1950-01-03  |  11:10:00  |     IL  |         1  |      3  |         0  |           0  |      38,82  |     -90,12  |     3,3  |    100  |
 
 ```
 
@@ -153,14 +154,14 @@ tornadoes.column("Fatalities").summary().print()
          Column: Fatalities         
  Measure   |         Value         |
 ------------------------------------
-        n  |                59945  |
+    Count  |                59945  |
       sum  |                 6802  |
-     Mean  |  0.11347068145800349  |
+     Mean  |  0,11347068145800349  |
       Min  |                    0  |
       Max  |                  158  |
     Range  |                  158  |
- Variance  |    2.901978053261765  |
- Std. Dev  |   1.7035193140266314  |
+ Variance  |    2,901978053261765  |
+ Std. Dev  |   1,7035193140266314  |
 ```
 
 ### Filtering
@@ -177,7 +178,7 @@ result =
             .isGreaterThan(300) // 300 yards
             .or(result.doubleColumn("Length").isGreaterThan(10))); // 10 miles
 
-result = result.select("State", "Date");
+result = result.selectColumns("State", "Date");
 
 
 tornadoes_1950-2014.csv 
@@ -297,11 +298,11 @@ Printing summary gives us the answer by year.
                            tornadoes_1950-2014.csv summary                            
  Date year  |  Mean [Date lag(1) - Date[DAYS]]  |  Count [Date lag(1) - Date[DAYS]]  |
 --------------------------------------------------------------------------------------
-      1950  |               2.0555555555555545  |                               162  |
-      1951  |               1.7488584474885829  |                               219  |
-      1952  |               1.8673469387755088  |                               196  |
-      1953  |                0.983870967741935  |                               372  |
-      1954  |               0.8617283950617302  |                               405  |
+      1950  |               2,0555555555555545  |                               162  |
+      1951  |               1,7488584474885829  |                               219  |
+      1952  |               1,8673469387755088  |                               196  |
+      1953  |                0,983870967741935  |                               372  |
+      1954  |               0,8617283950617302  |                               405  |
 ...
 ```
 
@@ -323,4 +324,4 @@ To save a table, you can write it as a CSV file:
 tornadoes.write().csv("rev_tornadoes_1950-2014.csv");
 ```
 
-And that’s it for the introduction. Please see the User Guide for more information.
+And that’s it. Please see the User Guide for more information.

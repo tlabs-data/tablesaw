@@ -26,7 +26,7 @@ This loads a CSV file and creates a table with typed columns.
 
 Here's an example:
 
-![1 series](https://jtablesaw.github.io/tablesaw/userguide/images/eda/bush_time_series.png)
+![1 series](https://tlabs-data.github.io/tablesaw/userguide/images/eda/bush_time_series.png)
 
 ```java
 Table foxOnly = bush.where(bush.stringColumn("who").equalsIgnoreCase("fox"));
@@ -41,7 +41,7 @@ Plot.show(
     TimeSeriesPlot.create("George W. Bush approval", bush, "date", "approval", "who"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/bush_time_series2.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/bush_time_series2.png)
 
 ## Line Charts
 
@@ -54,7 +54,7 @@ Plot.show(
               robberies, "Record", "Robberies"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/robberies_line.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/robberies_line.png)
 
 ## Area Charts
 
@@ -67,7 +67,7 @@ Plot.show(
               robberies, "Record", "Robberies"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/robberies_line.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/robberies_line.png)
 
 ## Working with financial time-series
 
@@ -105,7 +105,7 @@ Plot.show(OHLCPlot.create("Prices", 	// The plot title
                           "close"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/ohlc1.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/ohlc1.png)
 
 Candlestick Charts
 
@@ -113,4 +113,4 @@ Candlestick Charts
 Plot.show(CandlestickPlot.create("Prices", priceTable, "date","open", "high", "low", "close"));
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/candlestick1.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/candlestick1.png)

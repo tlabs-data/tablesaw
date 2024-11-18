@@ -1,4 +1,4 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 # CrossTabs
 
@@ -55,15 +55,15 @@ Table whoCounts = table.xTabCounts("who");
 producing:
 
 ```java
-     Column: who      
- Category  |  Count  |
+   bush.csv summary   
+   who     |  Count  |
 ----------------------
-    zogby  |     45  |
-    upenn  |     10  |
- time.cnn  |     30  |
       fox  |     64  |
- newsweek  |     55  |
    gallup  |    119  |
+ newsweek  |     55  |
+ time.cnn  |     30  |
+    upenn  |     10  |
+    zogby  |     45  |
 ```
 
 ### Calculating Percents
@@ -85,15 +85,15 @@ whoPercents
 ```
 
 ```java
-       Column: who       
- Category  |  Percents  |
+    bush.csv summary     
+   who     |  Percents  |
 -------------------------
-    zogby  |       14%  |
-    upenn  |        3%  |
- time.cnn  |        9%  |
-      fox  |       20%  |
- newsweek  |       17%  |
-   gallup  |       37%  |
+      fox  |      20 %  |
+   gallup  |      37 %  |
+ newsweek  |      17 %  |
+ time.cnn  |       9 %  |
+    upenn  |       3 %  |
+    zogby  |      14 %  |
 ```
 
 ### Table Percents
@@ -115,22 +115,22 @@ The output can best be understood by looking at an example. Of all the polls in 
 Fox in April, 3.1% by Gallup in April, 0.9% by Fox in August, etc. 
 
 ```java
-                               Crosstab Table Proportions:                                 
- [labels]   |   fox   |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby  |  total   |
--------------------------------------------------------------------------------------------
-     APRIL  |   1.9%  |    3.1%  |      0.9%  |      0.3%  |   0.0%  |   0.9%  |    7.1%  |
-    AUGUST  |   0.9%  |    2.5%  |      0.6%  |      0.3%  |   0.0%  |   0.6%  |    5.0%  |
-  DECEMBER  |   1.2%  |    2.8%  |      1.2%  |      0.9%  |   0.6%  |   1.5%  |    8.4%  |
-  FEBRUARY  |   2.2%  |    2.8%  |      1.2%  |      1.2%  |   0.3%  |   1.2%  |    9.0%  |
-   JANUARY  |   2.2%  |    4.0%  |      1.9%  |      0.9%  |   1.5%  |   2.5%  |   13.0%  |
-      JULY  |   1.9%  |    2.8%  |      1.2%  |      0.9%  |   0.0%  |   1.2%  |    8.0%  |
-      JUNE  |   1.9%  |    3.4%  |      0.3%  |      0.3%  |   0.0%  |   1.2%  |    7.1%  |
-     MARCH  |   1.5%  |    3.7%  |      1.2%  |      0.9%  |   0.0%  |   1.9%  |    9.3%  |
-       MAY  |   1.2%  |    2.8%  |      1.5%  |      0.9%  |   0.0%  |   0.3%  |    6.8%  |
-  NOVEMBER  |   1.2%  |    2.8%  |      1.9%  |      0.9%  |   0.3%  |   0.3%  |    7.4%  |
-   OCTOBER  |   2.2%  |    3.1%  |      2.5%  |      0.6%  |   0.3%  |   0.9%  |    9.6%  |
- SEPTEMBER  |   1.5%  |    3.1%  |      2.5%  |      0.9%  |   0.0%  |   1.2%  |    9.3%  |
-     Total  |  19.8%  |   36.8%  |     17.0%  |      9.3%  |   3.1%  |  13.9%  |  100.0%  |
+                                 Crosstab Table Proportions:                                  
+ [labels]   |   fox    |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby   |   total   |
+----------------------------------------------------------------------------------------------
+     APRIL  |   1,9 %  |   3,1 %  |     0,9 %  |     0,3 %  |  0,0 %  |   0,9 %  |    7,1 %  |
+    AUGUST  |   0,9 %  |   2,5 %  |     0,6 %  |     0,3 %  |  0,0 %  |   0,6 %  |    5,0 %  |
+  DECEMBER  |   1,2 %  |   2,8 %  |     1,2 %  |     0,9 %  |  0,6 %  |   1,5 %  |    8,4 %  |
+  FEBRUARY  |   2,2 %  |   2,8 %  |     1,2 %  |     1,2 %  |  0,3 %  |   1,2 %  |    9,0 %  |
+   JANUARY  |   2,2 %  |   4,0 %  |     1,9 %  |     0,9 %  |  1,5 %  |   2,5 %  |   13,0 %  |
+      JULY  |   1,9 %  |   2,8 %  |     1,2 %  |     0,9 %  |  0,0 %  |   1,2 %  |    8,0 %  |
+      JUNE  |   1,9 %  |   3,4 %  |     0,3 %  |     0,3 %  |  0,0 %  |   1,2 %  |    7,1 %  |
+     MARCH  |   1,5 %  |   3,7 %  |     1,2 %  |     0,9 %  |  0,0 %  |   1,9 %  |    9,3 %  |
+       MAY  |   1,2 %  |   2,8 %  |     1,5 %  |     0,9 %  |  0,0 %  |   0,3 %  |    6,8 %  |
+  NOVEMBER  |   1,2 %  |   2,8 %  |     1,9 %  |     0,9 %  |  0,3 %  |   0,3 %  |    7,4 %  |
+   OCTOBER  |   2,2 %  |   3,1 %  |     2,5 %  |     0,6 %  |  0,3 %  |   0,9 %  |    9,6 %  |
+ SEPTEMBER  |   1,5 %  |   3,1 %  |     2,5 %  |     0,9 %  |  0,0 %  |   1,2 %  |    9,3 %  |
+     Total  |  19,8 %  |  36,8 %  |    17,0 %  |     9,3 %  |  3,1 %  |  13,9 %  |  100,0 %  |
 ```
 
 As you can see, this also gives you the 'total' percents by month and pollster.
@@ -151,22 +151,22 @@ Looking across the columns on the other hand is not very intuitive (or useful, p
 until you get to the total, which shows the average across all pollsters by month.
 
 ```java
-                              Crosstab Column Proportions:                               
- [labels]   |  fox   |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby  |  total  |
------------------------------------------------------------------------------------------
-     APRIL  |    9%  |      8%  |        5%  |        3%  |     0%  |     7%  |     7%  |
-    AUGUST  |    5%  |      7%  |        4%  |        3%  |     0%  |     4%  |     5%  |
-  DECEMBER  |    6%  |      8%  |        7%  |       10%  |    20%  |    11%  |     8%  |
-  FEBRUARY  |   11%  |      8%  |        7%  |       13%  |    10%  |     9%  |     9%  |
-   JANUARY  |   11%  |     11%  |       11%  |       10%  |    50%  |    18%  |    13%  |
-      JULY  |    9%  |      8%  |        7%  |       10%  |     0%  |     9%  |     8%  |
-      JUNE  |    9%  |      9%  |        2%  |        3%  |     0%  |     9%  |     7%  |
-     MARCH  |    8%  |     10%  |        7%  |       10%  |     0%  |    13%  |     9%  |
-       MAY  |    6%  |      8%  |        9%  |       10%  |     0%  |     2%  |     7%  |
-  NOVEMBER  |    6%  |      8%  |       11%  |       10%  |    10%  |     2%  |     7%  |
-   OCTOBER  |   11%  |      8%  |       15%  |        7%  |    10%  |     7%  |    10%  |
- SEPTEMBER  |    8%  |      8%  |       15%  |       10%  |     0%  |     9%  |     9%  |
-     Total  |  100%  |    100%  |      100%  |      100%  |   100%  |   100%  |   100%  |
+                              Crosstab Column Proportions:                                
+ [labels]   |   fox   |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby  |  total  |
+------------------------------------------------------------------------------------------
+     APRIL  |    9 %  |     8 %  |       5 %  |       3 %  |    0 %  |    7 %  |    7 %  |
+    AUGUST  |    5 %  |     7 %  |       4 %  |       3 %  |    0 %  |    4 %  |    5 %  |
+  DECEMBER  |    6 %  |     8 %  |       7 %  |      10 %  |   20 %  |   11 %  |    8 %  |
+  FEBRUARY  |   11 %  |     8 %  |       7 %  |      13 %  |   10 %  |    9 %  |    9 %  |
+   JANUARY  |   11 %  |    11 %  |      11 %  |      10 %  |   50 %  |   18 %  |   13 %  |
+      JULY  |    9 %  |     8 %  |       7 %  |      10 %  |    0 %  |    9 %  |    8 %  |
+      JUNE  |    9 %  |     9 %  |       2 %  |       3 %  |    0 %  |    9 %  |    7 %  |
+     MARCH  |    8 %  |    10 %  |       7 %  |      10 %  |    0 %  |   13 %  |    9 %  |
+       MAY  |    6 %  |     8 %  |       9 %  |      10 %  |    0 %  |    2 %  |    7 %  |
+  NOVEMBER  |    6 %  |     8 %  |      11 %  |      10 %  |   10 %  |    2 %  |    7 %  |
+   OCTOBER  |   11 %  |     8 %  |      15 %  |       7 %  |   10 %  |    7 %  |   10 %  |
+ SEPTEMBER  |    8 %  |     8 %  |      15 %  |      10 %  |    0 %  |    9 %  |    9 %  |
+     Total  |  100 %  |   100 %  |     100 %  |     100 %  |  100 %  |  100 %  |  100 %  |
 ```
 
 Row percents show the opposite viewpoint. 
@@ -179,22 +179,22 @@ Here we see that, of all the polls conducted in April, fox conducted 26%, Gallup
 conducted 0% with rounding. 
 
 ```java
-                               Crosstab Row Proportions:                                
- [labels]   |  fox  |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby  |  total  |
-----------------------------------------------------------------------------------------
-     APRIL  |  26%  |     43%  |       13%  |        4%  |     0%  |    13%  |   100%  |
-    AUGUST  |  19%  |     50%  |       12%  |        6%  |     0%  |    12%  |   100%  |
-  DECEMBER  |  15%  |     33%  |       15%  |       11%  |     7%  |    19%  |   100%  |
-  FEBRUARY  |  24%  |     31%  |       14%  |       14%  |     3%  |    14%  |   100%  |
-   JANUARY  |  17%  |     31%  |       14%  |        7%  |    12%  |    19%  |   100%  |
-      JULY  |  23%  |     35%  |       15%  |       12%  |     0%  |    15%  |   100%  |
-      JUNE  |  26%  |     48%  |        4%  |        4%  |     0%  |    17%  |   100%  |
-     MARCH  |  17%  |     40%  |       13%  |       10%  |     0%  |    20%  |   100%  |
-       MAY  |  18%  |     41%  |       23%  |       14%  |     0%  |     5%  |   100%  |
-  NOVEMBER  |  17%  |     38%  |       25%  |       12%  |     4%  |     4%  |   100%  |
-   OCTOBER  |  23%  |     32%  |       26%  |        6%  |     3%  |    10%  |   100%  |
- SEPTEMBER  |  17%  |     33%  |       27%  |       10%  |     0%  |    13%  |   100%  |
-     Total  |  20%  |     37%  |       17%  |        9%  |     3%  |    14%  |   100%  |
+                               Crosstab Row Proportions:                                 
+ [labels]   |  fox   |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby  |  total  |
+-----------------------------------------------------------------------------------------
+     APRIL  |  26 %  |    43 %  |      13 %  |       4 %  |    0 %  |   13 %  |  100 %  |
+    AUGUST  |  19 %  |    50 %  |      12 %  |       6 %  |    0 %  |   12 %  |  100 %  |
+  DECEMBER  |  15 %  |    33 %  |      15 %  |      11 %  |    7 %  |   19 %  |  100 %  |
+  FEBRUARY  |  24 %  |    31 %  |      14 %  |      14 %  |    3 %  |   14 %  |  100 %  |
+   JANUARY  |  17 %  |    31 %  |      14 %  |       7 %  |   12 %  |   19 %  |  100 %  |
+      JULY  |  23 %  |    35 %  |      15 %  |      12 %  |    0 %  |   15 %  |  100 %  |
+      JUNE  |  26 %  |    48 %  |       4 %  |       4 %  |    0 %  |   17 %  |  100 %  |
+     MARCH  |  17 %  |    40 %  |      13 %  |      10 %  |    0 %  |   20 %  |  100 %  |
+       MAY  |  18 %  |    41 %  |      23 %  |      14 %  |    0 %  |    5 %  |  100 %  |
+  NOVEMBER  |  17 %  |    38 %  |      25 %  |      12 %  |    4 %  |    4 %  |  100 %  |
+   OCTOBER  |  23 %  |    32 %  |      26 %  |       6 %  |    3 %  |   10 %  |  100 %  |
+ SEPTEMBER  |  17 %  |    33 %  |      27 %  |      10 %  |    0 %  |   13 %  |  100 %  |
+     Total  |  20 %  |    37 %  |      17 %  |       9 %  |    3 %  |   14 %  |  100 %  |
 ```
 
 And that's all there is to Tablesaw CrossTabs. 

@@ -1,10 +1,10 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 # Importing & exporting data
 
 ## Table of contents
 
-[TOC]
+[TOC](toc)
 
 ## Supported Formats
 
@@ -16,13 +16,15 @@ Tablesaw supports importing and exporting data to and from a variety of data typ
 | JSON                           | Yes    | Yes    |
 | RDBMS (via JDBC)               | Yes    |        |
 | Fixed Width Text               | Yes    | Yes    |
-| Excel                          | Yes    | Yes    |
+| Excel                          | Yes    |        |
+| HTML                           | Yes    | Yes    |
 
 ## Importing data
 
 **Note**: To minimize the size of the core library, some of the readers (currently JSON, HTML tables, and Excel files) are packaged in separate modules. You will need to include them in your project to use the `Table.read()` methods.
 
-See the Javadoc for [DataFrameReader](http://static.javadoc.io/tech.tablesaw/tablesaw-core/0.31.0/tech/tablesaw/io/DataFrameReader.html) for a listing of all the `Table.read()` methods that are available.
+See the Javadoc for [DataFrameReader](http://static.javadoc.io/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/io/DataFrameReader.html)
+ for a listing of all the `Table.read()` methods that are available.
 
 ### Text files (CSV, Tab-delimited, Fixed-width field, etc.)
 
@@ -41,9 +43,9 @@ You can create an options object with a builder:
 ```Java
 CsvReadOptions.Builder builder = 
 	CsvReadOptions.builder("myFile.csv")
-		.separator('\t')										// table is tab-delimited
-		.header(false)											// no header
-		.dateFormat("yyyy.MM.dd");  				// the date format to use. 
+		.separator('\t')             // table is tab-delimited
+		.header(false)               // no header
+		.dateFormat("yyyy.MM.dd");   // the date format to use. 
 
 CsvReadOptions options = builder.build();
 
@@ -192,7 +194,9 @@ Table restaurants = Table.read()
 
 It's equally easy to create a table from the results of a database query. In this case, you never need to specify the column types, because they are inferred from the database column types. 
 
-    Table t = Table.read().db(ResultSet resultSet, String tableName);
+```Java
+Table t = Table.read().db(ResultSet resultSet, String tableName);
+```
 
 Here’s a more complete example that  includes the JDBC setup:
 
@@ -211,7 +215,7 @@ try (Statement stmt = conn.createStatement()) {
 
 ### Importing from HTML, JSON, Excel
 
-Tablesaw supports importing data from HTML, JSON, and Excel. See the Javadoc for the [Table.read()](http://static.javadoc.io/tech.tablesaw/tablesaw-core/0.31.0/tech/tablesaw/io/DataFrameReader.html) methods for more info. You will need to add the corresponding optional dependency:
+Tablesaw supports importing data from HTML, JSON, and Excel. See the Javadoc for the [Table.read()](http://static.javadoc.io/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/io/DataFrameReader.html) methods for more info. You will need to add the corresponding optional dependency:
 
 ```
 <dependency>
@@ -232,6 +236,24 @@ Tablesaw supports importing data from HTML, JSON, and Excel. See the Javadoc for
   <groupId>tech.tablesaw</groupId>
   <artifactId>tablesaw-excel</artifactId>
 </dependency>
+```
+
+#### Excel
+
+After importing the tablesaw-Excel dependency, you can use the following to read all the sheets in excel.
+
+```Java
+XlsxReadOptions options = XlsxReadOptions.builder("<excelFileName>.xlsx").build();
+XlsxReader xlsxReader = new XlsxReader();
+List<Table> tables=  xlsxReader.readMultiple(options);
+```
+
+Paricular sheet can be read using `.sheetIndex(int <index>)`:
+
+```Java
+XlsxReadOptions options = XlsxReadOptions.builder("<excelFileName>.xlsx").sheetIndex(1).build();
+XlsxReader xlsxReader = new XlsxReader();
+List<Table> tables=  xlsxReader.readMultiple(options);
 ```
 
 ## Exporting data

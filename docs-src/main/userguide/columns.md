@@ -1,4 +1,4 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 Columns
 =======
@@ -187,6 +187,6 @@ NOTE: When working with missing values, always test with the isMissing() method,
 You can print data as individual values, columns or tables. The output format can be controlled by setting a type-specific formatter on a column. For example, to change how numbers are displayed you can call setPrintFormatter() on a NumberColumn, passing in a NumberColumnFormatter. Each formatter serves two functions, displaying true values and handling of  missing ones. NumberColumnFormatter has several pre-configured options, including printing as currency or percents.
 
 
-See the [Table](https://jtablesaw.github.io/tablesaw/userguide/tables) documentation for how to add and remove columns
+See the [Table](https://tlabs-data.github.io/tablesaw/userguide/tables) documentation for how to add and remove columns
 
  

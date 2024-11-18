@@ -1,4 +1,4 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 # Bars, Pies, and Pareto charts
 
@@ -37,7 +37,7 @@ Then we plot the results:
 
 
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/fatalities_by_scale.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/fatalities_by_scale.png)
 
 #### Plotting means, medians and other summary statistics
 
@@ -53,13 +53,13 @@ In an upcoming section on advanced plotting features, we'll cover how to create 
 
 Pie plots are both widely criticized and ubiquitous. As a general rule, bar plots are easier to interpret, and so, generally, are to be preferred. We'd be remiss, however to not provide Pie Chart support. This example shows a pie plot that displays the same data as the first bar plot above:
 
-![Pie chart of Fatalities by State](https://jtablesaw.github.io/tablesaw/userguide/images/eda/pie.png)
+![Pie chart of Fatalities by State](https://tlabs-data.github.io/tablesaw/userguide/images/eda/pie.png)
 
 #### Pareto Plots
 
 A simple variation on a bar plot is the Pareto Chart. In the plot below, fatality counts are summed by US state, and the results are sorted according to the totals in descending order. The example code has the details.   
 
-![Pareto of Fatalities by State](https://jtablesaw.github.io/tablesaw/userguide/images/eda/tornado_pareto.png)
+![Pareto of Fatalities by State](https://tlabs-data.github.io/tablesaw/userguide/images/eda/tornado_pareto.png)
 
 
 

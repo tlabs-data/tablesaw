@@ -92,7 +92,7 @@ So we were left to roll our own. You can find them in the package *tech.tablesaw
 They work like the standard objects. 
 
 This just covers the most basic information about columns. You can find more in the section on
-[Columns](https://jtablesaw.github.io/tablesaw/userguide/columns), or in the Javadocs for the
+[Columns](https://tlabs-data.github.io/tablesaw/userguide/columns), or in the Javadocs for the
 [api package](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/package-summary.html)
 and the [columns package](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/package-summary.html).
 
@@ -253,7 +253,7 @@ if it guesses wrong, or to improve performance. Numerous other options are avail
 not there's a header, using a non-standard delimiter, supplying a custom missing value indicator, and so on. 
 
 ***Note:*** Getting data loaded is sometimes the hardest part of data analysis. Advanced options for loading data are
-described in the documentation on [Importing Data](https://jtablesaw.github.io/tablesaw/userguide/importing_data).
+described in the documentation on [Importing Data](https://tlabs-data.github.io/tablesaw/userguide/importing_data).
 That section also shows how you can read data from a database, a stream, or an HTML table. The stream interfaces
 lets you read data from a Web site or an S3 bucket.  
 
@@ -277,7 +277,7 @@ System.out.println(bushTable.structure())
 ```java
 System.out.println(bushTable.shape())
 
-323 rows X 3 cols
+bush.csv: 323 rows X 3 cols
 ```
 
 ```java
@@ -307,7 +307,7 @@ rows by default, but you can also use *table.printAll()*, or *table.print(n)* to
 
 Of course, this is just the beginning of exploratory data analysis. You can also use numeric and visual tools to
 explore your data. These facilities are described in the documentation on statistics and
-[plotting](https://jtablesaw.github.io/tablesaw/userguide/Introduction_to_plotting), respectively.
+[plotting](userguide/Introduction_to_plotting.md), respectively.
 
 #### Working with a table's columns
 
@@ -419,7 +419,7 @@ table.rollingStream(3).forEach(consumer);
 table.steppingStream(5).forEach(consumer);
 ```
 
-See [Rows](https://jtablesaw.github.io/tablesaw/userguide/rows) for more information and other options. 
+See [Rows](https://tlabs-data.github.io/tablesaw/userguide/rows) for more information and other options. 
 
 #### Sorting
 
@@ -435,7 +435,7 @@ sorted = table.sortDescendingOn("foo");
 sorted = table.sortOn("foo", "-bar");
 ```
 
-See [Sorting](https://jtablesaw.github.io/tablesaw/userguide/sorting) for more information and other options. 
+See [Sorting](https://tlabs-data.github.io/tablesaw/userguide/sorting) for more information and other options. 
 
 #### Filtering
 
@@ -486,7 +486,7 @@ which says "return the mean and median sales by day of week."
 
 > **Key point**: Tables are usually split based on columns, but the columns can be calculated on the fly
 
-See the documentation on [Summarizing](https://jtablesaw.github.io/tablesaw/userguide/reducing) data, and the classes in
+See the documentation on [Summarizing](https://tlabs-data.github.io/tablesaw/userguide/reducing) data, and the classes in
 the [aggregate package](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/aggregate/package-summary.html)
 for more detail.
 
@@ -506,32 +506,32 @@ System.out.println(percents);
 The formatted output is shown below.
 
 ```java
-                              Crosstab Table Proportions:                               
- [labels]   |  fox  |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby  |  total  |
-----------------------------------------------------------------------------------------
-     APRIL  |   2%  |      3%  |        1%  |        0%  |     0%  |     1%  |     7%  |
-    AUGUST  |   1%  |      2%  |        1%  |        0%  |     0%  |     1%  |     5%  |
-  DECEMBER  |   1%  |      3%  |        1%  |        1%  |     1%  |     2%  |     8%  |
-  FEBRUARY  |   2%  |      3%  |        1%  |        1%  |     0%  |     1%  |     9%  |
-   JANUARY  |   2%  |      4%  |        2%  |        1%  |     2%  |     2%  |    13%  |
-      JULY  |   2%  |      3%  |        1%  |        1%  |     0%  |     1%  |     8%  |
-      JUNE  |   2%  |      3%  |        0%  |        0%  |     0%  |     1%  |     7%  |
-     MARCH  |   2%  |      4%  |        1%  |        1%  |     0%  |     2%  |     9%  |
-       MAY  |   1%  |      3%  |        2%  |        1%  |     0%  |     0%  |     7%  |
-  NOVEMBER  |   1%  |      3%  |        2%  |        1%  |     0%  |     0%  |     7%  |
-   OCTOBER  |   2%  |      3%  |        2%  |        1%  |     0%  |     1%  |    10%  |
- SEPTEMBER  |   2%  |      3%  |        2%  |        1%  |     0%  |     1%  |     9%  |
-     Total  |  20%  |     37%  |       17%  |        9%  |     3%  |    14%  |   100%  |
+                              Crosstab Table Proportions:                                
+ [labels]   |  fox   |  gallup  |  newsweek  |  time.cnn  |  upenn  |  zogby  |  total  |
+-----------------------------------------------------------------------------------------
+     APRIL  |   2 %  |     3 %  |       1 %  |       0 %  |    0 %  |    1 %  |    7 %  |
+    AUGUST  |   1 %  |     2 %  |       1 %  |       0 %  |    0 %  |    1 %  |    5 %  |
+  DECEMBER  |   1 %  |     3 %  |       1 %  |       1 %  |    1 %  |    2 %  |    8 %  |
+  FEBRUARY  |   2 %  |     3 %  |       1 %  |       1 %  |    0 %  |    1 %  |    9 %  |
+   JANUARY  |   2 %  |     4 %  |       2 %  |       1 %  |    2 %  |    2 %  |   13 %  |
+      JULY  |   2 %  |     3 %  |       1 %  |       1 %  |    0 %  |    1 %  |    8 %  |
+      JUNE  |   2 %  |     3 %  |       0 %  |       0 %  |    0 %  |    1 %  |    7 %  |
+     MARCH  |   2 %  |     4 %  |       1 %  |       1 %  |    0 %  |    2 %  |    9 %  |
+       MAY  |   1 %  |     3 %  |       2 %  |       1 %  |    0 %  |    0 %  |    7 %  |
+  NOVEMBER  |   1 %  |     3 %  |       2 %  |       1 %  |    0 %  |    0 %  |    7 %  |
+   OCTOBER  |   2 %  |     3 %  |       2 %  |       1 %  |    0 %  |    1 %  |   10 %  |
+ SEPTEMBER  |   2 %  |     3 %  |       2 %  |       1 %  |    0 %  |    1 %  |    9 %  |
+     Total  |  20 %  |    37 %  |      17 %  |       9 %  |    3 %  |   14 %  |  100 %  |
 ```
 
-See the section on [Cross Tabs](https://jtablesaw.github.io/tablesaw/userguide/crosstabs), and the JavaDocs for the
+See the section on [Cross Tabs](https://tlabs-data.github.io/tablesaw/userguide/crosstabs), and the JavaDocs for the
 [CrossTab](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/aggregate/CrossTab.html) class. 
 
 ## Conclusion
 
 We've covered a lot of ground. To learn more, please take a look at the
-[User Guide](https://jtablesaw.github.io/tablesaw/userguide/toc) or API documentation
-([Java Docs](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/index)).
+[User Guide](https://tlabs-data.github.io/tablesaw/userguide/toc) or API documentation
+([Java Docs](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/index.html)).
 
 [^1]: Note that containsString(String subString) is different from contains(). The first method looks at each
 string in the column to see if it conains the substring. The second method looks at every row in the column and returns

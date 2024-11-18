@@ -1,4 +1,4 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 Tables
 ======
@@ -36,7 +36,7 @@ You can load a table from a CSV file by providing the file name.
 
     Table t = Table.read().csv("myFile.csv");
 
-This simple method supplies default values for a number of parameters like the type of the separator character (a comma). It also attempts to infer the types for each column. If the inferred types are incorrect, you can specify the types at import time. See [Importing data](https://jtablesaw.github.io/tablesaw/userguide/importing_data) for other options and more detail.    
+This simple method supplies default values for a number of parameters like the type of the separator character (a comma). It also attempts to infer the types for each column. If the inferred types are incorrect, you can specify the types at import time. See [Importing data](https://tlabs-data.github.io/tablesaw/userguide/importing_data) for other options and more detail.    
 
 ## Displaying data
 
@@ -212,7 +212,7 @@ Table result = t.where(t.stringColumn("Foo").startsWith("A"));
 
 This would produce a table containing every row in t where the value in the column named "Foo" contains a string that starts with "A".
 
-Filters are covered in detail in the section on [Filtering](https://jtablesaw.github.io/tablesaw/userguide/filters).   
+Filters are covered in detail in the section on [Filtering](https://tlabs-data.github.io/tablesaw/userguide/filters).   
 
 ## Reduce
 
@@ -245,7 +245,7 @@ Table result = t.summarize("delay", mean).by("airport");
 
 Cross tabs (or cross-tabulations) are like groups, but return the data in a layout that faciliates interpretation. A cross tab in Tablesaw takes two grouping columns and returns the number of observations for each combination of the two columns. They can also produce the proportions, and subtotals by row or column. 
 
-Cross Tabs are covered in detail in the section on [CrossTabs](https://jtablesaw.github.io/tablesaw/userguide/crosstabs). 
+Cross Tabs are covered in detail in the section on [CrossTabs](https://tlabs-data.github.io/tablesaw/userguide/crosstabs). 
 
 ## Sort
 
@@ -255,7 +255,7 @@ Table can be sorted on any combination of columns, in any combination of ascendi
 t.sortDescending("column1","column2");
  ```
 
-Sorting is covered in detail in the section on [Sorting](https://jtablesaw.github.io/tablesaw/userguide/sorting). 
+Sorting is covered in detail in the section on [Sorting](https://tlabs-data.github.io/tablesaw/userguide/sorting). 
 
 ## Rows
 
@@ -265,7 +265,7 @@ There are no real rows in Tablesaw. Data is organized in columns. The closest yo
 
 A row in tablesaw is an iterable object that references a table and contains an index pointer. It lets you step through the table without copying any data or converting any data from its internal representation into something more familiar - unless you ask it to. This makes it possible work with a table a row or two at a time, without incurring any memory overhead, and with the minimal CPU use. 
 
-Row handling is covered in detail in the section on [Rows](https://jtablesaw.github.io/tablesaw/userguide/rows), and in the section on [table processing without loops](https://jtablesaw.github.io/tablesaw/userguide/Table processing without loops). 
+Row handling is covered in detail in the section on [Rows](https://tlabs-data.github.io/tablesaw/userguide/rows), and in the section on [table processing without loops](https://tlabs-data.github.io/tablesaw/userguide/Table processing without loops). 
 
 ## Export
 

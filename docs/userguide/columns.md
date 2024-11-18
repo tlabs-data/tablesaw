@@ -1,4 +1,4 @@
-[Contents](https://jtablesaw.github.io/tablesaw/userguide/toc)
+[Contents](https://tlabs-data.github.io/tablesaw/userguide/toc)
 
 Columns
 =======
@@ -7,29 +7,16 @@ Tablesaw is all about tables and tables are made of columns. You'll often need t
 
 Let's start with a definition. A column is a named vector of data, all of a single type. Some elements may be missing, and it's important to deal with those. We cover that later. 
 
-Here are the supported column types. All concrete column types are in the api package. For the details on each kind see the appropriate Javadoc files. 
+Here are the supported column types. All of the concrete column types are in the api package. For the details on each kind see the appropriate Javadoc files. 
 
 * [BooleanColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/BooleanColumn.html), which holds true and false values
-
-There are two columns for textual data:  
-* [StringColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/StringColumn.html), is for categorical values that appear multiple times in the column, such as "New York".
-* [TextColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/TextColumn.html), for unique text values as in
-
-There are multiple columns for numeric data, including five concrete types:
+* [StringColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/StringColumn.html), as in "Hello, World," or "RN183-15F", "charlie@gmail.com";
 * [NumberColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/NumberColumn.html): an interface for numeric data types.   
-* [ShortColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/ShortColumn.html): is for small integral values.
-* [IntColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/IntColumn.html): is the best integral type for most cases
-* [LongColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/LongColumn.html): for large integral values.   
-* [FloatColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/FloatColum.html): for single-precision floating point.   
-* [DoubleColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DoubleColumn.html): is usually best floating point type for most values.   
-
-Four kinds of temporal columns are supported:
 * [DateColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DateColumn.html): A "local date". That is, a date without a timezone. April 10, 2018, for example.
 * [DateTimeColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DateTimeColumn.html): A local date and time combined. April 10, 2018 at 9:07.
 * [TimeColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/TimeColumn.html): A local time, like 12:47:03
-* [InstantColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/InstantColumn.html): A single point in time without reference to time zones 
 
-All mathematical operations return double values or instances of [DoubleColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DoubleColumn.html). As you'd expect, it holds 8-byte floating point numbers. 
+There is currently one concrete type of NumberColumn, called [DoubleColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DoubleColumn.html). As you'd expect, it holds 8-byte floating point numbers, but is used also for integer types. 
 
 We'll begin by looking at the operations that are common to all column types. 
 
@@ -122,7 +109,7 @@ Just about anything you can do with an individual LocalDate you can do with an e
 DateColumn weekLater = dates.plusDays(7);
 ```
 
-This is an example of a mapping function. You can find the date mapping functions in the interface [DateMapFunctions](https://jtablesaw.github.io/tablesaw/apidocs/tech/tablesaw/columns/dates/DateMapFunctions.html). Many of the methods there deal with adding and subtracting units of time (days, weeks, months, etc), and calculating the column-wise differences between two date columns. Others provide access to elements of a date. The method *month()*, for example, returns a StringColumn containing the month for a given date. The methods *year()*, *dayOfWeek()*, *dayOfMonth()*, etc. function similarly.
+This is an example of a mapping function. You can find the date mapping functions in the interface [DateMapFunctions](https://www.javadoc.io/doc/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/dates/DateMapFunctions.html). Many of the methods there deal with adding and subtracting units of time (days, weeks, months, etc), and calculating the column-wise differences between two date columns. Others provide access to elements of a date. The method *month()*, for example, returns a StringColumn containing the month for a given date. The methods *year()*, *dayOfWeek()*, *dayOfMonth()*, etc. function similarly.
 
 Other columns have similar mapping functions. 
 
@@ -200,6 +187,6 @@ NOTE: When working with missing values, always test with the isMissing() method,
 You can print data as individual values, columns or tables. The output format can be controlled by setting a type-specific formatter on a column. For example, to change how numbers are displayed you can call setPrintFormatter() on a NumberColumn, passing in a NumberColumnFormatter. Each formatter serves two functions, displaying true values and handling of  missing ones. NumberColumnFormatter has several pre-configured options, including printing as currency or percents.
 
 
-See the [Table](https://jtablesaw.github.io/tablesaw/userguide/tables) documentation for how to add and remove columns
+See the [Table](https://tlabs-data.github.io/tablesaw/userguide/tables) documentation for how to add and remove columns
 
  

@@ -6,7 +6,7 @@ One of the best known applications of regression comes from the book <a href="ht
 
 Moneyball is a great example of how to apply data science to solve a business problem. For the A's, the business problem was "How do we make the playoffs?" They break that problem down into simpler problems that can be solved with data. Their approach is summarized in the diagram below:
 
-![Moneyball model](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/moneyball-3_1.png)
+![Moneyball model](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/moneyball-3_1.png)
 
 In baseball, you make the playoffs by winning more games than your rivals, but you can't control the number of games your rivals win. How should you proceed? The A's needed to find controllable variables that affected their likelihood of making the playoffs. 
 
@@ -41,7 +41,7 @@ Column playoffs = moneyball.column("Playoffs");
 ScatterPlot.show("Regular season wins by year", moneyball, "W", "year", "playoffs");
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/wins by year.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/wins by year.png)
 
 Teams that made the playoffs are shown as yellow points.  If you draw a vertical line at 95 wins, you can see that it's likely a team that wins more than 95 games will make the playoffs. So far so good.
 
@@ -98,7 +98,7 @@ Now lets see if Run Difference is correlated with Wins. We use a scatter plot ag
 ScatterPlot.show("Run Difference x Wins", moneyball, "Run Difference","W");
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/run diff vs wins.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/run diff vs wins.png)
 
 Our plot shows a strong linear relation between the two. 
 
@@ -181,7 +181,7 @@ Again we have a model with excellent explanatory power with an R-squared of 92.�
 Histogram.show(runsScored2.residuals());
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/histogram.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/histogram.png)
 
 It looks great.  It's also important to plot the predicted (or "fitted") values against the residuals. We want to see if the model fits some values better than others, which will influence whether we can trust its predictions or not. Ideally, we want to see a cloud of random dots around zero on the y axis.
 
@@ -194,7 +194,7 @@ double[] resids = runsScored2.residuals();
 ScatterPlot.show("Runs Scored from OBP and SLG", "Fitted", fitted, "Residuals", resids);
 ```
 
-![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/runs scored model.png)
+![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/runs scored model.png)
 
 Again, the plot looks good.
 
