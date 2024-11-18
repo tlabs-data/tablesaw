@@ -12,7 +12,7 @@ Tablesaw makes it easy to use Java for data science, but we can use your help. H
 
 ## About questions
 
-Please use the project [Issues section on Github](https://github.com/jtablesaw/tablesaw/issues) to ask questions, tagging the issue as a "Question".
+Please use the project [Issues section on Github](https://github.com/tlabs-data/tablesaw/issues) to ask questions, tagging the issue as a "Question".
 
 ## Improve the documentation
 All our docs are in the docs folder of the tablesaw repo, and they are all written in Markdown. To provide enhancements, follow the directions on how to implement featues and bugs below as the workflow is basically the same.
@@ -32,7 +32,7 @@ If you want to help out with one of our bugs or implement a new feature, here ar
 
 You can find more info about [creating a fork](https://help.github.com/articles/fork-a-repo/) and [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) in the GitHub help articles. Our maintainers will review your pull request as soon as we can. You can find our project on Github at:
 
-[https://github.com/jtablesaw/tablesaw](https://github.com/jtablesaw/tablesaw)
+[https://github.com/tlabs-data/tablesaw](https://github.com/tlabs-data/tablesaw)
 
 ## What makes a good Pull Request?
 

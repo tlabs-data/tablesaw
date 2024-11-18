@@ -1,6 +1,6 @@
 # Moneyball: Linear Regression with Smile & Tablesaw
 
-Linear regression analysis has been called the "Hello World" of machine learning, because it's widely used and easy to understand. It's also very powerful. We'll walk through the modeling process here using Smile and Tablesaw. [Smile](https://github.com/haifengl/smile) is a fantastic Java machine learning library  and [Tablesaw](https://github.com/jtablesaw/tablesaw/) is data wrangling library like pandas. 
+Linear regression analysis has been called the "Hello World" of machine learning, because it's widely used and easy to understand. It's also very powerful. We'll walk through the modeling process here using Smile and Tablesaw. [Smile](https://github.com/haifengl/smile) is a fantastic Java machine learning library  and [Tablesaw](https://github.com/tlabs-data/tablesaw/) is data wrangling library like pandas. 
 
 One of the best known applications of regression comes from the book <a href="https://www.amazon.com/dp/B000RH0C8G/ref=dp-kindle-redirect?_encoding=UTF8&amp;btkr=1">Moneyball</a>, which describes the innovative use of data science at the Oakland A's baseball team. My analysis is based on a lecture given in the EdX course: <a href="https://www.edx.org/course/analytics-edge-mitx-15-071x-2">MITx: 15.071x The Analytics Edge</a>.  If you're new to data analytics, I would *strongly* recommend this course.
 

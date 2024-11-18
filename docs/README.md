@@ -5,7 +5,7 @@
 * [User Guide](https://tlabs-data.github.io/tablesaw/userguide/toc) An in-depth guide to much of Tablesaw's functionality.
 * [Javadoc](http://www.javadoc.io/doc/tech.tablesaw/tablesaw-core/)
 * [Contributor's Guide](https://tlabs-data.github.io/tablesaw/contributing) We welcome contributions! Here's how. 
-* [Release Notes](https://github.com/jtablesaw/tablesaw/releases)
+* [Release Notes](https://github.com/tlabs-data/tablesaw/releases)
 
 Can't find what you're looking for?
-Ask your questions on the project [Issues page](https://github.com/jtablesaw/tablesaw/issues)
+Ask your questions on the project [Issues page](https://github.com/tlabs-data/tablesaw/issues)

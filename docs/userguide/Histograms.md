@@ -3,7 +3,7 @@
 Understanding the distribution of data within a column is often essential. Tablesaw provides one and two dimensional histograms, as well as box plots.  
 
 The complete code for this example can be found here: 
-https://github.com/jtablesaw/tablesaw/blob/master/jsplot/src/test/java/tech/tablesaw/examples/DistributionVisualizations.java
+https://github.com/tlabs-data/tablesaw/blob/master/jsplot/src/test/java/tech/tablesaw/examples/DistributionVisualizations.java
 
 We start by loading the data we'll use in our examples below. 
 

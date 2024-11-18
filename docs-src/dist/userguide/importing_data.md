@@ -158,7 +158,7 @@ It can be used to read local files, but also files read across the net, in S3, e
 ```java
 ColumnType[] types = {SHORT_INT, FLOAT, SHORT_INT};
 String location = 
-    "https://raw.githubusercontent.com/jtablesaw/tablesaw/master/data/bush.csv";
+    "https://raw.githubusercontent.com/tlabs-data/tablesaw/master/data/bush.csv";
 Table table = Table.read().usingOptions(CsvReadOptions.builder(new URL(location))
     .tableName("bush")
   	.columnTypes(types)));

@@ -41,7 +41,7 @@ Tablesaw supports data visualization by providing a wrapper for the Plot.ly Java
 
 ### Getting started
 
-Add tablesaw-core to your project. You can find the version number for the latest release in the [release notes](https://github.com/jtablesaw/tablesaw/releases):
+Add tablesaw-core to your project. You can find the version number for the latest release in the [release notes](https://github.com/tlabs-data/tablesaw/releases):
 
 ```xml
 <dependency>
@@ -65,8 +65,8 @@ External supporting projects - **outside of this organization**:
 
 * Start here:  https://tlabs-data.github.io/tablesaw/gettingstarted
 * Then see our documentation page: https://tlabs-data.github.io/tablesaw/ and the [Tablesaw User Guide](https://tlabs-data.github.io/tablesaw/userguide/toc).
-* Ask questions, make suggestions, or tell us how you're using Tablesaw in the new GitHub [discussions forum](https://github.com/jtablesaw/tablesaw/discussions). 
-* Feature requests and bug reports can be made on the [issues tab](https://github.com/jtablesaw/tablesaw/issues).
+* Ask questions, make suggestions, or tell us how you're using Tablesaw in the new GitHub [discussions forum](https://github.com/tlabs-data/tablesaw/discussions). 
+* Feature requests and bug reports can be made on the [issues tab](https://github.com/tlabs-data/tablesaw/issues).
 
 ### Integrations
 

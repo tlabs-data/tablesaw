@@ -2,7 +2,7 @@
 
 # Bars, Pies, and Pareto charts
 
-[Tablesaw](https://github.com/jtablesaw/tablesaw) is a platform for data science in Java that can filter and transform datasets. It also provides extensive support for visualization. For this discussion, we'll use a Tornado dataset from NOAA, which can be found in the data folder of the Tablesaw project. 
+[Tablesaw](https://github.com/tlabs-data/tablesaw) is a platform for data science in Java that can filter and transform datasets. It also provides extensive support for visualization. For this discussion, we'll use a Tornado dataset from NOAA, which can be found in the data folder of the Tablesaw project. 
 
 While Tablesaw can produce publication quality graphics, the focus here is on exploratory analysis, where content and ease are more important than polish. Here we focus on some common plot types for working with univariate data:
 
@@ -14,7 +14,7 @@ While Tablesaw can produce publication quality graphics, the focus here is on ex
 
 All of the code used to produce the plots in this document can be found in the class BarPieAndParetoExample.java, which you can find here. 
 
-https://github.com/jtablesaw/tablesaw/blob/master/jsplot/src/test/java/tech/tablesaw/examples/BarPieAndParetoExample.java
+https://github.com/tlabs-data/tablesaw/blob/master/jsplot/src/test/java/tech/tablesaw/examples/BarPieAndParetoExample.java
 
 We recommend you open that class to follow along. 
 
