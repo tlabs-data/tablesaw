@@ -40,6 +40,7 @@
         <sonar.projectKey>tlabs-data_tablesaw</sonar.projectKey>
         <sonar.organization>tlabs-data</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
     </properties>
     <distributionManagement>
       <snapshotRepository>
