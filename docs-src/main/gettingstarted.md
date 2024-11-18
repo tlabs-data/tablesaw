@@ -12,7 +12,7 @@ Second, you need to add the dependency to your pom file. It's available on Maven
 
 ````
 <dependency>
-    <groupId>tech.tablesaw</groupId>
+    <groupId>net.tlabs-data</groupId>
     <artifactId>tablesaw-core</artifactId>
     <version>LATEST</version>
 </dependency>
@@ -82,8 +82,8 @@ They work like the standard objects.
 
 This just covers the most basic information about columns. You can find more in the section on
 [Columns](https://tlabs-data.github.io/tablesaw/userguide/columns), or in the Javadocs for the
-[api package](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/package-summary.html)
-and the [columns package](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/package-summary.html).
+[api package](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/package-summary.html)
+and the [columns package](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/columns/package-summary.html).
 
 ### Selections
 
@@ -131,7 +131,7 @@ and use it to filter another:
 
 > **Key point:** Note the methods *startsWith(aString)*, *isLessThan(aNumber)*, and *isPositive()*. These were predefined
 >for your use. There are many such methods that can be used in building queries. For StringColumn, they're defined in the
->[tech.tablesaw.columns.strings.StringFilters interface](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/strings/StringFilters.html).
+>[tech.tablesaw.columns.strings.StringFilters interface](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/columns/strings/StringFilters.html).
 >It also includes *endsWith()*, *isEmpty()*, *isAlpha()*, *containsString()*[^1], etc. Each column has a similar set of
 >filter operations. They can all be found in the filter interfaces located in sub-folders of tech.tablesaw.columns
 > (e.g. tech.tablesaw.columns.dates.DateFilters).
@@ -167,7 +167,7 @@ returns a new StringColumn. It also includes other helpful methods found in Guav
 Apache Commons String library.
 
 > **Key point:** Every column type has a set of map operations like *multiply(aNumber)*. For StringColumn,
->these methods are defined in the [*tech.tablesaw.columns.strings.StringMapFunctions*](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/strings/StringFilters.html) interface. It includes many methods beyond those shown above. Methods for all column types can all be found in their filter interfaces located in the sub-folders of tech.tablesaw.columns (e.g. [*tech.tablesaw.columns.dates.DateMapFunctions*](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/strings/StringFilters.html), which provides date methods like *plusDays(anInt)*, *year()*, and *month()*).
+>these methods are defined in the [*tech.tablesaw.columns.strings.StringMapFunctions*](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/columns/strings/StringFilters.html) interface. It includes many methods beyond those shown above. Methods for all column types can all be found in their filter interfaces located in the sub-folders of tech.tablesaw.columns (e.g. [*tech.tablesaw.columns.dates.DateMapFunctions*](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/columns/strings/StringFilters.html), which provides date methods like *plusDays(anInt)*, *year()*, and *month()*).
 >
 
 #### Reduce (aggregate) functions: Summarizing a column 
@@ -187,7 +187,7 @@ NumberColumn has many more aggregate functions. For example, to calculate the st
 
 > **Key point:** NumberColumn supports many aggregation functions, including many of the most useful.
 >Among those available are *sum*, *count*, *mean*, *median*, *percentile(n)*, *range*, *variance*, *sumOfLogs*, and so on.
->These are defined in the [NumericColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/NumericColumn.html) class. 
+>These are defined in the [NumericColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/NumericColumn.html) class. 
 >
 
 When we discuss tables below, we'll show how to calculate sub-totals in one or more numeric columns by the values in one or more grouping columns.
@@ -378,7 +378,7 @@ which says "return the mean and median sales by day of week."
 > **Key point**: Tables are usually split based on columns, but the columns can be calculated on the fly
 
 See the documentation on [Summarizing](https://tlabs-data.github.io/tablesaw/userguide/reducing) data, and the classes in
-the [aggregate package](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/aggregate/package-summary.html)
+the [aggregate package](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/aggregate/package-summary.html)
 for more detail.
 
 ##### Cross-Tabulations (AKA contingency tables)
@@ -397,13 +397,13 @@ The formatted output is shown below.
 ```
 
 See the section on [Cross Tabs](https://tlabs-data.github.io/tablesaw/userguide/crosstabs), and the JavaDocs for the
-[CrossTab](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/aggregate/CrossTab.html) class. 
+[CrossTab](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/aggregate/CrossTab.html) class. 
 
 ## Conclusion
 
 We've covered a lot of ground. To learn more, please take a look at the
 [User Guide](https://tlabs-data.github.io/tablesaw/userguide/toc) or API documentation
-([Java Docs](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/index.html)).
+([Java Docs](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/index.html)).
 
 [^1]: Note that containsString(String subString) is different from contains(). The first method looks at each
 string in the column to see if it conains the substring. The second method looks at every row in the column and returns

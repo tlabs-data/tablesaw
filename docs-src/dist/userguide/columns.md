@@ -9,14 +9,14 @@ Let's start with a definition. A column is a named vector of data, all of a sing
 
 Here are the supported column types. All of the concrete column types are in the api package. For the details on each kind see the appropriate Javadoc files. 
 
-* [BooleanColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/BooleanColumn.html), which holds true and false values
-* [StringColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/StringColumn.html), as in "Hello, World," or "RN183-15F", "charlie@gmail.com";
-* [NumberColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/NumberColumn.html): an interface for numeric data types.   
-* [DateColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DateColumn.html): A "local date". That is, a date without a timezone. April 10, 2018, for example.
-* [DateTimeColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DateTimeColumn.html): A local date and time combined. April 10, 2018 at 9:07.
-* [TimeColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/TimeColumn.html): A local time, like 12:47:03
+* [BooleanColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/BooleanColumn.html), which holds true and false values
+* [StringColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/StringColumn.html), as in "Hello, World," or "RN183-15F", "charlie@gmail.com";
+* [NumberColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/NumberColumn.html): an interface for numeric data types.   
+* [DateColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/DateColumn.html): A "local date". That is, a date without a timezone. April 10, 2018, for example.
+* [DateTimeColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/DateTimeColumn.html): A local date and time combined. April 10, 2018 at 9:07.
+* [TimeColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/TimeColumn.html): A local time, like 12:47:03
 
-There is currently one concrete type of NumberColumn, called [DoubleColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DoubleColumn.html). As you'd expect, it holds 8-byte floating point numbers, but is used also for integer types. 
+There is currently one concrete type of NumberColumn, called [DoubleColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/DoubleColumn.html). As you'd expect, it holds 8-byte floating point numbers, but is used also for integer types. 
 
 We'll begin by looking at the operations that are common to all column types. 
 
@@ -109,7 +109,7 @@ Just about anything you can do with an individual LocalDate you can do with an e
 DateColumn weekLater = dates.plusDays(7);
 ```
 
-This is an example of a mapping function. You can find the date mapping functions in the interface [DateMapFunctions](https://www.javadoc.io/doc/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/columns/dates/DateMapFunctions.html). Many of the methods there deal with adding and subtracting units of time (days, weeks, months, etc), and calculating the column-wise differences between two date columns. Others provide access to elements of a date. The method *month()*, for example, returns a StringColumn containing the month for a given date. The methods *year()*, *dayOfWeek()*, *dayOfMonth()*, etc. function similarly.
+This is an example of a mapping function. You can find the date mapping functions in the interface [DateMapFunctions](https://www.javadoc.io/doc/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/columns/dates/DateMapFunctions.html). Many of the methods there deal with adding and subtracting units of time (days, weeks, months, etc), and calculating the column-wise differences between two date columns. Others provide access to elements of a date. The method *month()*, for example, returns a StringColumn containing the month for a given date. The methods *year()*, *dayOfWeek()*, *dayOfMonth()*, etc. function similarly.
 
 Other columns have similar mapping functions. 
 
@@ -161,7 +161,7 @@ DateColumn filtered = dates.isBetweenIncluding(date1, date2);
 
 The built-in method in this case is preferable as it has been optimized. But you *can* write your own if you need something not already provided.
 
-You can find a full list in the JavaDoc for [DateColumn](http://www.javadoc.io/page/tech.tablesaw/tablesaw-core/latest/tech/tablesaw/api/DateColumn.html).
+You can find a full list in the JavaDoc for [DateColumn](https://www.javadoc.io/page/net.tlabs-data/tablesaw-core/latest/tech/tablesaw/api/DateColumn.html).
 
 #### Using filters to conditionally edit data
 
