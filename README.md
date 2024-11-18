@@ -28,12 +28,12 @@ __Tablesaw__ is a dataframe and visualization library, as well as utilities for 
 
 Tablesaw supports data visualization by providing a wrapper for the Plot.ly JavaScript plotting library. Here are a few examples of the new library in action.
 
-| ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/box1.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/scatter_2_Yaxes.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/tornado.scatter.png) |
+| ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/box1.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/scatter_2_Yaxes.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/tornado.scatter.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/bush_time_series2.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/hist_overlay.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/histogram2.png) |
-| ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/histogram2d.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/pie.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_bubble_3d.png) |
-| ![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/wine_bubble_with_groups.png) | ![](https://jtablesaw.github.io/tablesaw/userguide/images/eda/robberies_area.png) | ![](https://jtablesaw.github.io/tablesaw/userguide/images/ml/regression/wins%20by%20year.png) |
-| ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/bush_heatmap1.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/tornado_bar_groups.png) | ![Tornadoes](https://jtablesaw.github.io/tablesaw/userguide/images/eda/ohlc1.png) |
+| ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/bush_time_series2.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/hist_overlay.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/histogram2.png) |
+| ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/histogram2d.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/pie.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_bubble_3d.png) |
+| ![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/wine_bubble_with_groups.png) | ![](https://tlabs-data.github.io/tablesaw/userguide/images/eda/robberies_area.png) | ![](https://tlabs-data.github.io/tablesaw/userguide/images/ml/regression/wins%20by%20year.png) |
+| ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/bush_heatmap1.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/tornado_bar_groups.png) | ![Tornadoes](https://tlabs-data.github.io/tablesaw/userguide/images/eda/ohlc1.png) |
 
 #### Statistics
 
@@ -63,8 +63,8 @@ External supporting projects - **outside of this organization**:
 
 ### Documentation and support
 
-* Start here:  https://jtablesaw.github.io/tablesaw/gettingstarted
-* Then see our documentation page: https://jtablesaw.github.io/tablesaw/ and the [Tablesaw User Guide](https://jtablesaw.github.io/tablesaw/userguide/toc).
+* Start here:  https://tlabs-data.github.io/tablesaw/gettingstarted
+* Then see our documentation page: https://tlabs-data.github.io/tablesaw/ and the [Tablesaw User Guide](https://tlabs-data.github.io/tablesaw/userguide/toc).
 * Ask questions, make suggestions, or tell us how you're using Tablesaw in the new GitHub [discussions forum](https://github.com/jtablesaw/tablesaw/discussions). 
 * Feature requests and bug reports can be made on the [issues tab](https://github.com/jtablesaw/tablesaw/issues).
 
