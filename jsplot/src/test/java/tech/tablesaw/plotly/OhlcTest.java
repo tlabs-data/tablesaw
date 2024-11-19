@@ -8,6 +8,7 @@ import tech.tablesaw.plotly.api.OHLCPlot;
 import tech.tablesaw.plotly.components.Figure;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -26,11 +27,11 @@ public class OhlcTest {
         String graphTitle = "title";
 
         LocalDateTime now = LocalDateTime.now();
-        List<LocalDateTime> time = List.of(now, now.plusSeconds(5), now.plusSeconds(10));
-        List<Double> open = List.of(1d, 2d, 3d);
-        List<Double> close = List.of(1d, 2d, 3d);
-        List<Double> high = List.of(1d, 2d, 3d);
-        List<Double> low = List.of(1d, 2d, 3d);
+        List<LocalDateTime> time = Arrays.asList(now, now.plusSeconds(5), now.plusSeconds(10));
+        List<Double> open = Arrays.asList(1d, 2d, 3d);
+        List<Double> close = Arrays.asList(1d, 2d, 3d);
+        List<Double> high = Arrays.asList(1d, 2d, 3d);
+        List<Double> low = Arrays.asList(1d, 2d, 3d);
 
         DateTimeColumn timeColumn = DateTimeColumn.create(timeTitle, time);
         DoubleColumn openColumn = DoubleColumn.create(openTitle, open);
