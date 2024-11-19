@@ -92,7 +92,7 @@
       <!-- Compression -->
       <groupId>org.iq80.snappy</groupId>
       <artifactId>snappy</artifactId>
-      <version>0.4</version>
+      <version>0.5</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
