@@ -19,30 +19,26 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class OhlcTest {
+class OhlcTest {
 
-    private static final String timeTitle = "time";
-    private static final String openTitle = "open";
-    private static final String closeTitle = "close";
-    private static final String highTitle = "high";
-    private static final String lowTitle = "low";
-    private static final String graphTitle = "title";
-    private static final List<Double> open = Arrays.asList(1d, 2d, 3d);
-    private static final List<Double> close = Arrays.asList(1d, 2d, 3d);
-    private static final List<Double> high = Arrays.asList(1d, 2d, 3d);
-    private static final List<Double> low = Arrays.asList(1d, 2d, 3d);
-    private static final DoubleColumn openColumn = DoubleColumn.create(openTitle, open);
-    private static final DoubleColumn closeColumn = DoubleColumn.create(closeTitle, close);
-    private static final DoubleColumn highColumn = DoubleColumn.create(highTitle, high);
-    private static final DoubleColumn lowColumn = DoubleColumn.create(lowTitle, low);
+    private static final String TIME_TITLE = "time";
+    private static final String OPEN_TITLE = "open";
+    private static final String CLOSE_TITLE = "close";
+    private static final String HIGH_TITLE = "high";
+    private static final String LOW_TITLE = "low";
+    private static final String GRAPH_TITLE = "title";
+    private static final DoubleColumn OPEN_COLUMN = DoubleColumn.create(OPEN_TITLE, Arrays.asList(1d, 2d, 3d));
+    private static final DoubleColumn CLOSE_COLUMN = DoubleColumn.create(CLOSE_TITLE, Arrays.asList(1d, 2d, 3d));
+    private static final DoubleColumn HIGH_COLUMN = DoubleColumn.create(HIGH_TITLE, Arrays.asList(1d, 2d, 3d));
+    private static final DoubleColumn LOW_COLUMN = DoubleColumn.create(LOW_TITLE, Arrays.asList(1d, 2d, 3d));
 
     @Test
     void ohlcPlotDoesNotThrowIllegalArgumentExceptionUsingDateTime() {
         LocalDateTime now = LocalDateTime.now();
         List<LocalDateTime> time = Arrays.asList(now, now.plusSeconds(5), now.plusSeconds(10));
-        DateTimeColumn dateTimeColumn = DateTimeColumn.create(timeTitle, time);
-        Table priceTable = Table.create(dateTimeColumn, openColumn, closeColumn, highColumn, lowColumn);
-        Figure figure = OHLCPlot.create(graphTitle, priceTable, timeTitle, openTitle, highTitle, lowTitle, closeTitle);
+        DateTimeColumn dateTimeColumn = DateTimeColumn.create(TIME_TITLE, time);
+        Table priceTable = Table.create(dateTimeColumn, OPEN_COLUMN, CLOSE_COLUMN, HIGH_COLUMN, LOW_COLUMN);
+        Figure figure = OHLCPlot.create(GRAPH_TITLE, priceTable, TIME_TITLE, OPEN_TITLE, HIGH_TITLE, LOW_TITLE, CLOSE_TITLE);
 
         assertNotNull(figure);
         assertDoesNotThrow(() -> IllegalArgumentException.class);
@@ -52,9 +48,9 @@ public class OhlcTest {
     void ohlcPlotDoesNotThrowIllegalArgumentExceptionUsingLocalDate() {
         LocalDate now = LocalDate.now();
         List<LocalDate> time = Arrays.asList(now, now.plusDays(5), now.plusDays(10));
-        DateColumn dateColumn = DateColumn.create(timeTitle, time);
-        Table priceTable = Table.create(dateColumn, openColumn, closeColumn, highColumn, lowColumn);
-        Figure figure = OHLCPlot.create(graphTitle, priceTable, timeTitle, openTitle, highTitle, lowTitle, closeTitle);
+        DateColumn dateColumn = DateColumn.create(TIME_TITLE, time);
+        Table priceTable = Table.create(dateColumn, OPEN_COLUMN, CLOSE_COLUMN, HIGH_COLUMN, LOW_COLUMN);
+        Figure figure = OHLCPlot.create(GRAPH_TITLE, priceTable, TIME_TITLE, OPEN_TITLE, HIGH_TITLE, LOW_TITLE, CLOSE_TITLE);
 
         assertNotNull(figure);
         assertDoesNotThrow(() -> IllegalArgumentException.class);
@@ -64,9 +60,9 @@ public class OhlcTest {
     void ohlcPlotDoesNotThrowIllegalArgumentExceptionUsingInstant() {
         Instant now = Instant.now();
         List<Instant> time = Arrays.asList(now, now.plusSeconds(5), now.plusSeconds(10));
-        InstantColumn instantColumn = InstantColumn.create(timeTitle, time);
-        Table priceTable = Table.create(instantColumn, openColumn, closeColumn, highColumn, lowColumn);
-        Figure figure = OHLCPlot.create(graphTitle, priceTable, timeTitle, openTitle, highTitle, lowTitle, closeTitle);
+        InstantColumn instantColumn = InstantColumn.create(TIME_TITLE, time);
+        Table priceTable = Table.create(instantColumn, OPEN_COLUMN, CLOSE_COLUMN, HIGH_COLUMN, LOW_COLUMN);
+        Figure figure = OHLCPlot.create(GRAPH_TITLE, priceTable, TIME_TITLE, OPEN_TITLE, HIGH_TITLE, LOW_TITLE, CLOSE_TITLE);
 
         assertNotNull(figure);
         assertDoesNotThrow(() -> IllegalArgumentException.class);
