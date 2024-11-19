@@ -170,7 +170,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
+                    <version>3.13.0</version>
                     <executions>
                         <!-- Replacing default-compile as it is treated specially by maven -->
                         <execution>
@@ -198,8 +198,9 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <release>8</release>
+                        <source>8</source>
+                        <target>8</target>
                         <compilerArgument>-Xlint:all</compilerArgument>
                     </configuration>
                 </plugin>
