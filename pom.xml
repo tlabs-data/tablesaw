@@ -9,9 +9,9 @@
     <description>High-performance Java Dataframe</description>
     <url>https://github.com/tlabs-data/tablesaw</url>
     <scm>
-        <connection>scm:git:git@github.com:tlabs-data/tablesaw.git</connection>
-        <developerConnection>scm:git:git@github.com:tlabs-data/tablesaw.git</developerConnection>
-        <url>git@github.com:tlabs-data/tablesaw.git</url>
+        <connection>scm:git:https://github.com/tlabs-data/tablesaw.git</connection>
+        <developerConnection>scm:git:https://github.com/tlabs-data/tablesaw.git</developerConnection>
+        <url>https://github.com/tlabs-data/tablesaw.git</url>
         <tag>HEAD</tag>
     </scm>
     <licenses>
