@@ -47,8 +47,9 @@ class TableFixTest {
     @Test
     void testCompareRowsOutOfBound() {
         Table differentTable = testTable.copy().dropRows(0);
+        int lastRowNumber = testTable.rowCount() - 1;
         assertThrows(IndexOutOfBoundsException.class,
-            () -> Table.compareRows(testTable.rowCount() -1, testTable, differentTable),
+            () -> Table.compareRows(lastRowNumber, testTable, differentTable),
             "Row outside range does not throw exception");
     }
     
