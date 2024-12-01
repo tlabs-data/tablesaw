@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import tech.tablesaw.io.csv.CsvReadOptions;
 
-class TableFixTest {
+class TableCompareRowsTest {
 
     private static final String SOURCE_FILE_NAME = "../data/missing_values.csv";
     private static Table testTable;
