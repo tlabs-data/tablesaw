@@ -4,16 +4,15 @@ import static tech.tablesaw.aggregate.AggregateFunctions.*;
 import static tech.tablesaw.columns.numbers.NumberPredicates.isMissing;
 import static tech.tablesaw.columns.numbers.NumberPredicates.isNotMissing;
 
-import it.unimi.dsi.fastutil.doubles.DoubleComparator;
 import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import java.util.function.BiPredicate;
 import java.util.function.DoubleBinaryOperator;
 import java.util.function.DoubleFunction;
 import java.util.function.DoublePredicate;
+import it.unimi.dsi.fastutil.doubles.DoubleComparator;
+import it.unimi.dsi.fastutil.doubles.DoubleRBTreeSet;
 import org.apache.commons.math3.exception.NotANumberException;
 import org.apache.commons.math3.stat.correlation.KendallsCorrelation;
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
@@ -79,11 +78,11 @@ public interface NumericColumn<T extends Number>
   /** {@inheritDoc} */
   @Override
   default Selection isIn(Collection<Number> numbers) {
-    final SortedSet<Double> doubleNumbers = new TreeSet<>();
-    numbers.forEach(n -> doubleNumbers.add(n.doubleValue()));
+    final DoubleRBTreeSet doubleSet = new DoubleRBTreeSet();
+    numbers.forEach(n -> doubleSet.add(n.doubleValue()));
     final Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {
-      if (doubleNumbers.contains(getDouble(i))) {
+      if (doubleSet.contains(getDouble(i))) {
         results.add(i);
       }
     }
