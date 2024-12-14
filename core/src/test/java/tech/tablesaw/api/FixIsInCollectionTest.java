@@ -13,6 +13,6 @@ class FixIsInCollectionTest {
         IntColumn column = IntColumn.create("c", 1, 2);
         assertEquals(1, column.isIn(1).size()); // passes
         assertEquals(1, column.isIn(Arrays.asList(1d)).size()); // passes
-        assertEquals(1, column.isIn(Arrays.asList(1)).size()); // fails
+        assertEquals(1, column.isIn(Arrays.asList(1)).size()); // fails -- now passes
     }
 }
