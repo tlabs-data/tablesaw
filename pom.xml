@@ -4,7 +4,7 @@
 
     <groupId>net.tlabs-data</groupId>
     <artifactId>tablesaw-parent</artifactId>
-    <version>0.43.3-SNAPSHOT</version>
+    <version>0.43.3</version>
     <name>Tablesaw</name>
     <description>High-performance Java Dataframe</description>
     <url>https://github.com/tlabs-data/tablesaw</url>
@@ -12,7 +12,7 @@
         <connection>scm:git:https://github.com/tlabs-data/tablesaw.git</connection>
         <developerConnection>scm:git:https://github.com/tlabs-data/tablesaw.git</developerConnection>
         <url>https://github.com/tlabs-data/tablesaw.git</url>
-        <tag>HEAD</tag>
+        <tag>v0.43.3</tag>
     </scm>
     <licenses>
         <license>
