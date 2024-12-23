@@ -628,7 +628,7 @@ public class BooleanColumn extends AbstractColumn<BooleanColumn, Boolean>
   public BooleanColumn append(Column<Boolean> column) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -646,7 +646,7 @@ public class BooleanColumn extends AbstractColumn<BooleanColumn, Boolean>
   public Column<Boolean> append(Column<Boolean> column, int row) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -661,7 +661,7 @@ public class BooleanColumn extends AbstractColumn<BooleanColumn, Boolean>
   public Column<Boolean> set(int row, Column<Boolean> column, int sourceRow) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

@@ -277,7 +277,7 @@ public class IntColumn extends NumberColumn<IntColumn, Integer>
   public IntColumn append(final Column<Integer> column) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -295,7 +295,7 @@ public class IntColumn extends NumberColumn<IntColumn, Integer>
   public IntColumn append(Column<Integer> column, int row) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -308,7 +308,7 @@ public class IntColumn extends NumberColumn<IntColumn, Integer>
   public IntColumn set(int row, Column<Integer> column, int sourceRow) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

@@ -297,7 +297,7 @@ public class DateColumn extends AbstractColumn<DateColumn, LocalDate>
   public DateColumn append(final Column<LocalDate> column) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -315,7 +315,7 @@ public class DateColumn extends AbstractColumn<DateColumn, LocalDate>
   public DateColumn append(Column<LocalDate> column, int row) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -328,7 +328,7 @@ public class DateColumn extends AbstractColumn<DateColumn, LocalDate>
   public DateColumn set(int row, Column<LocalDate> column, int sourceRow) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

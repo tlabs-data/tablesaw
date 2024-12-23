@@ -301,7 +301,7 @@ public class ShortColumn extends NumberColumn<ShortColumn, Short>
   public ShortColumn append(final Column<Short> column) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -326,7 +326,7 @@ public class ShortColumn extends NumberColumn<ShortColumn, Short>
   public ShortColumn append(Column<Short> column, int row) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -339,7 +339,7 @@ public class ShortColumn extends NumberColumn<ShortColumn, Short>
   public ShortColumn set(int row, Column<Short> column, int sourceRow) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

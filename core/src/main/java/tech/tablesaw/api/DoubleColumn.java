@@ -379,7 +379,7 @@ public class DoubleColumn extends NumberColumn<DoubleColumn, Double>
   public DoubleColumn append(final Column<Double> column) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -397,7 +397,7 @@ public class DoubleColumn extends NumberColumn<DoubleColumn, Double>
   public DoubleColumn append(Column<Double> column, int row) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

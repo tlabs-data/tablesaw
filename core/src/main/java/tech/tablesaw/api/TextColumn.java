@@ -371,7 +371,7 @@ public class TextColumn extends AbstractStringColumn<TextColumn> {
   public TextColumn append(Column<String> column) {
     Preconditions.checkArgument(
         column.type() == TEXT || column.type().equals(STRING),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
