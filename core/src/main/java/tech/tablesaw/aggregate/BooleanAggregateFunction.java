@@ -10,7 +10,7 @@ public abstract class BooleanAggregateFunction extends AggregateFunction<Boolean
    * Constructs a BooleanAggregateFunction with the given name. The name is used to name a column in
    * the output when this function is used by {@link Summarizer}
    */
-  public BooleanAggregateFunction(String name) {
+  protected BooleanAggregateFunction(String name) {
     super(name);
   }
 

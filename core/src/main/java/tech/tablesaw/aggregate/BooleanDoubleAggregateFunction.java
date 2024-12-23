@@ -14,7 +14,7 @@ public abstract class BooleanDoubleAggregateFunction
    * Constructs a BooleanNumericFunction with the given name. The name may be used to name a column
    * in the output when this function is used by {@link Summarizer}
    */
-  public BooleanDoubleAggregateFunction(String functionName) {
+  protected BooleanDoubleAggregateFunction(String functionName) {
     super(functionName);
   }
 

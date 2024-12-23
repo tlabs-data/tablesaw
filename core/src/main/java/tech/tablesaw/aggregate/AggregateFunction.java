@@ -12,7 +12,7 @@ public abstract class AggregateFunction<INCOL extends Column<?>, OUT> {
   private final String functionName;
 
   /** Constructs a function with the given name */
-  public AggregateFunction(String functionName) {
+  protected AggregateFunction(String functionName) {
     this.functionName = functionName;
   }
 

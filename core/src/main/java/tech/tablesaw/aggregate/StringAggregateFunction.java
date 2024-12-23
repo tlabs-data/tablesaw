@@ -13,7 +13,7 @@ public abstract class StringAggregateFunction extends AggregateFunction<StringCo
    * Constructs an {@code StringFunction} with the given name. The name may be used to name a column
    * in the output when this function is used by {@link Summarizer}
    */
-  public StringAggregateFunction(String name) {
+  protected StringAggregateFunction(String name) {
     super(name);
   }
 

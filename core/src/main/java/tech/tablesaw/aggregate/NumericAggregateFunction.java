@@ -10,7 +10,7 @@ public abstract class NumericAggregateFunction extends AggregateFunction<Numeric
    * Constructs a NumericAggregateFunction with the given name. The name may be used to name a
    * column in the output when this function is used by {@link Summarizer}
    */
-  public NumericAggregateFunction(String name) {
+  protected NumericAggregateFunction(String name) {
     super(name);
   }
 
