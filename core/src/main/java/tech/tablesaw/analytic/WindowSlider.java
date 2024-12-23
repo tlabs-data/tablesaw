@@ -13,6 +13,9 @@ import tech.tablesaw.table.TableSlice;
  * used.
  */
 class WindowSlider {
+    
+  private static final String UNEXPECTED_GROWTH_TYPE = "Unexpected growthType: ";
+  
   private final boolean mirrored;
   private final WindowGrowthType windowGrowthType;
   private final int initialLeftBound;
@@ -145,8 +148,9 @@ class WindowSlider {
         return i -> i;
       case SLIDING:
         return i -> i + 1;
+      default:
+        throw new IllegalArgumentException(UNEXPECTED_GROWTH_TYPE + this.windowGrowthType);
     }
-    throw new IllegalArgumentException("Unexpected growthType: " + this.windowGrowthType);
   }
 
   private Function<Integer, Integer> slideRightStrategy() {
@@ -156,8 +160,9 @@ class WindowSlider {
       case FIXED_LEFT:
       case SLIDING:
         return i -> i + 1;
+      default:
+        throw new IllegalArgumentException(UNEXPECTED_GROWTH_TYPE + this.windowGrowthType);
     }
-    throw new IllegalArgumentException("Unexpected growthType: " + this.windowGrowthType);
   }
 
   private int getInitialLeftBound() {
@@ -172,7 +177,8 @@ class WindowSlider {
       case FIXED_LEFT:
       case SLIDING:
         return this.initialRightBound;
+      default:
+        throw new IllegalArgumentException(UNEXPECTED_GROWTH_TYPE + this.windowGrowthType);
     }
-    throw new IllegalArgumentException("Unexpected growthType: " + this.windowGrowthType);
   }
 }
