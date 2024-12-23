@@ -21,7 +21,7 @@ public abstract class AbstractColumnParser<T> {
 
   protected List<String> missingValueStrings = TypeUtils.MISSING_INDICATORS;
 
-  public AbstractColumnParser(ColumnType columnType) {
+  protected AbstractColumnParser(ColumnType columnType) {
     this.columnType = columnType;
   }
 

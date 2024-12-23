@@ -39,7 +39,7 @@ public abstract class AbstractColumn<C extends Column<T>, T> implements Column<T
   /**
    * Constructs a column with the given {@link ColumnType}, name, and {@link AbstractColumnParser}
    */
-  public AbstractColumn(ColumnType type, final String name, final AbstractColumnParser<T> parser) {
+  protected AbstractColumn(ColumnType type, final String name, final AbstractColumnParser<T> parser) {
     this.type = type;
     setParser(parser);
     setName(name);
