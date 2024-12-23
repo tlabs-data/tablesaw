@@ -220,9 +220,9 @@ public class Summarizer {
           getAggregateFunctionMultimap();
 
       for (String name : reductionMultimap.keys()) {
-        List<AggregateFunction<?, ?>> reductions = reductionMultimap.get(name);
+        List<AggregateFunction<?, ?>> reductionsFromMap = reductionMultimap.get(name);
         Table table = TableSliceGroup.summaryTableName(temp);
-        for (AggregateFunction function : reductions) {
+        for (AggregateFunction function : reductionsFromMap) {
           Column column = temp.column(name);
           Object result = function.summarize(column);
           ColumnType type = function.returnType();
@@ -316,8 +316,8 @@ public class Summarizer {
         getAggregateFunctionMultimap();
 
     for (String name : reductionMultimap.keys()) {
-      List<AggregateFunction<?, ?>> reductions = reductionMultimap.get(name);
-      Table groupTable = group.aggregate(name, reductions.toArray(new AggregateFunction<?, ?>[0]));
+      List<AggregateFunction<?, ?>> reductionsFromMap = reductionMultimap.get(name);
+      Table groupTable = group.aggregate(name, reductionsFromMap.toArray(new AggregateFunction<?, ?>[0]));
       groupTable = groupTable.where(selectionFunction);
       if (!groupTable.isEmpty()) {
         results.add(groupTable);
@@ -367,8 +367,8 @@ public class Summarizer {
         getAggregateFunctionMultimap();
 
     for (String name : reductionMultimap.keys()) {
-      List<AggregateFunction<?, ?>> reductions = reductionMultimap.get(name);
-      results.add(group.aggregate(name, reductions.toArray(new AggregateFunction<?, ?>[0])));
+      List<AggregateFunction<?, ?>> reductionsFromMap = reductionMultimap.get(name);
+      results.add(group.aggregate(name, reductionsFromMap.toArray(new AggregateFunction<?, ?>[0])));
     }
     return combineTables(results);
   }
