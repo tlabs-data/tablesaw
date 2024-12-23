@@ -119,15 +119,6 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testIsAM2() {
-    Selection selection = localTimeColumn.isBeforeNoon();
-    assertTrue(selection.contains(0));
-    assertFalse(selection.contains(1));
-    assertFalse(selection.contains(2));
-    assertTrue(selection.contains(3));
-  }
-
-  @Test
   public void testIsPM() {
     Selection selection = localTimeColumn.isAfterNoon();
     assertFalse(selection.contains(0));
@@ -136,15 +127,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testIsPM2() {
-    Selection selection = localTimeColumn.isAfterNoon();
-    assertFalse(selection.contains(0));
-    assertTrue(selection.contains(1));
-    assertTrue(selection.contains(2));
-  }
-
-  @Test
-  public void testIsMidnightIsNoon() {
+  public void testIsMidnight() {
     Selection selection = localTimeColumn.isMidnight();
     assertFalse(selection.contains(0));
     assertFalse(selection.contains(1));
@@ -154,24 +137,6 @@ public class LocalTimeFilterTest {
 
   @Test
   public void testIsNoon() {
-    Selection selection = localTimeColumn.isNoon();
-    assertFalse(selection.contains(0));
-    assertTrue(selection.contains(1));
-    assertFalse(selection.contains(2));
-    assertFalse(selection.contains(3));
-  }
-
-  @Test
-  public void testIsMidnight2() {
-    Selection selection = localTimeColumn.isMidnight();
-    assertFalse(selection.contains(0));
-    assertFalse(selection.contains(1));
-    assertFalse(selection.contains(2));
-    assertTrue(selection.contains(3));
-  }
-
-  @Test
-  public void testIsNoon2() {
     Selection selection = localTimeColumn.isNoon();
     assertFalse(selection.contains(0));
     assertTrue(selection.contains(1));
