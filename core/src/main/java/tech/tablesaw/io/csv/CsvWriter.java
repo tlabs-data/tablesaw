@@ -41,7 +41,7 @@ public final class CsvWriter implements DataWriter<CsvWriteOptions> {
     CsvWriterSettings settings = createSettings(options);
 
     com.univocity.parsers.csv.CsvWriter csvWriter = null;
-    // Creates a writer with the above settings;
+    // Creates a writer with the above settings
     try {
       csvWriter =
           new com.univocity.parsers.csv.CsvWriter(options.destination().createWriter(), settings);

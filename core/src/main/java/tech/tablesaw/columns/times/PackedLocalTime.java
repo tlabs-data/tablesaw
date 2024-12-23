@@ -51,6 +51,10 @@ public class PackedLocalTime {
   private static final long NANOS_PER_HOUR = NANOS_PER_MINUTE * MINUTES_PER_HOUR;
   private static final long NANOS_PER_DAY = NANOS_PER_HOUR * HOURS_PER_DAY;
 
+  private PackedLocalTime() {
+    super();
+  }
+
   public static byte getHour(int time) {
     return (byte) (time >> 24);
   }

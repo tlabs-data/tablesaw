@@ -432,7 +432,7 @@ public class ByteDictionaryMap implements DictionaryMap {
     try {
       dictionaryMap = new ShortDictionaryMap(this);
     } catch (NoKeysAvailableException e) {
-      // this should never happen;
+      // this should never happen
       throw new IllegalStateException(e);
     }
     return dictionaryMap;

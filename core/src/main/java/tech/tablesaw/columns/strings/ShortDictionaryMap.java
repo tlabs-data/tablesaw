@@ -439,7 +439,7 @@ public class ShortDictionaryMap implements DictionaryMap {
     try {
       dictionaryMap = new IntDictionaryMap(this);
     } catch (NoKeysAvailableException e) {
-      // this should never happen;
+      // this should never happen
       throw new IllegalStateException(e);
     }
 

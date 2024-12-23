@@ -22,6 +22,10 @@ import javax.annotation.concurrent.Immutable;
 @Immutable
 public final class DescendingLongComparator {
 
+  private DescendingLongComparator() {
+    super();
+  }
+
   public static LongComparator instance() {
     return LongComparators.OPPOSITE_COMPARATOR;
   }
