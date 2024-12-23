@@ -13,7 +13,7 @@ public class Grid extends Component {
 
     @Override
     public String toString() {
-      return this.name().toLowerCase().replaceAll("_", " ");
+      return this.name().toLowerCase().replace("_", " ");
     }
   }
 
@@ -25,7 +25,7 @@ public class Grid extends Component {
 
     @Override
     public String toString() {
-      return this.name().toLowerCase().replaceAll("_", " ");
+      return this.name().toLowerCase().replace("_", " ");
     }
   }
 
@@ -37,7 +37,7 @@ public class Grid extends Component {
 
     @Override
     public String toString() {
-      return this.name().toLowerCase().replaceAll("_", " ");
+      return this.name().toLowerCase().replace("_", " ");
     }
   }
 
