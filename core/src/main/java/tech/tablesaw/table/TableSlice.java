@@ -203,11 +203,11 @@ public class TableSlice extends Relation {
 
   /** Returns the data in this slice as a new Table */
   public Table asTable() {
-    Table table = Table.create(this.name());
+    Table asTable = Table.create(this.name());
     for (Column<?> column : this.columns()) {
-      table.addColumns(column);
+      asTable.addColumns(column);
     }
-    return table;
+    return asTable;
   }
 
   /**
