@@ -12,7 +12,7 @@ public abstract class DateTimeAggregateFunction
    * Constructs an DateTimeAggregateFunction with the given name. The name is used as a column name
    * in the output
    */
-  public DateTimeAggregateFunction(String name) {
+  protected DateTimeAggregateFunction(String name) {
     super(name);
   }
 

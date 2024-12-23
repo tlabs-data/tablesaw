@@ -14,7 +14,7 @@ public abstract class BooleanIntAggregateFunction
    * Constructs a BooleanCountFunction with the given name. The name may be used to name a column in
    * the output when this function is used by {@link Summarizer}
    */
-  public BooleanIntAggregateFunction(String functionName) {
+  protected BooleanIntAggregateFunction(String functionName) {
     super(functionName);
   }
 

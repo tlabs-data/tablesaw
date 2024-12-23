@@ -11,7 +11,7 @@ public abstract class InstantAggregateFunction extends AggregateFunction<Instant
    * Constructs an InstantAggregateFunction with the given name. The name may be used to name a
    * column in the output when this function is used by {@link Summarizer}
    */
-  public InstantAggregateFunction(String name) {
+  protected InstantAggregateFunction(String name) {
     super(name);
   }
 

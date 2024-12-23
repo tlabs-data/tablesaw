@@ -13,7 +13,7 @@ public abstract class AnyIntAggregateFunction extends AggregateFunction<Column<?
    * Constructs a CountFunction with the given name. The name is used to name an output column when
    * this function is used by {@link Summarizer}
    */
-  public AnyIntAggregateFunction(String functionName) {
+  protected AnyIntAggregateFunction(String functionName) {
     super(functionName);
   }
 

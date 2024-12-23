@@ -11,7 +11,7 @@ public abstract class DateAggregateFunction extends AggregateFunction<DateColumn
    * Constructs a DateAggregateFunction with the given name. The name may be used to name a column
    * in the output when this function is used by {@link Summarizer}
    */
-  public DateAggregateFunction(String name) {
+  protected DateAggregateFunction(String name) {
     super(name);
   }
 

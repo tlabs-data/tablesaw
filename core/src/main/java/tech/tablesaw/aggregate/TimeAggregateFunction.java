@@ -11,7 +11,7 @@ public abstract class TimeAggregateFunction extends AggregateFunction<TimeColumn
    * Constructs a TimeAggregateFunction with the given name. The name is used as a column name in
    * the output
    */
-  public TimeAggregateFunction(String name) {
+  protected TimeAggregateFunction(String name) {
     super(name);
   }
 
