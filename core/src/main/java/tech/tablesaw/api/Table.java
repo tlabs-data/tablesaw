@@ -264,8 +264,8 @@ public class Table extends Relation implements Iterable<Row> {
     Preconditions.checkNotNull(
         newColumn, "Attempted to add a null to the columns in table " + name);
     List<String> stringList = new ArrayList<>();
-    for (String name : columnNames()) {
-      stringList.add(name.toLowerCase());
+    for (String columnName : columnNames()) {
+      stringList.add(columnName.toLowerCase());
     }
     if (stringList.contains(newColumn.name().toLowerCase())) {
       String message =
@@ -324,8 +324,8 @@ public class Table extends Relation implements Iterable<Row> {
   public Table reorderColumns(String... columnNames) {
     Preconditions.checkArgument(columnNames.length == columnCount());
     Table table = Table.create(name);
-    for (String name : columnNames) {
-      table.addColumns(column(name));
+    for (String columnName : columnNames) {
+      table.addColumns(column(columnName));
     }
     return table;
   }
@@ -937,7 +937,7 @@ public class Table extends Relation implements Iterable<Row> {
 
     Table temp = emptyCopy();
     Int2ObjectMap<IntArrayList> uniqueHashes = new Int2ObjectOpenHashMap<>();
-    // ListMultimap<Integer, Integer> uniqueHashes = ArrayListMultimap.create();
+
     for (Row row : this) {
       if (!isDuplicate(row, uniqueHashes)) {
         temp.append(row);
