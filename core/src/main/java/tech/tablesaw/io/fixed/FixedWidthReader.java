@@ -26,6 +26,9 @@ import java.util.Arrays;
 import java.util.Optional;
 import javax.annotation.concurrent.Immutable;
 import org.apache.commons.math3.util.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.*;
@@ -34,6 +37,8 @@ import tech.tablesaw.io.*;
 public class FixedWidthReader extends FileReader implements DataReader<FixedWidthReadOptions> {
 
   private static final FixedWidthReader INSTANCE = new FixedWidthReader();
+  private static final Logger LOG = LoggerFactory.getLogger(FixedWidthReader.class);
+
 
   static {
     register(Table.defaultReaderRegistry);
@@ -109,7 +114,7 @@ public class FixedWidthReader extends FileReader implements DataReader<FixedWidt
         try {
           reader.close();
         } catch (IOException e) {
-          throw new RuntimeIOException(e);
+            LOG.error("Error closing reader", e);
         }
       }
     }
