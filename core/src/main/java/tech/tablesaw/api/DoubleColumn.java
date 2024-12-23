@@ -320,6 +320,7 @@ public class DoubleColumn extends NumberColumn<DoubleColumn, Double>
     return data.iterator();
   }
 
+  @Override
   public double[] asDoubleArray() {
     return data.toDoubleArray();
   }
