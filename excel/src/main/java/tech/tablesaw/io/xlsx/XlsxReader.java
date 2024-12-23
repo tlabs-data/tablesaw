@@ -404,6 +404,7 @@ public class XlsxReader implements DataReader<XlsxReadOptions> {
           String val = new CellGeneralFormatter().format(cell.getBooleanCellValue());
           stringColumn.append(val);
         }
+        break;
       default:
         break;
     }
