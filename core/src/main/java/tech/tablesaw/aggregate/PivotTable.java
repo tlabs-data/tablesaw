@@ -21,6 +21,10 @@ import tech.tablesaw.table.TableSliceGroup;
  */
 public class PivotTable {
 
+  private PivotTable() {
+    super();
+  }
+
   /**
    * Returns a table that is a rotation of the given table pivoted around the key columns, and
    * filling the output cells using the values calculated by the {@code aggregateFunction} when
