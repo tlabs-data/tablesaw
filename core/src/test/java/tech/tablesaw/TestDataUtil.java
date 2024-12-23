@@ -80,6 +80,6 @@ public class TestDataUtil {
   }
 
   public static String randomUsState() {
-    return usStateArray[RandomUtils.nextInt(0, usStateArray.length)];
+    return usStateArray[RandomUtils.secure().randomInt(0, usStateArray.length)];
   }
 }

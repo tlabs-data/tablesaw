@@ -65,12 +65,12 @@ public class TimeDependentFilteringTest {
     t.setName("Observations");
 
     // non temporal constraints
-    String conceptA = t.stringColumn("concept").get(RandomUtils.nextInt(0, t.rowCount()));
-    String conceptB = t.stringColumn("concept").get(RandomUtils.nextInt(0, t.rowCount()));
+    String conceptA = t.stringColumn("concept").get(RandomUtils.secure().randomInt(0, t.rowCount()));
+    String conceptB = t.stringColumn("concept").get(RandomUtils.secure().randomInt(0, t.rowCount()));
 
     // independent temporal constraints
-    String conceptZ = t.stringColumn("concept").get(RandomUtils.nextInt(0, t.rowCount()));
-    String conceptD = t.stringColumn("concept").get(RandomUtils.nextInt(0, t.rowCount()));
+    String conceptZ = t.stringColumn("concept").get(RandomUtils.secure().randomInt(0, t.rowCount()));
+    String conceptD = t.stringColumn("concept").get(RandomUtils.secure().randomInt(0, t.rowCount()));
     DependencyFilter independentConstraintFilter = DependencyFilter.FIRST;
 
     // temporal dependency range constraint
@@ -169,14 +169,13 @@ public class TimeDependentFilteringTest {
   private static void generateData(int observationCount, Table table) {
     // createFromCsv pools of random values
 
-    RandomStringGenerator generator =
-        new RandomStringGenerator.Builder().withinRange(32, 127).build();
+    RandomStringGenerator generator = RandomStringGenerator.builder().withinRange(32, 127).get();
     while (concepts.size() <= CONCEPT_COUNT) {
       concepts.add(generator.generate(30));
     }
 
     while (patientIds.size() <= PATIENT_COUNT) {
-      patientIds.add(RandomUtils.nextInt(0, 2_000_000_000));
+      patientIds.add(RandomUtils.secure().randomInt(0, 2_000_000_000));
     }
 
     while (dates.size() <= size) {
@@ -190,10 +189,10 @@ public class TimeDependentFilteringTest {
 
     // sample from the pools to write the data
     for (int i = 0; i < observationCount; i++) {
-      dateColumn.appendInternal(dates.getInt(RandomUtils.nextInt(0, dates.size())));
-      conceptColumn.append(concepts.get(RandomUtils.nextInt(0, concepts.size())));
-      valueColumn.append(RandomUtils.nextDouble(0f, 100_000f));
-      patientColumn.append(patientIds.getInt(RandomUtils.nextInt(0, patientIds.size())));
+      dateColumn.appendInternal(dates.getInt(RandomUtils.secure().randomInt(0, dates.size())));
+      conceptColumn.append(concepts.get(RandomUtils.secure().randomInt(0, concepts.size())));
+      valueColumn.append(RandomUtils.secure().randomDouble(0f, 100_000f));
+      patientColumn.append(patientIds.getInt(RandomUtils.secure().randomInt(0, patientIds.size())));
     }
   }
 
