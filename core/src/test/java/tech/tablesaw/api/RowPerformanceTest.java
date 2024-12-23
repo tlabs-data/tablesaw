@@ -222,8 +222,7 @@ public class RowPerformanceTest {
   private static void generateData(int observationCount, LocalDateTime dateTime, Table table) {
     // createFromCsv pools of random values
 
-    RandomStringGenerator generator =
-        new RandomStringGenerator.Builder().withinRange(32, 127).build();
+    RandomStringGenerator generator = RandomStringGenerator.builder().withinRange(32, 127).get();
 
     while (concepts.size() <= CONCEPT_COUNT) {
       concepts.add(generator.generate(30));
@@ -241,9 +240,9 @@ public class RowPerformanceTest {
     // sample from the pools to write the data
     for (int i = 0; i < observationCount; i++) {
       dateColumn.appendInternal(dates.getLong(i));
-      conceptColumn.append(concepts.get(RandomUtils.nextInt(0, concepts.size())));
-      lowValues.append(RandomUtils.nextDouble(0, 1_000_000));
-      highValues.append(RandomUtils.nextDouble(0, 1_000_000));
+      conceptColumn.append(concepts.get(RandomUtils.secure().randomInt(0, concepts.size())));
+      lowValues.append(RandomUtils.secure().randomDouble(0, 1_000_000));
+      highValues.append(RandomUtils.secure().randomDouble(0, 1_000_000));
     }
   }
 }

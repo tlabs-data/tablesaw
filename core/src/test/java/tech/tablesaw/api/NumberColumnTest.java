@@ -442,7 +442,7 @@ public class NumberColumnTest {
   public void testMaxAndMin() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.set(i, RandomUtils.nextDouble(0, 10_000));
+      doubles.set(i, RandomUtils.secure().randomDouble(0, 10_000));
     }
     NumericColumn<?> doubles1 = doubles.top(50);
     NumericColumn<?> doubles2 = doubles.bottom(50);
@@ -462,7 +462,7 @@ public class NumberColumnTest {
   public void testClear() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.set(i, RandomUtils.nextDouble(0, 10_000));
+      doubles.set(i, RandomUtils.secure().randomDouble(0, 10_000));
     }
     assertFalse(doubles.isEmpty());
     doubles.clear();
@@ -473,7 +473,7 @@ public class NumberColumnTest {
   public void testCountMissing() {
     DoubleColumn doubles = DoubleColumn.create("doubles");
     for (int i = 0; i < 10; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 1_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 1_000));
     }
     assertEquals(0, doubles.countMissing());
     doubles.clear();
@@ -587,7 +587,7 @@ public class NumberColumnTest {
   public void testIsMissingAndIsNotMissing() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 10);
     for (int i = 0; i < 10; i++) {
-      doubles.set(i, RandomUtils.nextDouble(0, 1_000));
+      doubles.set(i, RandomUtils.secure().randomDouble(0, 1_000));
     }
     assertEquals(0, doubles.isMissing().size());
     assertEquals(10, doubles.isNotMissing().size());
@@ -603,7 +603,7 @@ public class NumberColumnTest {
   public void testEmptyCopy() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     DoubleColumn empty = doubles.emptyCopy();
     assertTrue(empty.isEmpty());
@@ -622,7 +622,7 @@ public class NumberColumnTest {
     DoubleColumn doubles = DoubleColumn.create("doubles");
     assertEquals(0, doubles.size());
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     assertEquals(100, doubles.size());
     doubles.clear();

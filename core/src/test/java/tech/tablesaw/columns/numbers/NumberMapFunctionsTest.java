@@ -178,7 +178,7 @@ public class NumberMapFunctionsTest {
   public void testNeg() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     DoubleColumn newDoubles = doubles.neg();
     assertFalse(newDoubles.isEmpty());
@@ -212,7 +212,7 @@ public class NumberMapFunctionsTest {
   public void testSquareAndSqrt() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
 
     DoubleColumn newDoubles = doubles.square();
@@ -226,7 +226,7 @@ public class NumberMapFunctionsTest {
   public void testCubeAndCbrt() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     DoubleColumn newDoubles = doubles.cube();
     DoubleColumn revert = newDoubles.cubeRoot();
@@ -239,7 +239,7 @@ public class NumberMapFunctionsTest {
   public void testLog1p() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     DoubleColumn newDoubles = doubles.log1p();
     assertFalse(newDoubles.isEmpty());
@@ -261,7 +261,7 @@ public class NumberMapFunctionsTest {
   public void testRound() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     DoubleColumn newDoubles = doubles.round();
     assertFalse(newDoubles.isEmpty());
@@ -271,7 +271,7 @@ public class NumberMapFunctionsTest {
   public void testLogN() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     DoubleColumn newDoubles = doubles.logN();
     assertFalse(newDoubles.isEmpty());
@@ -281,7 +281,7 @@ public class NumberMapFunctionsTest {
   public void testLog10() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
-      doubles.append(RandomUtils.nextDouble(0, 10_000));
+      doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
     }
     DoubleColumn newDoubles = doubles.log10();
     assertFalse(newDoubles.isEmpty());
