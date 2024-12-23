@@ -18,6 +18,10 @@ import tech.tablesaw.selection.Selection;
 /** Utility methods to aid in the construction of complex queries on tables */
 public class QuerySupport {
 
+  private QuerySupport() {
+    super();
+  }
+
   /** Returns a selection for all records for which the given function is {@code false} */
   public static Function<Table, Selection> not(Function<Table, Selection> deferredSelection) {
     return new Not(deferredSelection);
