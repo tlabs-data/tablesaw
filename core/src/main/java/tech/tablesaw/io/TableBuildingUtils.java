@@ -8,6 +8,10 @@ import tech.tablesaw.api.Table;
 
 public class TableBuildingUtils {
 
+  private TableBuildingUtils() {
+    super();
+  }
+
   public static Table build(
       List<String> columnNames, List<String[]> dataRows, ReadOptions options) {
     Table table = Table.create(options.tableName());

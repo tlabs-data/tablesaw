@@ -38,6 +38,10 @@ import tech.tablesaw.columns.Column;
  */
 public class SqlResultSetReader {
 
+  private SqlResultSetReader() {
+    super();
+  }
+
   // Maps from supported SQL types to their Tablesaw equivalents'
   private static final Map<Integer, ColumnType> SQL_TYPE_TO_TABLESAW_TYPE = initializeMap();
 

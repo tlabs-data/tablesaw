@@ -42,7 +42,7 @@ public final class FixedWidthWriter implements DataWriter<FixedWidthWriteOptions
     settings.setFormat(fixedWidthFormat(options));
 
     com.univocity.parsers.fixed.FixedWidthWriter fixedWidthWriter = null;
-    // Creates a writer with the above settings;
+    // Creates a writer with the above settings
     try {
       Writer writer = options.destination().createWriter();
       fixedWidthWriter = new com.univocity.parsers.fixed.FixedWidthWriter(writer, settings);

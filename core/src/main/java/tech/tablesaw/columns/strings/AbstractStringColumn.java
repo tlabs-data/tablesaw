@@ -17,7 +17,7 @@ public abstract class AbstractStringColumn<C extends AbstractColumn<C, String>>
   private StringColumnFormatter printFormatter = new StringColumnFormatter();
 
   /** Constructs a column of the given ColumnType, name, and parser */
-  public AbstractStringColumn(ColumnType type, String name, AbstractColumnParser<String> parser) {
+  protected AbstractStringColumn(ColumnType type, String name, AbstractColumnParser<String> parser) {
     super(type, name, parser);
   }
 

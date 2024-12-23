@@ -23,6 +23,10 @@ import tech.tablesaw.table.TableSliceGroup;
 /** Utility functions for creating 2D double arrays from columns and other arrays */
 public class DoubleArrays {
 
+  private DoubleArrays() {
+    super();
+  }
+
   /** Returns a double[] initialized with the values from 0 to n-1, inclusive; */
   public static double[] toN(int n) {
     double[] result = new double[n];
