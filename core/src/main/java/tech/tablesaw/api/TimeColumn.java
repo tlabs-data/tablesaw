@@ -466,7 +466,7 @@ public class TimeColumn extends AbstractColumn<TimeColumn, LocalTime>
   public TimeColumn append(Column<LocalTime> column) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -484,7 +484,7 @@ public class TimeColumn extends AbstractColumn<TimeColumn, LocalTime>
   public TimeColumn append(Column<LocalTime> column, int row) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -497,7 +497,7 @@ public class TimeColumn extends AbstractColumn<TimeColumn, LocalTime>
   public TimeColumn set(int row, Column<LocalTime> column, int sourceRow) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

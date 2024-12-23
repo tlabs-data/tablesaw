@@ -286,7 +286,7 @@ public class FloatColumn extends NumberColumn<FloatColumn, Float> {
   public FloatColumn append(final Column<Float> column) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -304,7 +304,7 @@ public class FloatColumn extends NumberColumn<FloatColumn, Float> {
   public FloatColumn append(Column<Float> column, int row) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -317,7 +317,7 @@ public class FloatColumn extends NumberColumn<FloatColumn, Float> {
   public FloatColumn set(int row, Column<Float> column, int sourceRow) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

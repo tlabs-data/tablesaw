@@ -324,7 +324,7 @@ public class LongColumn extends NumberColumn<LongColumn, Long> implements Catego
   public LongColumn append(final Column<Long> column) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -342,7 +342,7 @@ public class LongColumn extends NumberColumn<LongColumn, Long> implements Catego
   public LongColumn append(Column<Long> column, int row) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -355,7 +355,7 @@ public class LongColumn extends NumberColumn<LongColumn, Long> implements Catego
   public LongColumn set(int row, Column<Long> column, int sourceRow) {
     checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

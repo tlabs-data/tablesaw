@@ -535,7 +535,7 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
   public InstantColumn append(Column<Instant> column) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -553,7 +553,7 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
   public InstantColumn append(Column<Instant> column, int row) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -566,7 +566,7 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
   public InstantColumn set(int row, Column<Instant> column, int sourceRow) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

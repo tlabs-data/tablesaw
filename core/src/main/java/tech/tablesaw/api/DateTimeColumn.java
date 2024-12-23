@@ -530,7 +530,7 @@ public class DateTimeColumn extends AbstractColumn<DateTimeColumn, LocalDateTime
   public DateTimeColumn append(Column<LocalDateTime> column) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -548,7 +548,7 @@ public class DateTimeColumn extends AbstractColumn<DateTimeColumn, LocalDateTime
   public DateTimeColumn append(Column<LocalDateTime> column, int row) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),
@@ -561,7 +561,7 @@ public class DateTimeColumn extends AbstractColumn<DateTimeColumn, LocalDateTime
   public DateTimeColumn set(int row, Column<LocalDateTime> column, int sourceRow) {
     Preconditions.checkArgument(
         column.type() == this.type(),
-        "Column '%s' has type %s, but column '%s' has type %s.",
+        DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE,
         name(),
         type(),
         column.name(),

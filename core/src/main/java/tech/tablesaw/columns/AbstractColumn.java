@@ -27,6 +27,8 @@ import tech.tablesaw.selection.Selection;
 public abstract class AbstractColumn<C extends Column<T>, T> implements Column<T> {
 
   public static final int DEFAULT_ARRAY_SIZE = 128;
+  
+  protected static final String DEFAULT_COLUMN_TYPE_MISMATCH_MESSAGE = "Column '%s' has type %s, but column '%s' has type %s.";
 
   private String name;
 
