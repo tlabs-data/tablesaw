@@ -211,6 +211,8 @@ public class ReadOptions {
 
   protected static class Builder {
 
+    private static final String COLUMN_TYPES_ALREADY_SET_DEFAULT_MESSAGE = "columnTypes already set";
+    
     protected final Source source;
     protected String tableName = "";
     protected List<ColumnType> columnTypesToDetect = DEFAULT_TYPES;
@@ -356,7 +358,7 @@ public class ReadOptions {
      */
     public Builder columnTypes(ColumnType[] columnTypes) {
       if (columnTypeOptionsAlreadySet()) {
-        throw new IllegalStateException("columnTypes already set");
+        throw new IllegalStateException(COLUMN_TYPES_ALREADY_SET_DEFAULT_MESSAGE);
       }
       this.columnTypes = columnTypes;
       return this;
@@ -370,7 +372,7 @@ public class ReadOptions {
      */
     public Builder columnTypes(Function<String, ColumnType> columnTypeFunction) {
       if (columnTypeOptionsAlreadySet()) {
-        throw new IllegalStateException("columnTypes already set");
+        throw new IllegalStateException(COLUMN_TYPES_ALREADY_SET_DEFAULT_MESSAGE);
       }
       this.completeColumnTypeFunction = columnTypeFunction;
       return this;
@@ -383,7 +385,7 @@ public class ReadOptions {
      */
     public Builder columnTypesPartial(Function<String, Optional<ColumnType>> columnTypeFunction) {
       if (columnTypeOptionsAlreadySet()) {
-        throw new IllegalStateException("columnTypes already set");
+        throw new IllegalStateException(COLUMN_TYPES_ALREADY_SET_DEFAULT_MESSAGE);
       }
       this.columnTypeFunction = columnTypeFunction;
       return this;
@@ -397,7 +399,7 @@ public class ReadOptions {
      */
     public Builder columnTypesPartial(Map<String, ColumnType> columnTypeByName) {
       if (columnTypeOptionsAlreadySet()) {
-        throw new IllegalStateException("columnTypes already set");
+        throw new IllegalStateException(COLUMN_TYPES_ALREADY_SET_DEFAULT_MESSAGE);
       }
       if (columnTypeByName != null) {
         this.columnTypeMap = columnTypeByName;
