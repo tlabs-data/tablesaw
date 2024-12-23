@@ -25,7 +25,7 @@ import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import tech.tablesaw.columns.dates.PackedLocalDate;
-import tech.tablesaw.columns.datetimes.DateTimePredicates;
+import tech.tablesaw.columns.temporal.TemporalPredicates;
 import tech.tablesaw.columns.times.PackedLocalTime;
 
 /*
@@ -163,7 +163,7 @@ public class PackedInstant {
   }
 
   public static boolean isEqualTo(long packedDateTime, long value) {
-    return DateTimePredicates.isEqualTo.test(packedDateTime, value);
+    return TemporalPredicates.isEqualTo.test(packedDateTime, value);
   }
 
   public static boolean isOnOrAfter(long valueToTest, long valueToTestAgainst) {
