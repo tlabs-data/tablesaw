@@ -9,6 +9,8 @@ import tech.tablesaw.columns.ColumnFormatter;
 
 public class NumberColumnFormatter extends ColumnFormatter {
 
+  private static final String UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE = "Unhandled column type in NumberColumnFormatter: ";
+  
   private final NumberFormat format;
   private ColumnType columnType;
 
@@ -157,7 +159,7 @@ public class NumberColumnFormatter extends ColumnFormatter {
     if (columnType.equals(ColumnType.DOUBLE)) {
       return DoubleColumnType.valueIsMissing(value);
     } else {
-      throw new RuntimeException("Unhandled column type in NumberColumnFormatter: " + columnType);
+      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
   }
 
@@ -165,7 +167,7 @@ public class NumberColumnFormatter extends ColumnFormatter {
     if (columnType.equals(ColumnType.FLOAT)) {
       return FloatColumnType.valueIsMissing(value);
     } else {
-      throw new RuntimeException("Unhandled column type in NumberColumnFormatter: " + columnType);
+      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
   }
 
@@ -176,7 +178,7 @@ public class NumberColumnFormatter extends ColumnFormatter {
     if (columnType.equals(ColumnType.SHORT)) {
       return ShortColumnType.valueIsMissing(value);
     } else {
-      throw new RuntimeException("Unhandled column type in NumberColumnFormatter: " + columnType);
+      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
   }
 
@@ -184,7 +186,7 @@ public class NumberColumnFormatter extends ColumnFormatter {
     if (columnType.equals(ColumnType.SHORT)) {
       return ShortColumnType.valueIsMissing(value);
     } else {
-      throw new RuntimeException("Unhandled column type in NumberColumnFormatter: " + columnType);
+      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
   }
 
@@ -192,7 +194,7 @@ public class NumberColumnFormatter extends ColumnFormatter {
     if (columnType.equals(ColumnType.LONG)) {
       return LongColumnType.valueIsMissing(value);
     } else {
-      throw new RuntimeException("Unhandled column type in NumberColumnFormatter: " + columnType);
+      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
   }
 }
