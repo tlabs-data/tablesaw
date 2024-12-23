@@ -15,11 +15,7 @@
 package tech.tablesaw.io.csv;
 
 import com.univocity.parsers.csv.CsvWriterSettings;
-import java.time.format.DateTimeFormatter;
 import javax.annotation.concurrent.Immutable;
-import tech.tablesaw.api.ColumnType;
-import tech.tablesaw.api.DateColumn;
-import tech.tablesaw.api.DateTimeColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.DataWriter;
 import tech.tablesaw.io.Destination;
@@ -67,21 +63,10 @@ public final class CsvWriter implements DataWriter<CsvWriteOptions> {
   }
 
   private void writeValues(Table table, CsvWriteOptions options, int r, String[] entries, int c) {
-    DateTimeFormatter dateFormatter = options.dateFormatter();
-    DateTimeFormatter dateTimeFormatter = options.dateTimeFormatter();
-    ColumnType columnType = table.column(c).type();
-    if (dateFormatter != null && columnType.equals(ColumnType.LOCAL_DATE)) {
-      DateColumn dc = (DateColumn) table.column(c);
-      entries[c] = options.dateFormatter().format(dc.get(r));
-    } else if (dateTimeFormatter != null && columnType.equals(ColumnType.LOCAL_DATE_TIME)) {
-      DateTimeColumn dc = (DateTimeColumn) table.column(c);
-      entries[c] = options.dateTimeFormatter().format(dc.get(r));
+    if (options.usePrintFormatters()) {
+      entries[c] = table.getString(r, c);
     } else {
-      if (options.usePrintFormatters()) {
-        entries[c] = table.getString(r, c);
-      } else {
-        entries[c] = table.getUnformatted(r, c);
-      }
+      entries[c] = table.getUnformatted(r, c);
     }
   }
 
