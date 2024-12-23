@@ -21,8 +21,6 @@ public class CsvWriteOptions extends WriteOptions {
   private final Character escapeChar;
   private final String lineEnd;
   private final boolean quoteAllFields;
-  private final DateTimeFormatter dateFormatter;
-  private final DateTimeFormatter dateTimeFormatter;
   private final Map<String, String> columnNameMap;
 
   private CsvWriteOptions(Builder builder) {
@@ -35,8 +33,6 @@ public class CsvWriteOptions extends WriteOptions {
     this.ignoreLeadingWhitespaces = builder.ignoreLeadingWhitespaces;
     this.ignoreTrailingWhitespaces = builder.ignoreTrailingWhitespaces;
     this.quoteAllFields = builder.quoteAllFields;
-    this.dateFormatter = builder.dateFormatter;
-    this.dateTimeFormatter = builder.dateTimeFormatter;
     this.columnNameMap = builder.columnNameMap;
     this.usePrintFormatter = builder.usePrintFormatters;
   }
@@ -81,12 +77,14 @@ public class CsvWriteOptions extends WriteOptions {
     return lineEnd;
   }
 
+  @Deprecated
   public DateTimeFormatter dateTimeFormatter() {
-    return dateTimeFormatter;
+    return null;
   }
 
+  @Deprecated
   public DateTimeFormatter dateFormatter() {
-    return dateFormatter;
+    return null;
   }
 
   public boolean autoClose() {
@@ -124,8 +122,6 @@ public class CsvWriteOptions extends WriteOptions {
     private String lineEnd = System.lineSeparator();
     private Character escapeChar;
     private Character quoteChar;
-    private DateTimeFormatter dateTimeFormatter;
-    private DateTimeFormatter dateFormatter;
     private Map<String, String> columnNameMap = new HashMap<>();
 
     protected Builder(String fileName) {
