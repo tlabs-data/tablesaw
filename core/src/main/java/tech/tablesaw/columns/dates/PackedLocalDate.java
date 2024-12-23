@@ -452,6 +452,8 @@ public class PackedLocalDate {
       case 11:
         dayResult = Math.min(day, 30);
         break;
+      default:
+        break;
     }
     return pack((short) year, (byte) month, (byte) dayResult);
   }
