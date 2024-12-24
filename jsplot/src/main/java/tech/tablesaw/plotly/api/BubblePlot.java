@@ -55,9 +55,9 @@ public class BubblePlot {
    */
   public static Figure create(
       String title,
-      Column xColumn,
-      Column yColumn,
-      NumericColumn sizeColumn,
+      Column<?> xColumn,
+      Column<?> yColumn,
+      NumericColumn<?> sizeColumn,
       double[] color,
       SizeMode sizeMode,
       Double opacity) {
@@ -95,9 +95,9 @@ public class BubblePlot {
    * @return bubble plot created from given parameters
    */
   public static Figure create(String title, Table table, String xCol, String yCol, String sizeCol) {
-    NumericColumn xColumn = table.numberColumn(xCol);
-    NumericColumn yColumn = table.numberColumn(yCol);
-    NumericColumn sizeColumn = sizeCol == null ? null : table.numberColumn(sizeCol);
+    NumericColumn<?> xColumn = table.numberColumn(xCol);
+    NumericColumn<?> yColumn = table.numberColumn(yCol);
+    NumericColumn<?> sizeColumn = sizeCol == null ? null : table.numberColumn(sizeCol);
     return create(title, xColumn, yColumn, sizeColumn, null, null, null);
   }
 
