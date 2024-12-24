@@ -7,6 +7,9 @@ import java.io.IOException;
  * nearly every use of Tablesaw
  */
 public class RuntimeIOException extends RuntimeException {
+  
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constructs a new Runtime exception from the given checked exception
    *
