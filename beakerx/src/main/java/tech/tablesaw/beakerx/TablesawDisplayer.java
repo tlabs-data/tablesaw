@@ -61,7 +61,7 @@ public class TablesawDisplayer {
    */
   // TODO: remove rawtypes warnings suppression after PR below is merged
   // https://github.com/jupyter/jvm-repr/pull/22
-  @SuppressWarnings({"rawtypes", "unchecked"})
+  @SuppressWarnings({"rawtypes"})
   public static void registerColumns() {
     Displayers.register(
         Column.class,
