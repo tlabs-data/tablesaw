@@ -3,7 +3,6 @@ package tech.tablesaw.plotly.api;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.components.Layout;
-import tech.tablesaw.plotly.traces.BoxTrace;
 import tech.tablesaw.plotly.traces.ViolinTrace;
 
 public class ViolinPlot {
