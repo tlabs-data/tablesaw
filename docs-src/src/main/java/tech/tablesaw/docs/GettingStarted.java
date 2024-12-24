@@ -25,6 +25,7 @@ import static tech.tablesaw.api.QuerySupport.not;
 import static tech.tablesaw.aggregate.AggregateFunctions.*;
 // @@ static_aggregate_function_import
 
+@SuppressWarnings("unused")
 public class GettingStarted implements DocsSourceFile {
 
   public static final OutputWriter outputWriter = new OutputWriter(GettingStarted.class);

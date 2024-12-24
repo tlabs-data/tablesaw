@@ -14,6 +14,7 @@ public class CrossTabs implements DocsSourceFile {
 
   public static final OutputWriter outputWriter = new OutputWriter(CrossTabs.class);
 
+  @SuppressWarnings("rawtypes")
   @Override
   public void run() throws IOException {
 
