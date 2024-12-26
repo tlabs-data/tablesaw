@@ -68,21 +68,4 @@ public class DoubleArrays {
     return allVals;
   }
 
-  public static double[][] to2dArray(double[] x, double[] y) {
-    double[][] allVals = new double[x.length][2];
-    for (int i = 0; i < x.length; i++) {
-      allVals[i][0] = x[i];
-      allVals[i][1] = y[i];
-    }
-    return allVals;
-  }
-
-  public static double[][] to2dArray(NumericColumn<?> x, NumericColumn<?> y) {
-    double[][] allVals = new double[x.size()][2];
-    for (int i = 0; i < x.size(); i++) {
-      allVals[i][0] = x.getDouble(i);
-      allVals[i][1] = y.getDouble(i);
-    }
-    return allVals;
-  }
 }
