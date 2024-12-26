@@ -221,18 +221,19 @@ public class DateTimeColumn extends AbstractColumn<DateTimeColumn, LocalDateTime
   /** {@inheritDoc} */
   @Override
   public DateTimeColumn lag(int n) {
+    final int size = size();
     int srcPos = n >= 0 ? 0 : -n;
-    long[] dest = new long[size()];
+    long[] dest = new long[size];
     int destPos = Math.max(n, 0);
-    int length = n >= 0 ? size() - n : size() + n;
+    int length = n >= 0 ? size - n : size + n;
 
-    for (int i = 0; i < size(); i++) {
+    for (int i = 0; i < size; i++) {
       dest[i] = DateTimeColumnType.missingValueIndicator();
     }
 
     System.arraycopy(data.toLongArray(), srcPos, dest, destPos, length);
 
-    DateTimeColumn copy = emptyCopy(size());
+    DateTimeColumn copy = emptyCopy(size);
     copy.data = new LongArrayList(dest);
     copy.setName(name() + " lag(" + n + ")");
     return copy;

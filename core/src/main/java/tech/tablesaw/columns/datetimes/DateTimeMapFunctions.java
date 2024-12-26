@@ -50,7 +50,7 @@ import tech.tablesaw.columns.strings.StringColumnType;
 import tech.tablesaw.columns.temporal.TemporalMapFunctions;
 import tech.tablesaw.columns.times.TimeColumnType;
 
-public interface DateTimeMapFunctions extends TemporalMapFunctions<LocalDateTime> {
+public interface DateTimeMapFunctions extends TemporalMapFunctions<DateTimeColumn, LocalDateTime> {
 
   default IntColumn hour() {
     IntColumn newColumn = IntColumn.create(name() + "[" + "hour" + "]");
@@ -90,16 +90,6 @@ public interface DateTimeMapFunctions extends TemporalMapFunctions<LocalDateTime
     }
     return newColumn;
   }
-
-  @Override
-  default DateTimeColumn lead(int n) {
-    DateTimeColumn column = lag(-n);
-    column.setName(name() + " lead(" + n + ")");
-    return column;
-  }
-
-  @Override
-  DateTimeColumn lag(int n);
 
   /** Returns a TimeColumn containing the time portion of each dateTime in this DateTimeColumn */
   default TimeColumn time() {
@@ -162,54 +152,6 @@ public interface DateTimeMapFunctions extends TemporalMapFunctions<LocalDateTime
       }
     }
     return newColumn;
-  }
-
-  @Override
-  DateTimeColumn plus(long amountToAdd, ChronoUnit unit);
-
-  @Override
-  default DateTimeColumn plusYears(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.YEARS);
-  }
-
-  @Override
-  default DateTimeColumn plusMonths(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.MONTHS);
-  }
-
-  @Override
-  default DateTimeColumn plusWeeks(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.WEEKS);
-  }
-
-  @Override
-  default DateTimeColumn plusDays(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.DAYS);
-  }
-
-  @Override
-  default DateTimeColumn plusHours(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.HOURS);
-  }
-
-  @Override
-  default DateTimeColumn plusMinutes(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.MINUTES);
-  }
-
-  @Override
-  default DateTimeColumn plusSeconds(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.SECONDS);
-  }
-
-  @Override
-  default DateTimeColumn plusMillis(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.MILLIS);
-  }
-
-  @Override
-  default DateTimeColumn plusMicros(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.MICROS);
   }
 
   /**

@@ -25,11 +25,21 @@ import tech.tablesaw.api.LongColumn;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.columns.booleans.BooleanColumnType;
 
-public interface TemporalMapFunctions<T extends Temporal> extends TemporalColumn<T> {
+public interface TemporalMapFunctions<C extends TemporalColumn<T>, T extends Temporal> extends TemporalColumn<T> {
 
   T min();
 
-  TemporalColumn<T> emptyCopy();
+  C emptyCopy();
+  
+  @Override
+  C lag(int n);
+
+  @Override
+  default C lead(int n) {
+    C column = lag(-n);
+    column.setName(name() + " lead(" + n + ")");
+    return column;
+  }
 
   default LongColumn differenceInMilliseconds(TemporalColumn<T> column2) {
     return difference(column2, ChronoUnit.MILLIS);
@@ -78,41 +88,41 @@ public interface TemporalMapFunctions<T extends Temporal> extends TemporalColumn
     return newColumn;
   }
 
-  Column<T> plus(long amountToAdd, ChronoUnit unit);
+  C plus(long amountToAdd, ChronoUnit unit);
 
-  default Column<T> plusYears(long amountToAdd) {
+  default C plusYears(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.YEARS);
   }
 
-  default Column<T> plusMonths(long amountToAdd) {
+  default C plusMonths(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.MONTHS);
   }
 
-  default Column<T> plusWeeks(long amountToAdd) {
+  default C plusWeeks(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.WEEKS);
   }
 
-  default Column<T> plusDays(long amountToAdd) {
+  default C plusDays(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.DAYS);
   }
 
-  default Column<T> plusHours(long amountToAdd) {
+  default C plusHours(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.HOURS);
   }
 
-  default Column<T> plusMinutes(long amountToAdd) {
+  default C plusMinutes(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.MINUTES);
   }
 
-  default Column<T> plusSeconds(long amountToAdd) {
+  default C plusSeconds(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.SECONDS);
   }
 
-  default Column<T> plusMillis(long amountToAdd) {
+  default C plusMillis(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.MILLIS);
   }
 
-  default Column<T> plusMicros(long amountToAdd) {
+  default C plusMicros(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.MICROS);
   }
 
