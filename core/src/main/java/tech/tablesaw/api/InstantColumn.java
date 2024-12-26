@@ -46,10 +46,10 @@ import tech.tablesaw.columns.AbstractColumnParser;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.columns.instant.InstantColumnFormatter;
 import tech.tablesaw.columns.instant.InstantColumnType;
-import tech.tablesaw.columns.instant.InstantMapFunctions;
 import tech.tablesaw.columns.instant.PackedInstant;
 import tech.tablesaw.columns.temporal.TemporalFillers;
 import tech.tablesaw.columns.temporal.TemporalFilters;
+import tech.tablesaw.columns.temporal.TemporalMapFunctions;
 import tech.tablesaw.selection.Selection;
 
 /**
@@ -58,7 +58,7 @@ import tech.tablesaw.selection.Selection;
  * instances of {@link java.time.Instant}, which have nanosecond precision
  */
 public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
-    implements InstantMapFunctions,
+    implements TemporalMapFunctions<InstantColumn, Instant>,
         TemporalFillers<Instant, InstantColumn>,
         TemporalFilters<Instant>,
         CategoricalColumn<Instant> {
@@ -218,18 +218,19 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
   /** {@inheritDoc} */
   @Override
   public InstantColumn lag(int n) {
+    final int size = size();
     int srcPos = n >= 0 ? 0 : -n;
-    long[] dest = new long[size()];
+    long[] dest = new long[size];
     int destPos = Math.max(n, 0);
-    int length = n >= 0 ? size() - n : size() + n;
+    int length = n >= 0 ? size - n : size + n;
 
-    for (int i = 0; i < size(); i++) {
+    for (int i = 0; i < size; i++) {
       dest[i] = InstantColumnType.missingValueIndicator();
     }
 
     System.arraycopy(data.toLongArray(), srcPos, dest, destPos, length);
 
-    InstantColumn copy = emptyCopy(size());
+    InstantColumn copy = emptyCopy(size);
     copy.data = new LongArrayList(dest);
     copy.setName(name() + " lag(" + n + ")");
     return copy;
@@ -273,7 +274,7 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
       return append(timestamp.toInstant());
     }
     throw new IllegalArgumentException(
-        "Cannot append " + obj.getClass().getName() + " to DateTimeColumn");
+        "Cannot append " + obj.getClass().getName() + " to InstantColumn");
   }
 
   /** {@inheritDoc} */
