@@ -273,7 +273,7 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
       return append(timestamp.toInstant());
     }
     throw new IllegalArgumentException(
-        "Cannot append " + obj.getClass().getName() + " to DateTimeColumn");
+        "Cannot append " + obj.getClass().getName() + " to InstantColumn");
   }
 
   /** {@inheritDoc} */
