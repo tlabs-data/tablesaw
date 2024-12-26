@@ -6,7 +6,9 @@ import static tech.tablesaw.columns.temporal.fillers.TemporalRangeIterable.range
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+
 import org.junit.jupiter.api.Test;
 
 import tech.tablesaw.api.InstantColumn;
@@ -95,7 +97,7 @@ class InstantFillersTest {
 
   @Test
   void testSupplier() {
-    final Instant now = Instant.now();
+    final Instant now = Instant.now().with(ChronoField.NANO_OF_SECOND, 0);
     assertContentEquals(
       InstantColumn.create("instant", new Instant[5]).fillWith(() -> now),
         new Instant[] {now, now, now, now, now});

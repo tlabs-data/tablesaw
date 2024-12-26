@@ -75,7 +75,7 @@ class DateTimeFillersTest {
 
   @Test
   void testSupplier() {
-    final LocalDateTime now = LocalDateTime.now();
+    final LocalDateTime now = LocalDateTime.now().withNano(0);
     assertContentEquals(
       create("instant", new LocalDateTime[5]).fillWith(() -> now),
         new LocalDateTime[] {now, now, now, now, now});
