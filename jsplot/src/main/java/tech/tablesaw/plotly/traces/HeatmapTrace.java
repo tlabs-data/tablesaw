@@ -15,14 +15,12 @@ public class HeatmapTrace extends AbstractTrace {
   private final Object[] x;
   private final Object[] y;
   private final double[][] z;
-  private final String type;
 
   private HeatmapTrace(HeatmapBuilder builder) {
     super(builder);
     this.x = builder.x;
     this.y = builder.y;
     this.z = builder.z;
-    this.type = builder.getType();
   }
 
   @Override
@@ -49,7 +47,6 @@ public class HeatmapTrace extends AbstractTrace {
     context.put("x", dataAsString(x));
     context.put("y", dataAsString(y));
     context.put("z", dataAsString(z));
-    context.put("type", type);
     return context;
   }
 
