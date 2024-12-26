@@ -90,18 +90,6 @@ public interface TemporalMapFunctions<C extends TemporalColumn<T>, T extends Tem
 
   C plus(long amountToAdd, ChronoUnit unit);
 
-  default C plusYears(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.YEARS);
-  }
-
-  default C plusMonths(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.MONTHS);
-  }
-
-  default C plusWeeks(long amountToAdd) {
-    return plus(amountToAdd, ChronoUnit.WEEKS);
-  }
-
   default C plusDays(long amountToAdd) {
     return plus(amountToAdd, ChronoUnit.DAYS);
   }

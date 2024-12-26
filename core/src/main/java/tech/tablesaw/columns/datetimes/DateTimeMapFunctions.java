@@ -385,4 +385,17 @@ public interface DateTimeMapFunctions extends TemporalMapFunctions<DateTimeColum
   default LongColumn timeWindow(ChronoUnit unit, int n) {
     return timeWindow(unit, n, min());
   }
+
+  default DateTimeColumn plusYears(long amountToAdd) {
+    return plus(amountToAdd, ChronoUnit.YEARS);
+  }
+
+  default DateTimeColumn plusMonths(long amountToAdd) {
+    return plus(amountToAdd, ChronoUnit.MONTHS);
+  }
+
+  default DateTimeColumn plusWeeks(long amountToAdd) {
+    return plus(amountToAdd, ChronoUnit.WEEKS);
+  }
+
 }
