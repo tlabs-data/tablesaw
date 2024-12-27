@@ -40,32 +40,32 @@ public abstract class AbstractColumnParser<T> {
     return s.isEmpty() || missingValueStrings.contains(s);
   }
 
-  public byte parseByte(String s) {
+  public byte parseByte(@SuppressWarnings("unused") String s) {
     throw new UnsupportedOperationException(
         this.getClass().getSimpleName() + " doesn't support parsing to booleans");
   }
 
-  public int parseInt(String s) {
+  public int parseInt(@SuppressWarnings("unused") String s) {
     throw new UnsupportedOperationException(
         this.getClass().getSimpleName() + " doesn't support parsing to ints");
   }
 
-  public short parseShort(String s) {
+  public short parseShort(@SuppressWarnings("unused") String s) {
     throw new UnsupportedOperationException(
         this.getClass().getSimpleName() + " doesn't support parsing to shorts");
   }
 
-  public long parseLong(String s) {
+  public long parseLong(@SuppressWarnings("unused") String s) {
     throw new UnsupportedOperationException(
         this.getClass().getSimpleName() + " doesn't support parsing to longs");
   }
 
-  public double parseDouble(String s) {
+  public double parseDouble(@SuppressWarnings("unused") String s) {
     throw new UnsupportedOperationException(
         this.getClass().getSimpleName() + " doesn't support parsing to doubles");
   }
 
-  public float parseFloat(String s) {
+  public float parseFloat(@SuppressWarnings("unused") String s) {
     throw new UnsupportedOperationException(
         this.getClass().getSimpleName() + " doesn't support parsing to floats");
   }
