@@ -46,6 +46,10 @@ enum NumberingFunctions implements FunctionMetaData {
   /** Implementations. */
   static class Implementations {
 
+    private Implementations() {
+      super();
+    }
+
     static NumberingFunction rowNumber() {
 
       return new NumberingFunction() {
