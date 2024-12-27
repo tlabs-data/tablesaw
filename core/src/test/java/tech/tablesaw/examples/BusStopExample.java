@@ -50,7 +50,6 @@ public class BusStopExample extends AbstractExample {
     out(table.first(5));
 
     // Lets take a look at the latitude and longitude columns
-    // out(table.realColumn("stop_lat").rowSummary().out());
     out(table.numberColumn("stop_lat").summary());
 
     // Now lets fill a column based on data in the existing columns

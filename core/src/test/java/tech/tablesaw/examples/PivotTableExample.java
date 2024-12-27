@@ -41,7 +41,7 @@ public class PivotTableExample {
             .doubleColumn("2016")
             .divide(finalTable.doubleColumn("2010"))
             .subtract(1)
-            .multiply(100); // .subtract(1).multiply(100));
+            .multiply(100);
 
     growthColumn.setName("growth");
     finalTable.addColumns(growthColumn);
