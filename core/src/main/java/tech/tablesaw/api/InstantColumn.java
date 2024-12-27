@@ -461,8 +461,10 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
    * Returns the seconds from epoch for each value as an array based on the given offset
    *
    * <p>If a value is missing, InstantColumnType.missingValueIndicator() is used
+   * 
+   * This method is only for consistency with <code>DateTimeColumn</code>, offset is not used
    */
-  public long[] asEpochSecondArray(ZoneOffset offset) {
+  public long[] asEpochSecondArray(@SuppressWarnings("unused") ZoneOffset offset) {
     long[] output = new long[data.size()];
     for (int i = 0; i < data.size(); i++) {
       Instant instant = PackedInstant.asInstant(data.getLong(i));
@@ -492,8 +494,10 @@ public class InstantColumn extends AbstractColumn<InstantColumn, Instant>
    *
    * <p>If a missing value is encountered, InstantColumnType.missingValueIndicator() is inserted in
    * the array
+   * 
+   * This method is only for consistency with <code>DateTimeColumn</code>, offset is not used
    */
-  public long[] asEpochMillisArray(ZoneOffset offset) {
+  public long[] asEpochMillisArray(@SuppressWarnings("unused") ZoneOffset offset) {
     long[] output = new long[data.size()];
     for (int i = 0; i < data.size(); i++) {
       Instant instant = PackedInstant.asInstant(data.getLong(i));
