@@ -19,8 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static tech.tablesaw.TableAssertions.assertTableEquals;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.opentest4j.AssertionFailedError;
+
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.sorting.Sort;
@@ -60,11 +61,11 @@ public class SortTest {
    * Verify data that is not sorted descending does match data that has been (this test verifies the
    * accuracy of our positive tests)
    */
-  @Disabled
+  @Test()
   public void sortDescendingNegative() {
     Table sortedTable = unsortedTable.sortDescendingOn("IQ", "DOB");
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_ASCENDING.getTable();
-    assertTableEquals(expectedResults, sortedTable);
+    assertThrows(AssertionFailedError.class, () -> assertTableEquals(expectedResults, sortedTable));
   }
 
   @Test
@@ -118,11 +119,11 @@ public class SortTest {
     assertTableEquals(expectedResults, sortedTable);
   }
 
-  @Disabled
+  @Test
   public void testAscendingWithPlusSignNegative() {
     Table sortedTable =
         unsortedTable.sortOn("+" + columnNames[IQ_INDEX], "-" + columnNames[DOB_INDEX]);
-    Table expectedResults = TestData.SIMPLE_DATA_WITH_CANONICAL_DATE_FORMAT.getTable();
+    Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_ASCENDING_AND_THEN_DATE_DESCENDING.getTable();
     assertTableEquals(expectedResults, sortedTable);
   }
 
