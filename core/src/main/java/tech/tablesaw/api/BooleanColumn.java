@@ -807,9 +807,8 @@ public class BooleanColumn extends AbstractColumn<BooleanColumn, Boolean>
    */
   public DoubleColumn asDoubleColumn() {
     DoubleColumn numberColumn = DoubleColumn.create(this.name(), size());
-    ByteArrayList data = data();
     for (int i = 0; i < size(); i++) {
-      numberColumn.set(i, data.getByte(i));
+      numberColumn.set(i, getByte(i));
     }
     return numberColumn;
   }
