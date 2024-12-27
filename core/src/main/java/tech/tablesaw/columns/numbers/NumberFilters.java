@@ -33,6 +33,7 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
 
   Selection eval(BiPredicate<Number, Number> predicate, Number value);
 
+  @Override
   default Selection isEqualTo(double d) {
     return eval(NumberPredicates.isEqualTo(d));
   }
@@ -41,51 +42,64 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
     return eval(NumberPredicates.isNotEqualTo(d));
   }
 
+  @Override
   default Selection isBetweenExclusive(double start, double end) {
     return eval(NumberPredicates.isBetweenExclusive(start, end));
   }
 
+  @Override
   default Selection isBetweenInclusive(double start, double end) {
     return eval(NumberPredicates.isBetweenInclusive(start, end));
   }
 
+  @Override
   default Selection isGreaterThan(double f) {
     return eval(NumberPredicates.isGreaterThan(f));
   }
 
+  @Override
   default Selection isGreaterThanOrEqualTo(double f) {
     return eval(NumberPredicates.isGreaterThanOrEqualTo(f));
   }
 
+  @Override
   default Selection isLessThan(double f) {
     return eval(NumberPredicates.isLessThan(f));
   }
 
+  @Override
   default Selection isLessThanOrEqualTo(double f) {
     return eval(NumberPredicates.isLessThanOrEqualTo(f));
   }
 
+  @Override
   Selection isIn(Collection<Number> numbers);
 
+  @Override
   Selection isNotIn(Collection<Number> numbers);
 
+  @Override
   default Selection isZero() {
     return eval(isZero);
   }
 
+  @Override
   default Selection isPositive() {
     return eval(isPositive);
   }
 
+  @Override
   default Selection isNegative() {
     return eval(isNegative);
   }
 
+  @Override
   default Selection isNonNegative() {
     return eval(isNonNegative);
   }
 
   // TODO(lwhite): see section in Effective Java on double point comparisons.
+  @Override
   default Selection isCloseTo(Number target, Number margin) {
     Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {
@@ -99,12 +113,15 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
     return results;
   }
 
+  @Override
   Selection isMissing();
 
+  @Override
   Selection isNotMissing();
 
   // Column filters
 
+  @Override
   default Selection isGreaterThan(NumericColumn<?> d) {
     Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {
@@ -115,6 +132,7 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
     return results;
   }
 
+  @Override
   default Selection isGreaterThanOrEqualTo(NumericColumn<?> d) {
     Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {
@@ -125,6 +143,7 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
     return results;
   }
 
+  @Override
   default Selection isEqualTo(NumericColumn<?> d) {
     Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {
@@ -139,6 +158,7 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
 
   double getDouble(int i);
 
+  @Override
   default Selection isNotEqualTo(NumericColumn<?> d) {
     Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {
@@ -149,6 +169,7 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
     return results;
   }
 
+  @Override
   default Selection isLessThan(NumericColumn<?> d) {
     Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {
@@ -159,6 +180,7 @@ public interface NumberFilters extends NumberFilterSpec<Selection> {
     return results;
   }
 
+  @Override
   default Selection isLessThanOrEqualTo(NumericColumn<?> d) {
     Selection results = new BitmapBackedSelection();
     for (int i = 0; i < size(); i++) {

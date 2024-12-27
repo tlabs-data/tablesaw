@@ -43,6 +43,7 @@ public class DoubleRangeIterable implements Iterable<Double> {
     return range(from, 1.0, count);
   }
 
+  @Override
   public DoubleIterator iterator() {
 
     return new DoubleIterator() {

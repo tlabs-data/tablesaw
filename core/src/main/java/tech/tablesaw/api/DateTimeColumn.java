@@ -666,6 +666,7 @@ public class DateTimeColumn extends AbstractColumn<DateTimeColumn, LocalDateTime
     return data.iterator();
   }
 
+  @Override
   public Set<LocalDateTime> asSet() {
     Set<LocalDateTime> times = new HashSet<>();
     DateTimeColumn unique = unique();

@@ -37,6 +37,7 @@ public final class FixedWidthWriter implements DataWriter<FixedWidthWriteOptions
     registry.registerOptions(FixedWidthWriteOptions.class, INSTANCE);
   }
 
+  @Override
   public void write(Table table, FixedWidthWriteOptions options) {
     FixedWidthWriterSettings settings = fixedWidthWriterSettings(options);
     settings.setFormat(fixedWidthFormat(options));

@@ -14,6 +14,7 @@ public interface TemporalColumn<T extends Temporal> extends Column<T> {
   /**
    * Returns a value of the Object type stored in the column (e.g. a LocalDateTime) at the given row
    */
+  @Override
   T get(int r);
 
   /** Returns the internal (long-encoded) value stored in the column at the given row */

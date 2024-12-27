@@ -292,6 +292,7 @@ public interface NumericColumn<T extends Number>
   }
 
   /** Returns the sum of the values in this column */
+  @Override
   default double sum() {
     return sum.summarize(this);
   }
@@ -433,6 +434,7 @@ public interface NumericColumn<T extends Number>
   }
 
   /** Returns a table of common statistical values that together describe the data in this column */
+  @Override
   default Table summary() {
     return stats().asTable();
   }
@@ -475,6 +477,7 @@ public interface NumericColumn<T extends Number>
   NumericColumn<T> lag(final int n);
 
   /** Returns a double representation of the number at {@code index} */
+  @Override
   double getDouble(int index);
 
   /**

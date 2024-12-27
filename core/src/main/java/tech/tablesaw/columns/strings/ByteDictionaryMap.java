@@ -180,14 +180,17 @@ public class ByteDictionaryMap implements DictionaryMap {
     this.values = new ByteArrayList(elements);
   }
 
+  @Override
   public int countOccurrences(String value) {
     return keyToCount.get(getKeyForValue(value));
   }
 
+  @Override
   public Set<String> asSet() {
     return new HashSet<>(categories());
   }
 
+  @Override
   public int firstIndexOf(String value) {
     return values.indexOf(getKeyForValue(value));
   }

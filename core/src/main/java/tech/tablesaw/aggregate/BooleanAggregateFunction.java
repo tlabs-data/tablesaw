@@ -15,6 +15,7 @@ public abstract class BooleanAggregateFunction extends AggregateFunction<Boolean
   }
 
   /** Returns a Boolean value as a result of applying this function to the given column */
+  @Override
   public abstract Boolean summarize(BooleanColumn column);
 
   /** {@inheritDoc} */

@@ -468,6 +468,7 @@ public class StringColumn extends AbstractStringColumn<StringColumn> {
     return lookupTable.iterator();
   }
 
+  @Override
   public Set<String> asSet() {
     return lookupTable.asSet();
   }

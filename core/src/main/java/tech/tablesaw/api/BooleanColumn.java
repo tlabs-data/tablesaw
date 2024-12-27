@@ -708,6 +708,7 @@ public class BooleanColumn extends AbstractColumn<BooleanColumn, Boolean>
   }
 
   /** Returns the values in this column as a BooleanSet instance */
+  @Override
   public BooleanSet asSet() {
     BooleanSet set = new BooleanOpenHashSet(3);
     BooleanColumn unique = unique();

@@ -87,60 +87,75 @@ public interface StringFilters extends Column<String>, StringFilterSpec<Selectio
     return eval(isEqualToIgnoringCase, string);
   }
 
+  @Override
   default Selection isEmptyString() {
     return eval(isEmpty);
   }
 
+  @Override
   default Selection startsWith(String string) {
     return eval(startsWith, string);
   }
 
+  @Override
   default Selection endsWith(String string) {
     return eval(endsWith, string);
   }
 
+  @Override
   default Selection containsString(String string) {
     return eval(stringContains, string);
   }
 
+  @Override
   default Selection matchesRegex(String string) {
     return eval(matchesRegex, string);
   }
 
+  @Override
   default Selection isAlpha() {
     return eval(isAlpha);
   }
 
+  @Override
   default Selection isNumeric() {
     return eval(isNumeric);
   }
 
+  @Override
   default Selection isAlphaNumeric() {
     return eval(isAlphaNumeric);
   }
 
+  @Override
   default Selection isUpperCase() {
     return eval(isUpperCase);
   }
 
+  @Override
   default Selection isLowerCase() {
     return eval(isLowerCase);
   }
 
+  @Override
   default Selection lengthEquals(int stringLength) {
     return eval(hasEqualLengthTo, stringLength);
   }
 
+  @Override
   default Selection isShorterThan(int stringLength) {
     return eval(isShorterThan, stringLength);
   }
 
+  @Override
   default Selection isLongerThan(int stringLength) {
     return eval(isLongerThan, stringLength);
   }
 
+  @Override
   Selection isIn(String... strings);
 
+  @Override
   Selection isIn(Collection<String> strings);
 
   default Selection isIn(Column<String> strings) {
@@ -151,23 +166,29 @@ public interface StringFilters extends Column<String>, StringFilterSpec<Selectio
     return isNotIn(strings.unique().asList());
   }
 
+  @Override
   Selection isNotIn(String... strings);
 
+  @Override
   Selection isNotIn(Collection<String> strings);
 
   // Column Methods
+  @Override
   default Selection isEqualTo(Column<String> other) {
     return eval(isEqualTo, other);
   }
 
+  @Override
   default Selection isNotEqualTo(Column<String> other) {
     return eval(isNotEqualTo, other);
   }
 
+  @Override
   default Selection equalsIgnoreCase(Column<String> other) {
     return eval(isEqualToIgnoringCase, other);
   }
 
+  @Override
   default Selection startsWith(Column<String> other) {
     return eval(startsWith, other);
   }
@@ -182,10 +203,12 @@ public interface StringFilters extends Column<String>, StringFilterSpec<Selectio
     return eval(isNotMissing);
   }
 
+  @Override
   default Selection isEqualTo(String string) {
     return eval(isEqualTo, string);
   }
 
+  @Override
   default Selection isNotEqualTo(String string) {
     Selection selection = new BitmapBackedSelection();
     selection.addRange(0, size());
@@ -193,5 +216,6 @@ public interface StringFilters extends Column<String>, StringFilterSpec<Selectio
     return selection;
   }
 
+  @Override
   String get(int index);
 }

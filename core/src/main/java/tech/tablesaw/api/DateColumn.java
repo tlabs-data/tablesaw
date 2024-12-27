@@ -583,6 +583,7 @@ public class DateColumn extends AbstractColumn<DateColumn, LocalDate>
   }
 
   /** {@inheritDoc} */
+  @Override
   public Set<LocalDate> asSet() {
     Set<LocalDate> dates = new HashSet<>();
     DateColumn unique = unique();

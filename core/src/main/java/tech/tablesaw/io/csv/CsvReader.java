@@ -79,6 +79,7 @@ public class CsvReader extends FileReader implements DataReader<CsvReadOptions> 
     return Pair.create(source.createReader(bytesCache), columnTypeReadOptions);
   }
 
+  @Override
   public Table read(CsvReadOptions options) {
     try {
       return read(options, false);

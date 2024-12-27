@@ -29,6 +29,7 @@ public interface TemporalMapFunctions<C extends TemporalColumn<T>, T extends Tem
 
   T min();
 
+  @Override
   C emptyCopy();
   
   @Override

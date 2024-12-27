@@ -16,6 +16,7 @@ public abstract class InstantAggregateFunction extends AggregateFunction<Instant
   }
 
   /** Returns an Instant that is the result of applying this function to the given column */
+  @Override
   public abstract Instant summarize(InstantColumn column);
 
   /** {@inheritDoc} */

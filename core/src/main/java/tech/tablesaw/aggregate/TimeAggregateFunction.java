@@ -16,6 +16,7 @@ public abstract class TimeAggregateFunction extends AggregateFunction<TimeColumn
   }
 
   /** Returns a LocalTime object that is the result of applying this function to the given Column */
+  @Override
   public abstract LocalTime summarize(TimeColumn column);
 
   /** {@inheritDoc} */

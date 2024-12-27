@@ -46,6 +46,7 @@ public abstract class AbstractColumnType implements ColumnType {
   }
 
   /** {@inheritDoc} */
+  @Override
   public int byteSize() {
     return byteSize;
   }

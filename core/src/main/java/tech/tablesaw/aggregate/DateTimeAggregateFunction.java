@@ -17,6 +17,7 @@ public abstract class DateTimeAggregateFunction
   }
 
   /** Returns an LocalDateTime that is the result of applying this function to the given column */
+  @Override
   public abstract LocalDateTime summarize(DateTimeColumn column);
 
   /** {@inheritDoc} */

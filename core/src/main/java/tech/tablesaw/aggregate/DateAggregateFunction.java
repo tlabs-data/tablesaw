@@ -19,6 +19,7 @@ public abstract class DateAggregateFunction extends AggregateFunction<DateColumn
    * Returns an instance of LocalDate that is the result of applying this function to the given
    * column
    */
+  @Override
   public abstract LocalDate summarize(DateColumn column);
 
   /** {@inheritDoc} */

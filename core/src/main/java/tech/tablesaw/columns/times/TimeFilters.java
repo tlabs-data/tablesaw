@@ -15,6 +15,7 @@ import tech.tablesaw.selection.Selection;
 
 public interface TimeFilters extends Column<LocalTime> {
 
+  @Override
   TimeColumn where(Selection selection);
 
   default Selection eval(IntBiPredicate predicate, TimeColumn otherColumn) {
@@ -187,6 +188,7 @@ public interface TimeFilters extends Column<LocalTime> {
     return Selection.withRange(0, size()).andNot(isEqualTo(column));
   }
 
+  @Override
   LocalTime get(int index);
 
   /** Returns the packed time representation of the value at index */
