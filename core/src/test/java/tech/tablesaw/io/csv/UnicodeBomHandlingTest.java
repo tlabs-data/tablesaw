@@ -63,6 +63,7 @@ public class UnicodeBomHandlingTest {
     }
 
     /** Returns a <code>String</code> representation of this <code>BOM</code> value. */
+    @Override
     public final String toString() {
       return description;
     }

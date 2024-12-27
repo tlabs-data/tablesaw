@@ -434,6 +434,7 @@ public interface DateMapFunctions extends Column<LocalDate> {
 
   int getIntInternal(int r);
 
+  @Override
   LocalDate get(int index);
 
   LocalDate min();

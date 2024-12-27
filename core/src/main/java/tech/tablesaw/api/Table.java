@@ -442,6 +442,7 @@ public class Table extends Relation implements Iterable<Row> {
    *
    * @throws IllegalArgumentException if the column is not present in this table
    */
+  @Override
   public int columnIndex(Column<?> column) {
     int columnIndex = -1;
     for (int i = 0; i < columnList.size(); i++) {
@@ -464,6 +465,7 @@ public class Table extends Relation implements Iterable<Row> {
   }
 
   /** Returns a List of the names of all the columns in this table */
+  @Override
   public List<String> columnNames() {
     return columnList.stream().map(Column::name).collect(toList());
   }
@@ -649,6 +651,7 @@ public class Table extends Relation implements Iterable<Row> {
   }
 
   /** Returns a new table containing the first {@code nrows} of data in this table */
+  @Override
   public Table first(int nRows) {
     int newRowCount = Math.min(nRows, rowCount());
     return inRange(0, newRowCount);

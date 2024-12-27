@@ -80,22 +80,27 @@ public interface TemporalFilters<T extends Temporal>
         .and(eval(PackedInstant::isOnOrBefore, highPackedDateTime));
   }
 
+  @Override
   default Selection isAfter(Instant value) {
     return eval(isGreaterThan, PackedInstant.pack(value));
   }
 
+  @Override
   default Selection isBefore(Instant value) {
     return eval(isLessThan, PackedInstant.pack(value));
   }
 
+  @Override
   default Selection isEqualTo(Instant value) {
     return eval(isEqualTo, PackedInstant.pack(value));
   }
 
+  @Override
   int size();
 
   long getLongInternal(int index);
 
+  @Override
   T get(int index);
 
   @Override

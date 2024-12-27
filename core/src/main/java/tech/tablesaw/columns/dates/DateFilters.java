@@ -16,6 +16,7 @@ import tech.tablesaw.selection.Selection;
 
 public interface DateFilters extends Column<LocalDate>, DateAndDateTimeFilterSpec<Selection> {
 
+  @Override
   DateColumn where(Selection selection);
 
   /**
@@ -89,106 +90,132 @@ public interface DateFilters extends Column<LocalDate>, DateAndDateTimeFilterSpe
     return selection;
   }
 
+  @Override
   default Selection isMonday() {
     return eval(PackedLocalDate::isMonday);
   }
 
+  @Override
   default Selection isTuesday() {
     return eval(PackedLocalDate::isTuesday);
   }
 
+  @Override
   default Selection isWednesday() {
     return eval(PackedLocalDate::isWednesday);
   }
 
+  @Override
   default Selection isThursday() {
     return eval(PackedLocalDate::isThursday);
   }
 
+  @Override
   default Selection isFriday() {
     return eval(PackedLocalDate::isFriday);
   }
 
+  @Override
   default Selection isSaturday() {
     return eval(PackedLocalDate::isSaturday);
   }
 
+  @Override
   default Selection isSunday() {
     return eval(PackedLocalDate::isSunday);
   }
 
+  @Override
   default Selection isInJanuary() {
     return eval(PackedLocalDate::isInJanuary);
   }
 
+  @Override
   default Selection isInFebruary() {
     return eval(PackedLocalDate::isInFebruary);
   }
 
+  @Override
   default Selection isInMarch() {
     return eval(PackedLocalDate::isInMarch);
   }
 
+  @Override
   default Selection isInApril() {
     return eval(PackedLocalDate::isInApril);
   }
 
+  @Override
   default Selection isInMay() {
     return eval(PackedLocalDate::isInMay);
   }
 
+  @Override
   default Selection isInJune() {
     return eval(PackedLocalDate::isInJune);
   }
 
+  @Override
   default Selection isInJuly() {
     return eval(PackedLocalDate::isInJuly);
   }
 
+  @Override
   default Selection isInAugust() {
     return eval(PackedLocalDate::isInAugust);
   }
 
+  @Override
   default Selection isInSeptember() {
     return eval(PackedLocalDate::isInSeptember);
   }
 
+  @Override
   default Selection isInOctober() {
     return eval(PackedLocalDate::isInOctober);
   }
 
+  @Override
   default Selection isInNovember() {
     return eval(PackedLocalDate::isInNovember);
   }
 
+  @Override
   default Selection isInDecember() {
     return eval(PackedLocalDate::isInDecember);
   }
 
+  @Override
   default Selection isFirstDayOfMonth() {
     return eval(PackedLocalDate::isFirstDayOfMonth);
   }
 
+  @Override
   default Selection isLastDayOfMonth() {
     return eval(PackedLocalDate::isLastDayOfMonth);
   }
 
+  @Override
   default Selection isInQ1() {
     return eval(PackedLocalDate::isInQ1);
   }
 
+  @Override
   default Selection isInQ2() {
     return eval(PackedLocalDate::isInQ2);
   }
 
+  @Override
   default Selection isInQ3() {
     return eval(PackedLocalDate::isInQ3);
   }
 
+  @Override
   default Selection isInQ4() {
     return eval(PackedLocalDate::isInQ4);
   }
 
+  @Override
   default Selection isInYear(int year) {
     return eval(PackedLocalDate::isInYear, year);
   }
@@ -197,6 +224,7 @@ public interface DateFilters extends Column<LocalDate>, DateAndDateTimeFilterSpe
     return eval(PackedLocalDate::isAfter, value);
   }
 
+  @Override
   default Selection isAfter(LocalDate value) {
     int packed = PackedLocalDate.pack(value);
     return eval(PackedLocalDate::isAfter, packed);
@@ -223,15 +251,18 @@ public interface DateFilters extends Column<LocalDate>, DateAndDateTimeFilterSpe
         .and(eval(PackedLocalDate::isOnOrBefore, highValue));
   }
 
+  @Override
   default Selection isBefore(LocalDate value) {
     return isBefore(PackedLocalDate.pack(value));
   }
 
+  @Override
   default Selection isOnOrBefore(LocalDate value) {
     int packed = PackedLocalDate.pack(value);
     return eval(PackedLocalDate::isOnOrBefore, packed);
   }
 
+  @Override
   default Selection isOnOrAfter(LocalDate value) {
     int packed = PackedLocalDate.pack(value);
     return eval(isGreaterThanOrEqualTo, packed);

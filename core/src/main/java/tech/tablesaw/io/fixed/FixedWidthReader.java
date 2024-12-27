@@ -92,6 +92,7 @@ public class FixedWidthReader extends FileReader implements DataReader<FixedWidt
     }
   }
 
+  @Override
   public Table read(FixedWidthReadOptions options) {
     return read(options, false);
   }

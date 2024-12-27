@@ -57,6 +57,7 @@ public interface TimeMapFunctions extends Column<LocalTime> {
     return column;
   }
 
+  @Override
   TimeColumn lag(int n);
 
   default IntColumn difference(TimeColumn column2, ChronoUnit unit) {
@@ -394,6 +395,7 @@ public interface TimeMapFunctions extends Column<LocalTime> {
     return timeWindow(unit, n, min());
   }
 
+  @Override
   LocalTime get(int r);
 
   int getIntInternal(int r);

@@ -24,6 +24,7 @@ public abstract class AggregateFunction<INCOL extends Column<?>, OUT> {
   /** Apply this function to the column argument */
   public abstract OUT summarize(INCOL column);
 
+  @Override
   public String toString() {
     return functionName();
   }

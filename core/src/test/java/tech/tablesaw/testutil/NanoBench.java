@@ -221,6 +221,7 @@ public class NanoBench {
 
     protected int measure;
 
+    @Override
     public void run() {
       measure = runMeasure();
     }

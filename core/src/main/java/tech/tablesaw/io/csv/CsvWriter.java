@@ -37,6 +37,7 @@ public final class CsvWriter implements DataWriter<CsvWriteOptions> {
     registry.registerOptions(CsvWriteOptions.class, INSTANCE);
   }
 
+  @Override
   public void write(Table table, CsvWriteOptions options) {
     CsvWriterSettings settings = createSettings(options);
 

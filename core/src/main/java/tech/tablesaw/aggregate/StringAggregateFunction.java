@@ -17,6 +17,7 @@ public abstract class StringAggregateFunction extends AggregateFunction<StringCo
     super(name);
   }
 
+  @Override
   public abstract String summarize(StringColumn column);
 
   /** {@inheritDoc} */
