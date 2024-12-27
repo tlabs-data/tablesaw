@@ -46,20 +46,6 @@ class StringColumnTest {
     column.append("Value 4");
   }
 
-  /*
-  TODO: fix
-      @Test
-      void testSummarizeIf() {
-          double result = column.summarizeIf(
-                  column.endsWith("3").or(column.endsWith("4")),
-                  count);
-          assertEquals(2, result, 0.0);
-
-          double result2 = column.summarizeIf(column.endsWith("3"), count);
-          assertEquals(1, result2, 0.0);
-      }
-  */
-
   @Test
   void testAppendObj2() {
     final StringColumn sc = StringColumn.create("sc", Arrays.asList("a", "b", "c", "a"));
