@@ -119,7 +119,6 @@ public class TornadoExample extends AbstractExample {
             .or(date.month().isEqualTo("JUNE").and(date.dayOfMonth().isGreaterThanOrEqualTo(21)))
             .or(date.month().isEqualTo("SEPTEMBER").and(date.dayOfMonth().isLessThanOrEqualTo(22)));
 
-    // Table summer = tornadoes.select(selection);
     Table summer = tornadoes.where(summerFilter);
     summer = summer.sortAscendingOn("Date", "Time");
     summer.addColumns(summer.dateColumn("Date").lag(1));
