@@ -242,7 +242,7 @@ public class Annotation extends JSONComponent {
       context.put("bgcolor", bgcolor);
     if (borderpad != DEFAULT_BORDERPAD)
       context.put("borderpad", borderpad);
-    if (borderwidth != borderwidth)
+    if (borderwidth != DEFAULT_BORDERWIDTH)
       context.put("borderwidth", bordercolor);
     if (showarrow != DEFAULT_SHOWARROW)
       context.put("showarrow", showarrow);
@@ -252,7 +252,7 @@ public class Annotation extends JSONComponent {
       context.put("arrowhead", arrowhead);
     if (startarrowhead != DEFAULT_STARTARROWHEAD)
       context.put("startarrowhead", startarrowhead);
-    if(arrowside != DEFAULT_ARROWSIDE)
+    if(!DEFAULT_ARROWSIDE.equals(arrowside) )
       context.put("arrowside", arrowside);
     if(arrowsize != DEFAULT_ARROWSIZE)
       context.put("arrowsize", arrowsize);
