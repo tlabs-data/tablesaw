@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import tech.tablesaw.plotly.components.Config.ModeBarDisplay;
 
-public class ConfigTest {
+class ConfigTest {
 
   @Test
-  public void testJavascript() {
+  void testJavascript() {
     {
       Config config = Config.builder().build();
       assertTrue(config.asJavascript().startsWith("var config"));

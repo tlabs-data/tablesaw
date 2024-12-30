@@ -21,21 +21,21 @@ import tech.tablesaw.plotly.components.Symbol;
 import tech.tablesaw.plotly.traces.ScatterTrace;
 
 @Disabled
-public class BubbleTest {
+class BubbleTest {
 
   private final double[] x = {1, 2, 3, 4, 5, 6};
   private final double[] y = {0, 1, 6, 14, 25, 39};
   private final double[] size = {10, 33, 21, 40, 28, 16};
 
   @Test
-  public void testAsJavascript() {
+  void testAsJavascript() {
     ScatterTrace trace =
         ScatterTrace.builder(x, y).marker(Marker.builder().size(size).build()).build();
     System.out.println(trace.asJavascript(1));
   }
 
   @Test
-  public void showScatter() {
+  void showScatter() {
     ScatterTrace trace =
         ScatterTrace.builder(x, y)
             .mode(ScatterTrace.Mode.MARKERS)

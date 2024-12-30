@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class UpTest {
+class UpTest {
 
   private static final String javaScript =
       "{"
@@ -18,7 +18,7 @@ public class UpTest {
           + "}";
 
   @Test
-  public void upBuilder() {
+  void upBuilder() {
     assertEquals(javaScript, Up.upBuilder(1, 2, 3).build().asJSON());
   }
 }

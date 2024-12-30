@@ -3,9 +3,9 @@ package tech.tablesaw.plotly.components.threeD;
 import java.util.HashMap;
 import java.util.Map;
 import tech.tablesaw.plotly.components.Axis;
-import tech.tablesaw.plotly.components.Component;
+import tech.tablesaw.plotly.components.JSONComponent;
 
-public class Scene extends Component {
+public class Scene extends JSONComponent {
 
   private final Axis xAxis;
 

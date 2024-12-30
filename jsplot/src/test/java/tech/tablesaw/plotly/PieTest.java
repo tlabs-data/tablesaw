@@ -8,19 +8,19 @@ import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.traces.PieTrace;
 
 @Disabled
-public class PieTest {
+class PieTest {
 
   private final Object[] x = {"sheep", "cows", "fish", "tree sloths"};
   private final double[] y = {1, 4, 9, 16};
 
   @Test
-  public void testAsJavascript() {
+  void testAsJavascript() {
     PieTrace trace = PieTrace.builder(x, y).build();
     System.out.println(trace.asJavascript(1));
   }
 
   @Test
-  public void show() {
+  void show() {
     PieTrace trace = PieTrace.builder(x, y).build();
     Figure figure = new Figure(trace);
     File outputFile = Paths.get("testoutput/output.html").toFile();

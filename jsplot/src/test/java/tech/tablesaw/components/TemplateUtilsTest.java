@@ -13,7 +13,7 @@ import tech.tablesaw.plotly.components.TemplateUtils;
 import tech.tablesaw.plotly.traces.ScatterTrace;
 import tech.tablesaw.plotly.traces.Trace;
 
-public class TemplateUtilsTest {
+class TemplateUtilsTest {
 
   private double[] x = {1, 2, 3, 4, 5};
   private double[] y = {1, 4, 9, 16, 25};
@@ -21,14 +21,14 @@ public class TemplateUtilsTest {
   private String customTemplateString = "<!-- Custom page_template.html -->";
 
   @Test
-  public void testDefaultTemplateLocation() {
+  void testDefaultTemplateLocation() {
     TemplateUtils.setTemplateLocations();
     String html = createPageHtml();
     assertTrue(html.indexOf(customTemplateString) < 0);
   }
 
   @Test
-  public void testCustomTemplateLocation() {
+  void testCustomTemplateLocation() {
     URL url = this.getClass().getResource(this.getClass().getSimpleName() + ".class");
     assertNotNull(url, "Couldn't locate class (as resource), where template is also found");
     String path = url.getPath();

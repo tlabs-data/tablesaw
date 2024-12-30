@@ -9,7 +9,7 @@ import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.traces.ContourTrace;
 
 @Disabled
-public class ContourTest {
+class ContourTest {
 
   private final Object[] x = {-9, -6, -5, -3, -1};
   private final Object[] y = {0, 1, 4, 5, 7};
@@ -22,20 +22,20 @@ public class ContourTest {
   };
 
   @Test
-  public void testAsJavascript() {
+  void testAsJavascript() {
     ContourTrace trace = ContourTrace.builder(x, y, z).build();
     System.out.println(trace.asJavascript(1));
   }
 
   @Test
-  public void testContourTrace() {
+  void testContourTrace() {
     ContourTrace trace = ContourTrace.builder(x, y, z).build();
     Figure figure = new Figure(trace);
     Plot.show(figure);
   }
 
   @Test
-  public void testContourPlot() {
+  void testContourPlot() {
     Table table = Table.read().csv("../data/bush.csv");
     StringColumn yearsMonth = table.dateColumn("date").yearMonth();
     String name = "Year and month";

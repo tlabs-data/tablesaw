@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class EyeTest {
+class EyeTest {
 
   private static final String javaScript =
       "{"
@@ -18,7 +18,7 @@ public class EyeTest {
           + "}";
 
   @Test
-  public void eyeBuilder() {
+  void eyeBuilder() {
     assertEquals(javaScript, Eye.eyeBuilder(1, 2, 3).build().asJSON());
   }
 }

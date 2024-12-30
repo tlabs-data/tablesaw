@@ -9,12 +9,12 @@ import tech.tablesaw.plotly.components.Grid;
 import tech.tablesaw.plotly.components.Layout;
 import tech.tablesaw.plotly.components.Margin;
 
-public class LayoutTest {
+class LayoutTest {
 
   private static final String LINE_END = System.lineSeparator();
 
   @Test
-  public void asJavascript() {
+  void asJavascript() {
 
     Axis x = Axis.builder().title("x axis").build();
     Axis y = Axis.builder().title("y axis").build();
@@ -35,7 +35,7 @@ public class LayoutTest {
   }
 
   @Test
-  public void asJavascriptForGrid() {
+  void asJavascriptForGrid() {
 
     Axis x = Axis.builder().title("x axis").build();
     Axis y = Axis.builder().title("y axis").build();
@@ -57,7 +57,7 @@ public class LayoutTest {
   }
 
   @Test
-  public void testAutosize() {
+  void testAutosize() {
       Layout layout = Layout.builder().autosize(true).build();
       assertEquals(
         "var layout = {"
@@ -70,7 +70,7 @@ public class LayoutTest {
   }
   
   @Test
-  public void testAutosizeAndWidth() {
+  void testAutosizeAndWidth() {
       Layout layout = Layout.builder().autosize(true).width(800).build();
       assertEquals(
         "var layout = {"
@@ -85,7 +85,7 @@ public class LayoutTest {
     }
 
   @Test
-  public void testAutosizeAndHeightWidth() {
+  void testAutosizeAndHeightWidth() {
       Layout layout = Layout.builder().autosize(true).height(600).width(800).build();
       assertEquals(
         "var layout = {"
@@ -101,7 +101,7 @@ public class LayoutTest {
         layout.asJavascript());
     }
   @Test
-  public void testAutosizeAndHeight() {
+  void testAutosizeAndHeight() {
       Layout layout = Layout.builder().autosize(false).height(600).build();
       assertEquals(
         "var layout = {"

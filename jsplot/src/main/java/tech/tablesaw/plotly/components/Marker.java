@@ -61,6 +61,8 @@ public class Marker extends JSONComponent {
     }
   }
 
+  private static final String COLOR_TAG = "color";
+
   private static final boolean DEFAULT_C_AUTO = true;
   private static final boolean DEFAULT_AUTO_COLOR_SCALE = true;
   private static final boolean DEFAULT_SHOW_SCALE = false;
@@ -118,14 +120,14 @@ public class Marker extends JSONComponent {
     if (cAuto != DEFAULT_C_AUTO) context.put("cauto", cAuto);
     if (color != null && color.length > 0) {
       if (color.length > 1) {
-        context.put("color", color);
+        context.put(COLOR_TAG, color);
         context.put("cmin", cMin);
         context.put("cmax", cMax);
       } else {
-        context.put("color", color[0]);
+        context.put(COLOR_TAG, color[0]);
       }
     } else if (colorArray != null) {
-      context.put("color", colorArray);
+      context.put(COLOR_TAG, colorArray);
     }
     if (line != null) context.put("line", line.getJSONContext());
     if (autoColorScale != DEFAULT_AUTO_COLOR_SCALE) context.put("autoColorscale", autoColorScale);

@@ -13,7 +13,7 @@ import tech.tablesaw.plotly.components.TickSettings;
 import tech.tablesaw.plotly.traces.ScatterTrace;
 
 @Disabled
-public class ScatterTest {
+class ScatterTest {
 
   private final String[] text = {"acc", "dnax", "lc", "hc", "seq"};
   private final double[] vals = {1, 6, 14, 25, 39};
@@ -24,13 +24,13 @@ public class ScatterTest {
   private final String[] labels = {"a", "b", "c", "d", "e", "f"};
 
   @Test
-  public void testAsJavascript() {
+  void testAsJavascript() {
     ScatterTrace trace = ScatterTrace.builder(x, y).text(labels).build();
     System.out.println(trace.asJavascript(1));
   }
 
   @Test
-  public void showScatter() {
+  void showScatter() {
 
     ScatterTrace trace =
         ScatterTrace.builder(x, y)
@@ -45,7 +45,7 @@ public class ScatterTest {
   }
 
   @Test
-  public void showLine() {
+  void showLine() {
     Layout layout =
         Layout.builder()
             .title("test")
@@ -68,7 +68,7 @@ public class ScatterTest {
   }
 
   @Test
-  public void showLineWithArrayTicks() {
+  void showLineWithArrayTicks() {
 
     final double[] x1 = {13, 14, 15, 16, 17, 18};
     final double[] y1 = {0, 1, 6, 14, 25, 39};
@@ -116,7 +116,7 @@ public class ScatterTest {
   }
 
   @Test
-  public void showLineAndMarkers() {
+  void showLineAndMarkers() {
 
     ScatterTrace trace =
         ScatterTrace.builder(x, y).mode(ScatterTrace.Mode.LINE_AND_MARKERS).build();
@@ -126,7 +126,7 @@ public class ScatterTest {
   }
 
   @Test
-  public void showText() {
+  void showText() {
 
     ScatterTrace trace =
         ScatterTrace.builder(x, y).mode(ScatterTrace.Mode.TEXT).text(labels).build();

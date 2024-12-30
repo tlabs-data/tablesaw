@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Font;
 import tech.tablesaw.plotly.components.HoverLabel;
 
-public class HoverLabelTest {
+class HoverLabelTest {
 
   @Test
-  public void testAsJSON() {
+  void testAsJSON() {
     HoverLabel hoverLabel =
         HoverLabel.builder()
             .nameLength(10)

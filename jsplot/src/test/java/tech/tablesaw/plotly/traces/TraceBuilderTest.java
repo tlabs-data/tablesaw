@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class TraceBuilderTest {
+class TraceBuilderTest {
 
   @Test
-  public void shouldFailPreconditionTest() {
+  void shouldFailPreconditionTest() {
     TraceBuilder traceBuilder =
         new TraceBuilder() {
           @Override
@@ -30,7 +30,7 @@ public class TraceBuilderTest {
   }
 
   @Test
-  public void shouldBeAbleToSetAxis() {
+  void shouldBeAbleToSetAxis() {
     String xAxis = "x1";
     String yAxis = "y";
     TraceBuilder traceBuilder =

@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Axis;
 import tech.tablesaw.plotly.components.Font;
 
-public class AxisTest {
+class AxisTest {
 
   private static final String LINE_END = System.lineSeparator();
 
   @Test
-  public void testAsJSON() {
+  void testAsJSON() {
     Axis x =
         Axis.builder()
             .title("x Axis 1")

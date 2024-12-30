@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.change.ChangeLine;
 import tech.tablesaw.plotly.components.change.Increasing;
 
-public class ChangeTest {
+class ChangeTest {
 
   @Test
-  public void testAsJSON() {
+  void testAsJSON() {
 
     Increasing increasing =
         Increasing.builder()
@@ -25,7 +25,7 @@ public class ChangeTest {
   }
 
   @Test
-  public void testChangeLine() {
+  void testChangeLine() {
 
     ChangeLine line = ChangeLine.builder().width(4).color("444").build();
 

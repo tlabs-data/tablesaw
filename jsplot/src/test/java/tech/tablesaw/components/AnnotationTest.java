@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Annotation;
 import tech.tablesaw.plotly.components.Font;
 
-public class AnnotationTest {
+class AnnotationTest {
   
   @Test
-  public void testYAnchor() {
+  void testYAnchor() {
     Annotation annotation = Annotation.builder().xref("paper").
         yref("paper")
         .x(0)
@@ -26,7 +26,7 @@ public class AnnotationTest {
   }
 
   @Test
-  public void testXYRef() {
+  void testXYRef() {
     Annotation annotation = Annotation.builder()
         .xref("x")
         .yref("y")

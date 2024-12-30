@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Grid;
 
-public class GridTest {
+class GridTest {
 
   @Test
-  public void testAsJSON() {
+  void testAsJSON() {
     Grid x =
         Grid.builder()
             .rows(10)
