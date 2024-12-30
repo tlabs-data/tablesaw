@@ -11,19 +11,19 @@ import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 
-public class TableSummaryTest {
+class TableSummaryTest {
 
   private static final String LINE_END = System.lineSeparator();
 
   @Test
-  public void emptyTable() {
+  void emptyTable() {
     Table testTable = Table.create("Data");
     Table summary = testTable.summary();
     TableAssertions.assertTableEquals(testTable, summary);
   }
 
   @Test
-  public void summaryTestTwoDoubleColumnsStatistics() {
+  void summaryTestTwoDoubleColumnsStatistics() {
     Table testTable =
         Table.create(
             "Data",
@@ -56,7 +56,7 @@ public class TableSummaryTest {
   }
 
   @Test
-  public void summaryMixedTypes() {
+  void summaryMixedTypes() {
     Table testTable =
         Table.create(
             "Data",

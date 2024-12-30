@@ -26,7 +26,7 @@ import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 
-public class StringFiltersTest {
+class StringFiltersTest {
 
   private StringColumn sc1 = StringColumn.create("sc1");
 
@@ -35,7 +35,7 @@ public class StringFiltersTest {
   private Table table = Table.create("T");
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     sc1.append("apple"); // 0
     sc1.append("Banana"); // 1
     sc1.append("cherry");
@@ -81,12 +81,12 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testLength() {
+  void testLength() {
     assertEquals(5, sc1.length().get(0), 0.000001);
   }
 
   @Test
-  public void testUniqueTokens() {
+  void testUniqueTokens() {
     String[] values = {"a", "a b", "c d 3", "b 4"};
     StringColumn column1 = StringColumn.create("1", values);
     StringColumn tokens = column1.tokens(" ");
@@ -96,7 +96,7 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testCountOccurrences() {
+  void testCountOccurrences() {
     String[] values = {"a", "a b", "c d 3", "b 4", "a"};
     StringColumn column1 = StringColumn.create("1", values);
     assertEquals(0, column1.countOccurrences("v"), 0.000001);
@@ -105,33 +105,33 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testEqualsIgnoreCase() {
+  void testEqualsIgnoreCase() {
     assertTrue(sc1.equalsIgnoreCase("APPLE").contains(0));
 
     assertTrue(sc1.equalsIgnoreCase(sc2).contains(0));
   }
 
   @Test
-  public void testStartsWith() {
+  void testStartsWith() {
     // test column filtering
     assertTrue(sc1.startsWith("dog").contains(9));
     assertTrue(sc1.startsWith("dog").contains(10));
   }
 
   @Test
-  public void testEndsWith() {
+  void testEndsWith() {
     assertTrue(sc1.endsWith("dog").contains(9));
     assertFalse(sc1.endsWith("dog").contains(10));
   }
 
   @Test
-  public void testContainsString() {
+  void testContainsString() {
     assertTrue(sc1.containsString("eph").contains(4));
     assertFalse(sc1.containsString("eph").contains(10));
   }
 
   @Test
-  public void testMatchesRegex() {
+  void testMatchesRegex() {
     assertTrue(sc1.matchesRegex("^apple").contains(0));
     assertFalse(sc1.matchesRegex("^apple").contains(7));
     assertFalse(sc1.matchesRegex("^apple").contains(10));
@@ -139,21 +139,21 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testIsAlpha() {
+  void testIsAlpha() {
     assertTrue(sc1.isAlpha().contains(4));
     assertFalse(sc1.isAlpha().contains(11));
     assertFalse(sc1.isAlpha().contains(13));
   }
 
   @Test
-  public void testIsNumeric() {
+  void testIsNumeric() {
     assertFalse(sc1.isNumeric().contains(4));
     assertTrue(sc1.isNumeric().contains(11));
     assertFalse(sc1.isNumeric().contains(13));
   }
 
   @Test
-  public void testIsAlphaNumeric() {
+  void testIsAlphaNumeric() {
     assertTrue(sc1.isAlphaNumeric().contains(4));
     assertTrue(sc1.isAlphaNumeric().contains(11));
     assertFalse(sc1.isAlphaNumeric().contains(13));
@@ -162,38 +162,38 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testIsUpperCase() {
+  void testIsUpperCase() {
     assertFalse(sc1.isUpperCase().contains(4));
     assertFalse(sc1.isUpperCase().contains(13));
     assertTrue(sc1.isUpperCase().contains(17));
   }
 
   @Test
-  public void testIsLowerCase() {
+  void testIsLowerCase() {
     assertTrue(sc1.isLowerCase().contains(4));
     assertFalse(sc1.isLowerCase().contains(17));
   }
 
   @Test
-  public void testLengthEquals() {
+  void testLengthEquals() {
     assertTrue(sc1.lengthEquals(5).contains(0));
     assertFalse(sc1.lengthEquals(5).contains(8));
   }
 
   @Test
-  public void testIsShorterThan() {
+  void testIsShorterThan() {
     assertTrue(sc1.isShorterThan(5).contains(6));
     assertFalse(sc1.isShorterThan(5).contains(0));
   }
 
   @Test
-  public void testIsLongerThan() {
+  void testIsLongerThan() {
     assertTrue(sc1.isLongerThan(5).contains(1));
     assertFalse(sc1.isLongerThan(5).contains(0));
   }
 
   @Test
-  public void testIsIn() {
+  void testIsIn() {
     List<String> candidates = Lists.newArrayList("diamond", "dog", "canary");
 
     assertTrue(sc1.isIn("diamond", "dog", "canary").contains(3));
@@ -206,7 +206,7 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testIsNotIn() {
+  void testIsNotIn() {
     List<String> candidates = Lists.newArrayList("diamond", "dog", "canary");
 
     assertFalse(sc1.isNotIn("diamond", "dog", "canary").contains(3));
@@ -219,25 +219,25 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testIsMissing() {
+  void testIsMissing() {
     assertFalse(sc1.isMissing().contains(3));
     assertTrue(sc1.isMissing().contains(18));
   }
 
   @Test
-  public void testIsEmptyString() {
+  void testIsEmptyString() {
     assertFalse(sc1.isEmptyString().contains(3));
     assertTrue(sc1.isEmptyString().contains(18));
   }
 
   @Test
-  public void testIsNotMissing() {
+  void testIsNotMissing() {
     assertTrue(sc1.isNotMissing().contains(3));
     assertFalse(sc1.isNotMissing().contains(18));
   }
 
   @Test
-  public void testIsEqualTo() {
+  void testIsEqualTo() {
     assertTrue(sc1.isEqualTo("10").contains(12));
     assertFalse(sc1.isEqualTo("10").contains(13));
 
@@ -246,7 +246,7 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testIsNotEqualTo() {
+  void testIsNotEqualTo() {
     assertFalse(sc1.isNotEqualTo("10").contains(12));
     assertTrue(sc1.isNotEqualTo("10").contains(13));
 
@@ -255,7 +255,7 @@ public class StringFiltersTest {
   }
 
   @Test
-  public void testCountWords() {
+  void testCountWords() {
     final String[] words1 = {"one", "two words"};
     final StringColumn stringColumn1 = StringColumn.create("words", words1);
     DoubleColumn nc = stringColumn1.countTokens(" ");

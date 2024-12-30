@@ -27,13 +27,13 @@ import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.selection.Selection;
 
-public class DateTimeFiltersTest {
+class DateTimeFiltersTest {
 
   private DateTimeColumn localDateTimeColumn = DateTimeColumn.create("testing");
   private Table table = Table.create("test");
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     localDateTimeColumn.append(LocalDate.of(2016, 2, 28).atStartOfDay()); // sunday
     localDateTimeColumn.append(LocalDate.of(2016, 2, 29).atStartOfDay()); // monday
     localDateTimeColumn.append(LocalDate.of(2016, 3, 1).atStartOfDay()); // tues
@@ -47,7 +47,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testDow() {
+  void testDow() {
     assertTrue(localDateTimeColumn.isSunday().contains(0));
     assertTrue(localDateTimeColumn.isMonday().contains(1));
     assertTrue(localDateTimeColumn.isTuesday().contains(2));
@@ -58,7 +58,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testIsFirstDayOfTheMonth() {
+  void testIsFirstDayOfTheMonth() {
     Selection selection = localDateTimeColumn.isFirstDayOfMonth();
     assertFalse(selection.contains(0));
     assertFalse(selection.contains(1));
@@ -68,7 +68,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testIsLastDayOfTheMonth() {
+  void testIsLastDayOfTheMonth() {
     Selection selection = localDateTimeColumn.isLastDayOfMonth();
     assertFalse(selection.contains(0));
     assertTrue(selection.contains(1));
@@ -76,7 +76,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testIsInYear() {
+  void testIsInYear() {
     Selection selection = localDateTimeColumn.isInYear(2016);
     assertTrue(selection.contains(0));
     assertTrue(selection.contains(1));
@@ -89,7 +89,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testIsMissing() {
+  void testIsMissing() {
     DateTimeColumn column = DateTimeColumn.create("test");
     column.append(LocalDateTime.now());
     column.appendInternal(DateTimeColumnType.missingValueIndicator());
@@ -101,7 +101,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testTimeOfDatePredicates() {
+  void testTimeOfDatePredicates() {
     DateTimeColumn column = DateTimeColumn.create("test");
     column.append(LocalDate.of(2015, 1, 1).atStartOfDay());
     column.append(LocalDateTime.of(2015, 1, 1, 1, 0));
@@ -121,7 +121,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testGetMonthValue() {
+  void testGetMonthValue() {
     LocalDateTime date = LocalDate.of(2015, 1, 25).atStartOfDay();
     Month[] months = Month.values();
 
@@ -156,7 +156,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testComparison() {
+  void testComparison() {
     LocalDate date = LocalDate.of(2015, 1, 25);
     LocalDateTime dateTime = LocalDate.of(2015, 1, 25).atStartOfDay();
     DateTimeColumn dateTimeColumn = DateTimeColumn.create("test");
@@ -232,7 +232,7 @@ public class DateTimeFiltersTest {
   }
 
   @Test
-  public void testComparison2() {
+  void testComparison2() {
     LocalDateTime dateTime = LocalDate.of(2015, 1, 25).atStartOfDay();
     DateTimeColumn dateTimeColumn = DateTimeColumn.create("test");
 

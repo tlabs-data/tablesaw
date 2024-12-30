@@ -32,17 +32,17 @@ import tech.tablesaw.columns.dates.PackedLocalDate;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
 /** Tests for filtering on the T class */
-public class TableFilteringTest {
+class TableFilteringTest {
 
   private Table table;
 
   @BeforeEach
-  public void setUp() throws Exception {
+  void setUp() throws Exception {
     table = Table.read().csv(CsvReadOptions.builder("../data/bush.csv").minimizeColumnSizes());
   }
 
   @Test
-  public void testFilter1() {
+  void testFilter1() {
     Table result = table.where(table.numberColumn("approval").isLessThan(53));
     ShortColumn a = result.shortColumn("approval");
     for (double v : a) {
@@ -51,7 +51,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testReject() {
+  void testReject() {
     Table result = table.dropWhere(table.numberColumn("approval").isLessThan(70));
     ShortColumn a = result.shortColumn("approval");
     for (double v : a) {
@@ -60,7 +60,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testReject2() {
+  void testReject2() {
     Table result = table.dropWhere(numberColumn("approval").isLessThan(70));
     ShortColumn a = result.shortColumn("approval");
     for (double v : a) {
@@ -69,7 +69,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testRejectWithMissingValues() {
+  void testRejectWithMissingValues() {
 
     String[] values = {"a", "b", "", "d"};
     double[] values2 = {1, Double.NaN, 3, 4};
@@ -83,7 +83,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testSelectRange() {
+  void testSelectRange() {
     Table result = table.inRange(20, 30);
     assertEquals(10, result.rowCount());
     for (Column<?> c : result.columns()) {
@@ -94,7 +94,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testSelectRows() {
+  void testSelectRows() {
     Table result = table.rows(20, 30);
     assertEquals(2, result.rowCount());
     for (Column<?> c : result.columns()) {
@@ -104,19 +104,19 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testSampleRows() {
+  void testSampleRows() {
     Table result = table.sampleN(20);
     assertEquals(20, result.rowCount());
   }
 
   @Test
-  public void testSampleProportion() {
+  void testSampleProportion() {
     Table result = table.sampleX(.1);
     assertEquals(32, result.rowCount());
   }
 
   @Test
-  public void testRejectRows() {
+  void testRejectRows() {
     Table result = table.dropRows(20, 30);
     assertEquals(table.rowCount() - 2, result.rowCount());
     for (Column<?> c : result.columns()) {
@@ -126,7 +126,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testRejectRange() {
+  void testRejectRange() {
     Table result = table.dropRange(20, 30);
     assertEquals(table.rowCount() - 10, result.rowCount());
     for (Column<?> c : result.columns()) {
@@ -137,7 +137,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testFilter2() {
+  void testFilter2() {
     Table result = table.where(table.dateColumn("date").isInApril());
     DateColumn d = result.dateColumn("date");
     for (LocalDate v : d) {
@@ -146,7 +146,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testFilter3() {
+  void testFilter3() {
     Table result =
         table.where(
             table
@@ -163,7 +163,7 @@ public class TableFilteringTest {
   }
 
   @Test
-  public void testFilter4() {
+  void testFilter4() {
     Table result =
         table
             .where(

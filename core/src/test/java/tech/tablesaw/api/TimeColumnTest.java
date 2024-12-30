@@ -32,19 +32,19 @@ import tech.tablesaw.columns.times.TimeColumnType;
 import tech.tablesaw.columns.times.TimeParser;
 import tech.tablesaw.selection.Selection;
 
-public class TimeColumnTest {
+class TimeColumnTest {
 
   private TimeColumn column1;
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     Table table = Table.create("Test");
     column1 = TimeColumn.create("Game time");
     table.addColumns(column1);
   }
 
   @Test
-  public void testMaxAndMin() {
+  void testMaxAndMin() {
     column1.appendCell("05:15:30");
     column1.appendCell("10:15:30");
     column1.appendCell("07:04:02");
@@ -53,7 +53,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testContains() {
+  void testContains() {
     column1.appendCell("05:15:30");
     column1.appendCell("10:15:30");
     column1.appendCell("07:04:02");
@@ -63,7 +63,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testTopAndBottom() {
+  void testTopAndBottom() {
     fillLargerColumn();
 
     List<LocalTime> top = column1.top(3);
@@ -81,7 +81,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testSorting() {
+  void testSorting() {
     fillLargerColumn();
 
     List<LocalTime> top = column1.top(3);
@@ -101,7 +101,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testAppendColumn() {
+  void testAppendColumn() {
     column1.appendInternal(of(5, 15, 30));
     column1.appendInternal(of(10, 15, 30));
     column1.appendInternal(of(7, 4, 2));
@@ -122,7 +122,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testAppendCell() {
+  void testAppendCell() {
     column1.appendCell("10:15:30");
     column1.appendCell("11:30:00");
     column1.appendCell("14:00:00");
@@ -131,7 +131,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     TimeParser customParser = new TimeParser(ColumnType.LOCAL_TIME);
     customParser.setMissingValueStrings(Arrays.asList("not here"));
@@ -144,7 +144,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testSet() {
+  void testSet() {
     column1.appendCell("10:15:30");
     column1.appendCell("11:30:00");
     column1.appendCell("14:00:00");
@@ -157,7 +157,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testAppendCell2() {
+  void testAppendCell2() {
     column1.appendCell("12:18:03 AM");
     column1.appendCell("8:18:03 AM");
     column1.appendCell("12:18:03 AM");
@@ -165,7 +165,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void copy() {
+  void copy() {
     fillLargerColumn();
     TimeColumn column2 = column1.copy();
     for (int i = 0; i < column1.size(); i++) {
@@ -175,7 +175,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void clear() {
+  void clear() {
     fillLargerColumn();
     assertEquals(11, column1.size());
     column1.clear();
@@ -183,7 +183,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void summary() {
+  void summary() {
     fillLargerColumn();
     Table t = column1.summary();
     assertEquals("11", t.getString(0, "Value"));
@@ -193,14 +193,14 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void asBytesAndByteSize() {
+  void asBytesAndByteSize() {
     fillLargerColumn();
     assertEquals(4, column1.byteSize());
     assertEquals(column1.getPackedTime(0), ByteBuffer.wrap(column1.asBytes(0)).getInt());
   }
 
   @Test
-  public void countMissing() {
+  void countMissing() {
     fillLargerColumn();
     column1.appendInternal(TimeColumnType.missingValueIndicator());
     column1.appendInternal(TimeColumnType.missingValueIndicator());
@@ -208,7 +208,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void isMissingIsNotMissing() {
+  void isMissingIsNotMissing() {
     fillLargerColumn();
     column1.appendInternal(TimeColumnType.missingValueIndicator());
     column1.appendInternal(TimeColumnType.missingValueIndicator());
@@ -219,14 +219,14 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void countUnique() {
+  void countUnique() {
     fillLargerColumn();
     column1.appendInternal(TimeColumnType.missingValueIndicator());
     assertEquals(11, column1.countUnique());
   }
 
   @Test
-  public void basicCountUnique() {
+  void basicCountUnique() {
     TimeColumn column1 = TimeColumn.create("time");
     column1.append(LocalTime.of(18, 4, 4));
     column1.append(LocalTime.of(18, 4, 4));
@@ -238,7 +238,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void lag() {
+  void lag() {
     fillLargerColumn();
     TimeColumn column2 = column1.lag(2);
     Table t = Table.create("t");
@@ -249,7 +249,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void lead() {
+  void lead() {
     fillLargerColumn();
     TimeColumn column2 = column1.lead(2);
     Table t = Table.create("t");
@@ -260,7 +260,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void minuteOfDay() {
+  void minuteOfDay() {
     fillLargerColumn();
     IntColumn column2 = column1.minuteOfDay();
     for (int i = 0; i < column1.size() - 2; i++) {
@@ -269,7 +269,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void secondOfDay() {
+  void secondOfDay() {
     fillLargerColumn();
     IntColumn column2 = column1.secondOfDay();
     for (int i = 0; i < column1.size() - 2; i++) {
@@ -278,7 +278,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testPlusHours() {
+  void testPlusHours() {
     fillColumn();
     TimeColumn column2 = column1.plusHours(3);
     IntColumn numberColumn = column2.differenceInHours(column1);
@@ -287,7 +287,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testTruncatedTo() {
+  void testTruncatedTo() {
     fillColumn();
 
     TimeColumn column2 = column1.truncatedTo(ChronoUnit.HOURS);
@@ -300,7 +300,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testWithHour() {
+  void testWithHour() {
     fillColumn();
     TimeColumn column2 = column1.withHour(3);
     assertEquals(3, column2.hour().min(), 0.001);
@@ -308,7 +308,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testWithMinute() {
+  void testWithMinute() {
     fillColumn();
     TimeColumn column2 = column1.withMinute(3);
     assertEquals(3, column2.minute().min(), 0.001);
@@ -316,7 +316,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testWithSecond() {
+  void testWithSecond() {
     fillColumn();
     TimeColumn column2 = column1.withSecond(3);
     assertEquals(3, column2.second().min(), 0.001);
@@ -324,7 +324,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testSecond() {
+  void testSecond() {
     fillColumn();
     IntColumn second = column1.second();
     assertEquals(2, second.get(0), 0.001);
@@ -333,7 +333,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testMinute() {
+  void testMinute() {
     fillColumn();
     IntColumn minute = column1.minute();
     assertEquals(4, minute.get(0), 0.001);
@@ -342,7 +342,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testWithMillisecond() {
+  void testWithMillisecond() {
     fillColumn();
     TimeColumn column2 = column1.withMillisecond(3);
     assertEquals(3, column2.milliseconds().min(), 0.001);
@@ -350,7 +350,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testMinusHours() {
+  void testMinusHours() {
     fillColumn();
     TimeColumn column2 = column1.minusHours(0);
     IntColumn numberColumn = column2.differenceInHours(column1);
@@ -359,7 +359,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testPlusMinutes() {
+  void testPlusMinutes() {
     fillColumn();
     TimeColumn column2 = column1.plusMinutes(30);
     IntColumn numberColumn = column2.differenceInMinutes(column1);
@@ -368,7 +368,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testMinusMinutes() {
+  void testMinusMinutes() {
     fillColumn();
     TimeColumn column2 = column1.minusMinutes(30);
     IntColumn numberColumn = column2.differenceInMinutes(column1);
@@ -377,7 +377,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testPlusSeconds() {
+  void testPlusSeconds() {
     fillColumn();
     TimeColumn column2 = column1.plusSeconds(101);
     IntColumn numberColumn = column2.differenceInSeconds(column1);
@@ -386,7 +386,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testMinusSeconds() {
+  void testMinusSeconds() {
     fillColumn();
     TimeColumn column2 = column1.minusSeconds(101);
     IntColumn numberColumn = column2.differenceInSeconds(column1);
@@ -395,7 +395,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testPlusMilliseconds() {
+  void testPlusMilliseconds() {
     fillColumn();
     TimeColumn column2 = column1.plusMilliseconds(101);
     IntColumn numberColumn = column2.differenceInMilliseconds(column1);
@@ -404,7 +404,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testMinusMilliseconds() {
+  void testMinusMilliseconds() {
     fillColumn();
     TimeColumn column2 = column1.minusMilliseconds(101);
     IntColumn numberColumn = column2.differenceInMilliseconds(column1);
@@ -413,14 +413,14 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testNull() {
+  void testNull() {
     TimeColumn col = TimeColumn.create("Game time");
     col.appendCell(null);
     assertNull(col.get(0));
   }
 
   @Test
-  public void testAppendObjNull() {
+  void testAppendObjNull() {
     TimeColumn returned = column1.appendObj(null);
     assertEquals(column1, returned);
     assertEquals(1, returned.size());
@@ -428,7 +428,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testAppendObjLocalTime() {
+  void testAppendObjLocalTime() {
     LocalTime localTime = LocalTime.of(9, 10, 42);
     TimeColumn returned = column1.appendObj(localTime);
     assertEquals(column1, returned);
@@ -437,7 +437,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testAppendObjTime() {
+  void testAppendObjTime() {
     Time time = Time.valueOf("09:10:42");
     TimeColumn returned = column1.appendObj(time);
     assertEquals(column1, returned);
@@ -446,7 +446,7 @@ public class TimeColumnTest {
   }
 
   @Test
-  public void testAppendObjIllegal() {
+  void testAppendObjIllegal() {
     assertThrows(IllegalArgumentException.class, () -> column1.appendObj(new Object()));
   }
 

@@ -68,7 +68,7 @@ class StringColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     final StringColumn sc = StringColumn.create("sc");
     StringParser customParser = new StringParser(ColumnType.STRING);
@@ -724,7 +724,7 @@ class StringColumnTest {
   }
 
   @Test
-  public void countUniqueWithDuplicates() {
+  void countUniqueWithDuplicates() {
     StringColumn col = StringColumn.create("col1");
     col.append("1");
     col.append("1");
@@ -738,7 +738,7 @@ class StringColumnTest {
   }
 
   @Test
-  public void isIn() {
+  void isIn() {
     String[] data = {"1", "1", "2", "2", "3", "4"};
     StringColumn col = StringColumn.create("col", data);
     Table t = Table.create("t", col);
@@ -749,7 +749,7 @@ class StringColumnTest {
   }
 
   @Test
-  public void isNotIn() {
+  void isNotIn() {
     String[] data = {"1", "1", "2", "2", "3", "4"};
     StringColumn col = StringColumn.create("col", data);
     Table t = Table.create("t", col);
@@ -760,7 +760,7 @@ class StringColumnTest {
   }
 
   @Test
-  public void countUniqueWithMissing() {
+  void countUniqueWithMissing() {
     StringColumn col1 = StringColumn.create("col1");
     col1.append("1");
     col1.append("1");
@@ -772,7 +772,7 @@ class StringColumnTest {
   }
 
   @Test
-  public void testSummary() {
+  void testSummary() {
     Table summary = column.summary();
     assertEquals(2, summary.columnCount());
     assertEquals(4, summary.rowCount());

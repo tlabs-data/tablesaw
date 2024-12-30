@@ -6,7 +6,7 @@ import static tech.tablesaw.columns.numbers.fillers.DoubleRangeIterable.range;
 
 import org.junit.jupiter.api.Test;
 
-public class NumberFillersTest {
+class NumberFillersTest {
 
   protected void assertContentEquals(Iterable<Double> doubles, double... expected) {
     int num = 0;
@@ -18,12 +18,12 @@ public class NumberFillersTest {
   }
 
   @Test
-  public void fillWithDouble() {
+  void fillWithDouble() {
     assertContentEquals(create("doubles", new double[5]).fillWith(1.0), 1.0, 1.0, 1.0, 1.0, 1.0);
   }
 
   @Test
-  public void testFromToBy() {
+  void testFromToBy() {
     assertContentEquals(
         create("doubles", new double[5]).fillWith(range(1.0, 12.0, 2.5)), 1.0, 3.5, 6.0, 8.5, 11.0);
     assertContentEquals(
@@ -31,7 +31,7 @@ public class NumberFillersTest {
   }
 
   @Test
-  public void testFromTo() {
+  void testFromTo() {
     assertContentEquals(
         create("doubles", new double[5]).fillWith(range(1.0, 6.0)), 1.0, 2.0, 3.0, 4.0, 5.0);
     assertContentEquals(
@@ -39,7 +39,7 @@ public class NumberFillersTest {
   }
 
   @Test
-  public void testFromByCount() {
+  void testFromByCount() {
     assertContentEquals(
         create("doubles", new double[5]).fillWith(range(1.0, 2.5, 5)), 1.0, 3.5, 6.0, 8.5, 11.0);
     assertContentEquals(
@@ -47,7 +47,7 @@ public class NumberFillersTest {
   }
 
   @Test
-  public void testFromCount() {
+  void testFromCount() {
     assertContentEquals(
         create("doubles", new double[5]).fillWith(range(1.0, 5)), 1.0, 2.0, 3.0, 4.0, 5.0);
     assertContentEquals(

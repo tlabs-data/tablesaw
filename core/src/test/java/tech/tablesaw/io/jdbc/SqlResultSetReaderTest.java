@@ -34,10 +34,10 @@ import tech.tablesaw.columns.strings.StringColumnType;
 import tech.tablesaw.util.TestDb;
 
 /** Tests for creating Tables from JDBC result sets using SqlResutSetReader */
-public class SqlResultSetReaderTest {
+class SqlResultSetReaderTest {
 
   @Test
-  public void testSqlResultSetReader() throws Exception {
+  void testSqlResultSetReader() throws Exception {
 
     // Create a named constant for the URL.
     // NOTE: This value is specific for H2 in-memory DB.
@@ -124,7 +124,7 @@ public class SqlResultSetReaderTest {
   }
 
   @Test
-  public void invalidPrecision() {
+  void invalidPrecision() {
     assertEquals(ColumnType.DOUBLE, SqlResultSetReader.getColumnType(Types.NUMERIC, 0, 0));
   }
 }

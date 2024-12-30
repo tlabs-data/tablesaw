@@ -21,10 +21,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
 
-public class TableConverterTest {
+class TableConverterTest {
 
   @Test
-  public void asDoubleMatrix() {
+  void asDoubleMatrix() {
     double[] array1 = {0, 1, 2};
     double[] array2 = {0, 1, 2};
 
@@ -38,7 +38,7 @@ public class TableConverterTest {
   }
 
   @Test
-  public void asDoubleMatrixColArgs() {
+  void asDoubleMatrixColArgs() {
     double[] array1 = {0, 1, 1};
     double[] array2 = {0, 1, 2};
     double[] array3 = {0, 1, 3};
@@ -54,7 +54,7 @@ public class TableConverterTest {
   }
 
   @Test
-  public void asIntMatrix() {
+  void asIntMatrix() {
     double[] array1 = {0, 1, 2};
     double[] array2 = {0, 1, 2};
 
@@ -68,7 +68,7 @@ public class TableConverterTest {
   }
 
   @Test
-  public void asIntMatrixColArgs() {
+  void asIntMatrixColArgs() {
     double[] array1 = {0, 1, 1};
     double[] array2 = {0, 1, 2};
     double[] array3 = {0, 1, 3};
@@ -84,7 +84,7 @@ public class TableConverterTest {
   }
 
   @Test
-  public void asFloatMatrix() {
+  void asFloatMatrix() {
     double[] array1 = {0, 1, 2};
     double[] array2 = {0, 1, 2};
 
@@ -98,7 +98,7 @@ public class TableConverterTest {
   }
 
   @Test
-  public void asFloatMatrixColArgs() {
+  void asFloatMatrixColArgs() {
     double[] array1 = {0, 1, 1};
     double[] array2 = {0, 1, 2};
     double[] array3 = {0, 1, 3};

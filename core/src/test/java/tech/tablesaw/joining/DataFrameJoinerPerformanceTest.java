@@ -13,7 +13,7 @@ import tech.tablesaw.api.Table;
 
 @Tag("Slow")
 @Tag("Flaky")
-public class DataFrameJoinerPerformanceTest {
+class DataFrameJoinerPerformanceTest {
 
   private static final long SEED = 200L;
 
@@ -51,7 +51,7 @@ public class DataFrameJoinerPerformanceTest {
   }
 
   @Test
-  public void innerJoinCustomersFirst() {
+  void innerJoinCustomersFirst() {
     int numberOrders = 10_000;
     int numberCustomers = 1_000;
     Table customers = createCustomersTable(numberCustomers);
@@ -63,7 +63,7 @@ public class DataFrameJoinerPerformanceTest {
   }
 
   @Test
-  public void leftOuterOrdersFirst() {
+  void leftOuterOrdersFirst() {
     int numberOrders = 10_000;
     Table customers = createCustomersTable(1_000);
     addFillerColumn(customers, 5, "customer");
@@ -75,7 +75,7 @@ public class DataFrameJoinerPerformanceTest {
   }
 
   @Test
-  public void fullOuterJoin() {
+  void fullOuterJoin() {
     int numberOrders = 10_000;
     int numberCustomers = 1_000;
     Table customers = createCustomersTable(numberCustomers);

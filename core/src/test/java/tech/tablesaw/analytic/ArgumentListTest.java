@@ -12,7 +12,7 @@ import tech.tablesaw.analytic.ArgumentList.FunctionCall;
 class ArgumentListTest {
 
   @Test
-  public void singleColumnToSqlString() {
+  void singleColumnToSqlString() {
     ArgumentList argumentList =
         ArgumentList.builder()
             .stageFunction("col1", AggregateFunctions.MAX)
@@ -23,7 +23,7 @@ class ArgumentListTest {
   }
 
   @Test
-  public void stageUnstageAggregate() {
+  void stageUnstageAggregate() {
     ArgumentList argumentList =
         ArgumentList.builder()
             .stageFunction("col1", AggregateFunctions.MAX)
@@ -44,7 +44,7 @@ class ArgumentListTest {
   }
 
   @Test
-  public void stageUnstageNumbering() {
+  void stageUnstageNumbering() {
     ArgumentList argumentList =
         ArgumentList.builder()
             .stageFunction(NumberingFunctions.RANK)
@@ -65,7 +65,7 @@ class ArgumentListTest {
   }
 
   @Test
-  public void stageUnstageBothTypes() {
+  void stageUnstageBothTypes() {
     ArgumentList argumentList =
         ArgumentList.builder()
             .stageFunction(NumberingFunctions.RANK)
@@ -91,7 +91,7 @@ class ArgumentListTest {
   }
 
   @Test
-  public void duplicateColsThrows() {
+  void duplicateColsThrows() {
     Throwable thrown =
         assertThrows(
             IllegalArgumentException.class,
@@ -107,7 +107,7 @@ class ArgumentListTest {
   }
 
   @Test
-  public void buildWithStagedThrows() {
+  void buildWithStagedThrows() {
     Throwable thrown =
         assertThrows(
             IllegalStateException.class,
@@ -117,7 +117,7 @@ class ArgumentListTest {
   }
 
   @Test
-  public void nothingStaged() {
+  void nothingStaged() {
     Throwable thrown =
         assertThrows(
             IllegalArgumentException.class,

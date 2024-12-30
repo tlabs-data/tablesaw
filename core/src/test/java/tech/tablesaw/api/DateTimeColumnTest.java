@@ -132,7 +132,7 @@ class DateTimeColumnTest {
   }
 
   @Test
-  public void testAsStringColumn() {
+  void testAsStringColumn() {
     column1.appendCell("1923-10-20T10:15:30");
     column1.appendMissing();
     StringColumn sc = column1.asStringColumn();

@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 
-public class NumberRollingColumnTest {
+class NumberRollingColumnTest {
 
   @Test
-  public void testRollingMean() {
+  void testRollingMean() {
     double[] data = new double[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     double missing = DoubleColumnType.missingValueIndicator();
     double[] sma5 = new double[] {missing, missing, missing, missing, 3, 4, 5, 6, 7, 8};

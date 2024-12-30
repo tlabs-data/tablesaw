@@ -55,7 +55,7 @@ import tech.tablesaw.columns.strings.StringColumnType;
 import tech.tablesaw.selection.Selection;
 
 /** Unit tests for the NumberColumn class */
-public class NumberColumnTest {
+class NumberColumnTest {
 
   private static final double MISSING = DoubleColumnType.missingValueIndicator();
   private static final DoublePredicate isPositiveOrZeroD = d -> d >= 0, isNegativeD = d -> d < 0;
@@ -64,7 +64,7 @@ public class NumberColumnTest {
 
   @Disabled
   @Test
-  public void testApplyFilter() {
+  void testApplyFilter() {
 
     Table table = Table.create("t");
     DoubleColumn numberColumn = DoubleColumn.create("test", 100_000_000);
@@ -86,7 +86,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testPercentiles() {
+  void testPercentiles() {
     IntColumn c = IntColumn.indexColumn("t", 99, 1);
     IntColumn c2 = c.copy();
     c2.appendCell("");
@@ -113,7 +113,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testSummarize() {
+  void testSummarize() {
     IntColumn c = IntColumn.indexColumn("t", 99, 1);
     IntColumn c2 = c.copy();
     c2.appendCell("");
@@ -158,7 +158,7 @@ public class NumberColumnTest {
 
   @Disabled
   @Test
-  public void testSortAndApplyFilter1() {
+  void testSortAndApplyFilter1() {
 
     DoubleColumn numberColumn = DoubleColumn.create("test", 1_000_000_000);
     for (int i = 0; i < 1_000_000_000; i++) {
@@ -177,7 +177,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void createFromNumbers() {
+  void createFromNumbers() {
     List<Number> numberList = new ArrayList<>();
     numberList.add(4);
     DoubleColumn column = DoubleColumn.create("test", numberList);
@@ -204,7 +204,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testIsInIntegerColumn() {
+  void testIsInIntegerColumn() {
     List<Number> inValues = Arrays.asList(new Number[]{10d, (short) -2, 57, 42L, 40f, 52d, -5d});
 
     Table t = Table.create("t", IntColumn.create("Test", 32, 42, 40, 57, 52, -2, 11, 25));
@@ -217,7 +217,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testIsInDoubleColumn() {
+  void testIsInDoubleColumn() {
     List<Number> inValues = Arrays.asList(new Number[]{10d, (short) -2, 57, 42L, 40f, 52d, -5d});
 
     Table t = Table.create("t", DoubleColumn.create("Test", 32d, 42d, 40d, 57d, 52d, -2d, 11d, 25d));
@@ -230,7 +230,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCorrelation() {
+  void testCorrelation() {
     double[] x = new double[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     double[] y = new double[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
@@ -246,7 +246,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCorrelation2() {
+  void testCorrelation2() {
     double[] x = new double[] {1, 2, 3, 4, 5, 6, 7, NaN, 9, 10};
     double[] y = new double[] {1, 2, 3, NaN, 5, 6, 7, 8, 9, 10};
 
@@ -260,7 +260,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testBetweenExclusive() {
+  void testBetweenExclusive() {
     int[] originalValues = new int[] {32, 42, 40, 57, 52, -2};
 
     IntColumn initial = IntColumn.create("Test", originalValues);
@@ -274,7 +274,7 @@ public class NumberColumnTest {
 
   @Disabled
   @Test
-  public void testSort1() {
+  void testSort1() {
     DoubleColumn numberColumn = DoubleColumn.create("test", 1_000_000_000);
     System.out.println("Adding doubles to column");
     for (int i = 0; i < 100_000_000; i++) {
@@ -287,7 +287,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testIsLessThan() {
+  void testIsLessThan() {
     int size = 1_000_000;
     Table table = Table.create("t");
     DoubleColumn numberColumn = DoubleColumn.create("test", size);
@@ -308,7 +308,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testNumberFormat1() {
+  void testNumberFormat1() {
     DoubleColumn numberColumn = DoubleColumn.create("test");
     numberColumn.append(48392.2932);
     numberColumn.setPrintFormatter(NumberColumnFormatter.currency("en", "US"));
@@ -316,7 +316,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testNumberFormat2() {
+  void testNumberFormat2() {
     DoubleColumn numberColumn = DoubleColumn.create("test");
     numberColumn.append(48392.2932);
     numberColumn.setPrintFormatter(NumberColumnFormatter.intsWithGrouping());
@@ -324,7 +324,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testAsString() {
+  void testAsString() {
     DoubleColumn numberColumn = DoubleColumn.create("test");
     numberColumn.append(48392.2932);
     StringColumn sc = numberColumn.asStringColumn();
@@ -333,7 +333,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testDoubleColumnAsStringWithMissing() {
+  void testDoubleColumnAsStringWithMissing() {
     DoubleColumn numberColumn = DoubleColumn.create("test");
     numberColumn.append(48392.2932);
     numberColumn.appendMissing();
@@ -344,7 +344,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testIntegerColumnAsStringWithMissing() {
+  void testIntegerColumnAsStringWithMissing() {
     IntColumn numberColumn = IntColumn.create("test");
     numberColumn.append(48392);
     numberColumn.appendMissing();
@@ -355,7 +355,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testNumberFormat3() {
+  void testNumberFormat3() {
     DoubleColumn numberColumn = DoubleColumn.create("test");
     numberColumn.append(48392.2932);
     numberColumn.setPrintFormatter(NumberColumnFormatter.ints());
@@ -363,7 +363,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testNumberFormat4() {
+  void testNumberFormat4() {
     DoubleColumn numberColumn = DoubleColumn.create("test");
     numberColumn.append(48392.2932);
     numberColumn.setPrintFormatter(NumberColumnFormatter.fixedWithGrouping(3));
@@ -371,7 +371,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testNumberFormat5() {
+  void testNumberFormat5() {
     DoubleColumn numberColumn = DoubleColumn.create("test");
     numberColumn.append(0.2932);
     numberColumn.setPrintFormatter(NumberColumnFormatter.percent(1));
@@ -379,13 +379,13 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testIndexColumn() {
+  void testIndexColumn() {
     IntColumn numberColumn = IntColumn.indexColumn("index", 12424, 0);
     assertEquals("12423", numberColumn.getString(numberColumn.size() - 1));
   }
 
   @Test
-  public void testIsGreaterThan() {
+  void testIsGreaterThan() {
     int size = 1_000_000;
     Table table = Table.create("t");
     DoubleColumn numberColumn = DoubleColumn.create("test", size);
@@ -407,7 +407,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testSort() {
+  void testSort() {
     int records = 1_000_000;
     DoubleColumn numberColumn = DoubleColumn.create("test", records);
     for (int i = 0; i < records; i++) {
@@ -439,7 +439,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testMaxAndMin() {
+  void testMaxAndMin() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.set(i, RandomUtils.secure().randomDouble(0, 10_000));
@@ -459,7 +459,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testClear() {
+  void testClear() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.set(i, RandomUtils.secure().randomDouble(0, 10_000));
@@ -470,7 +470,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCountMissing() {
+  void testCountMissing() {
     DoubleColumn doubles = DoubleColumn.create("doubles");
     for (int i = 0; i < 10; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 1_000));
@@ -484,7 +484,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCountUnique() {
+  void testCountUnique() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 10);
     double[] uniques = {0.0f, 0.00000001f, -0.000001f, 92923.29340f, 24252, 23442f, 2252, 2342f};
     for (double unique : uniques) {
@@ -504,7 +504,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCountUniqueDouble() {
+  void testCountUniqueDouble() {
     DoubleColumn doubles = DoubleColumn.create("doubles");
     doubles.append(1.0);
     doubles.append(1.0);
@@ -516,7 +516,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCountUniqueFloat() {
+  void testCountUniqueFloat() {
     FloatColumn floats = FloatColumn.create("floats");
     floats.append(1f);
     floats.append(1f);
@@ -528,7 +528,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCountUniqueInteger() {
+  void testCountUniqueInteger() {
     IntColumn ints = IntColumn.create("ints");
     ints.append(1);
     ints.append(1);
@@ -540,7 +540,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCountUniqueLong() {
+  void testCountUniqueLong() {
     LongColumn longs = LongColumn.create("longs");
     longs.append(1L);
     longs.append(1L);
@@ -552,7 +552,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCountUniqueShort() {
+  void testCountUniqueShort() {
     ShortColumn shorts = ShortColumn.create("doubles");
     shorts.append((short) 1);
     shorts.append((short) 1);
@@ -564,7 +564,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testUnique() {
+  void testUnique() {
     DoubleColumn doubles = DoubleColumn.create("doubles");
     double[] uniques = {0.0f, 0.00000001f, -0.000001f, 92923.29340f, 24252, 23442f, 2252, 2342f};
     for (double unique : uniques) {
@@ -584,7 +584,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testIsMissingAndIsNotMissing() {
+  void testIsMissingAndIsNotMissing() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 10);
     for (int i = 0; i < 10; i++) {
       doubles.set(i, RandomUtils.secure().randomDouble(0, 1_000));
@@ -600,7 +600,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testEmptyCopy() {
+  void testEmptyCopy() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
@@ -611,14 +611,14 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void appendObject() {
+  void appendObject() {
     DoubleColumn doubles = DoubleColumn.create("doubles");
     doubles.appendObj(BigDecimal.valueOf(1));
     assertEquals(1.0, doubles.get(0), 0.00001);
   }
 
   @Test
-  public void testSize() {
+  void testSize() {
     DoubleColumn doubles = DoubleColumn.create("doubles");
     assertEquals(0, doubles.size());
     for (int i = 0; i < 100; i++) {
@@ -630,20 +630,20 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testType() {
+  void testType() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     assertEquals(ColumnType.DOUBLE, doubles.type());
   }
 
   @Test
-  public void testDifference() {
+  void testDifference() {
     double[] originalValues = new double[] {32, 42, 40, 57, 52};
     double[] expectedValues = new double[] {MISSING, 10, -2, 17, -5};
     assertTrue(computeAndValidateDifference(originalValues, expectedValues));
   }
 
   @Test
-  public void testDifferenceMissingValuesInColumn() {
+  void testDifferenceMissingValuesInColumn() {
     double[] originalValues = new double[] {32, 42, MISSING, 57, 52};
     double[] expectedValues = new double[] {MISSING, 10, MISSING, MISSING, -5};
     assertTrue(computeAndValidateDifference(originalValues, expectedValues));
@@ -656,14 +656,14 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testDifferenceEmptyColumn() {
+  void testDifferenceEmptyColumn() {
     DoubleColumn initial = DoubleColumn.create("Test");
     DoubleColumn difference = initial.difference();
     assertEquals(0, difference.size(), "Expecting empty data set.");
   }
 
   @Test
-  public void testCumSum() {
+  void testCumSum() {
     double[] originalValues = new double[] {32, 42, MISSING, 57, 52, -10, 0};
     double[] expectedValues = new double[] {32, 74, 74, 131, 183, 173, 173};
     DoubleColumn initial = DoubleColumn.create("Test", originalValues);
@@ -679,7 +679,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCumProd() {
+  void testCumProd() {
     double[] originalValues = new double[] {1, 2, MISSING, 3, 4};
     double[] expectedValues = new double[] {1, 2, 2, 6, 24};
     DoubleColumn initial = DoubleColumn.create("Test", originalValues);
@@ -695,7 +695,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCumMax() {
+  void testCumMax() {
     double[] originalValues = new double[] {MISSING, 32, 42, MISSING, 57, 52, -10, 0};
     double[] expectedValues = new double[] {MISSING, 32, 42, 42, 57, 57, 57, 57};
     DoubleColumn initial = DoubleColumn.create("Test", originalValues);
@@ -712,7 +712,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testCumMin() {
+  void testCumMin() {
     double[] originalValues = new double[] {MISSING, 32, 42, MISSING, 57, 52, -10, 0};
     double[] expectedValues = new double[] {MISSING, 32, 32, 32, 32, 32, -10, -10};
     DoubleColumn initial = DoubleColumn.create("Test", originalValues);
@@ -729,7 +729,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testSubtract2Columns() {
+  void testSubtract2Columns() {
     double[] col1Values = new double[] {32.5, MISSING, 42, 57, 52};
     double[] col2Values = new double[] {32, 42, 38.67, MISSING, 52.01};
     double[] expected = new double[] {0.5, MISSING, 3.33, MISSING, -.01};
@@ -747,7 +747,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testPctChange() {
+  void testPctChange() {
     double[] originalValues = new double[] {10, 12, 13};
     double[] expectedValues = new double[] {MISSING, 0.2, 0.083333};
     DoubleColumn initial = DoubleColumn.create("Test", originalValues);
@@ -778,33 +778,33 @@ public class NumberColumnTest {
   // Functional methods
 
   @Test
-  public void testCountAtLeast() {
+  void testCountAtLeast() {
     assertEquals(2, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isPositiveOrZeroD, 2));
     assertEquals(0, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isNegativeD, 2));
   }
 
   @Test
-  public void testCount() {
+  void testCount() {
     assertEquals(3, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isPositiveOrZeroD));
     assertEquals(0, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isNegativeD));
   }
 
   @Test
-  public void testAllMatch() {
+  void testAllMatch() {
     assertTrue(DoubleColumn.create("t1", new double[] {0, 1, 2}).allMatch(isPositiveOrZeroD));
     assertFalse(DoubleColumn.create("t1", new double[] {-1, 0, 1}).allMatch(isPositiveOrZeroD));
     assertFalse(DoubleColumn.create("t1", new double[] {1, 0, -1}).allMatch(isPositiveOrZeroD));
   }
 
   @Test
-  public void testAnyMatch() {
+  void testAnyMatch() {
     assertTrue(DoubleColumn.create("t1", new double[] {0, 1, 2}).anyMatch(isPositiveOrZeroD));
     assertTrue(DoubleColumn.create("t1", new double[] {-1, 0, -1}).anyMatch(isPositiveOrZeroD));
     assertFalse(DoubleColumn.create("t1", new double[] {0, 1, 2}).anyMatch(isNegativeD));
   }
 
   @Test
-  public void noneMatch() {
+  void noneMatch() {
     assertTrue(DoubleColumn.create("t1", new double[] {0, 1, 2}).noneMatch(isNegativeD));
     assertFalse(DoubleColumn.create("t1", new double[] {-1, 0, 1}).noneMatch(isNegativeD));
     assertFalse(DoubleColumn.create("t1", new double[] {1, 0, -1}).noneMatch(isNegativeD));
@@ -826,21 +826,21 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testFilter() {
+  void testFilter() {
     Column<Double> filtered =
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).filter(isPositiveOrZeroD);
     assertColumnContentsEquals(new Double[] {0.0, 1.0}, filtered);
   }
 
   @Test
-  public void testMap() {
+  void testMap() {
     DoubleColumn mapped =
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).map(x -> x * 2.0 + 1.0);
     assertColumnContentsEquals(new Double[] {-1.0, 1.0, 3.0}, mapped);
   }
 
   @Test
-  public void testMapInto() {
+  void testMapInto() {
     StringColumn mapped =
         DoubleColumn.create("t1", new double[] {-1, 0, 1})
             .mapInto(toStringD, StringColumn.create("result"));
@@ -848,7 +848,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testMaxDoubleComparator() {
+  void testMaxDoubleComparator() {
     assertEquals(
         Double.valueOf(1.0),
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).max(Double::compare).get());
@@ -856,7 +856,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testMinDoubleComparator() {
+  void testMinDoubleComparator() {
     assertEquals(
         Double.valueOf(-1.0),
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).min(Double::compare).get());
@@ -864,19 +864,19 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void testReduceTDoubleBinaryOperator() {
+  void testReduceTDoubleBinaryOperator() {
     assertEquals(1.0, DoubleColumn.create("t1", new double[] {-1, 0, 1}).reduce(1.0, sumD), 0.0);
   }
 
   @Test
-  public void testReduceDoubleBinaryOperator() {
+  void testReduceDoubleBinaryOperator() {
     assertEquals(
         Double.valueOf(0.0), DoubleColumn.create("t1", new double[] {-1, 0, 1}).reduce(sumD).get());
     assertFalse(DoubleColumn.create("t1", new double[] {}).reduce(sumD).isPresent());
   }
 
   @Test
-  public void fillMissing_defaultValue() {
+  void fillMissing_defaultValue() {
     DoubleColumn col1 =
         DoubleColumn.create(
             "col1",
@@ -892,7 +892,7 @@ public class NumberColumnTest {
   }
 
   @Test
-  public void fillMissing_columnArg() {
+  void fillMissing_columnArg() {
     DoubleColumn col1 =
         DoubleColumn.create(
             "col1",

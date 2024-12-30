@@ -37,14 +37,14 @@ import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 
 /** Tests for CSV Reading */
-public class FixedWidthReaderTest {
+class FixedWidthReaderTest {
 
   private final FixedWidthFields car_fields_specs = new FixedWidthFields(4, 5, 40, 40, 8);
   private final ColumnType[] car_types = {SHORT, STRING, STRING, STRING, SHORT};
   private final ColumnType[] car_types_with_SKIP = {SHORT, STRING, STRING, SKIP, FLOAT};
 
   @Test
-  public void testWithCarsData() throws Exception {
+  void testWithCarsData() throws Exception {
 
     Table table =
         Table.read()
@@ -68,7 +68,7 @@ public class FixedWidthReaderTest {
   }
 
   @Test
-  public void testWithColumnSKIP() throws Exception {
+  void testWithColumnSKIP() throws Exception {
 
     Table table =
         Table.read()
@@ -88,7 +88,7 @@ public class FixedWidthReaderTest {
   }
 
   @Test
-  public void testWithColumnSKIPWithoutHeader() throws Exception {
+  void testWithColumnSKIPWithoutHeader() throws Exception {
 
     Table table =
         Table.read()
@@ -109,7 +109,7 @@ public class FixedWidthReaderTest {
   }
 
   @Test
-  public void testDataTypeDetection() throws Exception {
+  void testDataTypeDetection() throws Exception {
 
     InputStream stream = new FileInputStream(new File("../data/fixed_width_cars_test.txt"));
     FixedWidthReadOptions options =
@@ -129,7 +129,7 @@ public class FixedWidthReaderTest {
   }
 
   @Test
-  public void testWithMissingValue() throws Exception {
+  void testWithMissingValue() throws Exception {
 
     Reader reader = new FileReader("../data/fixed_width_missing_values.txt");
     FixedWidthReadOptions options =
@@ -152,7 +152,7 @@ public class FixedWidthReaderTest {
   }
 
   @Test
-  public void testWithSkipTrailingCharsUntilNewline() throws Exception {
+  void testWithSkipTrailingCharsUntilNewline() throws Exception {
 
     Table table =
         Table.read()
@@ -177,7 +177,7 @@ public class FixedWidthReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypesMixedWithDetection() throws Exception {
+  void testCustomizedColumnTypesMixedWithDetection() throws Exception {
     InputStream stream = new FileInputStream(new File("../data/fixed_width_cars_test.txt"));
     FixedWidthReadOptions options =
         FixedWidthReadOptions.builder(stream)
@@ -199,7 +199,7 @@ public class FixedWidthReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypeAllCustomized() throws IOException {
+  void testCustomizedColumnTypeAllCustomized() throws IOException {
     InputStream stream = new FileInputStream("../data/fixed_width_cars_test.txt");
     FixedWidthReadOptions options =
         FixedWidthReadOptions.builder(stream)

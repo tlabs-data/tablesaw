@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.ColumnType;
 
-public class NumberColumnFormatterTest {
+class NumberColumnFormatterTest {
 
   @Test
-  public void testFormatLong() {
+  void testFormatLong() {
     long value = 1588838400007002844L;
     NumberColumnFormatter ncf = NumberColumnFormatter.ints();
     ncf.setColumnType(ColumnType.LONG);

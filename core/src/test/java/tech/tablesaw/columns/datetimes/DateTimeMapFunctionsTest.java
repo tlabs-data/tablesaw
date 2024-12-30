@@ -32,14 +32,14 @@ import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.TimeColumn;
 
 /** Tests for DateTimeMapFunctions */
-public class DateTimeMapFunctionsTest {
+class DateTimeMapFunctionsTest {
 
   private DateTimeColumn startCol = DateTimeColumn.create("start");
   private DateTimeColumn stopCol = DateTimeColumn.create("stop");
   private LocalDateTime start = LocalDateTime.now();
 
   @Test
-  public void testDifferenceInMilliseconds() {
+  void testDifferenceInMilliseconds() {
     LocalDateTime stop = start.plus(100_000L, ChronoUnit.MILLIS);
     startCol.append(start);
     stopCol.append(stop);
@@ -48,7 +48,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testDifferenceInSeconds() {
+  void testDifferenceInSeconds() {
     LocalDateTime stop = start.plus(100_000L, ChronoUnit.SECONDS);
 
     startCol.append(start);
@@ -59,7 +59,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testDifferenceInMinutes() {
+  void testDifferenceInMinutes() {
     LocalDateTime stop = start.plus(100_000L, ChronoUnit.MINUTES);
 
     startCol.append(start);
@@ -70,7 +70,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testDifferenceInHours() {
+  void testDifferenceInHours() {
     LocalDateTime stop = start.plus(100_000L, ChronoUnit.HOURS);
 
     startCol.append(start);
@@ -81,7 +81,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testDifferenceInDays() {
+  void testDifferenceInDays() {
     LocalDateTime stop = start.plus(100_000L, ChronoUnit.DAYS);
 
     startCol.append(start);
@@ -92,7 +92,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testDifferenceInYears() {
+  void testDifferenceInYears() {
 
     LocalDateTime stop = start.plus(10_000L, ChronoUnit.YEARS);
     startCol.append(start);
@@ -103,70 +103,70 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testHour() {
+  void testHour() {
     startCol.append(LocalDateTime.of(1984, 12, 12, 7, 30));
     IntColumn hour = startCol.hour();
     assertEquals(7, hour.getInt(0), 0.0001);
   }
 
   @Test
-  public void testYear() {
+  void testYear() {
     startCol.append(LocalDateTime.of(1984, 12, 12, 7, 30));
     IntColumn year = startCol.year();
     assertEquals(1984, year.getInt(0), 0.0001);
   }
 
   @Test
-  public void testDayOfYear() {
+  void testDayOfYear() {
     startCol.append(LocalDateTime.of(1984, 1, 5, 7, 30));
     IntColumn dayOfYear = startCol.dayOfYear();
     assertEquals(5, dayOfYear.getInt(0), 0.0001);
   }
 
   @Test
-  public void testDayOfMonth() {
+  void testDayOfMonth() {
     startCol.append(LocalDateTime.of(1984, 1, 22, 7, 30));
     IntColumn dayOfMonth = startCol.dayOfMonth();
     assertEquals(22, dayOfMonth.getInt(0), 0.0001);
   }
 
   @Test
-  public void testMinute() {
+  void testMinute() {
     startCol.append(LocalDateTime.of(1984, 1, 22, 7, 30));
     IntColumn minute = startCol.minute();
     assertEquals(30, minute.getInt(0), 0.0001);
   }
 
   @Test
-  public void testDayOfWeekValue() {
+  void testDayOfWeekValue() {
     startCol.append(LocalDateTime.of(2018, 4, 10, 7, 30));
     IntColumn dayOfWeekValue = startCol.dayOfWeekValue();
     assertEquals(2, dayOfWeekValue.getInt(0), 0.0001);
   }
 
   @Test
-  public void testDayOfWeek() {
+  void testDayOfWeek() {
     startCol.append(LocalDateTime.of(2018, 4, 10, 7, 30));
     StringColumn dayOfWeek = startCol.dayOfWeek();
     assertEquals("TUESDAY", dayOfWeek.get(0));
   }
 
   @Test
-  public void testHourMinute() {
+  void testHourMinute() {
     startCol.append(LocalDateTime.of(2018, 4, 10, 7, 30));
     StringColumn hourMinute = startCol.hourMinute();
     assertEquals("07:30", hourMinute.get(0));
   }
 
   @Test
-  public void testYearMonth() {
+  void testYearMonth() {
     startCol.append(LocalDateTime.of(2018, 4, 10, 7, 30));
     StringColumn yearMonth = startCol.yearMonth();
     assertEquals("2018-04", yearMonth.get(0));
   }
 
   @Test
-  public void testYearDay() {
+  void testYearDay() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     StringColumn yearDay = startCol.yearDay();
@@ -176,7 +176,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testYearWeek() {
+  void testYearWeek() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     StringColumn yearWeek = startCol.yearWeek();
@@ -186,7 +186,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testYearQuarter() {
+  void testYearQuarter() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     StringColumn yearQuarter = startCol.yearQuarter();
@@ -194,7 +194,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testMonth() {
+  void testMonth() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     StringColumn month = startCol.month();
@@ -202,7 +202,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testMonthValue() {
+  void testMonthValue() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     IntColumn month = startCol.monthValue();
@@ -210,7 +210,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testMinuteOfDay() {
+  void testMinuteOfDay() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     IntColumn minuteOfDay = startCol.minuteOfDay();
@@ -218,7 +218,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testSecondOfDay() {
+  void testSecondOfDay() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     IntColumn secondOfDay = startCol.secondOfDay();
@@ -226,7 +226,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testDate() {
+  void testDate() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     DateColumn date = startCol.date();
@@ -234,7 +234,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testTime() {
+  void testTime() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     TimeColumn time = startCol.time();
@@ -242,7 +242,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testTimeWindow() {
+  void testTimeWindow() {
     LocalDateTime dateTime = LocalDateTime.of(2018, 4, 10, 7, 30);
     startCol.append(dateTime);
     for (int i = 0; i < 49; i++) {
@@ -267,7 +267,7 @@ public class DateTimeMapFunctionsTest {
   }
 
   @Test
-  public void testLeadAndLag() {
+  void testLeadAndLag() {
     LocalDateTime dateTime1 = LocalDateTime.of(2018, 4, 10, 7, 30);
     LocalDateTime dateTime2 = LocalDateTime.of(2018, 5, 10, 7, 30);
     LocalDateTime dateTime3 = LocalDateTime.of(2018, 5, 10, 7, 30);

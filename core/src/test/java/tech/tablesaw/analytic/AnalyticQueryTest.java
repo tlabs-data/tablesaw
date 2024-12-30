@@ -16,7 +16,7 @@ class AnalyticQueryTest {
   private static final String LINE_END = System.lineSeparator();
 
   @Test
-  public void testToSqlString() {
+  void testToSqlString() {
     Table table = Table.create("table1", IntColumn.create("sales"));
 
     AnalyticQuery query =
@@ -50,7 +50,7 @@ class AnalyticQueryTest {
   }
 
   @Test
-  public void toSqlStringQuick() {
+  void toSqlStringQuick() {
     AnalyticQuery query =
         AnalyticQuery.quickQuery()
             .from(Table.create("sales"))
@@ -76,7 +76,7 @@ class AnalyticQueryTest {
   }
 
   @Test
-  public void toSqlStringNumbering() {
+  void toSqlStringNumbering() {
     AnalyticQuery query =
         AnalyticQuery.numberingQuery()
             .from(Table.create("myTable", IntColumn.create("date"), IntColumn.create("region")))
@@ -101,7 +101,7 @@ class AnalyticQueryTest {
   }
 
   @Test
-  public void executeInPlaceNumbering() {
+  void executeInPlaceNumbering() {
     Table table = Table.create("table", StringColumn.create("col1", new String[] {}));
 
     AnalyticQuery.numberingQuery()
@@ -120,7 +120,7 @@ class AnalyticQueryTest {
   }
 
   @Test
-  public void executeInPlaceAnalytic() {
+  void executeInPlaceAnalytic() {
     Table table = Table.create("table", DoubleColumn.create("col1", new Double[] {}));
 
     AnalyticQuery.query()
@@ -140,7 +140,7 @@ class AnalyticQueryTest {
   }
 
   @Test
-  public void executeInPlaceWithDuplicateColumnsThrows() {
+  void executeInPlaceWithDuplicateColumnsThrows() {
     Table table = Table.create("myTable", DoubleColumn.create("col1", new Double[] {}));
 
     Throwable thrown =

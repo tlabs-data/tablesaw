@@ -39,7 +39,7 @@ import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
-public class XlsxReaderTest {
+class XlsxReaderTest {
 
   private List<Table> readN(String name, int expectedCount) {
     try {
@@ -86,7 +86,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testColumns() {
+  void testColumns() {
     Table table =
         read1(
             "columns",
@@ -102,10 +102,9 @@ public class XlsxReaderTest {
             "mixed",
             "mixed2",
             "intcol2");
-    //        stringcol   shortcol    intcol  longcol doublecol   booleancol  datecol
-    // formulacol
-    //        Hallvard    123 12345678    12345678900 12,34   TRUE    22/02/2019 20:54:09   135.34
-    //        Marit       124 12345679    12345678901 13,35   FALSE   23/03/2020 21:55:10   137.35
+// stringcol shortcol intcol   longcol     doublecol booleancol datecol             formulacol
+// Hallvard  123      12345678 12345678900 12,34     TRUE       22/02/2019 20:54:09 135.34
+// Marit     124      12345679 12345678901 13,35     FALSE      23/03/2020 21:55:10 137.35
     assertColumnValues(table.stringColumn("stringcol"), "Hallvard", "Marit", "Quentin");
     assertColumnValues(table.intColumn("shortcol"), 123, 124, 125);
     assertColumnValues(table.intColumn("intcol"), 12345678, 12345679, 12345679);
@@ -124,7 +123,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testColumnsWithMissingValues() {
+  void testColumnsWithMissingValues() {
     Table table =
         read1(
             "columns-with-missing-values",
@@ -137,11 +136,9 @@ public class XlsxReaderTest {
             "booleancol",
             "datecol",
             "formulacol");
-    //        stringcol    shortcol    intcol        longcol        doublecol    booleancol
-    // datecol
-    //        Hallvard                12345678    12345678900                TRUE        22/02/2019
-    // 20:54:09
-    //                    124            12345679                13,35
+// stringcol shortcol intcol   longcol     doublecol booleancol datecol
+// Hallvard           12345678 12345678900           TRUE       22/02/2019 20:54:09
+//           124      12345679             13,35
     assertColumnValues(table.stringColumn("stringcol"), "Hallvard", null);
     assertColumnValues(table.intColumn("shortcol"), null, 124);
     assertColumnValues(table.intColumn("intcol"), 12345678, 12345679);
@@ -154,7 +151,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testSheetIndex() {
+  void testSheetIndex() {
     Table table =
         new XlsxReader()
             .read(XlsxReadOptions.builder("../data/multiplesheets.xlsx").sheetIndex(1).build());
@@ -185,7 +182,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testEmptyFileThrowsIllegalArgumentNoTableFound() {
+  void testEmptyFileThrowsIllegalArgumentNoTableFound() {
     assertThrows(
         IllegalArgumentException.class,
         () -> {
@@ -194,7 +191,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypesMixedWithDetection() {
+  void testCustomizedColumnTypesMixedWithDetection() {
     Table table =
         new XlsxReader()
             .read(
@@ -227,7 +224,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypeAllCustomized() {
+  void testCustomizedColumnTypeAllCustomized() {
     Table table =
         new XlsxReader()
             .read(
@@ -241,7 +238,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedEmptyColumnsArePreserved() {
+  void testCustomizedEmptyColumnsArePreserved() {
     Table table =
         new XlsxReader()
             .read(
@@ -256,7 +253,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnStringShouldTryToPreserveValuesFromOtherExcelTypes() {
+  void testCustomizedColumnStringShouldTryToPreserveValuesFromOtherExcelTypes() {
     Table table =
         new XlsxReader()
             .read(

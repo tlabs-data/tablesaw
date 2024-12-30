@@ -27,7 +27,7 @@ class IntColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     IntParser customParser = new IntParser(ColumnType.LONG);
     customParser.setMissingValueStrings(Arrays.asList("not here"));

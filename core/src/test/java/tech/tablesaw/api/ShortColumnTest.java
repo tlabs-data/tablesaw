@@ -27,7 +27,7 @@ class ShortColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     ShortParser customParser = new ShortParser(ColumnType.SHORT);
     customParser.setMissingValueStrings(Arrays.asList("not here"));

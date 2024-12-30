@@ -24,10 +24,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.columns.dates.DateParser;
 import tech.tablesaw.columns.datetimes.DateTimeParser;
 
-public class TypeUtilsTest {
+class TypeUtilsTest {
 
   @Test
-  public void testDateFormaterWithLocaleEN() {
+  void testDateFormaterWithLocaleEN() {
     String anotherDate = "12-May-2015";
     LocalDate result =
         LocalDate.parse(anotherDate, DateParser.DEFAULT_FORMATTER.withLocale(Locale.ENGLISH));
@@ -35,7 +35,7 @@ public class TypeUtilsTest {
   }
 
   @Test
-  public void testDateFormater() {
+  void testDateFormater() {
     final DateTimeFormatter dtTimef8 = DateTimeFormatter.ofPattern("M/d/yyyy h:mm:ss a");
 
     String anotherDate = "10/2/2016 8:18:03 AM";

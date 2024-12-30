@@ -25,19 +25,19 @@ import tech.tablesaw.api.DateTimeColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.api.TimeColumn;
 
-public class DateMapFunctionsTest {
+class DateMapFunctionsTest {
 
   private DateColumn column1;
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     Table table = Table.create("Test");
     column1 = DateColumn.create("Game date");
     table.addColumns(column1);
   }
 
   @Test
-  public void testAtTimeColumn() {
+  void testAtTimeColumn() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/24/1924");
     column1.appendCell("12-May-2015");
@@ -54,7 +54,7 @@ public class DateMapFunctionsTest {
   }
 
   @Test
-  public void testAtTime() {
+  void testAtTime() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/24/1924");
     column1.appendCell("12-May-2015");

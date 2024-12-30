@@ -26,7 +26,7 @@ import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.html.HtmlWriteOptions.ElementCreator;
 
-public class HtmlWriterTest {
+class HtmlWriterTest {
 
   private static final String LINE_END = "\n";
 
@@ -36,7 +36,7 @@ public class HtmlWriterTest {
       Table.create("t", DoubleColumn.create("v", v1), DoubleColumn.create("v2", v2));
 
   @Test
-  public void basic() {
+  void basic() {
     String output = table.write().toString("html");
     assertEquals(
         "<table>"
@@ -86,7 +86,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void alternatingRows() {
+  void alternatingRows() {
     OutputStream baos = new ByteArrayOutputStream();
     ElementCreator elementCreator =
         (elementName, column, row) -> {
@@ -148,7 +148,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void noEscape() {
+  void noEscape() {
     String[] data = {"<p>foo</p>"};
     Table table = Table.create("t", StringColumn.create("data", data));
 
@@ -184,7 +184,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void escape() {
+  void escape() {
     String[] data = {"<p>foo</p>"};
     Table table = Table.create("t", StringColumn.create("data", data));
 

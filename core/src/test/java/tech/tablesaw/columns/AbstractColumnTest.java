@@ -9,10 +9,10 @@ import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.numbers.DoubleColumnType;
 
-public class AbstractColumnTest {
+class AbstractColumnTest {
 
   @Test
-  public void fillMissing_defaultValue() {
+  void fillMissing_defaultValue() {
     DoubleColumn col1 =
         DoubleColumn.create(
             "col1",
@@ -29,7 +29,7 @@ public class AbstractColumnTest {
   }
 
   @Test
-  public void fillMissing_columnArg() {
+  void fillMissing_columnArg() {
     DoubleColumn col1 =
         DoubleColumn.create(
             "col1",
@@ -47,7 +47,7 @@ public class AbstractColumnTest {
   }
 
   @Test
-  public void doWithEach() throws Exception {
+  void doWithEach() throws Exception {
 
     Table table = Table.read().csv("../data/bush.csv").first(5);
 

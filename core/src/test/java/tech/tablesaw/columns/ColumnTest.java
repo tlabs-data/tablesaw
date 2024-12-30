@@ -37,7 +37,7 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
 /** Tests for Column functionality that is common across column types */
-public class ColumnTest {
+class ColumnTest {
 
   private static final ColumnType[] types = {
     ColumnType.LOCAL_DATE, // date of poll
@@ -55,12 +55,12 @@ public class ColumnTest {
   private Table table;
 
   @BeforeEach
-  public void setUp() throws Exception {
+  void setUp() throws Exception {
     table = Table.read().csv(CsvReadOptions.builder("../data/bush.csv").columnTypes(types));
   }
 
   @Test
-  public void testFirst() {
+  void testFirst() {
     // test with dates
     DateColumn first = table.dateColumn("date").first(3);
     assertEquals(LocalDate.parse("2004-02-04"), first.get(0));
@@ -81,7 +81,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testLast() {
+  void testLast() {
 
     // test with dates
     DateColumn last = table.dateColumn("date").last(3);
@@ -103,19 +103,19 @@ public class ColumnTest {
   }
 
   @Test
-  public void testName() {
+  void testName() {
     Column<?> c = table.numberColumn("approval");
     assertEquals("approval", c.name());
   }
 
   @Test
-  public void testType() {
+  void testType() {
     Column<?> c = table.numberColumn("approval");
     assertEquals(ColumnType.DOUBLE, c.type());
   }
 
   @Test
-  public void testContains() {
+  void testContains() {
     Column<String> c = table.stringColumn("who");
     assertTrue(c.contains("fox"));
     assertFalse(c.contains("foxes"));
@@ -132,14 +132,14 @@ public class ColumnTest {
   }
 
   @Test
-  public void testAsList() {
+  void testAsList() {
     Column<String> whoColumn = table.stringColumn("who");
     List<String> whos = whoColumn.asList();
     assertEquals(whos.size(), whoColumn.size());
   }
 
   @Test
-  public void testMin() {
+  void testMin() {
     double[] d1 = {1, 0, -1};
     double[] d2 = {2, -4, 3};
 
@@ -152,7 +152,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testSetMissingTo() {
+  void testSetMissingTo() {
     Double[] d1 = {1d, null, -1d};
     Integer[] i1 = {2, null, 3};
     String[] s1 = {"a", null, "C"};
@@ -177,7 +177,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testMax() {
+  void testMax() {
     double[] d1 = {1, 0, -1};
     double[] d2 = {2, -4, 3};
 
@@ -192,33 +192,33 @@ public class ColumnTest {
   // Functional methods
 
   @Test
-  public void testCountAtLeast() {
+  void testCountAtLeast() {
     assertEquals(2, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isPositiveOrZero, 2));
     assertEquals(0, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isNegative, 2));
   }
 
   @Test
-  public void testCount() {
+  void testCount() {
     assertEquals(3, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isPositiveOrZero));
     assertEquals(0, DoubleColumn.create("t1", new double[] {0, 1, 2}).count(isNegative));
   }
 
   @Test
-  public void testAllMatch() {
+  void testAllMatch() {
     assertTrue(DoubleColumn.create("t1", new double[] {0, 1, 2}).allMatch(isPositiveOrZero));
     assertFalse(DoubleColumn.create("t1", new double[] {-1, 0, 1}).allMatch(isPositiveOrZero));
     assertFalse(DoubleColumn.create("t1", new double[] {1, 0, -1}).allMatch(isPositiveOrZero));
   }
 
   @Test
-  public void testAnyMatch() {
+  void testAnyMatch() {
     assertTrue(DoubleColumn.create("t1", new double[] {0, 1, 2}).anyMatch(isPositiveOrZero));
     assertTrue(DoubleColumn.create("t1", new double[] {-1, 0, -1}).anyMatch(isPositiveOrZero));
     assertFalse(DoubleColumn.create("t1", new double[] {0, 1, 2}).anyMatch(isNegative));
   }
 
   @Test
-  public void noneMatch() {
+  void noneMatch() {
     assertTrue(DoubleColumn.create("t1", new double[] {0, 1, 2}).noneMatch(isNegative));
     assertFalse(DoubleColumn.create("t1", new double[] {-1, 0, 1}).noneMatch(isNegative));
     assertFalse(DoubleColumn.create("t1", new double[] {1, 0, -1}).noneMatch(isNegative));
@@ -233,7 +233,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testFilter() {
+  void testFilter() {
     Column<Double> filtered =
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).filter(isPositiveOrZero);
     assertContentEquals(filtered, 0.0, 1.0);
@@ -257,7 +257,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testMapInto() {
+  void testMapInto() {
     String[] strings = new String[] {"-1.0", "0.0", "1.0"};
     DoubleColumn doubleColumn = DoubleColumn.create("t1", new double[] {-1, 0, 1});
     StringColumn stringColumn1 =
@@ -266,7 +266,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testMapIntoSeason() {
+  void testMapIntoSeason() {
     String[] strings = new String[] {"WINTER", "SPRING", "SUMMER"};
     DateTimeColumn dateColumn =
         DateTimeColumn.create(
@@ -282,13 +282,13 @@ public class ColumnTest {
   }
 
   @Test
-  public void testMap() {
+  void testMap() {
     assertContentEquals(
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).map(negate), 1.0, -0.0, -1.0);
   }
 
   @Test
-  public void testMap2() {
+  void testMap2() {
     StringColumn c =
         DoubleColumn.create("t1", new double[] {-1, 0, 1})
             .map(String::valueOf, StringColumn::create);
@@ -296,7 +296,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testMaxComparator() {
+  void testMaxComparator() {
     assertEquals(
         Double.valueOf(1.0),
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).max(Double::compare).get());
@@ -304,7 +304,7 @@ public class ColumnTest {
   }
 
   @Test
-  public void testMinComparator() {
+  void testMinComparator() {
     assertEquals(
         Double.valueOf(-1.0),
         DoubleColumn.create("t1", new double[] {-1, 0, 1}).min(Double::compare).get());
@@ -312,26 +312,26 @@ public class ColumnTest {
   }
 
   @Test
-  public void testReduceTBinaryOperator() {
+  void testReduceTBinaryOperator() {
     assertEquals(
         Double.valueOf(1.0), DoubleColumn.create("t1", new double[] {-1, 0, 1}).reduce(1.0, sum));
   }
 
   @Test
-  public void testReduceBinaryOperator() {
+  void testReduceBinaryOperator() {
     assertEquals(
         Double.valueOf(0.0), DoubleColumn.create("t1", new double[] {-1, 0, 1}).reduce(sum).get());
     assertFalse(DoubleColumn.create("t1", new double[] {}).reduce(sum).isPresent());
   }
 
   @Test
-  public void sorted() {
+  void sorted() {
     assertContentEquals(
         DoubleColumn.create("t1", new double[] {1, -1, 0}).sorted(Double::compare), -1.0, 0.0, 1.0);
   }
 
   @Test
-  public void indexOfTest() {
+  void indexOfTest() {
     DoubleColumn testDoubleCol = DoubleColumn.create("t1", 0, 1, 1);
     assertEquals(-1, testDoubleCol.indexOf(2));
     assertEquals(-1, testDoubleCol.indexOf(0));

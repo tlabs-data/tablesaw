@@ -19,7 +19,7 @@ import tech.tablesaw.columns.instant.InstantColumnFormatter;
 import tech.tablesaw.columns.numbers.NumberColumnFormatter;
 import tech.tablesaw.columns.strings.StringColumnFormatter;
 
-public class CsvWriterTest {
+class CsvWriterTest {
 
   @Test
   void toWriterWithExtension() {

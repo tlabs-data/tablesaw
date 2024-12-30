@@ -27,7 +27,7 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.sorting.Sort;
 
 /** Verify sorting functions */
-public class SortTest {
+class SortTest {
 
   private static final int IQ_INDEX = 1;
   private static final int DOB_INDEX = 3;
@@ -36,12 +36,12 @@ public class SortTest {
   private Table unsortedTable;
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     unsortedTable = TestData.SIMPLE_UNSORTED_DATA.getTable();
   }
 
   @Test
-  public void sortAscending() {
+  void sortAscending() {
     // sort ascending by date and then an integer
     Table sortedTable = unsortedTable.sortAscendingOn("IQ", "DOB");
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_ASCENDING.getTable();
@@ -50,7 +50,7 @@ public class SortTest {
 
   /** Same as sortAscending but descending */
   @Test
-  public void sortDescending() {
+  void sortDescending() {
     unsortedTable = TestData.SIMPLE_UNSORTED_DATA.getTable();
     Table sortedTable = unsortedTable.sortDescendingOn("IQ", "DOB");
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_DESCENDING.getTable();
@@ -62,14 +62,14 @@ public class SortTest {
    * accuracy of our positive tests)
    */
   @Test()
-  public void sortDescendingNegative() {
+  void sortDescendingNegative() {
     Table sortedTable = unsortedTable.sortDescendingOn("IQ", "DOB");
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_ASCENDING.getTable();
     assertThrows(AssertionFailedError.class, () -> assertTableEquals(expectedResults, sortedTable));
   }
 
   @Test
-  public void testMultipleSortOrdersVerifyMinus() {
+  void testMultipleSortOrdersVerifyMinus() {
     Table sortedTable =
         unsortedTable.sortOn("-" + columnNames[IQ_INDEX], "-" + columnNames[DOB_INDEX]);
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_DESCENDING.getTable();
@@ -77,7 +77,7 @@ public class SortTest {
   }
 
   @Test
-  public void testAscendingAndDescending() {
+  void testAscendingAndDescending() {
     Table sortedTable =
         unsortedTable.sortOn("+" + columnNames[IQ_INDEX], "-" + columnNames[DOB_INDEX]);
     Table expectedResults =
@@ -86,7 +86,7 @@ public class SortTest {
   }
 
   @Test
-  public void testMultipleSortOrdersVerifyPlus() {
+  void testMultipleSortOrdersVerifyPlus() {
     Table sortedTable =
         unsortedTable.sortOn("+" + columnNames[IQ_INDEX], "+" + columnNames[DOB_INDEX]);
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_ASCENDING.getTable();
@@ -98,21 +98,21 @@ public class SortTest {
   }
 
   @Test
-  public void testAscendingWithPlusSign() {
+  void testAscendingWithPlusSign() {
     Table sortedTable = unsortedTable.sortOn("+" + columnNames[IQ_INDEX]);
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_ASCENDING.getTable();
     assertTableEquals(expectedResults, sortedTable);
   }
 
   @Test
-  public void testSortOnIndices() {
+  void testSortOnIndices() {
     Table sortedTable = unsortedTable.sortOn(IQ_INDEX, DOB_INDEX);
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_AND_DATE_ASCENDING.getTable();
     assertTableEquals(expectedResults, sortedTable);
   }
 
   @Test
-  public void testSortOnIndicesAscendingAndDescending() {
+  void testSortOnIndicesAscendingAndDescending() {
     Table sortedTable = unsortedTable.sortOn(IQ_INDEX, -DOB_INDEX);
     Table expectedResults =
         TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_ASCENDING_AND_THEN_DATE_DESCENDING.getTable();
@@ -120,7 +120,7 @@ public class SortTest {
   }
 
   @Test
-  public void testAscendingWithPlusSignNegative() {
+  void testAscendingWithPlusSignNegative() {
     Table sortedTable =
         unsortedTable.sortOn("+" + columnNames[IQ_INDEX], "-" + columnNames[DOB_INDEX]);
     Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_ASCENDING_AND_THEN_DATE_DESCENDING.getTable();
@@ -128,7 +128,7 @@ public class SortTest {
   }
 
   @Test
-  public void createSortInvalidPrefixColumnExists() {
+  void createSortInvalidPrefixColumnExists() {
     Table table = Table.create("t", DoubleColumn.create("col1"));
     Throwable thrown = assertThrows(IllegalStateException.class, () -> Sort.create(table, "<col1"));
 
@@ -136,7 +136,7 @@ public class SortTest {
   }
 
   @Test
-  public void createSortValidPrefixColumnDoesNotExist() {
+  void createSortValidPrefixColumnDoesNotExist() {
     Table table = Table.create("t", DoubleColumn.create("col1"));
     Throwable thrown = assertThrows(IllegalStateException.class, () -> Sort.create(table, "+col2"));
 
@@ -144,7 +144,7 @@ public class SortTest {
   }
 
   @Test
-  public void createSortInvalidPrefixColumnDoesNotExist() {
+  void createSortInvalidPrefixColumnDoesNotExist() {
     Table table = Table.create("t", DoubleColumn.create("col1"));
     Throwable thrown = assertThrows(IllegalStateException.class, () -> Sort.create(table, ">col2"));
 

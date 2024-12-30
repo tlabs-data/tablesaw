@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import org.junit.jupiter.api.Test;
 
-public class TimeFillersTest {
+class TimeFillersTest {
 
   private void assertContentEquals(Iterable<LocalTime> times, LocalTime... expected) {
     int num = 0;
@@ -20,7 +20,7 @@ public class TimeFillersTest {
   }
 
   @Test
-  public void testFromToBy() {
+  void testFromToBy() {
     assertContentEquals(
         create("times", new LocalTime[5])
             .fillWith(

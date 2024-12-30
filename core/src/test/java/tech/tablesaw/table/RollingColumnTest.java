@@ -12,10 +12,10 @@ import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.api.DateTimeColumn;
 import tech.tablesaw.api.DoubleColumn;
 
-public class RollingColumnTest {
+class RollingColumnTest {
 
   @Test
-  public void testRollingMaxDate() {
+  void testRollingMaxDate() {
     LocalDateTime[] data =
         new LocalDateTime[] {
           LocalDate.of(2011, 1, 1).atStartOfDay(),
@@ -40,7 +40,7 @@ public class RollingColumnTest {
   }
 
   @Test
-  public void testRollingCountTrue() {
+  void testRollingCountTrue() {
     Boolean[] data = new Boolean[] {true, false, false, true, true};
 
     BooleanColumn booleanColumn = BooleanColumn.create("data", data);

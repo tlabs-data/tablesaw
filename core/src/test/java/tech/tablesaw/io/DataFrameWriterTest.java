@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
 
-public class DataFrameWriterTest {
+class DataFrameWriterTest {
 
   private static final String LINE_END = System.lineSeparator();
 
@@ -22,7 +22,7 @@ public class DataFrameWriterTest {
       Table.create("t", DoubleColumn.create("v", v1), DoubleColumn.create("v2", v2));
 
   @Test
-  public void csv() {
+  void csv() {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     table.write().csv(baos);
     String output = baos.toString();
@@ -32,7 +32,7 @@ public class DataFrameWriterTest {
   }
 
   @Test
-  public void csv2() {
+  void csv2() {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     OutputStreamWriter osw = new OutputStreamWriter(baos);
     table.write().csv(osw);
@@ -43,7 +43,7 @@ public class DataFrameWriterTest {
   }
 
   @Test
-  public void testFileOutputStreamWhetherClose() throws IOException {
+  void testFileOutputStreamWhetherClose() throws IOException {
     // Create directory if it doesn't exist
     String DEFAULT_OUTPUT_FOLDER = "../testoutput";
     Path path = Paths.get(DEFAULT_OUTPUT_FOLDER, "testOutput.csv");
@@ -88,7 +88,7 @@ public class DataFrameWriterTest {
   }
 
   @Test
-  public void testOutputStreamWriterWhetherClose() {
+  void testOutputStreamWriterWhetherClose() {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     OutputStreamWriter osw = new OutputStreamWriter(baos);
     table.write().csv(osw);

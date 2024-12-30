@@ -39,22 +39,22 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.columns.dates.PackedLocalDate;
 import tech.tablesaw.columns.times.PackedLocalTime;
 
-public class PackedLocalDateTimeTest {
+class PackedLocalDateTimeTest {
 
   @Test
-  public void testGetDayOfMonth() {
+  void testGetDayOfMonth() {
     LocalDateTime today = LocalDateTime.now();
     assertEquals(today.getDayOfMonth(), getDayOfMonth(pack(today)));
   }
 
   @Test
-  public void testGetYear() {
+  void testGetYear() {
     LocalDateTime today = LocalDateTime.now();
     assertEquals(today.getYear(), getYear(pack(today)));
   }
 
   @Test
-  public void testAsLocalDateTime() {
+  void testAsLocalDateTime() {
     LocalDateTime dateTime = LocalDateTime.now();
     long packed = pack(dateTime.toLocalDate(), dateTime.toLocalTime());
     LocalDateTime upacked = asLocalDateTime(packed);
@@ -65,13 +65,13 @@ public class PackedLocalDateTimeTest {
   }
 
   @Test
-  public void testGetMonthValue() {
+  void testGetMonthValue() {
     long dateTime = pack(LocalDate.of(2015, 12, 25), LocalTime.now());
     assertEquals(12, getMonthValue(dateTime));
   }
 
   @Test
-  public void testPack() {
+  void testPack() {
     LocalDate date = LocalDate.now();
     LocalTime time = LocalTime.now();
 
@@ -85,43 +85,43 @@ public class PackedLocalDateTimeTest {
   }
 
   @Test
-  public void testGetHour() {
+  void testGetHour() {
     LocalDateTime now = LocalDateTime.now();
     assertEquals(now.getHour(), getHour(pack(now)));
   }
 
   @Test
-  public void testGetMinute() {
+  void testGetMinute() {
     LocalDateTime now = LocalDateTime.now();
     assertEquals(now.getMinute(), getMinute(pack(now)));
   }
 
   @Test
-  public void testGetSecond() {
+  void testGetSecond() {
     LocalDateTime now = LocalDateTime.now();
     assertEquals(now.getSecond(), getSecond(pack(now)));
   }
 
   @Test
-  public void testGetSecondOfDay() {
+  void testGetSecondOfDay() {
     LocalDateTime now = LocalDateTime.now();
     assertEquals(now.get(ChronoField.SECOND_OF_DAY), getSecondOfDay(pack(now)), 0.0001);
   }
 
   @Test
-  public void testGetMinuteOfDay() {
+  void testGetMinuteOfDay() {
     LocalDateTime now = LocalDateTime.now();
     assertEquals(now.get(ChronoField.MINUTE_OF_DAY), getMinuteOfDay(pack(now)));
   }
 
   @Test
-  public void testGetMillisecondOfDay() {
+  void testGetMillisecondOfDay() {
     LocalDateTime now = LocalDateTime.now();
     assertEquals(now.get(ChronoField.MILLI_OF_DAY), getMillisecondOfDay(pack(now)));
   }
 
   @Test
-  public void testGetDayOfWeek() {
+  void testGetDayOfWeek() {
     LocalDateTime now = LocalDateTime.now();
     assertEquals(now.get(ChronoField.DAY_OF_WEEK), getDayOfWeek(pack(now)).getValue());
   }

@@ -42,7 +42,7 @@ import tech.tablesaw.columns.numbers.IntColumnType;
 import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.table.TableSlice;
 
-public class TableTest {
+class TableTest {
 
   private static final String LINE_END = System.lineSeparator();
   private static final int ROWS_BOUNDARY = 1000;
@@ -585,12 +585,13 @@ public class TableTest {
 
     private int sum = 0;
 
-    public int getSum() {
+    int getSum() {
       return sum;
     }
 
     @Override
-    public void accept(Row[] rows) {
+    public
+    void accept(Row[] rows) {
       for (int i = 0; i < 3; i++) {
         sum += rows[i].getShort("approval");
       }
@@ -904,7 +905,7 @@ public class TableTest {
   }
 
   @Test
-  public void testToStringColumnsWithVaryingSizes() {
+  void testToStringColumnsWithVaryingSizes() {
     IntColumn col11 = IntColumn.create("col1");
     IntColumn col12 = IntColumn.create("col2");
     Table t1 = Table.create("t1", col11, col12);

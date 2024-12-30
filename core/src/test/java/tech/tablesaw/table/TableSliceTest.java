@@ -22,17 +22,17 @@ import tech.tablesaw.selection.Selection;
 import tech.tablesaw.sorting.Sort;
 import tech.tablesaw.sorting.Sort.Order;
 
-public class TableSliceTest {
+class TableSliceTest {
 
   private Table source;
 
   @BeforeEach
-  public void setUp() throws Exception {
+  void setUp() throws Exception {
     source = Table.read().csv("../data/bush.csv");
   }
 
   @Test
-  public void column() {
+  void column() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, 4));
     assertEquals(source.column(1).name(), slice.column(1).name());
     assertTrue(source.rowCount() > slice.column(1).size());
@@ -43,13 +43,13 @@ public class TableSliceTest {
   }
 
   @Test
-  public void columnCount() {
+  void columnCount() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     assertEquals(source.columnCount(), slice.columnCount());
   }
 
   @Test
-  public void rowCount() {
+  void rowCount() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     assertEquals(source.rowCount(), slice.rowCount());
 
@@ -58,13 +58,13 @@ public class TableSliceTest {
   }
 
   @Test
-  public void columns() {
+  void columns() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     assertEquals(source.columns().get(0).size(), slice.columns().get(0).size());
   }
 
   @Test
-  public void columnIndex() {
+  void columnIndex() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     assertEquals(source.columnIndex("who"), slice.columnIndex("who"));
 
@@ -73,20 +73,20 @@ public class TableSliceTest {
   }
 
   @Test
-  public void get() {
+  void get() {
     TableSlice slice = new TableSlice(source, Selection.withRange(10, source.rowCount()));
     assertNotNull(slice.get(0, 1));
     assertEquals(source.get(10, 1), slice.get(0, 1));
   }
 
   @Test
-  public void name() {
+  void name() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     assertEquals(source.name(), slice.name());
   }
 
   @Test
-  public void clear() {
+  void clear() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     slice.clear();
     assertTrue(slice.isEmpty());
@@ -94,13 +94,13 @@ public class TableSliceTest {
   }
 
   @Test
-  public void columnNames() {
+  void columnNames() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     assertEquals(source.columnNames(), slice.columnNames());
   }
 
   @Test
-  public void addColumn() {
+  void addColumn() {
     UnsupportedOperationException thrown =
         assertThrows(
             UnsupportedOperationException.class,
@@ -113,7 +113,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void removeColumns() {
+  void removeColumns() {
     UnsupportedOperationException thrown =
         assertThrows(
             UnsupportedOperationException.class,
@@ -128,7 +128,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void first() {
+  void first() {
     TableSlice slice = new TableSlice(source, Selection.withRange(2, 12));
     Table first = slice.first(5);
     assertEquals(first.get(0, 1), slice.get(0, 1));
@@ -136,7 +136,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void setName() {
+  void setName() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     slice.setName("foo");
     assertEquals("foo", slice.name());
@@ -144,13 +144,13 @@ public class TableSliceTest {
   }
 
   @Test
-  public void print() {
+  void print() {
     TableSlice slice = new TableSlice(source, Selection.withRange(0, source.rowCount()));
     assertEquals(source.print(), slice.print());
   }
 
   @Test
-  public void asTable() {
+  void asTable() {
     TableSlice slice = new TableSlice(source, Selection.withRange(1, 11));
     Table t = slice.asTable();
     assertEquals(10, t.rowCount());
@@ -158,21 +158,21 @@ public class TableSliceTest {
   }
 
   @Test
-  public void reduce() throws Exception {
+  void reduce() throws Exception {
     source = Table.read().csv("../data/bush.csv");
     TableSlice slice = new TableSlice(source, Selection.with(2));
     assertEquals(58.0, slice.reduce("approval", sum), 0.0001);
   }
 
   @Test
-  public void reduceNoSelection() throws Exception {
+  void reduceNoSelection() throws Exception {
     source = Table.read().csv("../data/bush.csv");
     TableSlice slice = new TableSlice(source);
     assertEquals(20957.0, slice.reduce("approval", sum), 0.0001);
   }
 
   @Test
-  public void iterateOverRowsWithSelection() {
+  void iterateOverRowsWithSelection() {
     IntColumn rowNumbers =
         IntColumn.create("originalRowNumber", IntStream.range(0, source.rowCount()).toArray());
     source.addColumns(rowNumbers);
@@ -188,7 +188,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void iterateOverRowsWithSort() {
+  void iterateOverRowsWithSort() {
     Selection selection = Selection.withRange(0, 5);
     TableSlice tableSlice = new TableSlice(source, selection);
     tableSlice.sortOn(Sort.on("approval", Order.ASCEND));
@@ -201,7 +201,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void firstWithSort() {
+  void firstWithSort() {
     Selection selection = Selection.withRange(0, 5);
     TableSlice tableSlice = new TableSlice(source, selection);
     tableSlice.sortOn(Sort.on("approval", Order.ASCEND));
@@ -213,7 +213,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void firstWithMultipleSortCriteria() {
+  void firstWithMultipleSortCriteria() {
     TableSlice tableSlice = new TableSlice(source);
     tableSlice.sortOn(Sort.on("who", Order.DESCEND).next("approval", Order.DESCEND));
 
@@ -224,7 +224,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void columnWithSort() {
+  void columnWithSort() {
     Selection selection = Selection.withRange(0, 5);
     TableSlice tableSlice = new TableSlice(source, selection);
     tableSlice.sortOn(Sort.on("approval", Order.ASCEND));
@@ -236,13 +236,13 @@ public class TableSliceTest {
   }
 
   @Test
-  public void columnNoSortNoSelection() {
+  void columnNoSortNoSelection() {
     TableSlice tableSlice = new TableSlice(source);
     assertEquals(tableSlice.column("approval").asList(), source.column("approval").asList());
   }
 
   @Test
-  public void rowCountWithSort() {
+  void rowCountWithSort() {
     Selection selection = Selection.with(0, 1);
     TableSlice tableSlice = new TableSlice(source, selection);
     assertEquals(2, tableSlice.rowCount());
@@ -251,7 +251,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void removeSort() {
+  void removeSort() {
     Selection selection = Selection.withRange(0, 5);
     TableSlice tableSlice = new TableSlice(source, selection);
     tableSlice.sortOn(Sort.on("approval", Order.ASCEND));
@@ -264,7 +264,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void rowNumberIteratorWithSort() {
+  void rowNumberIteratorWithSort() {
     Selection selection = Selection.withRange(0, 5);
     TableSlice tableSlice = new TableSlice(source, selection);
     tableSlice.sortOn(Sort.on("approval", Order.ASCEND));
@@ -279,7 +279,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void rowNumberIteratorWithSelection() {
+  void rowNumberIteratorWithSelection() {
     Selection selection = Selection.withRange(0, 5);
     TableSlice tableSlice = new TableSlice(source, selection);
 
@@ -293,7 +293,7 @@ public class TableSliceTest {
   }
 
   @Test
-  public void rowNumberIteratorWithNoSelection() {
+  void rowNumberIteratorWithNoSelection() {
     TableSlice tableSlice = new TableSlice(source);
 
     Integer[] expected = new Integer[] {53, 53, 58, 52, 52};

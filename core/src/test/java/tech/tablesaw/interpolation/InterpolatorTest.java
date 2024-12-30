@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.columns.numbers.DoubleColumnType;
 
-public class InterpolatorTest {
+class InterpolatorTest {
 
   private static final double missing = DoubleColumnType.missingValueIndicator();
 
   @Test
-  public void testFrontfill() {
+  void testFrontfill() {
     DoubleColumn col =
         (DoubleColumn)
             DoubleColumn.create(
@@ -24,7 +24,7 @@ public class InterpolatorTest {
   }
 
   @Test
-  public void testBackfill() {
+  void testBackfill() {
     DoubleColumn col =
         (DoubleColumn)
             DoubleColumn.create(

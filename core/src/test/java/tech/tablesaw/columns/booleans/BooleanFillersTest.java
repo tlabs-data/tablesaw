@@ -7,7 +7,7 @@ import static tech.tablesaw.columns.booleans.fillers.BooleanIterable.bits;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.BooleanColumn;
 
-public class BooleanFillersTest {
+class BooleanFillersTest {
 
   protected void assertContentEquals(Iterable<Boolean> booleans, boolean... expected) {
     int num = 0;
@@ -19,7 +19,7 @@ public class BooleanFillersTest {
   }
 
   @Test
-  public void test() {
+  void test() {
     BooleanColumn booleanColumn = create("booleans", new boolean[5]);
     assertContentEquals(booleanColumn.fillWith(bits(0b110, 3)), true, true, false, true, true);
   }

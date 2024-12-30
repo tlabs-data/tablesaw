@@ -22,10 +22,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.table.TableSliceGroup;
 
-public class DoubleArraysTest {
+class DoubleArraysTest {
 
   @Test
-  public void testTo2dArray() throws Exception {
+  void testTo2dArray() throws Exception {
     Table table = Table.read().csv("../data/tornadoes_1950-2014.csv");
     TableSliceGroup tableSliceGroup = table.splitOn("Scale");
     int columnNumber = table.columnIndex("Injuries");
@@ -34,7 +34,7 @@ public class DoubleArraysTest {
   }
 
   @Test
-  public void testToN() {
+  void testToN() {
     double[] array = {0, 1, 2};
     assertTrue(Arrays.equals(array, DoubleArrays.toN(3)));
   }

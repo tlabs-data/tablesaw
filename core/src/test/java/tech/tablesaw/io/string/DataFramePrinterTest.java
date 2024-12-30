@@ -8,10 +8,10 @@ import tech.tablesaw.api.FloatColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.numbers.NumberColumnFormatter;
 
-public class DataFramePrinterTest {
+class DataFramePrinterTest {
 
   @Test
-  public void printNull() {
+  void printNull() {
     DoubleColumn col = DoubleColumn.create("testCol");
     col.append(5.0);
     col.appendCell(null);
@@ -22,7 +22,7 @@ public class DataFramePrinterTest {
   }
 
   @Test
-  public void printOneRow() {
+  void printOneRow() {
     Table table = Table.read().csv("../data/bush.csv");
     String out = table.print(1);
     assertTrue(out.contains("2004-02-04"));
@@ -31,7 +31,7 @@ public class DataFramePrinterTest {
   }
 
   @Test
-  public void printWithSmallDoubleNumber() {
+  void printWithSmallDoubleNumber() {
     DoubleColumn col = DoubleColumn.create("testCol");
     col.append(0.000003);
     Table table = Table.create("small decimal table", col);
@@ -40,7 +40,7 @@ public class DataFramePrinterTest {
   }
 
   @Test
-  public void printWithSmallFloatNumber() {
+  void printWithSmallFloatNumber() {
     FloatColumn col = FloatColumn.create("testCol");
     col.append(0.000003f);
     Table table = Table.create("small float table", col);
@@ -49,7 +49,7 @@ public class DataFramePrinterTest {
   }
 
   @Test
-  public void printWithExponent() {
+  void printWithExponent() {
     DoubleColumn col = DoubleColumn.create("testCol");
     col.append(0.000003);
     col.append(123.000003);
@@ -61,7 +61,7 @@ public class DataFramePrinterTest {
   }
 
   @Test
-  public void printWithLargeDoubleNumber() {
+  void printWithLargeDoubleNumber() {
     DoubleColumn col = DoubleColumn.create("testCol");
     col.append(33.333333333333328);
     col.append(9007199254740992d);
@@ -76,7 +76,7 @@ public class DataFramePrinterTest {
   }
 
   @Test
-  public void printWithLargeFloatNumber() {
+  void printWithLargeFloatNumber() {
     FloatColumn col = FloatColumn.create("testCol");
     col.append(33.333333333333328f);
     col.append(900719925474f);

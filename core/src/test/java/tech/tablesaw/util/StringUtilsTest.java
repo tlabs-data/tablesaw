@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
-public class StringUtilsTest {
+class StringUtilsTest {
 
   @Test
-  public void testRemoveZeroDecimal() {
+  void testRemoveZeroDecimal() {
     // Assert zero decimals being removed
     assertEquals("246", StringUtils.removeZeroDecimal("246.0"));
     assertEquals("146", StringUtils.removeZeroDecimal("146.00"));

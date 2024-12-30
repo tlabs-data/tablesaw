@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
-public class TableQueryTest {
+class TableQueryTest {
 
   @Test
-  public void testWithAnd() {
+  void testWithAnd() {
     Table t = Table.read().csv("../data/bush.csv");
     Table t1 =
         t.where(

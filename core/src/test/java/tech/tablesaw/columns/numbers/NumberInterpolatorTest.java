@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 
-public class NumberInterpolatorTest {
+class NumberInterpolatorTest {
 
   private static final double missing = DoubleColumnType.missingValueIndicator();
 
   @Test
-  public void linear() {
+  void linear() {
     DoubleColumn col =
         DoubleColumn.create(
                 "testCol", new double[] {missing, 1.0, missing, missing, missing, 5.0, missing})
