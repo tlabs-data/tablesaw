@@ -113,7 +113,7 @@ public class Marker extends JSONComponent {
     Map<String, Object> context = new HashMap<>();
     context.put("size", size.length == 1 ? size[0] : size);
     if (colorScalePalette != null) {
-      context.put("colorscale", colorScalePalette.toString());
+      context.put("colorscale", colorScalePalette);
     }
     if (cAuto != DEFAULT_C_AUTO) context.put("cauto", cAuto);
     if (color != null && color.length > 0) {
