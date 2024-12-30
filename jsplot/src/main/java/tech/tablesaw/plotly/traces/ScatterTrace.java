@@ -2,6 +2,7 @@ package tech.tablesaw.plotly.traces;
 
 import static tech.tablesaw.plotly.Utils.dataAsString;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.base.Preconditions;
 import io.pebbletemplates.pebble.error.PebbleException;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
@@ -38,6 +39,7 @@ public class ScatterTrace extends AbstractTrace {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -56,6 +58,7 @@ public class ScatterTrace extends AbstractTrace {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -145,7 +148,7 @@ public class ScatterTrace extends AbstractTrace {
       context.put("close", dataAsString(close));
     }
     if (whiskerWidth != DEFAULT_WHISKER_WIDTH) {
-      context.put("whiskerWidth", whiskerWidth);
+      context.put("whiskerwidth", whiskerWidth);
     }
     if (increasing != null) {
       context.put("increasing", increasing);
@@ -166,10 +169,10 @@ public class ScatterTrace extends AbstractTrace {
       context.put("fillColor", fillColor);
     }
     if (hoverLabel != null) {
-      context.put("hoverlabel", hoverLabel.asJavascript());
+      context.put("hoverlabel", hoverLabel.asJSON());
     }
     if (line != null) {
-      context.put("line", line.asJavascript());
+      context.put("line", line.asJSON());
     }
     if (text != null) {
       context.put("text", dataAsString(text));
@@ -361,6 +364,7 @@ public class ScatterTrace extends AbstractTrace {
       return new ScatterTrace(this);
     }
 
+    @Override
     protected String getType() {
       return type;
     }

@@ -134,10 +134,12 @@ public abstract class AbstractTrace implements Trace {
     return context;
   }
 
+  @Override
   public HoverLabel hoverLabel() {
     return hoverLabel;
   }
 
+  @Override
   public boolean showLegend() {
     return showLegend;
   }

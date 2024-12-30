@@ -13,8 +13,7 @@ import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.components.Layout;
 import tech.tablesaw.plotly.traces.Scatter3DTrace;
 
-@Disabled
-public class Scatter3DTest {
+class Scatter3DTest {
 
   private final double[] x = {1, 2, 3, 4, 5, 6};
   private final double[] y = {0, 1, 6, 14, 25, 39};
@@ -23,24 +22,26 @@ public class Scatter3DTest {
   private final String[] labels = {"apple", "bike", "car", "dog", "elephant", "fox"};
 
   @Test
-  public void testAsJavascript() {
+  void testAsJavascript() {
     Scatter3DTrace trace = Scatter3DTrace.builder(x, y, z).text(labels).build();
     assertNotNull(trace.asJavascript(1));
   }
 
+  @Disabled
   @Test
-  public void showScatter() {
+  void showScatter() {
 
     Scatter3DTrace trace =
         Scatter3DTrace.builder(x, y, z).mode(Scatter3DTrace.Mode.MARKERS).text(labels).build();
 
-    Layout layout = Layout.builder().xAxis(Axis.builder().title("x title").build()).build();
+    Layout layout = Layout.builder("x title", "x title").xAxis(Axis.builder().build()).build();
     assertEquals("x title", layout.getTitle());
     Plot.show(new Figure(layout, trace));
   }
 
+  @Disabled
   @Test
-  public void showLineAndMarkers() {
+  void showLineAndMarkers() {
 
     Scatter3DTrace trace =
         Scatter3DTrace.builder(x, y, z).mode(Scatter3DTrace.Mode.LINE_AND_MARKERS).build();
@@ -49,8 +50,9 @@ public class Scatter3DTest {
     Plot.show(new Figure(layout, trace));
   }
 
+  @Disabled
   @Test
-  public void showText() {
+  void showText() {
 
     Scatter3DTrace trace =
         Scatter3DTrace.builder(x, y, z).mode(Scatter3DTrace.Mode.TEXT).text(labels).build();

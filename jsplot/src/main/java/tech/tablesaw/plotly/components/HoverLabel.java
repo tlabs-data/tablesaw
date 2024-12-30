@@ -3,7 +3,7 @@ package tech.tablesaw.plotly.components;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HoverLabel extends Component {
+public class HoverLabel extends JSONComponent {
 
   /** Sets the background color of all hover labels on graph */
   private final String bgColor;
@@ -34,11 +34,6 @@ public class HoverLabel extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJSON();
-  }
-
-  @Override
   protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     context.put("bgcolor", bgColor);
@@ -46,11 +41,6 @@ public class HoverLabel extends Component {
     context.put("namelength", nameLength);
     context.put("font", font.getJSONContext());
     return context;
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
-    return getJSONContext();
   }
 
   public static class HoverLabelBuilder {

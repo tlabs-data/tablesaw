@@ -1,7 +1,5 @@
 package tech.tablesaw.plotly;
 
-import java.io.File;
-import java.nio.file.Paths;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Axis;
@@ -15,7 +13,7 @@ import tech.tablesaw.plotly.components.TickSettings;
 import tech.tablesaw.plotly.traces.ScatterTrace;
 
 @Disabled
-public class ScatterTest {
+class ScatterTest {
 
   private final String[] text = {"acc", "dnax", "lc", "hc", "seq"};
   private final double[] vals = {1, 6, 14, 25, 39};
@@ -26,14 +24,13 @@ public class ScatterTest {
   private final String[] labels = {"a", "b", "c", "d", "e", "f"};
 
   @Test
-  public void testAsJavascript() {
+  void testAsJavascript() {
     ScatterTrace trace = ScatterTrace.builder(x, y).text(labels).build();
-
     System.out.println(trace.asJavascript(1));
   }
 
   @Test
-  public void showScatter() {
+  void showScatter() {
 
     ScatterTrace trace =
         ScatterTrace.builder(x, y)
@@ -44,12 +41,11 @@ public class ScatterTest {
             .build();
 
     Figure figure = new Figure(trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
-  public void showLine() {
+  void showLine() {
     Layout layout =
         Layout.builder()
             .title("test")
@@ -68,13 +64,11 @@ public class ScatterTest {
             .build();
 
     Figure figure = new Figure(layout, trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
-  public void showLineWithArrayTicks() {
+  void showLineWithArrayTicks() {
 
     final double[] x1 = {13, 14, 15, 16, 17, 18};
     final double[] y1 = {0, 1, 6, 14, 25, 39};
@@ -118,31 +112,26 @@ public class ScatterTest {
     ScatterTrace trace2 = ScatterTrace.builder(x2, y2).mode(ScatterTrace.Mode.LINE).build();
 
     Figure figure = new Figure(layout, trace1, trace2, trace3);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
-  public void showLineAndMarkers() {
+  void showLineAndMarkers() {
 
     ScatterTrace trace =
         ScatterTrace.builder(x, y).mode(ScatterTrace.Mode.LINE_AND_MARKERS).build();
 
     Figure figure = new Figure(trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
-  public void showText() {
+  void showText() {
 
     ScatterTrace trace =
         ScatterTrace.builder(x, y).mode(ScatterTrace.Mode.TEXT).text(labels).build();
 
     Figure figure = new Figure(trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 }

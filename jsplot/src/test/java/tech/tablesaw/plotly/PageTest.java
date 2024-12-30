@@ -7,13 +7,13 @@ import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.components.Page;
 import tech.tablesaw.plotly.traces.BarTrace;
 
-public class PageTest {
+class PageTest {
 
   private final Object[] x = {"sheep", "cows", "fish", "tree sloths"};
   private final double[] y = {1, 4, 9, 16};
 
   @Test
-  public void testDefaultPlotlyJsLocation() {
+  void testDefaultPlotlyJsLocation() {
     BarTrace trace = BarTrace.builder(x, y).build();
     Page page = Page.pageBuilder(new Figure(trace), "plot").build();
     String html = page.asJavascript();
@@ -21,7 +21,7 @@ public class PageTest {
   }
 
   @Test
-  public void testCustomPlotlyJsLocation() {
+  void testCustomPlotlyJsLocation() {
     BarTrace trace = BarTrace.builder(x, y).build();
     String location =
         this.getClass().getResource(this.getClass().getSimpleName() + ".class").toString();

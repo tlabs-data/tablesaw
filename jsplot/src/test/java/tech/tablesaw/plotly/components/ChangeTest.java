@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.change.ChangeLine;
 import tech.tablesaw.plotly.components.change.Increasing;
 
-public class ChangeTest {
+class ChangeTest {
 
   @Test
-  public void testJavascript() {
+  void testAsJSON() {
 
     Increasing increasing =
         Increasing.builder()
@@ -17,18 +17,20 @@ public class ChangeTest {
             .fillColor("444")
             .build();
 
-    assertTrue(increasing.asJavascript().contains("line"));
-    assertTrue(increasing.asJavascript().contains("color"));
-    assertTrue(increasing.asJavascript().contains("width"));
-    assertTrue(increasing.asJavascript().contains("fillcolor"));
+    final String asJSON = increasing.asJSON();
+    assertTrue(asJSON.contains("line"));
+    assertTrue(asJSON.contains("color"));
+    assertTrue(asJSON.contains("width"));
+    assertTrue(asJSON.contains("fillcolor"));
   }
 
   @Test
-  public void testJavascript2() {
+  void testChangeLine() {
 
     ChangeLine line = ChangeLine.builder().width(4).color("444").build();
 
-    assertTrue(line.asJavascript().contains("color"));
-    assertTrue(line.asJavascript().contains("width"));
+    final String asJSON = line.asJSON();
+    assertTrue(asJSON.contains("color"));
+    assertTrue(asJSON.contains("width"));
   }
 }

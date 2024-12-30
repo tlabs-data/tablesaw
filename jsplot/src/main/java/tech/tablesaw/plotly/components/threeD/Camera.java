@@ -2,9 +2,9 @@ package tech.tablesaw.plotly.components.threeD;
 
 import java.util.HashMap;
 import java.util.Map;
-import tech.tablesaw.plotly.components.Component;
+import tech.tablesaw.plotly.components.JSONComponent;
 
-public class Camera extends Component {
+public class Camera extends JSONComponent {
 
   private final Center center;
   private final Up up;
@@ -17,17 +17,12 @@ public class Camera extends Component {
   }
 
   @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     context.put("up", up);
     context.put("eye", eye);
     context.put("center", center);
     return context;
-  }
-
-  @Override
-  public String asJavascript() {
-    return asJavascript("camera_template.html");
   }
 
   public CameraBuilder cameraBuilder() {

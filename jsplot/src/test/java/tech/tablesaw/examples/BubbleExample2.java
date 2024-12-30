@@ -13,7 +13,6 @@
  */
 package tech.tablesaw.examples;
 
-import java.io.IOException;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.Plot;
 import tech.tablesaw.plotly.api.BubblePlot;
@@ -22,7 +21,7 @@ import tech.tablesaw.plotly.components.Figure;
 /** */
 public class BubbleExample2 {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) {
 
     Table wines = Table.read().csv("../data/test_wines.csv");
 

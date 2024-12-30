@@ -9,6 +9,9 @@ import java.io.StringWriter;
 import java.io.UncheckedIOException;
 import java.io.Writer;
 import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import tech.tablesaw.api.CategoricalColumn;
 import tech.tablesaw.api.NumericColumn;
 import tech.tablesaw.plotly.components.Marker;
@@ -80,6 +83,7 @@ public class BarTrace extends AbstractTrace {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;

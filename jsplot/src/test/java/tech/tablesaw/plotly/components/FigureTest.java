@@ -85,53 +85,44 @@ class FigureTest {
             + LINE_END
             + "        var layout = {"
             + LINE_END
-            + "    title: 'A test title',"
+            + "  margin : {"
             + LINE_END
-            + "    height: 450,"
+            + "    autoexpand : true,"
             + LINE_END
-            + "    width: 700,"
+            + "    b : 80,"
             + LINE_END
-            + "    showlegend: true,"
+            + "    l : 200,"
             + LINE_END
-            + "    margin: {"
+            + "    pad : 0,"
             + LINE_END
-            + "  \"autoexpand\" : true,"
+            + "    r : 80,"
             + LINE_END
-            + "  \"b\" : 80,"
+            + "    t : 200"
             + LINE_END
-            + "  \"l\" : 200,"
+            + "  },"
             + LINE_END
-            + "  \"pad\" : 0,"
+            + "  showlegend : true,"
             + LINE_END
-            + "  \"r\" : 80,"
+            + "  title : \"A test title\","
             + LINE_END
-            + "  \"t\" : 200"
+            + "  xaxis : {"
             + LINE_END
-            + "},"
+            + "    title : \"x Axis 1\","
             + LINE_END
-            + "    xaxis: {"
+            + "    titlefont : {"
             + LINE_END
-            + "    title: 'x Axis 1',"
+            + "      color : \"red\","
             + LINE_END
-            + "        titlefont: {"
+            + "      family : \"arial\","
             + LINE_END
-            + "  \"color\" : \"red\","
+            + "      size : 8"
             + LINE_END
-            + "  \"family\" : \"arial\","
+            + "    }"
             + LINE_END
-            + "  \"size\" : 8"
-            + LINE_END
-            + "},"
-            + LINE_END
-            + "    },"
-            + LINE_END
-            + ""
-            + LINE_END
-            + ""
+            + "  }"
             + LINE_END
             + "};"
             + LINE_END
-            + ""
             + LINE_END
             + "var trace0 ="
             + LINE_END

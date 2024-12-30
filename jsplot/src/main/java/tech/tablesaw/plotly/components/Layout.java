@@ -1,18 +1,13 @@
 package tech.tablesaw.plotly.components;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.UncheckedIOException;
-import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.pebbletemplates.pebble.PebbleEngine;
-import io.pebbletemplates.pebble.error.PebbleException;
-import io.pebbletemplates.pebble.template.PebbleTemplate;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import tech.tablesaw.plotly.components.threeD.Scene;
 
-public class Layout {
+public class Layout extends TemplateComponent {
 
   private static final int DEFAULT_HEIGHT = 600;
   private static final int DEFAULT_WIDTH = 800;
@@ -22,14 +17,13 @@ public class Layout {
   private static final String DEFAULT_DECIMAL_SEPARATOR = ".";
   private static final String DEFAULT_THOUSANDS_SEPARATOR = ",";
   private static final boolean DEFAULT_AUTO_SIZE = false;
-  private static final HoverMode DEFAULT_HOVER_MODE = HoverMode.FALSE;
+  private static final HoverMode DEFAULT_HOVER_MODE = HoverMode.CLOSEST;
   private static final DragMode DEFAULT_DRAG_MODE = DragMode.ZOOM;
   private static final int DEFAULT_HOVER_DISTANCE = 20;
   private static final BarMode DEFAULT_BAR_MODE = BarMode.GROUP;
   private static final Font DEFAULT_TITLE_FONT = Font.builder().build();
   private static final Font DEFAULT_FONT = Font.builder().build();
 
-  private final PebbleEngine engine = TemplateUtils.getNewEngine();
   private final Scene scene;
 
   /** Determines the mode of hover interactions. */
@@ -45,6 +39,7 @@ public class Layout {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -73,6 +68,7 @@ public class Layout {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -97,6 +93,7 @@ public class Layout {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -120,9 +117,6 @@ public class Layout {
    * width or height is always initialized on the first call to plot.
    */
   private final boolean autoSize;
-
-  private final boolean heightSet;
-  private final boolean widthSet;
 
   /** The width of the plot in pixels */
   private final int width;
@@ -183,8 +177,6 @@ public class Layout {
   private Layout(LayoutBuilder builder) {
     this.title = builder.title;
     this.autoSize = builder.autoSize;
-    this.widthSet = builder.widthSet;
-    this.heightSet = builder.heightSet;
     this.decimalSeparator = builder.decimalSeparator;
     this.thousandsSeparator = builder.thousandsSeparator;
     this.dragMode = builder.dragMode;
@@ -213,43 +205,31 @@ public class Layout {
     return title;
   }
 
+  @Override
   public String asJavascript() {
-    Writer writer = new StringWriter();
-    PebbleTemplate compiledTemplate;
-    try {
-      compiledTemplate = engine.getTemplate("layout_template.html");
-      compiledTemplate.evaluate(writer, getContext());
-    } catch (PebbleException e) {
-      throw new IllegalStateException(e);
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    }
-    return writer.toString();
+    return "var layout = " + asJSON() + ";" + System.lineSeparator();
   }
 
-  protected Map<String, Object> getContext() {
+  @Override
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     if (!title.equals(DEFAULT_TITLE)) context.put("title", title);
-    if (!titleFont.equals(DEFAULT_TITLE_FONT)) context.put("titlefont", titleFont);
-    if (!font.equals(DEFAULT_FONT)) context.put("font", font);
+    if (!titleFont.equals(DEFAULT_TITLE_FONT)) context.put("titlefont", titleFont.getJSONContext());
+    if (!font.equals(DEFAULT_FONT)) context.put("font", font.getJSONContext());
     if (autoSize != DEFAULT_AUTO_SIZE) {
       context.put("autosize", autoSize);
-      // since autosize is true, we assume the default width / height values are not wanted, not
-      // serialize them, and let Plotly compute them
-      if (widthSet) {
-        context.put("width", width);
-      }
-      if (heightSet) {
-        context.put("height", height);
-      }
-    } else {
+    }
+    // set width and height if they were set
+    if (width > 0) {
       context.put("width", width);
+    }
+    if (height > 0) {
       context.put("height", height);
     }
     if (hoverDistance != DEFAULT_HOVER_DISTANCE) context.put("hoverdistance", hoverDistance);
     if (!hoverMode.equals(DEFAULT_HOVER_MODE)) context.put("hoverMode", hoverMode);
     if (margin != null) {
-      context.put("margin", margin);
+      context.put("margin", margin.getJSONContext());
     }
     if (!decimalSeparator.equals(DEFAULT_DECIMAL_SEPARATOR))
       context.put("decimalSeparator", decimalSeparator);
@@ -265,25 +245,25 @@ public class Layout {
     if (scene != null) context.put("scene", scene);
 
     if (xAxis != null) {
-      context.put("xAxis", xAxis);
+      context.put("xaxis", xAxis.getJSONContext());
     }
     if (yAxis != null) {
-      context.put("yAxis", yAxis);
+      context.put("yaxis", yAxis.getJSONContext());
     }
     if (yAxis2 != null) {
-      context.put("yAxis2", yAxis2);
+      context.put("yaxis2", yAxis2.getJSONContext());
     }
     if (yAxis3 != null) {
-      context.put("yAxis3", yAxis3);
+      context.put("yaxis3", yAxis3.getJSONContext());
     }
     if (yAxis4 != null) {
-      context.put("yAxis4", yAxis4);
+      context.put("yaxis4", yAxis4.getJSONContext());
     }
     if (zAxis != null) { // TODO: remove? It's in scene for 3d scatters at least.
-      context.put("zAxis", zAxis);
+      context.put("zaxis", zAxis.getJSONContext());
     }
     if (grid != null) {
-      context.put("grid", grid);
+      context.put("grid", grid.getJSONContext());
     }
     return context;
   }
@@ -322,14 +302,11 @@ public class Layout {
      */
     private boolean autoSize = false;
 
-    private boolean widthSet = false;
-    private boolean heightSet = false;
-
     /** The width of the plot in pixels */
-    private int width = 700;
+    private int width = -1;
 
     /** The height of the plot in pixels */
-    private int height = 450;
+    private int height = -1;
 
     /** Sets the margins around the plot */
     private Margin margin;
@@ -432,13 +409,11 @@ public class Layout {
 
     public LayoutBuilder height(int height) {
       this.height = height;
-      this.heightSet = true;
       return this;
     }
 
     public LayoutBuilder width(int width) {
       this.width = width;
-      this.widthSet = true;
       return this;
     }
 

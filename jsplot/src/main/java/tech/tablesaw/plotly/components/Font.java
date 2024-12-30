@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Font extends Component {
+public class Font extends JSONComponent {
 
   /**
    * HTML font family - the typeface that will be applied by the web browser. The web browser will
@@ -37,7 +37,7 @@ public class Font extends Component {
     }
   }
 
-  private final Family fontFamily;
+  private final Family family;
 
   private final int size; // number greater than or equal to 1
 
@@ -45,7 +45,7 @@ public class Font extends Component {
 
   private Font(FontBuilder builder) {
     this.color = builder.color;
-    this.fontFamily = builder.fontFamily;
+    this.family = builder.fontFamily;
     this.size = builder.size;
   }
 
@@ -54,22 +54,12 @@ public class Font extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJSON();
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     context.put("size", size);
-    context.put("family", fontFamily);
+    context.put("family", family);
     context.put("color", color);
     return context;
-  }
-
-  @Override
-  protected Map<String, Object> getJSONContext() {
-    return getContext();
   }
 
   public static class FontBuilder {
@@ -108,12 +98,12 @@ public class Font extends Component {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Font font = (Font) o;
-    return size == font.size && fontFamily == font.fontFamily && Objects.equals(color, font.color);
+    return size == font.size && family == font.family && Objects.equals(color, font.color);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(fontFamily, size, color);
+    return Objects.hash(family, size, color);
   }
 }

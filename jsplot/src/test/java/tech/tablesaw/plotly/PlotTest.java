@@ -1,7 +1,5 @@
 package tech.tablesaw.plotly;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.File;
 import java.nio.file.Paths;
 import org.junit.jupiter.api.Disabled;

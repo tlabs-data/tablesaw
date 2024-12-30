@@ -1,10 +1,11 @@
 package tech.tablesaw.plotly.components;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.base.Preconditions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ColorBar extends Component {
+public class ColorBar extends JSONComponent {
 
   private static final ThicknessMode DEFAULT_THICKNESS_MODE = ThicknessMode.PIXELS;
   private static final double DEFAULT_THICKNESS = 30.0;
@@ -43,6 +44,7 @@ public class ColorBar extends Component {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -59,6 +61,7 @@ public class ColorBar extends Component {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -76,6 +79,7 @@ public class ColorBar extends Component {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -93,6 +97,7 @@ public class ColorBar extends Component {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -151,12 +156,7 @@ public class ColorBar extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJavascript("colorbar_template.html");
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     if (!thicknessMode.equals(DEFAULT_THICKNESS_MODE)) context.put("thicknessMode", thicknessMode);
     if (!lenMode.equals(DEFAULT_LEN_MODE)) context.put("lenMode", lenMode);
