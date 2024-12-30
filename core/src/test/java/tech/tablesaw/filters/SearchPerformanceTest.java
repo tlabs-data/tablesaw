@@ -47,7 +47,7 @@ public class SearchPerformanceTest {
   private static int numberOfRecordsInTable = 5_000_000;
   private static LongIndex dateIndex;
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
 
     Stopwatch stopwatch = Stopwatch.createStarted();
 
