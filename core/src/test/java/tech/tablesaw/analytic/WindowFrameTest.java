@@ -11,7 +11,7 @@ import tech.tablesaw.analytic.WindowFrame.WindowGrowthType;
 class WindowFrameTest {
 
   @Test
-  public void testDefault() {
+  void testDefault() {
     WindowFrame frame = WindowFrame.builder().build();
 
     String expectedString = "ROWS BETWEEN UNBOUNDED_PRECEDING AND UNBOUNDED_FOLLOWING";
@@ -22,7 +22,7 @@ class WindowFrameTest {
   }
 
   @Test
-  public void testPreceding() {
+  void testPreceding() {
     WindowFrame frame = WindowFrame.builder().setLeftPreceding(5).setRightPreceding(2).build();
     String expectedString = "ROWS BETWEEN 5 PRECEDING AND 2 PRECEDING";
 
@@ -34,7 +34,7 @@ class WindowFrameTest {
   }
 
   @Test
-  public void testCurrentRowToUnbounded() {
+  void testCurrentRowToUnbounded() {
     WindowFrame frame = WindowFrame.builder().setLeftCurrentRow().build();
 
     String expectedString = "ROWS BETWEEN CURRENT_ROW AND UNBOUNDED_FOLLOWING";
@@ -47,7 +47,7 @@ class WindowFrameTest {
   }
 
   @Test
-  public void testFollowing() {
+  void testFollowing() {
     WindowFrame frame = WindowFrame.builder().setLeftFollowing(2).setRightFollowing(5).build();
     String expectedString = "ROWS BETWEEN 2 FOLLOWING AND 5 FOLLOWING";
 
@@ -59,7 +59,7 @@ class WindowFrameTest {
   }
 
   @Test
-  public void precedingBeforeFollowing() {
+  void precedingBeforeFollowing() {
     Throwable thrown =
         assertThrows(
             IllegalArgumentException.class,
@@ -69,7 +69,7 @@ class WindowFrameTest {
   }
 
   @Test
-  public void followingBeforeCurrentRow() {
+  void followingBeforeCurrentRow() {
     Throwable thrown =
         assertThrows(
             IllegalArgumentException.class,
@@ -79,7 +79,7 @@ class WindowFrameTest {
   }
 
   @Test
-  public void rightShiftLargerThanLeftShiftWithPrecedingWindow() {
+  void rightShiftLargerThanLeftShiftWithPrecedingWindow() {
     Throwable thrown =
         assertThrows(
             IllegalArgumentException.class,
@@ -91,7 +91,7 @@ class WindowFrameTest {
   }
 
   @Test
-  public void rightShiftLargerThanLeftShiftWithFollowinggWindow() {
+  void rightShiftLargerThanLeftShiftWithFollowinggWindow() {
     Throwable thrown =
         assertThrows(
             IllegalArgumentException.class,
@@ -103,41 +103,41 @@ class WindowFrameTest {
   }
 
   @Test
-  public void rightShiftEqualsThanLeftShift() {
+  void rightShiftEqualsThanLeftShift() {
     assertThrows(
         IllegalArgumentException.class,
         () -> WindowFrame.builder().setLeftPreceding(5).setRightPreceding(5).build());
   }
 
   @Test
-  public void windowGrowthTypeUnbounded() {
+  void windowGrowthTypeUnbounded() {
     WindowGrowthType growthType = WindowFrame.builder().build().windowGrowthType();
     assertEquals(WindowGrowthType.FIXED, growthType);
   }
 
   @Test
-  public void windowGrowthTypeFixedStart() {
+  void windowGrowthTypeFixedStart() {
     WindowGrowthType growthType =
         WindowFrame.builder().setRightFollowing(10).build().windowGrowthType();
     assertEquals(WindowGrowthType.FIXED_LEFT, growthType);
   }
 
   @Test
-  public void windowGrothTypeFixedEnd() {
+  void windowGrothTypeFixedEnd() {
     WindowGrowthType growthType =
         WindowFrame.builder().setLeftFollowing(10).build().windowGrowthType();
     assertEquals(WindowGrowthType.FIXED_RIGHT, growthType);
   }
 
   @Test
-  public void windowGrowthTypeSliding() {
+  void windowGrowthTypeSliding() {
     WindowGrowthType growthType =
         WindowFrame.builder().setLeftPreceding(5).setRightFollowing(5).build().windowGrowthType();
     assertEquals(WindowGrowthType.SLIDING, growthType);
   }
 
   @Test
-  public void windowGrowthTypeSlidingWithCurrentRow() {
+  void windowGrowthTypeSlidingWithCurrentRow() {
     WindowGrowthType growthType =
         WindowFrame.builder().setLeftPreceding(5).setRightCurrentRow().build().windowGrowthType();
     assertEquals(WindowGrowthType.SLIDING, growthType);

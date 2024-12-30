@@ -13,25 +13,25 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.columns.dates.DateColumnType;
 import tech.tablesaw.columns.dates.DateParser;
 
-public class DateColumnTest {
+class DateColumnTest {
   private DateColumn column1;
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     Table table = Table.create("Test");
     column1 = DateColumn.create("Game date");
     table.addColumns(column1);
   }
 
   @Test
-  public void testCreateMissingValue() {
+  void testCreateMissingValue() {
     LocalDate[] dates = new LocalDate[5];
     DateColumn column = DateColumn.create("Game date", dates);
     assertEquals(DateColumnType.missingValueIndicator(), column.getIntInternal(0));
   }
 
   @Test
-  public void testAddCell() {
+  void testAddCell() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/23/1924");
     column1.appendCell("12-May-2015");
@@ -43,7 +43,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     DateParser customParser = new DateParser(ColumnType.LOCAL_DATE);
     customParser.setMissingValueStrings(Arrays.asList("not here"));
@@ -56,7 +56,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testPrint() {
+  void testPrint() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/23/1924");
     column1.appendCell("12-May-2015");
@@ -77,7 +77,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testPrint2() {
+  void testPrint2() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/23/1924");
     column1.appendCell("12-May-2015");
@@ -98,7 +98,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testDayOfMonth() {
+  void testDayOfMonth() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/24/1924");
     column1.appendCell("12-May-2015");
@@ -111,7 +111,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testMonth() {
+  void testMonth() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/24/1924");
     column1.appendCell("12-May-2015");
@@ -124,7 +124,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testYearMonthString() {
+  void testYearMonthString() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/24/1924");
     column1.appendCell("12-May-2015");
@@ -137,7 +137,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testYear() {
+  void testYear() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/24/1924");
     column1.appendCell("12-May-2015");
@@ -148,7 +148,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testSummary() {
+  void testSummary() {
     column1.appendCell("2013-10-23");
     column1.appendCell("12/24/1924");
     column1.appendCell("12-May-2015");
@@ -161,7 +161,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testMin() {
+  void testMin() {
     column1.appendInternal(DateColumnType.missingValueIndicator());
     column1.appendCell("2013-10-23");
 
@@ -171,7 +171,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testSortOn() {
+  void testSortOn() {
     Table unsorted =
         Table.read()
             .csv(
@@ -192,7 +192,7 @@ public class DateColumnTest {
   }
 
   @Test
-  public void testCountUnique() {
+  void testCountUnique() {
     column1.append(LocalDate.of(2000, 1, 1));
     column1.append(LocalDate.of(2000, 1, 1));
     column1.append(LocalDate.of(2000, 2, 1));

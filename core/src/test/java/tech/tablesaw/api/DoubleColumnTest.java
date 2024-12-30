@@ -22,10 +22,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.columns.numbers.DoubleParser;
 
-public class DoubleColumnTest {
+class DoubleColumnTest {
 
   @Test
-  public void createFromList() {
+  void createFromList() {
     List<Double> list = new ArrayList<>();
     list.add(2.0);
     DoubleColumn col = DoubleColumn.create("test", list);
@@ -33,14 +33,14 @@ public class DoubleColumnTest {
   }
 
   @Test
-  public void createFromObjectArray() {
+  void createFromObjectArray() {
     Double[] input = new Double[] {2.0, 6.0};
     DoubleColumn col = DoubleColumn.create("test", input);
     assertArrayEquals(new double[] {2.0, 6.0}, col.asDoubleArray());
   }
 
   @Test
-  public void unique() {
+  void unique() {
     DoubleColumn uniq = DoubleColumn.create("test", 5, 4, 3, 2, 1, 5, 4, 3, 2, 1).unique();
     double[] arr = uniq.asDoubleArray();
     Arrays.sort(arr);
@@ -48,7 +48,7 @@ public class DoubleColumnTest {
   }
 
   @Test
-  public void createThenSortAscending() {
+  void createThenSortAscending() {
     DoubleColumn col = DoubleColumn.create("test");
     col.append(3.0).append(1.0).append(2.0).append(4.0);
     col.sortAscending();
@@ -56,21 +56,21 @@ public class DoubleColumnTest {
   }
 
   @Test
-  public void sortAscending() {
+  void sortAscending() {
     DoubleColumn col = DoubleColumn.create("test", 3.0, 1.0, 2.0, 4.0);
     col.sortAscending();
     assertArrayEquals(new double[] {1.0, 2.0, 3.0, 4.0}, col.asDoubleArray());
   }
 
   @Test
-  public void uniqueThenSort() {
+  void uniqueThenSort() {
     DoubleColumn uniq = DoubleColumn.create("test", 5, 4, 3, 2, 1, 5, 4, 3, 2, 1).unique();
     uniq.sortAscending();
     assertArrayEquals(new double[] {1.0, 2.0, 3.0, 4.0, 5.0}, uniq.asDoubleArray());
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     DoubleParser customParser = new DoubleParser(ColumnType.DOUBLE);
     customParser.setMissingValueStrings(Arrays.asList("not here"));
@@ -84,7 +84,7 @@ public class DoubleColumnTest {
   }
 
   @Test
-  public void asSet() {
+  void asSet() {
     final double[] values = {4, 5, 9.3, 5, 9.3};
     final DoubleColumn c = DoubleColumn.create("fc", values);
     assertEquals(3, c.asSet().size());

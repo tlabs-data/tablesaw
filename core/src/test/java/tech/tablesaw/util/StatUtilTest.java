@@ -21,10 +21,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 
 /** */
-public class StatUtilTest {
+class StatUtilTest {
 
   @Test
-  public void testSum() {
+  void testSum() {
     Random random = new Random();
     double sum = 0.0f;
     DoubleColumn column = DoubleColumn.create("c1");
@@ -37,7 +37,7 @@ public class StatUtilTest {
   }
 
   @Test
-  public void testMin() {
+  void testMin() {
     Random random = new Random();
     double min = Double.MAX_VALUE;
     DoubleColumn column = DoubleColumn.create("c1");
@@ -52,7 +52,7 @@ public class StatUtilTest {
   }
 
   @Test
-  public void testMax() {
+  void testMax() {
     Random random = new Random();
     double max = Double.MIN_VALUE;
     DoubleColumn column = DoubleColumn.create("c1");

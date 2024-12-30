@@ -29,7 +29,7 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.api.TimeColumn;
 import tech.tablesaw.selection.Selection;
 
-public class LocalTimeFilterTest {
+class LocalTimeFilterTest {
 
   private TimeColumn localTimeColumn = TimeColumn.create("testing");
   private TimeColumn column1 = TimeColumn.create("Game time");
@@ -37,7 +37,7 @@ public class LocalTimeFilterTest {
   private Table table = Table.create("test");
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     localTimeColumn.appendInternal(of(10, 2, 28));
     localTimeColumn.appendInternal(of(12, 0, 0));
     localTimeColumn.appendInternal(of(20, 3, 1));
@@ -46,7 +46,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testColumnEquality() {
+  void testColumnEquality() {
     TimeColumn column1 = localTimeColumn.copy();
     column1.setName("copy");
     table.addColumns(column1);
@@ -57,7 +57,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testColumnInEquality() {
+  void testColumnInEquality() {
     TimeColumn column1 = localTimeColumn.copy();
     column1.setName("copy");
     table.addColumns(column1);
@@ -68,7 +68,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testColumnIsBefore() {
+  void testColumnIsBefore() {
     TimeColumn column1 = localTimeColumn.copy();
     column1.setName("copy");
 
@@ -89,7 +89,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testColumnIsAfter() {
+  void testColumnIsAfter() {
     TimeColumn column1 = localTimeColumn.copy();
     column1.setName("copy");
 
@@ -110,7 +110,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testIsAM() {
+  void testIsAM() {
     Selection selection = localTimeColumn.isBeforeNoon();
     assertTrue(selection.contains(0));
     assertFalse(selection.contains(1));
@@ -119,7 +119,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testIsPM() {
+  void testIsPM() {
     Selection selection = localTimeColumn.isAfterNoon();
     assertFalse(selection.contains(0));
     assertTrue(selection.contains(1));
@@ -127,7 +127,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testIsMidnight() {
+  void testIsMidnight() {
     Selection selection = localTimeColumn.isMidnight();
     assertFalse(selection.contains(0));
     assertFalse(selection.contains(1));
@@ -136,7 +136,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testIsNoon() {
+  void testIsNoon() {
     Selection selection = localTimeColumn.isNoon();
     assertFalse(selection.contains(0));
     assertTrue(selection.contains(1));
@@ -145,7 +145,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testAfter() {
+  void testAfter() {
     Table t = Table.create("test");
     t.addColumns(column1);
     column1.appendCell("05:15:30");
@@ -155,7 +155,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testAfter2() {
+  void testAfter2() {
     column1.appendCell("05:15:30");
     column1.appendCell("10:15:30");
     Selection result = column1.isAfter(LocalTime.of(7, 4, 2, 0));
@@ -164,7 +164,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testEqual() {
+  void testEqual() {
     Table t = Table.create("test");
     t.addColumns(column1);
     fillColumn();
@@ -174,7 +174,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testNotEqual() {
+  void testNotEqual() {
     Table t = Table.create("test");
     t.addColumns(column1);
     fillColumn();
@@ -184,7 +184,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testEqual2() {
+  void testEqual2() {
     column1.appendCell("05:15:30");
     column1.appendCell("10:15:30");
     Selection result = column1.isEqualTo(LocalTime.of(5, 15, 30, 0));
@@ -193,7 +193,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testNotEqual2() {
+  void testNotEqual2() {
     column1.appendCell("05:15:30");
     column1.appendCell("10:15:30");
     Selection result = column1.isNotEqualTo(LocalTime.of(5, 15, 30, 0));
@@ -202,7 +202,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testBefore() {
+  void testBefore() {
     Table t = Table.create("test");
     t.addColumns(column1);
     column1.appendCell("05:15:30");
@@ -213,7 +213,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testBefore2() {
+  void testBefore2() {
     column1.appendCell("05:15:30");
     column1.appendCell("10:15:30");
     Selection result = column1.isBefore(LocalTime.of(7, 4, 2, 0));
@@ -222,7 +222,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testOnOrAfter() {
+  void testOnOrAfter() {
     Table t = Table.create("test");
     t.addColumns(column1);
     fillColumn();
@@ -231,7 +231,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testOnOrBefore() {
+  void testOnOrBefore() {
     Table t = Table.create("test");
     t.addColumns(column1);
     fillColumn();
@@ -241,7 +241,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testOnOrBefore2() {
+  void testOnOrBefore2() {
     fillColumn();
     Selection result = column1.isOnOrBefore(LocalTime.of(7, 4, 2, 0));
     assertEquals(1, result.size());
@@ -249,7 +249,7 @@ public class LocalTimeFilterTest {
   }
 
   @Test
-  public void testOnOrAfter2() {
+  void testOnOrAfter2() {
     fillColumn();
     Selection selection = column1.isOnOrAfter(LocalTime.of(7, 4, 2, 0));
     assertEquals(2, selection.size());

@@ -25,13 +25,13 @@ import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
 /** */
-public class DoubleIndexTest {
+class DoubleIndexTest {
 
   private DoubleIndex index;
   private Table table;
 
   @BeforeEach
-  public void setUp() throws Exception {
+  void setUp() throws Exception {
 
     table =
         Table.read()
@@ -52,14 +52,14 @@ public class DoubleIndexTest {
   }
 
   @Test
-  public void testGet() {
+  void testGet() {
     Selection fromCol = table.numberColumn("stop_lat").eval(NumberPredicates.isEqualTo(30.330425));
     Selection fromIdx = index.get(30.330425);
     assertEquals(fromCol, fromIdx);
   }
 
   @Test
-  public void testGTE() {
+  void testGTE() {
     Selection fromCol =
         table.numberColumn("stop_lat").eval(NumberPredicates.isGreaterThanOrEqualTo(30.330425));
     Selection fromIdx = index.atLeast(30.330425);
@@ -67,7 +67,7 @@ public class DoubleIndexTest {
   }
 
   @Test
-  public void testLTE() {
+  void testLTE() {
     Selection fromCol =
         table.numberColumn("stop_lat").eval(NumberPredicates.isLessThanOrEqualTo(30.330425));
     Selection fromIdx = index.atMost(30.330425);
@@ -75,14 +75,14 @@ public class DoubleIndexTest {
   }
 
   @Test
-  public void testLT() {
+  void testLT() {
     Selection fromCol = table.numberColumn("stop_lat").eval(NumberPredicates.isLessThan(30.330425));
     Selection fromIdx = index.lessThan(30.330425);
     assertEquals(fromCol, fromIdx);
   }
 
   @Test
-  public void testGT() {
+  void testGT() {
     Selection fromCol =
         table.numberColumn("stop_lat").eval(NumberPredicates.isGreaterThan(30.330425));
     Selection fromIdx = index.greaterThan(30.330425);

@@ -26,14 +26,14 @@ import tech.tablesaw.columns.booleans.BooleanFormatter;
 import tech.tablesaw.columns.booleans.BooleanParser;
 
 /** Tests for BooleanColumn */
-public class BooleanColumnTest {
+class BooleanColumnTest {
 
   private static final String LINE_END = System.lineSeparator();
 
   private final BooleanColumn column = BooleanColumn.create("Test");
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     column.append(false);
     column.append(false);
     column.append(false);
@@ -44,32 +44,32 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testAny() {
+  void testAny() {
     assertTrue(column.any());
   }
 
   @Test
-  public void testAll() {
+  void testAll() {
     assertFalse(column.all());
     BooleanColumn filtered = column.where(column.isTrue());
     assertTrue(filtered.all());
   }
 
   @Test
-  public void asDoubleColumn() {
+  void asDoubleColumn() {
     DoubleColumn doubleColumn = column.asDoubleColumn();
     assertEquals(column.size(), doubleColumn.size());
   }
 
   @Test
-  public void inRange() {
+  void inRange() {
     assertFalse(column.all());
     BooleanColumn filtered = column.inRange(0, 2);
     assertEquals(2, filtered.size());
   }
 
   @Test
-  public void fixNPESortingWithMissingValues() {
+  void fixNPESortingWithMissingValues() {
     assertFalse(column.all());
     column.appendMissing();
     column.appendMissing();
@@ -78,39 +78,39 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testNone() {
+  void testNone() {
     assertFalse(column.none());
     BooleanColumn filtered = column.where(column.isFalse());
     assertTrue(filtered.none());
   }
 
   @Test
-  public void testSet() {
+  void testSet() {
     assertFalse(column.none());
     column.set(column.isTrue(), false);
     assertTrue(column.none());
   }
 
   @Test
-  public void testGetDouble() {
+  void testGetDouble() {
     assertEquals(1, column.getDouble(4), 0.0);
     assertEquals(0, column.getDouble(0), 0.0);
   }
 
   @Test
-  public void testProportionTrue() {
+  void testProportionTrue() {
     assertEquals(.285714, column.proportionTrue(), 0.00001);
   }
 
   @Test
-  public void testAppendColumn() {
+  void testAppendColumn() {
     BooleanColumn column1 = column.copy();
     column1.append(column);
     assertEquals(2 * column.size(), column1.size());
   }
 
   @Test
-  public void testPrinting() {
+  void testPrinting() {
     column.appendCell("");
     column.setPrintFormatter(new BooleanFormatter("Yes", "No", "IDK"));
     assertEquals("No", column.getString(0));
@@ -119,19 +119,19 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testGetElements() {
+  void testGetElements() {
     assertEquals(7, column.size());
   }
 
   @Test
-  public void testCounts() {
+  void testCounts() {
     assertEquals(7, column.size());
     assertEquals(7, column.countTrue() + column.countFalse());
     assertEquals(2, column.countTrue());
   }
 
   @Test
-  public void testAddCell() {
+  void testAddCell() {
     column.append(true);
     assertEquals(8, column.size());
 
@@ -157,7 +157,7 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     BooleanParser customParser = new BooleanParser(ColumnType.LOCAL_DATE);
     customParser.setMissingValueStrings(Collections.singletonList("not here"));
@@ -170,17 +170,17 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testGetType() {
+  void testGetType() {
     assertEquals("Boolean".toUpperCase(), column.type().name());
   }
 
   @Test
-  public void testToString() {
+  void testToString() {
     assertEquals("Boolean column: " + column.name(), column.toString());
   }
 
   @Test
-  public void testPrint() {
+  void testPrint() {
     assertEquals(
         "Column: Test"
             + LINE_END
@@ -202,7 +202,7 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testSummary() {
+  void testSummary() {
     Table summary = column.summary();
     assertEquals(2, summary.columnCount());
     assertEquals(2, summary.rowCount());
@@ -213,14 +213,14 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testCountUnique() {
+  void testCountUnique() {
     column.appendMissing();
     int result = column.countUnique();
     assertEquals(3, result);
   }
 
   @Test
-  public void testToDoubleArray() {
+  void testToDoubleArray() {
     double[] result = column.asDoubleArray();
     assertEquals(0.0, result[0], 0.01);
     assertEquals(0.0, result[1], 0.01);
@@ -237,7 +237,7 @@ public class BooleanColumnTest {
    * original
    */
   @Test
-  public void testBitmapConstructor() {
+  void testBitmapConstructor() {
     BooleanColumn bc = BooleanColumn.create("Is false", column.isFalse(), column.size());
     Table summary = bc.summary();
     assertEquals(2, summary.columnCount());
@@ -249,7 +249,7 @@ public class BooleanColumnTest {
   }
 
   @Test
-  public void testSelectionMethods() {
+  void testSelectionMethods() {
     assertEquals(5, column.isFalse().size());
     assertEquals(2, column.isTrue().size());
     assertEquals(7, column.isNotMissing().size());

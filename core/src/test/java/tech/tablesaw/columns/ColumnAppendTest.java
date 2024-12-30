@@ -23,18 +23,18 @@ import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.TextColumn;
 import tech.tablesaw.api.TimeColumn;
 
-public class ColumnAppendTest {
+class ColumnAppendTest {
 
   private static class Scenario<T extends Column<?>> {
-    public final T col1;
-    public final T col2;
-    public final List<?> col1col2Appended;
+    final T col1;
+    final T col2;
+    final List<?> col1col2Appended;
 
-    public Scenario(T col) {
+    Scenario(T col) {
       this(col, col);
     }
 
-    public Scenario(T col1, T col2) {
+    Scenario(T col1, T col2) {
       this.col1 = col1;
       this.col2 = col2;
       this.col1col2Appended =
@@ -42,7 +42,7 @@ public class ColumnAppendTest {
     }
   }
 
-  public static Stream<Scenario<?>> scenarios() {
+  static Stream<Scenario<?>> scenarios() {
     return Stream.of(
         new Scenario<>(
             FloatColumn.create("floatCol1", new float[] {1f, 2f, 3f}),
@@ -95,7 +95,7 @@ public class ColumnAppendTest {
   @ParameterizedTest
   @MethodSource("scenarios")
   @SuppressWarnings({"unchecked", "rawtypes"})
-  public void testColumnAppend(Scenario scenario) {
+  void testColumnAppend(Scenario scenario) {
     assertEquals(scenario.col1col2Appended, scenario.col1.append(scenario.col2).asList());
   }
 }

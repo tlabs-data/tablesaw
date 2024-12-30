@@ -7,10 +7,10 @@ import com.univocity.parsers.csv.CsvWriterSettings;
 import java.io.ByteArrayOutputStream;
 import org.junit.jupiter.api.Test;
 
-public class CsvWriteOptionsTest {
+class CsvWriteOptionsTest {
 
   @Test
-  public void testSettingsPropagation() {
+  void testSettingsPropagation() {
     ByteArrayOutputStream stream = new ByteArrayOutputStream();
     CsvWriteOptions options =
         CsvWriteOptions.builder(stream)

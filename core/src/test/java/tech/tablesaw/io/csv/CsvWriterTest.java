@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import java.io.IOException;
+
 import java.io.StringWriter;
 import java.text.DecimalFormat;
 import java.time.Instant;
@@ -19,10 +19,10 @@ import tech.tablesaw.columns.instant.InstantColumnFormatter;
 import tech.tablesaw.columns.numbers.NumberColumnFormatter;
 import tech.tablesaw.columns.strings.StringColumnFormatter;
 
-public class CsvWriterTest {
+class CsvWriterTest {
 
   @Test
-  void toWriterWithExtension() throws IOException {
+  void toWriterWithExtension() {
     StringColumn colA = StringColumn.create("colA", ImmutableList.of("a", "b"));
     StringColumn colB = StringColumn.create("colB", ImmutableList.of("1", "2"));
     Table table = Table.create("testTable", colA, colB);
@@ -32,7 +32,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void quoteAll() throws IOException {
+  void quoteAll() {
     StringColumn colA = StringColumn.create("colA", ImmutableList.of("a", "b"));
     StringColumn colB = StringColumn.create("colB", ImmutableList.of("1", "2"));
     Table table = Table.create("testTable", colA, colB);
@@ -44,7 +44,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void dateFormatter() throws IOException {
+  void dateFormatter() {
     Table table = Table.read().csv("../data/bush.csv").rows(1);
     table.dateColumn("date").setPrintFormatter(DateTimeFormatter.ofPattern("MMM dd, yyyy"));
     StringWriter writer = new StringWriter();
@@ -55,7 +55,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_double() throws IOException {
+  void printFormatter_double() {
     Table table = Table.create("", DoubleColumn.create("percents"));
     table.doubleColumn("percents").setPrintFormatter(NumberColumnFormatter.percent(2));
     table.doubleColumn("percents").append(0.323).append(0.1192).append(1.0);
@@ -67,7 +67,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_double2() throws IOException {
+  void printFormatter_double2() {
     Table table = Table.create("", DoubleColumn.create("percents"));
     table
         .doubleColumn("percents")
@@ -82,7 +82,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_date() throws IOException {
+  void printFormatter_date() {
     Table table = Table.create("", DateColumn.create("dates"));
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-dd-MMM");
     table.dateColumn("dates").setPrintFormatter(formatter, "WHAT?");
@@ -99,7 +99,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_int() throws IOException {
+  void printFormatter_int() {
     Table table = Table.create("", IntColumn.create("ints"));
     table.intColumn("ints").setPrintFormatter(NumberColumnFormatter.intsWithGrouping());
     table.intColumn("ints").append(102_123).append(2).append(-1_232_132);
@@ -111,7 +111,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_int2() throws IOException {
+  void printFormatter_int2() {
     Table table = Table.create("", IntColumn.create("ints"));
     table.intColumn("ints").setPrintFormatter(new NumberColumnFormatter("NA"));
     Integer missing = null;
@@ -124,7 +124,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_float() throws IOException {
+  void printFormatter_float() {
     Table table = Table.create("", FloatColumn.create("floats"));
     table.floatColumn("floats").setPrintFormatter(NumberColumnFormatter.fixedWithGrouping(2));
     table.floatColumn("floats").append(032.3f).append(0.1192f).appendObj(null).append(1001.0f);
@@ -136,7 +136,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_float2() throws IOException {
+  void printFormatter_float2() {
     Table table = Table.create("", FloatColumn.create("floats"));
     table
         .floatColumn("floats")
@@ -152,7 +152,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_datetime() throws IOException {
+  void printFormatter_datetime() {
     Table table = Table.create("", DateTimeColumn.create("dates"));
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d, yyyy - hh:mm");
     table.dateTimeColumn("dates").setPrintFormatter(formatter, "WHAT?");
@@ -164,7 +164,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_boolean() throws IOException {
+  void printFormatter_boolean() {
     Table table = Table.create("", BooleanColumn.create("bools"));
     BooleanFormatter formatter = new BooleanFormatter("Yes", "No", "IDK");
     table.booleanColumn("bools").setPrintFormatter(formatter);
@@ -176,7 +176,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_string() throws IOException {
+  void printFormatter_string() {
     Table table = Table.create("", StringColumn.create("strings"));
     StringColumnFormatter formatter = new StringColumnFormatter(s -> "[" + s + "]", "N/A");
     table.stringColumn("strings").setPrintFormatter(formatter);
@@ -189,7 +189,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_text() throws IOException {
+  void printFormatter_text() {
     Table table = Table.create("", TextColumn.create("strings"));
     StringColumnFormatter formatter = new StringColumnFormatter(s -> "[" + s + "]", "N/A");
     table.textColumn("strings").setPrintFormatter(formatter);
@@ -202,7 +202,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_short() throws IOException {
+  void printFormatter_short() {
     Table table = Table.create("", ShortColumn.create("ints"));
     table.shortColumn("ints").setPrintFormatter(NumberColumnFormatter.intsWithGrouping());
     table.shortColumn("ints").append((short) 102).append((short) 12_132).append((short) -1_234);
@@ -214,7 +214,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void printFormatter_instant() throws IOException {
+  void printFormatter_instant() {
     Table table = Table.create("", InstantColumn.create("dates"));
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d, yyyy - hh:mm");
     table.instantColumn("dates").setPrintFormatter(new InstantColumnFormatter(formatter, "WHAT?"));
@@ -228,7 +228,7 @@ public class CsvWriterTest {
 
   /** Test preventing scientific notation */
   @Test
-  void printFormatter_scientific_notation() throws IOException {
+  void printFormatter_scientific_notation() {
     Table table = Table.create("", DoubleColumn.create("doubles"));
     DecimalFormat df = new DecimalFormat("0.#");
     df.setMaximumFractionDigits(11);
@@ -248,7 +248,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void dateTimeFormatter() throws IOException {
+  void dateTimeFormatter() {
     Table table = Table.create("test", DateTimeColumn.create("dt"));
     table.dateTimeColumn(0).append(LocalDateTime.of(2011, 1, 1, 4, 30));
     table
@@ -261,7 +261,7 @@ public class CsvWriterTest {
   }
 
   @Test
-  void transformColumnNames() throws IOException {
+  void transformColumnNames() {
     Table table = Table.read().csv("../data/bush.csv").rows(1);
     Map<String, String> nameMap = ImmutableMap.of("approval", "popularity", "who", "pollster");
     StringWriter writer = new StringWriter();

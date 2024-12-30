@@ -40,6 +40,7 @@ public class HtmlWriter implements DataWriter<HtmlWriteOptions> {
     registry.registerOptions(HtmlWriteOptions.class, INSTANCE);
   }
 
+  @Override
   public void write(Table table, HtmlWriteOptions options) {
     ElementCreator elements = options.elementCreator();
     Element html = elements.create("table");

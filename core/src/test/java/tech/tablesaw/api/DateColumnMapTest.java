@@ -9,18 +9,18 @@ import java.time.temporal.ChronoUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class DateColumnMapTest {
+class DateColumnMapTest {
   private DateColumn column1;
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     Table table = Table.create("Test");
     column1 = DateColumn.create("Game date");
     table.addColumns(column1);
   }
 
   @Test
-  public void testGetDayOfYear() {
+  void testGetDayOfYear() {
     int day1 = pack(2011, 12, 31);
     int day2 = pack(2012, 1, 1);
 
@@ -32,7 +32,7 @@ public class DateColumnMapTest {
   }
 
   @Test
-  public void testTimeWindow() {
+  void testTimeWindow() {
     int day1 = pack(2011, 12, 31);
     int day2 = pack(2012, 1, 1);
     int day3 = pack(2012, 1, 9);
@@ -66,7 +66,7 @@ public class DateColumnMapTest {
   }
 
   @Test
-  public void testDayOfWeek() {
+  void testDayOfWeek() {
     int day1 = pack(2018, 3, 30);
     column1.appendInternal(day1);
     assertEquals(DayOfWeek.FRIDAY.name(), column1.dayOfWeek().get(0));
@@ -74,7 +74,7 @@ public class DateColumnMapTest {
   }
 
   @Test
-  public void testDifference() {
+  void testDifference() {
     int day1 = pack(2018, 3, 30);
     column1.appendInternal(day1);
     int day2 = pack(2018, 11, 23);
@@ -91,7 +91,7 @@ public class DateColumnMapTest {
   }
 
   @Test
-  public void testPlus() {
+  void testPlus() {
     int day1 = pack(2011, 12, 19);
     int day2 = pack(2012, 1, 1);
     int day3 = pack(2012, 1, 10);

@@ -25,13 +25,13 @@ import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
 /** */
-public class LongIndexTest {
+class LongIndexTest {
 
   private LongIndex index;
   private Table table;
 
   @BeforeEach
-  public void setUp() throws Exception {
+  void setUp() throws Exception {
     table = Table.read().csv(CsvReadOptions.builder("../data/bush.csv"));
     DateTimeColumn midnights = table.dateColumn("date").atStartOfDay();
     midnights.setName("Midnights");
@@ -40,14 +40,14 @@ public class LongIndexTest {
   }
 
   @Test
-  public void testGet() {
+  void testGet() {
     Selection fromCol = table.dateTimeColumn("Midnights").eval(DateTimePredicates.isEqualTo, 71);
     Selection fromIdx = index.get(71);
     assertEquals(fromCol, fromIdx);
   }
 
   @Test
-  public void testGTE() {
+  void testGTE() {
     Selection fromCol =
         table.dateTimeColumn("Midnights").eval(DateTimePredicates.isGreaterThanOrEqualTo, 71);
     Selection fromIdx = index.atLeast(71);
@@ -55,7 +55,7 @@ public class LongIndexTest {
   }
 
   @Test
-  public void testLTE() {
+  void testLTE() {
     Selection fromCol =
         table.dateTimeColumn("Midnights").eval(DateTimePredicates.isLessThanOrEqualTo, 71);
     Selection fromIdx = index.atMost(71);
@@ -63,14 +63,14 @@ public class LongIndexTest {
   }
 
   @Test
-  public void testLT() {
+  void testLT() {
     Selection fromCol = table.dateTimeColumn("Midnights").eval(DateTimePredicates.isLessThan, 71);
     Selection fromIdx = index.lessThan(71);
     assertEquals(fromCol, fromIdx);
   }
 
   @Test
-  public void testGT() {
+  void testGT() {
     Selection fromCol =
         table.dateTimeColumn("Midnights").eval(DateTimePredicates.isGreaterThan, 71);
     Selection fromIdx = index.greaterThan(71);

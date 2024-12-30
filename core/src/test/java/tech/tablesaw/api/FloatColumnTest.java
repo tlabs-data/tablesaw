@@ -23,13 +23,13 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.columns.numbers.FloatParser;
 import tech.tablesaw.selection.Selection;
 
-public class FloatColumnTest {
+class FloatColumnTest {
 
   private final float[] floatColumnValues = {4, 5, 9.3f, 33.2f, 121, 77};
   private final FloatColumn floatColumn = FloatColumn.create("fc", floatColumnValues);
 
   @Test
-  public void appendFloat() {
+  void appendFloat() {
     FloatColumn floatColumn = FloatColumn.create("floats");
     Float floatValue = 2.5f;
     floatColumn.append(floatValue);
@@ -37,7 +37,7 @@ public class FloatColumnTest {
   }
 
   @Test
-  public void appendFloatObject() {
+  void appendFloatObject() {
     FloatColumn floatColumn = FloatColumn.create("floats");
     Float floatObject = 2.5f;
     floatColumn.append(floatObject);
@@ -45,7 +45,7 @@ public class FloatColumnTest {
   }
 
   @Test
-  public void createFromObjectArray() {
+  void createFromObjectArray() {
     Float[] floats = new Float[] {2.5f, null, 4.0f};
     FloatColumn floatColumn = FloatColumn.create("floats", floats);
     assertEquals(2.5f, floatColumn.get(0));
@@ -68,7 +68,7 @@ public class FloatColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     FloatParser customParser = new FloatParser(ColumnType.FLOAT);
     customParser.setMissingValueStrings(Arrays.asList("not here"));
@@ -81,7 +81,7 @@ public class FloatColumnTest {
   }
 
   @Test
-  public void asSet() {
+  void asSet() {
     final float[] floatColumnValues = {4, 5, 9.3f, 5, 9.3f};
     final FloatColumn floatColumn = FloatColumn.create("fc", floatColumnValues);
     assertEquals(3, floatColumn.asSet().size());

@@ -18,7 +18,6 @@ import static tech.tablesaw.api.ColumnType.TEXT;
 
 import com.google.common.collect.Streams;
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -31,7 +30,7 @@ import tech.tablesaw.sorting.Sort.Order;
 import tech.tablesaw.table.TableSlice;
 
 /** TODO All the methods on this class should be tested carefully */
-public class RowTest {
+class RowTest {
 
   private static Table bush;
   private static Table baseball;
@@ -72,19 +71,19 @@ public class RowTest {
   }
 
   @Test
-  public void columnNames() throws IOException {
+  void columnNames() {
     Row row = new Row(bush);
     assertEquals(bush.columnNames(), row.columnNames());
   }
 
   @Test
-  public void testColumnCount() {
+  void testColumnCount() {
     Row row = new Row(bush);
     assertEquals(bush.columnCount(), row.columnCount());
   }
 
   @Test
-  public void testGetBoolean() {
+  void testGetBoolean() {
 
     Table table = baseball;
 
@@ -98,7 +97,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetDate() {
+  void testGetDate() {
     Row row = new Row(bush);
     while (row.hasNext()) {
       row.next();
@@ -109,7 +108,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetDate2() {
+  void testGetDate2() {
     Row row = new Row(bush);
     while (row.hasNext()) {
       row.next();
@@ -118,7 +117,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetDateTime() {
+  void testGetDateTime() {
     Table table = tornado.copy();
     DateTimeColumn dateTimeCol = table.dateColumn("Date").atTime(table.timeColumn("Time"));
     dateTimeCol.setName("DateTime");
@@ -133,7 +132,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetDouble() {
+  void testGetDouble() {
     Table table = baseball;
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -145,7 +144,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetFloat() {
+  void testGetFloat() {
     ColumnType[] types = {
       STRING, STRING, INTEGER, INTEGER, INTEGER,
       INTEGER, FLOAT, FLOAT, FLOAT, INTEGER,
@@ -163,7 +162,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetLong() {
+  void testGetLong() {
     ColumnType[] bushColumnTypes = {LOCAL_DATE, LONG, STRING};
     Table table = readBush(bushColumnTypes);
     Row row = new Row(table);
@@ -176,7 +175,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetObject() {
+  void testGetObject() {
     Table table = readBush(BUSH_COLUMN_TYPES);
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -187,7 +186,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetPackedDate() {
+  void testGetPackedDate() {
     Row row = new Row(bush);
     while (row.hasNext()) {
       row.next();
@@ -198,7 +197,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetPackedDateTime() {
+  void testGetPackedDateTime() {
     Table table = tornado.copy();
     DateTimeColumn dateTimeCol = table.dateColumn("Date").atTime(table.timeColumn("Time"));
     dateTimeCol.setName("DateTime");
@@ -215,7 +214,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetPackedTime() {
+  void testGetPackedTime() {
     Table table = tornado.copy();
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -227,7 +226,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetShort() {
+  void testGetShort() {
     ColumnType[] types = {LOCAL_DATE, SHORT, STRING};
     Table table =
         Table.read().csv(CsvReadOptions.builder(new File("../data/bush.csv")).columnTypes(types));
@@ -241,7 +240,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetString() {
+  void testGetString() {
     ColumnType[] types = {LOCAL_DATE, SHORT, STRING};
     Table table =
         Table.read().csv(CsvReadOptions.builder(new File("../data/bush.csv")).columnTypes(types));
@@ -254,7 +253,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetText() {
+  void testGetText() {
     ColumnType[] types = {LOCAL_DATE, SHORT, TEXT};
     Table table =
         Table.read().csv(CsvReadOptions.builder(new File("../data/bush.csv")).columnTypes(types));
@@ -267,7 +266,7 @@ public class RowTest {
   }
 
   @Test
-  public void testGetTime() {
+  void testGetTime() {
     Table table = tornado.copy();
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -279,7 +278,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetBoolean() {
+  void testSetBoolean() {
     Table table = baseball.copy();
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -293,7 +292,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetDate() {
+  void testSetDate() {
     Table table = readBush(BUSH_COLUMN_TYPES);
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -313,7 +312,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetDateTime() {
+  void testSetDateTime() {
     Table table = tornado.copy();
     DateTimeColumn dateTimeCol = table.dateColumn("Date").atTime(table.timeColumn("Time"));
     dateTimeCol.setName("DateTime");
@@ -333,7 +332,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetDouble() {
+  void testSetDouble() {
     Table table = baseball.copy();
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -352,7 +351,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetFloat() {
+  void testSetFloat() {
 
     ColumnType[] types = {
       STRING, STRING, INTEGER, INTEGER, INTEGER,
@@ -377,7 +376,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetInt() {
+  void testSetInt() {
 
     Table table = baseball.copy();
     Row row = new Row(table);
@@ -397,7 +396,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetLong() {
+  void testSetLong() {
     ColumnType[] types = {LOCAL_DATE, LONG, STRING};
     Table table = readBush(types);
     Row row = new Row(table);
@@ -416,7 +415,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetShort() {
+  void testSetShort() {
     ColumnType[] types = {LOCAL_DATE, SHORT, STRING};
     Table table = readBush(types);
     Row row = new Row(table);
@@ -435,7 +434,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetString() {
+  void testSetString() {
     Table table = readBush(BUSH_COLUMN_TYPES);
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -455,7 +454,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetText() {
+  void testSetText() {
     ColumnType[] bushColumnTypes = {LOCAL_DATE, INTEGER, TEXT};
     Table table = readBush(bushColumnTypes);
     Row row = new Row(table);
@@ -476,7 +475,7 @@ public class RowTest {
   }
 
   @Test
-  public void testSetTime() {
+  void testSetTime() {
     Table table = tornado.copy();
     Row row = new Row(table);
     while (row.hasNext()) {
@@ -493,7 +492,7 @@ public class RowTest {
   }
 
   @Test
-  public void iterationWithSelection() {
+  void iterationWithSelection() {
     int[] sourceIndex = new int[] {10, 20, 30};
     Row row = new Row(new TableSlice(bush, Selection.with(10, 20, 30)), -1);
 
@@ -509,7 +508,7 @@ public class RowTest {
   }
 
   @Test
-  public void setWithSelectionSortOrder() {
+  void setWithSelectionSortOrder() {
     Table table = bush.copy();
     int[] sourceIndex = new int[] {3, 6};
     Row row = new Row(new TableSlice(table, Selection.with(3, 6)));
@@ -523,7 +522,7 @@ public class RowTest {
   }
 
   @Test
-  public void iterationWithSelectionAndOrder() {
+  void iterationWithSelectionAndOrder() {
     TableSlice tableSlice = new TableSlice(bush, Selection.withRange(0, 5));
     tableSlice.sortOn(Sort.on("approval", Order.ASCEND));
 
@@ -535,7 +534,7 @@ public class RowTest {
   }
 
   @Test
-  public void columnDoesNotExistOnRow() {
+  void columnDoesNotExistOnRow() {
     Table table = Table.create("myTable", IntColumn.create("col1", new int[] {1}));
 
     Throwable thrown =
@@ -545,7 +544,7 @@ public class RowTest {
   }
 
   @Test
-  public void columnExistsButWrongType() {
+  void columnExistsButWrongType() {
     Table table = Table.create("myTale", DateColumn.create("col1", new LocalDate[] {null}));
 
     Throwable thrown =

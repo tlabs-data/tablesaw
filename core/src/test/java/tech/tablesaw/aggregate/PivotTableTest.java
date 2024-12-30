@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
-public class PivotTableTest {
+class PivotTableTest {
 
   @Test
-  public void pivot() throws Exception {
+  void pivot() throws Exception {
     Table t =
         Table.read()
             .csv(CsvReadOptions.builder("../data/bush.csv").missingValueIndicator(":").build());

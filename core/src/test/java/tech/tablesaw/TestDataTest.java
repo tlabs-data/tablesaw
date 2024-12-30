@@ -20,10 +20,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 /** Make sure our test data is available */
-public class TestDataTest {
+class TestDataTest {
 
   @Test
-  public void verifyAllTestData() {
+  void verifyAllTestData() {
     for (TestData testData : TestData.values()) {
       verify(testData);
     }

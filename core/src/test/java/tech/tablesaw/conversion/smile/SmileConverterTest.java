@@ -17,7 +17,6 @@ package tech.tablesaw.conversion.smile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,10 +41,10 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.api.TextColumn;
 import tech.tablesaw.api.TimeColumn;
 
-public class SmileConverterTest {
+class SmileConverterTest {
 
   @Test
-  public void regression() throws IOException {
+  void regression() {
     Table moneyball = Table.read().csv("../data/baseball.csv");
     moneyball.addColumns(
         moneyball.numberColumn("RS").subtract(moneyball.numberColumn("RA")).setName("RD"));
@@ -56,7 +55,7 @@ public class SmileConverterTest {
   }
 
   @Test
-  public void allColumnTypes() throws IOException {
+  void allColumnTypes() {
     Table table = Table.create();
     table.addColumns(BooleanColumn.create("boolean", new boolean[] {true, false}));
     table.addColumns(DoubleColumn.create("double", new double[] {1.2, 3.4}));

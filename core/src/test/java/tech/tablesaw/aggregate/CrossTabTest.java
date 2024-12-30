@@ -9,10 +9,10 @@ import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
-public class CrossTabTest {
+class CrossTabTest {
 
   @Test
-  public void testCounts1() throws Exception {
+  void testCounts1() throws Exception {
     Table bush = Table.read().csv("../data/bush.csv");
     Table counts = CrossTab.counts(bush, "who");
     Table pcts = CrossTab.percents(bush, "who");
@@ -23,7 +23,7 @@ public class CrossTabTest {
   }
 
   @Test
-  public void testCounts2() throws Exception {
+  void testCounts2() throws Exception {
     Table bush = Table.read().csv("../data/bush.csv");
     Table counts = CrossTab.counts(bush, "date");
     Table pcts = CrossTab.percents(bush, "date");
@@ -34,7 +34,7 @@ public class CrossTabTest {
   }
 
   @Test
-  public void testCounts3() throws Exception {
+  void testCounts3() throws Exception {
     Table bush = Table.read().csv("../data/bush.csv");
     IntColumn month = bush.dateColumn("date").monthValue();
     month.setName("month");
@@ -55,7 +55,7 @@ public class CrossTabTest {
   }
 
   @Test
-  public void testColumnPercents() throws Exception {
+  void testColumnPercents() throws Exception {
     Table bush = Table.read().csv("../data/bush.csv");
     bush.addColumns(bush.dateColumn("date").year());
     Table xtab = CrossTab.columnPercents(bush, "who", "date year");
@@ -64,7 +64,7 @@ public class CrossTabTest {
   }
 
   @Test
-  public void testRowPercents() throws Exception {
+  void testRowPercents() throws Exception {
     Table bush = Table.read().csv("../data/bush.csv");
     bush.addColumns(bush.dateColumn("date").year());
     Table xtab = CrossTab.rowPercents(bush, "who", "date year");
@@ -72,7 +72,7 @@ public class CrossTabTest {
   }
 
   @Test
-  public void testTablePercents() throws Exception {
+  void testTablePercents() throws Exception {
     Table bush = Table.read().csv("../data/bush.csv");
     bush.addColumns(bush.dateColumn("date").year());
     Table xtab = CrossTab.tablePercents(bush, "who", "date year");

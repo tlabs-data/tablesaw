@@ -214,32 +214,31 @@ public class Summarizer {
     if (groupColumnNames.length > 0) {
       TableSliceGroup group = StandardTableSliceGroup.create(temp, groupColumnNames);
       return summarize(group);
-    } else {
-      List<Table> results = new ArrayList<>();
-      ArrayListMultimap<String, AggregateFunction<?, ?>> reductionMultimap =
-          getAggregateFunctionMultimap();
-
-      for (String name : reductionMultimap.keys()) {
-        List<AggregateFunction<?, ?>> reductionsFromMap = reductionMultimap.get(name);
-        Table table = TableSliceGroup.summaryTableName(temp);
-        for (AggregateFunction function : reductionsFromMap) {
-          Column column = temp.column(name);
-          Object result = function.summarize(column);
-          ColumnType type = function.returnType();
-          Column newColumn =
-              type.create(TableSliceGroup.aggregateColumnName(name, function.functionName()));
-          if (result instanceof Number) {
-            Number number = (Number) result;
-            newColumn.append(number.doubleValue());
-          } else {
-            newColumn.append(result);
-          }
-          table.addColumns(newColumn);
-        }
-        results.add(table);
-      }
-      return (combineTables(results));
     }
+    List<Table> results = new ArrayList<>();
+    ArrayListMultimap<String, AggregateFunction<?, ?>> reductionMultimap =
+        getAggregateFunctionMultimap();
+
+    for (String name : reductionMultimap.keys()) {
+      List<AggregateFunction<?, ?>> reductionsFromMap = reductionMultimap.get(name);
+      Table table = TableSliceGroup.summaryTableName(temp);
+      for (AggregateFunction function : reductionsFromMap) {
+        Column column = temp.column(name);
+        Object result = function.summarize(column);
+        ColumnType type = function.returnType();
+        Column newColumn =
+            type.create(TableSliceGroup.aggregateColumnName(name, function.functionName()));
+        if (result instanceof Number) {
+          Number number = (Number) result;
+          newColumn.append(number.doubleValue());
+        } else {
+          newColumn.append(result);
+        }
+        table.addColumns(newColumn);
+      }
+      results.add(table);
+    }
+    return (combineTables(results));
   }
 
   /**
@@ -259,10 +258,9 @@ public class Summarizer {
       IntColumn groupColumn = temp.intColumn(GROUP_COL_TEMP_NAME);
       TableSliceGroup group = StandardTableSliceGroup.create(temp, groupColumn);
       return summarizeForHaving(group, selection);
-    } else {
-      TableSliceGroup group = StandardTableSliceGroup.create(temp, groupColumnNames);
-      return summarizeForHaving(group, selection);
     }
+    TableSliceGroup group = StandardTableSliceGroup.create(temp, groupColumnNames);
+    return summarizeForHaving(group, selection);
   }
 
   /** TODO: research how the groupBy() methods differ from the by() methods? Are they synonyms? */

@@ -14,7 +14,7 @@ import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.numbers.DoubleColumnType;
 
-public class TableTransposeTest {
+class TableTransposeTest {
   private static final String TABLE_NAME = "Data";
 
   @Test

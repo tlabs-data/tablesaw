@@ -7,10 +7,10 @@ import com.univocity.parsers.fixed.FixedWidthFormat;
 import java.io.ByteArrayOutputStream;
 import org.junit.jupiter.api.Test;
 
-public class FixedWidthWriteOptionsTest {
+class FixedWidthWriteOptionsTest {
 
   @Test
-  public void testSettingsPropagation() {
+  void testSettingsPropagation() {
     ByteArrayOutputStream stream = new ByteArrayOutputStream();
     FixedWidthWriteOptions options =
         new FixedWidthWriteOptions.Builder(stream)

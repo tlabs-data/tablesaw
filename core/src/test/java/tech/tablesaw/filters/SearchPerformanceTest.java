@@ -18,7 +18,7 @@ import static java.lang.System.out;
 
 import com.google.common.base.Stopwatch;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
-import java.io.IOException;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class SearchPerformanceTest {
   private static int numberOfRecordsInTable = 5_000_000;
   private static LongIndex dateIndex;
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
 
     Stopwatch stopwatch = Stopwatch.createStarted();
 
@@ -126,8 +126,7 @@ public class SearchPerformanceTest {
     return t;
   }
 
-  private static void generateTestData(Table t, int numberOfRecordsInTable, Stopwatch stopwatch)
-      throws IOException {
+  private static void generateTestData(Table t, int numberOfRecordsInTable, Stopwatch stopwatch) {
     stopwatch.reset().start();
     out.println("Generating test data");
     LocalDateTime startDateTime = LocalDateTime.of(2008, 1, 1, 0, 0, 0);

@@ -32,13 +32,14 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.api.TextColumn;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
-public class TableSliceGroupTest {
+class TableSliceGroupTest {
 
   private static NumericAggregateFunction exaggerate =
       new NumericAggregateFunction("exageration") {
 
         @Override
-        public Double summarize(NumericColumn<?> data) {
+        public
+        Double summarize(NumericColumn<?> data) {
           return StatUtils.max(data.asDoubleArray()) + 1000;
         }
       };
@@ -46,14 +47,14 @@ public class TableSliceGroupTest {
   private Table table;
 
   @BeforeEach
-  public void setUp() throws Exception {
+  void setUp() {
     // The source data is sorted by who. Put it in a different order.
     table =
         Table.read().csv(CsvReadOptions.builder("../data/bush.csv")).sortAscendingOn("approval");
   }
 
   @Test
-  public void testViewGroupCreation() {
+  void testViewGroupCreation() {
 
     TableSliceGroup group = StandardTableSliceGroup.create(table, table.categoricalColumn("who"));
     assertEquals(6, group.size());
@@ -67,7 +68,7 @@ public class TableSliceGroupTest {
   }
 
   @Test
-  public void testViewGroupCreationNames() {
+  void testViewGroupCreationNames() {
 
     TableSliceGroup group = StandardTableSliceGroup.create(table, "who", "approval");
     List<TableSlice> viewList = group.getSlices();
@@ -84,7 +85,7 @@ public class TableSliceGroupTest {
   }
 
   @Test
-  public void testViewTwoColumn() {
+  void testViewTwoColumn() {
     TableSliceGroup group =
         StandardTableSliceGroup.create(
             table, table.categoricalColumn("who"), table.categoricalColumn("approval"));
@@ -98,28 +99,28 @@ public class TableSliceGroupTest {
   }
 
   @Test
-  public void testCustomFunction() {
+  void testCustomFunction() {
     Table exaggeration = table.summarize("approval", exaggerate).by("who");
     StringColumn group = exaggeration.stringColumn(0);
     assertTrue(group.contains("fox"));
   }
 
   @Test
-  public void asTableList() {
+  void asTableList() {
     TableSliceGroup group = StandardTableSliceGroup.create(table, "who");
     List<Table> tables = group.asTableList();
     assertEquals(6, tables.size());
   }
 
   @Test
-  public void aggregate() {
+  void aggregate() {
     TableSliceGroup group = StandardTableSliceGroup.create(table, table.categoricalColumn("who"));
     Table aggregated = group.aggregate("approval", exaggerate);
     assertEquals(aggregated.rowCount(), group.size());
   }
 
   @Test
-  public void testCreateWithTextColumn() {
+  void testCreateWithTextColumn() {
     TextColumn whoText = table.stringColumn("who").asTextColumn();
     whoText.setName("who text");
     table.addColumns(whoText);
@@ -132,7 +133,7 @@ public class TableSliceGroupTest {
   }
 
   @Test
-  public void aggregateWithMultipleColumns() {
+  void aggregateWithMultipleColumns() {
     table.addColumns(table.categoricalColumn("approval").copy().setName("approval2"));
     TableSliceGroup group = StandardTableSliceGroup.create(table, table.categoricalColumn("who"));
 
@@ -148,7 +149,7 @@ public class TableSliceGroupTest {
    * <p>see <a href="https://github.com/jtablesaw/tablesaw/issues/785">Issue#785</a>
    */
   @Test
-  public void aggregateWithEmptyResult() {
+  void aggregateWithEmptyResult() {
     // drop all rows in order to carry out aggregation on an empty table
     table = table.dropRows(IntStream.range(0, table.column(0).size()).toArray());
 

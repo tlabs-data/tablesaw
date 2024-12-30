@@ -18,7 +18,7 @@ class AnalyticQueryEngineTest {
 
   // Before runs tests a few seconds faster.
   @BeforeAll
-  public static void setUp() throws Exception {
+  static void setUp() throws Exception {
     // Reference implementation generated from BigQuery.
     referenceImplementation =
         Table.read().csv("../data/bush_analytic_reference_implementation.csv");
@@ -33,7 +33,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void testInvalidSourceColumn() {
+  void testInvalidSourceColumn() {
     String destinationColumnName = "dest";
     Table table = Table.create("table", StringColumn.create("col1", new String[] {"bad"}));
 
@@ -54,7 +54,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void testBasic() {
+  void testBasic() {
     Table table =
         Table.create("table", DoubleColumn.create("col1", new double[] {2, 1, 1, 1, 1, 1, 1}));
 
@@ -83,7 +83,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void testMissingValues() {
+  void testMissingValues() {
     String destinationColumnName = "dest";
     Table table =
         Table.create(
@@ -110,7 +110,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void unoundedPrecedingAnd5Preceding() {
+  void unoundedPrecedingAnd5Preceding() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -156,7 +156,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void unboundedPrecedingAndCurrentRow() {
+  void unboundedPrecedingAndCurrentRow() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -202,7 +202,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void unboundedPrecedingAnd5Following() {
+  void unboundedPrecedingAnd5Following() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -248,7 +248,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void unboundedPrecedingAndUnboundedFollowing() {
+  void unboundedPrecedingAndUnboundedFollowing() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -295,7 +295,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void fivePrecedingAnd3Preceding() {
+  void fivePrecedingAnd3Preceding() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -341,7 +341,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void fivePrecedingAndCurrentRow() {
+  void fivePrecedingAndCurrentRow() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -387,7 +387,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void fivePrecedingAnd5Following() {
+  void fivePrecedingAnd5Following() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -433,7 +433,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void fivePrecedingAndUnboundedFollowing() {
+  void fivePrecedingAndUnboundedFollowing() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -479,7 +479,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void currentRowAndUnboundedFollowing() {
+  void currentRowAndUnboundedFollowing() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -525,7 +525,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void fiveFollowingAnd8Following() {
+  void fiveFollowingAnd8Following() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -571,7 +571,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void fiveFollowingAndUnboundedFollowing() {
+  void fiveFollowingAndUnboundedFollowing() {
     AnalyticQuery query =
         AnalyticQuery.query()
             .from(referenceImplementation)
@@ -617,7 +617,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void countWithStrings() {
+  void countWithStrings() {
     Table table =
         Table.create(
             "table",
@@ -640,7 +640,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void numberingFunctionReferenceImplementation() {
+  void numberingFunctionReferenceImplementation() {
     AnalyticQuery query =
         AnalyticQuery.numberingQuery()
             .from(referenceImplementation)
@@ -666,7 +666,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void numberingFunctionsWithStrings() {
+  void numberingFunctionsWithStrings() {
     Table table =
         Table.create(
             "table", StringColumn.create("col1", new String[] {"A", "B", "B", "C", "C", "C", "D"}));
@@ -698,7 +698,7 @@ class AnalyticQueryEngineTest {
   }
 
   @Test
-  public void resultColumnOrderSameAsSpecifiedInQuery() {
+  void resultColumnOrderSameAsSpecifiedInQuery() {
     Table table = Table.create("table", StringColumn.create("col1", new String[] {}));
 
     AnalyticQuery query =

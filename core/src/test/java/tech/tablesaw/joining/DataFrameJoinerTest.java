@@ -15,7 +15,7 @@ import tech.tablesaw.api.TextColumn;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.selection.Selection;
 
-public class DataFrameJoinerTest {
+class DataFrameJoinerTest {
 
   private static final Table ONE_YEAR =
       Table.read()
@@ -512,7 +512,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinWithDoubleBirdsCatsFishDouble() {
+  void innerJoinWithDoubleBirdsCatsFishDouble() {
     Table joined =
         DOUBLE_INDEXED_BIRDS.joinOn("ID").inner(DOUBLE_INDEXED_CATS, DOUBLE_INDEXED_FISH);
     assertEquals(4, joined.columnCount());
@@ -520,7 +520,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinWithDoubleDogsCatsBirdsDouble() {
+  void innerJoinWithDoubleDogsCatsBirdsDouble() {
     Table joined =
         DOUBLE_INDEXED_FISH.joinOn("ID").inner(DOUBLE_INDEXED_CATS, DOUBLE_INDEXED_BIRDS);
     assertEquals(4, joined.columnCount());
@@ -528,14 +528,14 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinWithDoubleDogsCatsFishVarargs() {
+  void innerJoinWithDoubleDogsCatsFishVarargs() {
     Table joined = DOUBLE_INDEXED_MICE.joinOn("ID").inner(DOUBLE_INDEXED_CATS, DOUBLE_INDEXED_FISH);
     assertEquals(4, joined.columnCount());
     assertEquals(2, joined.rowCount());
   }
 
   @Test
-  public void innerJoinWithDoublesSimple() {
+  void innerJoinWithDoublesSimple() {
     Table joined = DOUBLE_INDEXED_PEOPLE.joinOn("ID").inner(DOUBLE_INDEXED_DOGS);
     assertEquals(3, joined.columnCount());
     assertEquals(3, joined.rowCount());
@@ -543,14 +543,14 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinWithDoubles() {
+  void innerJoinWithDoubles() {
     Table joined = DOUBLE_INDEXED_PEOPLE.joinOn("ID").inner(DOUBLE_INDEXED_DOGS, "ID");
     assertEquals(3, joined.columnCount());
     assertEquals(3, joined.rowCount());
   }
 
   @Test
-  public void innerJoinWithDuplicateColumnNames() {
+  void innerJoinWithDuplicateColumnNames() {
     Table table1 =
         DUPLICATE_COL_NAME_DOGS.where(DUPLICATE_COL_NAME_DOGS.booleanColumn("Good").isTrue());
     Table table2 =
@@ -562,7 +562,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinWithDuplicateColumnNames() {
+  void rightOuterJoinWithDuplicateColumnNames() {
     Table table1 =
         DUPLICATE_COL_NAME_DOGS.where(DUPLICATE_COL_NAME_DOGS.booleanColumn("Good").isTrue());
     Table table2 =
@@ -574,7 +574,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinWithDuplicateColumnNames() {
+  void leftOuterJoinWithDuplicateColumnNames() {
     Table table1 =
         DUPLICATE_COL_NAME_DOGS.where(DUPLICATE_COL_NAME_DOGS.booleanColumn("Good").isTrue());
     Table table2 =
@@ -587,7 +587,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinWithDoubles() {
+  void leftOuterJoinWithDoubles() {
     Table joined = DOUBLE_INDEXED_PEOPLE.joinOn("ID").leftOuter(DOUBLE_INDEXED_DOGS, "ID");
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
@@ -595,7 +595,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinWithDoubles() {
+  void rightOuterJoinWithDoubles() {
     Table joined = DOUBLE_INDEXED_PEOPLE.joinOn("ID").rightOuter(DOUBLE_INDEXED_DOGS, "ID");
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
@@ -603,7 +603,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinWithDoubles2() {
+  void rightOuterJoinWithDoubles2() {
     Table joined = DOUBLE_INDEXED_PEOPLE.joinOn("ID").rightOuter(DOUBLE_INDEXED_DOGS);
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
@@ -611,7 +611,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinWithDoubles2Reverse() {
+  void rightOuterJoinWithDoubles2Reverse() {
     Table joined = DOUBLE_INDEXED_PEOPLE.joinOn("ID").rightOuter(DOUBLE_INDEXED_DOGS_REVERSE);
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
@@ -619,7 +619,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinWithDoubles3() {
+  void rightOuterJoinWithDoubles3() {
     Table joined =
         DOUBLE_INDEXED_PEOPLE.joinOn("ID").rightOuter(DOUBLE_INDEXED_DOGS, DOUBLE_INDEXED_CATS);
     assertTrue(
@@ -636,7 +636,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinWithDoubles4() {
+  void rightOuterJoinWithDoubles4() {
     Table joined = DOUBLE_INDEXED_PEOPLE.joinOn("ID").rightOuter(DOUBLE_INDEXED_DOGS);
     assertTrue(joined.columnNames().containsAll(Arrays.asList("ID", "Name", "Dog Name")));
     assertEquals(4, joined.rowCount());
@@ -649,7 +649,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinWithDoubles2() {
+  void leftOuterJoinWithDoubles2() {
     Table joined = DOUBLE_INDEXED_DOGS.joinOn("ID").leftOuter(DOUBLE_INDEXED_PEOPLE, "ID");
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
@@ -657,7 +657,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinWithDoubles3() {
+  void leftOuterJoinWithDoubles3() {
     Table joined = DOUBLE_INDEXED_DOGS.joinOn("ID").leftOuter(DOUBLE_INDEXED_PEOPLE);
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
@@ -665,7 +665,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinWithDoubles4() {
+  void leftOuterJoinWithDoubles4() {
     Table joined =
         DOUBLE_INDEXED_DOGS.joinOn("ID").leftOuter(DOUBLE_INDEXED_PEOPLE, DOUBLE_INDEXED_CATS);
     assertTrue(
@@ -681,28 +681,28 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoin() {
+  void innerJoin() {
     Table joined = SP500.joinOn("Date").inner(ONE_YEAR, "Date");
     assertEquals(3, joined.columnCount());
     assertEquals(5, joined.rowCount());
   }
 
   @Test
-  public void innerJoinSingleColumn() {
+  void innerJoinSingleColumn() {
     Table joined = SP500.selectColumns("Date").joinOn("Date").inner(ONE_YEAR.selectColumns("Date"));
     assertEquals(5, joined.rowCount());
     assertEquals(1, joined.columnCount());
   }
 
   @Test
-  public void innerJoinSingleColumnOnRight() {
+  void innerJoinSingleColumnOnRight() {
     Table joined = SP500.joinOn("Date").inner(ONE_YEAR.selectColumns("Date"));
     assertEquals(5, joined.rowCount());
     assertEquals(2, joined.columnCount());
   }
 
   @Test
-  public void innerJoinMultipleColumnsAllColumnsInJoinKey() {
+  void innerJoinMultipleColumnsAllColumnsInJoinKey() {
     Table table1 =
         Table.create(SP500.dateColumn("Date"), SP500.dateColumn("Date").copy().setName("Date2"));
     Table table2 =
@@ -715,7 +715,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinWithBoolean() {
+  void innerJoinWithBoolean() {
     Table joined =
         DUPLICATE_COL_NAME_DOGS.joinOn("Good").inner(true, DUPLICATE_COL_NAME_DOGS.copy());
     assertEquals(5, joined.columnCount());
@@ -723,7 +723,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoin() {
+  void leftOuterJoin() {
     Table joined = SP500.joinOn("Date").leftOuter(ONE_YEAR, "Date");
     assertEquals(3, joined.columnCount());
     assertEquals(6, joined.rowCount());
@@ -731,14 +731,14 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinDuplicateKeysFirstTable() {
+  void innerJoinDuplicateKeysFirstTable() {
     Table joined = ANIMAL_NAMES.joinOn("Animal").inner(ANIMAL_FEED, "Animal");
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
   }
 
   @Test
-  public void leftOuterJoinDuplicateKeysFirstTable() {
+  void leftOuterJoinDuplicateKeysFirstTable() {
     Table joined = ANIMAL_NAMES.joinOn("Animal").leftOuter(ANIMAL_FEED, "Animal");
     assertEquals(3, joined.columnCount());
     assertEquals(6, joined.rowCount());
@@ -746,14 +746,14 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinDuplicateKeysSecondTable() {
+  void innerJoinDuplicateKeysSecondTable() {
     Table joined = ANIMAL_FEED.joinOn("Animal").inner(ANIMAL_NAMES, "Animal");
     assertEquals(3, joined.columnCount());
     assertEquals(4, joined.rowCount());
   }
 
   @Test
-  public void innerJoinDuplicateKeysSecondTableWithTextColumn() {
+  void innerJoinDuplicateKeysSecondTableWithTextColumn() {
     Table feed = ANIMAL_FEED.copy();
     Table names = ANIMAL_NAMES.copy();
     feed.replaceColumn("Animal", feed.stringColumn("Animal").asTextColumn());
@@ -766,7 +766,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinDuplicateKeysSecondTable() {
+  void leftOuterJoinDuplicateKeysSecondTable() {
     Table joined = ANIMAL_FEED.joinOn("Animal").leftOuter(ANIMAL_NAMES, "Animal");
     assertEquals(3, joined.columnCount());
     assertEquals(6, joined.rowCount());
@@ -774,7 +774,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinJustTable() {
+  void fullOuterJoinJustTable() {
     Table joined = ANIMAL_FEED.joinOn("Animal").fullOuter(ANIMAL_NAMES);
     assertEquals(3, joined.columnCount());
     assertEquals(8, joined.rowCount());
@@ -787,7 +787,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoin() {
+  void fullOuterJoin() {
     Table joined = ANIMAL_FEED.joinOn("Animal").fullOuter(ANIMAL_NAMES, "Animal");
     assertEquals(3, joined.columnCount());
     assertEquals(8, joined.rowCount());
@@ -800,14 +800,14 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinColTwoOnlyJoinKeys() {
+  void fullOuterJoinColTwoOnlyJoinKeys() {
     Table joined = ANIMAL_FEED.joinOn("Animal").fullOuter(ANIMAL_NAMES.selectColumns("Animal"));
     assertEquals(2, joined.columnCount());
     assertEquals(8, joined.rowCount());
   }
 
   @Test
-  public void fullOuterJoinNew() {
+  void fullOuterJoinNew() {
     Table joined = ANIMAL_FEED.joinOn("Animal").fullOuter(true, ANIMAL_NAMES);
     assertEquals(3, joined.columnCount());
     assertEquals(8, joined.rowCount());
@@ -820,7 +820,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinMultiTable1() {
+  void fullOuterJoinMultiTable1() {
     Table table1 = createGOODS1();
     Table table2 = createGOODS2();
     Table table3 = createGOODS3();
@@ -846,7 +846,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinMultiTable2() {
+  void fullOuterJoinMultiTable2() {
     Table table3 = createGOODS3();
     Table table2 = createGOODS2();
     Table table1 = createGOODS1();
@@ -872,7 +872,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinMultiTable3() {
+  void fullOuterJoinMultiTable3() {
     Table table2 = createGOODS2();
     Table table3 = createGOODS3();
     Table table1 = createGOODS1();
@@ -898,7 +898,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinStudentInstructorOnAge() {
+  void innerJoinStudentInstructorOnAge() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("Age").inner(true, table2);
@@ -910,7 +910,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void joiningShouldNotMutateColNamesOnOriginalTable() {
+  void joiningShouldNotMutateColNamesOnOriginalTable() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     List<String> originalColumns =
@@ -924,7 +924,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinInstructorStudentOnAge() {
+  void innerJoinInstructorStudentOnAge() {
     Table table1 = createINSTRUCTOR();
     Table table2 = createSTUDENT();
     Table joined = table1.joinOn("Age").inner(true, table2);
@@ -936,7 +936,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinStudentInstructorClassOnAge() {
+  void innerJoinStudentInstructorClassOnAge() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table table3 = createCLASS();
@@ -950,7 +950,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinStudentInstructorClassDeptHeadOnAge() {
+  void innerJoinStudentInstructorClassDeptHeadOnAge() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table table3 = createCLASS();
@@ -976,7 +976,7 @@ public class DataFrameJoinerTest {
   }
   // Tests for left table is larger than right table, single cols
   @Test
-  public void innerJoinStudentInstructorClassDeptHeadOnAgeLargerLeftTable() {
+  void innerJoinStudentInstructorClassDeptHeadOnAgeLargerLeftTable() {
     Table table1 = createSTUDENTLarger();
     Table table2 = createINSTRUCTOR();
     Table table3 = createCLASS();
@@ -1020,7 +1020,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinStudentInstructorDeptHeadOnStateAge() {
+  void innerJoinStudentInstructorDeptHeadOnStateAge() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table table3 = createDEPTHEAD();
@@ -1042,7 +1042,7 @@ public class DataFrameJoinerTest {
   }
   // Tests for left table is larger than right table, multiple cols
   @Test
-  public void innerJoinStudentInstructorDeptHeadOnStateAgeWithLargerLeftTable() {
+  void innerJoinStudentInstructorDeptHeadOnStateAgeWithLargerLeftTable() {
     Table table1 = createSTUDENTLarger();
     Table table2 = createINSTRUCTOR();
     Table table3 = createDEPTHEAD();
@@ -1078,7 +1078,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinStudentInstructorOnStateAge() {
+  void innerJoinStudentInstructorOnStateAge() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("State", "Age").inner(true, table2);
@@ -1087,7 +1087,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinStudentInstructorOnStateAgeGradYear() {
+  void innerJoinStudentInstructorOnStateAgeGradYear() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("State", "Age", "GradYear").inner(true, table2);
@@ -1096,7 +1096,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftJoinStudentInstructorOnStateAge() {
+  void leftJoinStudentInstructorOnStateAge() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("State", "Age").leftOuter(true, table2);
@@ -1107,7 +1107,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftJoinStoreWithMultiTables() {
+  void leftJoinStoreWithMultiTables() {
     Table table1 = createGOODS1();
     Table table2 = createGOODS2();
     Table table3 = createGOODS3();
@@ -1127,7 +1127,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinHouseBoatOnBedroomsOwner() {
+  void innerJoinHouseBoatOnBedroomsOwner() {
     Table table1 = createHOUSE();
     Table table2 = createBOAT();
     Table joined =
@@ -1138,7 +1138,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinHouseBoatOnStyleTypeBedroomsOwner() {
+  void innerJoinHouseBoatOnStyleTypeBedroomsOwner() {
     Table table1 = createHOUSE();
     Table table2 = createBOAT();
     Table joined =
@@ -1150,7 +1150,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullJoinHouseBoatOnBedroomsOwner() {
+  void fullJoinHouseBoatOnBedroomsOwner() {
     Table table1 = createHOUSE();
     Table table2 = createBOAT();
     Table joined = table1.joinOn("Bedrooms", "Owner").fullOuter(true, table2);
@@ -1171,7 +1171,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullJoinHouse10Boat10OnBedroomsOwner() {
+  void fullJoinHouse10Boat10OnBedroomsOwner() {
     Table table1 = createHOUSE10();
     Table table2 = createBOAT10();
     Table joined = table1.joinOn("Bedrooms", "Owner").fullOuter(true, table2);
@@ -1192,7 +1192,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullJoinBnBBoat10OnBedroomsOwner() {
+  void fullJoinBnBBoat10OnBedroomsOwner() {
     Table table1 = createBEDANDBREAKFAST();
     Table table2 = createBOAT10();
     Table joined = table1.joinOn("Bedrooms", "SoldDate").fullOuter(true, table2);
@@ -1213,7 +1213,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftJoinHouseBoatOnBedroomsOwner() {
+  void leftJoinHouseBoatOnBedroomsOwner() {
     Table table1 = createHOUSE();
     Table table2 = createBOAT();
     Table joined =
@@ -1223,7 +1223,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftJoinHouseBoatBnBOnStyleTypeBedroomsOwner() {
+  void leftJoinHouseBoatBnBOnStyleTypeBedroomsOwner() {
     Table table1 = createHOUSE();
     Table table2 = createBOAT();
     Table joined =
@@ -1235,7 +1235,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightJoinHouseBoatOnBedroomsOwner() {
+  void rightJoinHouseBoatOnBedroomsOwner() {
     Table table1 = createHOUSE();
     Table table2 = createBOAT();
     Table joined =
@@ -1245,7 +1245,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightJoinHouseBoatOnStyleTypeBedroomsOwner() {
+  void rightJoinHouseBoatOnStyleTypeBedroomsOwner() {
     Table table1 = createHOUSE();
     Table table2 = createBOAT();
     Table joined =
@@ -1257,7 +1257,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightJoinStudentInstructorOnStateAge() {
+  void rightJoinStudentInstructorOnStateAge() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("State", "Age").rightOuter(true, table2);
@@ -1266,7 +1266,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinStudentInstructorOnStateName() {
+  void innerJoinStudentInstructorOnStateName() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("State", "FirstName").inner(table2, true, "State", "First");
@@ -1275,7 +1275,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftJoinStudentInstructorOnStateName() {
+  void leftJoinStudentInstructorOnStateName() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("State", "FirstName").leftOuter(table2, true, "State", "First");
@@ -1284,7 +1284,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightJoinStudentInstructorOnStateName() {
+  void rightJoinStudentInstructorOnStateName() {
     Table table1 = createSTUDENT();
     Table table2 = createINSTRUCTOR();
     Table joined = table1.joinOn("State", "FirstName").rightOuter(table2, true, "State", "First");
@@ -1293,7 +1293,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinOnAge() {
+  void innerJoinOnAge() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined = table1.joinOn("Age").inner(table2, "Age", true);
@@ -1302,7 +1302,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinAnimalPeopleOnAge() {
+  void innerJoinAnimalPeopleOnAge() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined = table1.joinOn("Age").inner(true, table2);
@@ -1311,7 +1311,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinAnimalTreeOnAge() {
+  void innerJoinAnimalTreeOnAge() {
     Table table1 = createANIMALHOMES();
     Table table2 = createTREE();
     Table joined = table1.joinOn("Age").inner(true, table2);
@@ -1320,7 +1320,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinAnimalPeopleTreeOnAge() {
+  void innerJoinAnimalPeopleTreeOnAge() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table table3 = createTREE();
@@ -1343,7 +1343,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinAnimalPeopleTreeOnAgeHome() {
+  void innerJoinAnimalPeopleTreeOnAgeHome() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table table3 = createTREE();
@@ -1369,7 +1369,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinOnNameHomeAge() {
+  void innerJoinOnNameHomeAge() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined = table1.joinOn("Name", "Home", "Age").inner(true, table2);
@@ -1378,7 +1378,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinOnAllMismatchedColNames() {
+  void innerJoinOnAllMismatchedColNames() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENicknameDwellingYearsMoveInDate();
     Table joined =
@@ -1388,7 +1388,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinOnPartiallyMismatchedColNames() {
+  void innerJoinOnPartiallyMismatchedColNames() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameDwellingYearsMoveInDate();
     Table joined =
@@ -1399,7 +1399,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinOnPartiallyMismatchedColNames() {
+  void leftOuterJoinOnPartiallyMismatchedColNames() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameDwellingYearsMoveInDate();
     Table joined =
@@ -1410,7 +1410,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinOnPartiallyMismatchedColNames() {
+  void rightOuterJoinOnPartiallyMismatchedColNames() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameDwellingYearsMoveInDate();
     Table joined =
@@ -1421,7 +1421,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinOnAgeMoveInDate() {
+  void innerJoinOnAgeMoveInDate() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined = table1.joinOn("Age", "MoveInDate").inner(true, table2);
@@ -1430,7 +1430,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinOnAgeMoveInDate() {
+  void leftOuterJoinOnAgeMoveInDate() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined = table1.joinOn("Age", "MoveInDate").leftOuter(true, table2);
@@ -1439,7 +1439,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoin_keepAllJoinKeyColumns() {
+  void leftOuterJoin_keepAllJoinKeyColumns() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined =
@@ -1449,7 +1449,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoin_keepAllJoinKeyColumns() {
+  void rightOuterJoin_keepAllJoinKeyColumns() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined =
@@ -1459,7 +1459,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuter_keepAllJoinKeyColumns() {
+  void fullOuter_keepAllJoinKeyColumns() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined =
@@ -1469,7 +1469,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoin_keepAllJoinKeyColumns() {
+  void innerJoin_keepAllJoinKeyColumns() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined =
@@ -1479,7 +1479,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void rightOuterJoinOnAgeMoveInDate() {
+  void rightOuterJoinOnAgeMoveInDate() {
     Table table1 = createANIMALHOMES();
     Table table2 = createDOUBLEINDEXEDPEOPLENameHomeAgeMoveInDate();
     Table joined = table1.joinOn("Age", "MoveInDate").rightOuter(true, table2);
@@ -1488,7 +1488,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinFootballSoccerOnPlayDate() {
+  void innerJoinFootballSoccerOnPlayDate() {
     Table table1 = createFOOTBALLSCHEDULE();
     Table table2 = createSOCCERSCHEDULE();
     Table joined = table1.joinOn("PlayDate").inner(true, table2);
@@ -1497,7 +1497,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinFootballSoccerOnPlayTime() {
+  void innerJoinFootballSoccerOnPlayTime() {
     Table table1 = createFOOTBALLSCHEDULE();
     Table table2 = createSOCCERSCHEDULE();
     Table joined = table1.joinOn("PlayTime").inner(true, table2);
@@ -1506,7 +1506,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinFootballSoccerOnPlayDatePlayTime() {
+  void innerJoinFootballSoccerOnPlayDatePlayTime() {
     Table table1 = createFOOTBALLSCHEDULE();
     Table table2 = createSOCCERSCHEDULE();
     Table joined = table1.joinOn("PlayDate", "PlayTime").inner(true, table2);
@@ -1515,7 +1515,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinFootballSoccerOnPlayTime() {
+  void fullOuterJoinFootballSoccerOnPlayTime() {
     Table table1 = createFOOTBALLSCHEDULE();
     Table table2 = createSOCCERSCHEDULE();
     Table joined = table1.joinOn("PlayTime").fullOuter(true, table2);
@@ -1524,7 +1524,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinFootballSoccerOnPlayDatePlayDateTime() {
+  void innerJoinFootballSoccerOnPlayDatePlayDateTime() {
     Table table1 = createFOOTBALLSCHEDULEDateTime();
     Table table2 = createSOCCERSCHEDULEDateTime();
     Table joined = table1.joinOn("PlayDateTime").inner(true, table2);
@@ -1533,7 +1533,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinFootballSoccerOnSeasonRevenue() {
+  void innerJoinFootballSoccerOnSeasonRevenue() {
     Table table1 = createFOOTBALLSCHEDULEDateTime();
     Table table2 = createSOCCERSCHEDULEDateTime();
     Table joined = table1.joinOn("SeasonRevenue", "AllTimeRevenue").inner(true, table2);
@@ -1542,7 +1542,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinFootballSoccerOnPlayDateTimeSeasonRevenue() {
+  void fullOuterJoinFootballSoccerOnPlayDateTimeSeasonRevenue() {
     Table table1 = createFOOTBALLSCHEDULEDateTime();
     Table table2 = createSOCCERSCHEDULEDateTime();
     Table joined = table1.joinOn("PlayDateTime", "SeasonRevenue").fullOuter(true, table2);
@@ -1565,7 +1565,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinFootballSoccerOnPlayDateTimeAllTimeRevenue() {
+  void fullOuterJoinFootballSoccerOnPlayDateTimeAllTimeRevenue() {
     Table table1 = createFOOTBALLSCHEDULEDateTime();
     Table table2 = createSOCCERSCHEDULEDateTime();
     Table joined = table1.joinOn("AllTimeRevenue").fullOuter(true, table2);
@@ -1594,7 +1594,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void fullOuterJoinFootballBaseballBoolean() {
+  void fullOuterJoinFootballBaseballBoolean() {
     Table table1 = createFOOTBALLSCHEDULE();
     Table table2 = createBASEBALLSCHEDULEDateTime();
     Table joined = table1.joinOn("HomeGame").fullOuter(true, table2);
@@ -1603,7 +1603,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void differentColumnTypes() {
+  void differentColumnTypes() {
     Table table1 = STRING_INDEXED_PEOPLE;
     Table table2 = DOUBLE_INDEXED_PEOPLE;
     Assertions.assertThrows(
@@ -1614,7 +1614,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void innerJoinEmptyLeftTable() {
+  void innerJoinEmptyLeftTable() {
     Table leftTable = Table.create(StringColumn.create("Animal"));
     Table joined = leftTable.joinOn("Animal").inner(ANIMAL_NAMES);
     assertEquals(0, joined.rowCount());
@@ -1624,7 +1624,7 @@ public class DataFrameJoinerTest {
   }
 
   @Test
-  public void leftOuterJoinEmptyLeftTable() {
+  void leftOuterJoinEmptyLeftTable() {
     Table leftTable = Table.create(StringColumn.create("Animal"));
     Table joined = leftTable.joinOn("Animal").leftOuter(ANIMAL_NAMES);
     assertEquals(0, joined.rowCount());

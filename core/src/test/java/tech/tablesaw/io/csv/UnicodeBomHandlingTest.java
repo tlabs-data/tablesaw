@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static tech.tablesaw.io.csv.UnicodeBomHandlingTest.BOM.UTF_8;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.OS;
+
 import tech.tablesaw.api.Table;
 
-public class UnicodeBomHandlingTest {
+class UnicodeBomHandlingTest {
 
   private static final byte[] CONTENT = "1, 2, 3, 4, 5/t6, 7, 8, 9, 10".getBytes();
   private static final byte[] UTF8_BOM_CONTENT;
@@ -23,9 +24,8 @@ public class UnicodeBomHandlingTest {
   }
 
   @Test
-  @Disabled
-  public void javaBehaviour() throws IOException {
-
+  @DisabledOnOs(OS.WINDOWS)
+  void testRawContent() {
     Table t =
         Table.read()
             .csv(
@@ -34,7 +34,12 @@ public class UnicodeBomHandlingTest {
                     .header(false)
                     .build());
     assertEquals(1, t.get(0, 0));
-    t =
+  }
+
+  @Test
+  @DisabledOnOs(OS.WINDOWS)
+  void testUTF8BOMContent() {
+    Table t =
         Table.read()
             .csv(
                 CsvReadOptions.builder(

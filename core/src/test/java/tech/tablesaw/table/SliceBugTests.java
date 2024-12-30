@@ -17,7 +17,7 @@ import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 
-public class SliceBugTests {
+class SliceBugTests {
 
   private final Integer[] observations = new Integer[] {10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
 
@@ -50,7 +50,7 @@ public class SliceBugTests {
       };
 
   @Test
-  public void sliceColumnIsSameWhenRetrievedWithNameOrIndex() {
+  void sliceColumnIsSameWhenRetrievedWithNameOrIndex() {
     Table table = constructTableFromArrays();
 
     TableSliceGroup countrySplit = table.splitOn("countries");
@@ -66,7 +66,7 @@ public class SliceBugTests {
   }
 
   @Test
-  public void sliceAsTableUsingDatesAfterFilteringDBLoadedTable() throws SQLException {
+  void sliceAsTableUsingDatesAfterFilteringDBLoadedTable() throws SQLException {
     Table salesTable = loadTableFromDB();
 
     Table filteredTable =

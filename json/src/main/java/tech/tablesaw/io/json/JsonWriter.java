@@ -42,6 +42,7 @@ public class JsonWriter implements DataWriter<JsonWriteOptions> {
     registry.registerOptions(JsonWriteOptions.class, INSTANCE);
   }
 
+  @Override
   public void write(Table table, JsonWriteOptions options) {
     ArrayNode output = mapper.createArrayNode();
     if (options.asObjects()) {

@@ -10,14 +10,14 @@ import tech.tablesaw.analytic.AggregateFunctions.Sum;
 class AnalyticAggregateFunctionsTest {
 
   @Test
-  public void testSumFixed() {
+  void testSumFixed() {
     AggregateFunction<Integer, Double> function = new Sum<Integer>().functionForAppendWindows();
     function.addAllRightMost(ImmutableList.of(10, 10, 10));
     assertEquals(30, function.getValue());
   }
 
   @Test
-  public void testSumSliding() {
+  void testSumSliding() {
     AggregateFunction<Integer, Double> function = new Sum<Integer>().functionForSlidingWindows();
     function.addAllRightMost(ImmutableList.of(10, 10, 10));
     function.removeLeftMost();
@@ -26,14 +26,14 @@ class AnalyticAggregateFunctionsTest {
   }
 
   @Test
-  public void testMaxFixed() {
+  void testMaxFixed() {
     AggregateFunction<Integer, Double> function = new Max<Integer>().functionForAppendWindows();
     function.addAllRightMost(ImmutableList.of(11, 10, 9));
     assertEquals(11, function.getValue());
   }
 
   @Test
-  public void testMaxSliding() {
+  void testMaxSliding() {
     AggregateFunction<Integer, Double> function = new Max<Integer>().functionForSlidingWindows();
     function.addAllRightMost(ImmutableList.of(100, 10, 9));
     function.removeLeftMost();

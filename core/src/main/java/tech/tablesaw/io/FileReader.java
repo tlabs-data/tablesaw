@@ -108,18 +108,17 @@ public abstract class FileReader {
         renameDuplicateColumnHeaders(headerNames);
       }
       return headerNames;
-    } else {
-      // Placeholder column names for when the file read has no header
-      int columnCount =
-          columnTypeReadOptions.columnTypes() != null
-              ? columnTypeReadOptions.columnTypes().length
-              : 0;
-      String[] headerNames = new String[columnCount];
-      for (int i = 0; i < columnCount; i++) {
-        headerNames[i] = "C" + i;
-      }
-      return headerNames;
     }
+    // Placeholder column names for when the file read has no header
+    int columnCount =
+        columnTypeReadOptions.columnTypes() != null
+            ? columnTypeReadOptions.columnTypes().length
+            : 0;
+    String[] headerNames = new String[columnCount];
+    for (int i = 0; i < columnCount; i++) {
+      headerNames[i] = "C" + i;
+    }
+    return headerNames;
   }
 
   /**

@@ -54,10 +54,10 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.columns.datetimes.PackedLocalDateTime;
 
 /** Tests for PackedLocalTime */
-public class PackedLocalTimeTest {
+class PackedLocalTimeTest {
 
   @Test
-  public void testTruncatedTo() {
+  void testTruncatedTo() {
     List<LocalTime> times =
         ImmutableList.of(
             LocalTime.of(5, 11, 24),
@@ -76,50 +76,50 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testGetHour() {
+  void testGetHour() {
     LocalTime now = LocalTime.now();
     assertEquals(now.getHour(), getHour(pack(now)));
   }
 
   @Test
-  public void testGetMinute() {
+  void testGetMinute() {
     LocalTime now = LocalTime.now();
     assertEquals(now.getMinute(), getMinute(pack(now)));
   }
 
   @Test
-  public void testGetSecond() {
+  void testGetSecond() {
     LocalTime now = LocalTime.now();
     assertEquals(now.getSecond(), getSecond(pack(now)));
   }
 
   @Test
-  public void testGetSecondOfDay() {
+  void testGetSecondOfDay() {
     LocalTime now = LocalTime.now();
     assertEquals(now.get(ChronoField.SECOND_OF_DAY), getSecondOfDay(pack(now)), 0.0001);
   }
 
   @Test
-  public void testGetMinuteOfDay() {
+  void testGetMinuteOfDay() {
     LocalTime now = LocalTime.now();
     assertEquals(now.get(ChronoField.MINUTE_OF_DAY), getMinuteOfDay(pack(now)), 0.0001);
   }
 
   @Test
-  public void testToNanoOfDay() {
+  void testToNanoOfDay() {
     int pTime = of(7, 18, 32, 232);
     LocalTime time = asLocalTime(pTime);
     assertEquals(time.getLong(ChronoField.NANO_OF_DAY), toNanoOfDay(pTime));
   }
 
   @Test
-  public void testGetMillisecondOfDay() {
+  void testGetMillisecondOfDay() {
     LocalTime now = LocalTime.now();
     assertEquals(now.get(ChronoField.MILLI_OF_DAY), getMillisecondOfDay(pack(now)));
   }
 
   @Test
-  public void testConstructors1() {
+  void testConstructors1() {
     LocalTime localTime = LocalTime.of(5, 11, 36);
     int packedTime = pack(localTime);
 
@@ -132,7 +132,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testConstructors2() {
+  void testConstructors2() {
     LocalTime localTime = LocalTime.of(5, 11);
     int packedTime = pack(localTime);
 
@@ -145,7 +145,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testConstructors3() {
+  void testConstructors3() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     int packedTime = pack(localTime);
 
@@ -156,7 +156,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testWithHour() {
+  void testWithHour() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.withHour(7);
 
@@ -166,7 +166,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testWithMinute() {
+  void testWithMinute() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.withMinute(7);
 
@@ -176,7 +176,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testWithSecond() {
+  void testWithSecond() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.withSecond(42);
     int packedTime = pack(localTime);
@@ -185,7 +185,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testPlusSeconds() {
+  void testPlusSeconds() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.plusSeconds(4340);
 
@@ -198,7 +198,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testPlusMinutes() {
+  void testPlusMinutes() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.plusMinutes(77);
 
@@ -211,7 +211,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testPlusHours() {
+  void testPlusHours() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.plusHours(3);
 
@@ -224,7 +224,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testPlusHours2() {
+  void testPlusHours2() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.plusHours(20);
 
@@ -237,7 +237,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testSecondsUntil() {
+  void testSecondsUntil() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.plusHours(20);
 
@@ -247,7 +247,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testMinutesUntil() {
+  void testMinutesUntil() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.plusHours(20);
 
@@ -257,7 +257,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testHoursUntil() {
+  void testHoursUntil() {
     LocalTime localTime = LocalTime.of(5, 11, 33, 811 * 1_000_000);
     LocalTime localTime2 = localTime.plusHours(20);
 
@@ -267,7 +267,7 @@ public class PackedLocalTimeTest {
   }
 
   @Test
-  public void testPack() {
+  void testPack() {
     LocalTime time = LocalTime.now();
     int packed = pack(time);
 

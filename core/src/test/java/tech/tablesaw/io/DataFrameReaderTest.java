@@ -41,7 +41,7 @@ class DataFrameReaderTest {
   }
 
   @Test
-  public void csv() throws IOException {
+  void csv() throws IOException {
     Path path = mockFileHelper("data/file.csv", ImmutableList.of("region", "canada", "us"));
     Table expected = Table.create(StringColumn.create("region", new String[] {"canada", "us"}));
     Table actual = Table.read().csv(Files.newInputStream(path));
@@ -50,7 +50,7 @@ class DataFrameReaderTest {
   }
 
   @Test
-  public void readUrlWithExtension() throws Exception {
+  void readUrlWithExtension() throws Exception {
     URL url =
         mockUrlHelper(
             "http://something.other.com/file.csv", ImmutableList.of("region", "canada", "us"));
@@ -61,7 +61,7 @@ class DataFrameReaderTest {
   }
 
   @Test
-  public void readCsvUrl() throws Exception {
+  void readCsvUrl() throws Exception {
     URL url =
         mockUrlHelper(
             "http://something.other.com/file", ImmutableList.of("region", "canada", "us"));
@@ -72,7 +72,7 @@ class DataFrameReaderTest {
   }
 
   @Test
-  public void readUrlUnknownMimeTypeNoExtension() throws Exception {
+  void readUrlUnknownMimeTypeNoExtension() throws Exception {
     // Mimetype should be text/plain, it depends on the installed FileTypeDetectors
     URL url = mockUrlHelper("http://something.other.com/file", ImmutableList.of());
     Throwable thrown = assertThrows(IllegalArgumentException.class, () -> Table.read().url(url));

@@ -9,7 +9,7 @@ public class BooleanColumnType extends AbstractColumnType {
 
   public static final BooleanParser DEFAULT_PARSER = new BooleanParser(ColumnType.BOOLEAN);
 
-  public static final byte MISSING_VALUE = (Byte) missingValueIndicator();
+  public static final byte MISSING_VALUE = missingValueIndicator();
 
   public static final byte BYTE_TRUE = 1;
   public static final byte BYTE_FALSE = 0;

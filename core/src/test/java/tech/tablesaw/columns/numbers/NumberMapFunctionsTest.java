@@ -9,12 +9,12 @@ import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.api.Table;
 
-public class NumberMapFunctionsTest {
+class NumberMapFunctionsTest {
 
   private static final String LINE_END = System.lineSeparator();
 
   @Test
-  public void testNormalize() {
+  void testNormalize() {
     double[] values = {4, 12, 9, 7, 8, 1, 3, 8, 9, 11};
     DoubleColumn test = DoubleColumn.create("test", values);
     DoubleColumn result = test.normalize();
@@ -23,7 +23,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testAsRatio() {
+  void testAsRatio() {
     double[] values = {4, 1, 1, 2, 2}; // sums to 10
     DoubleColumn test = DoubleColumn.create("test", values);
     DoubleColumn result = test.asRatio();
@@ -33,7 +33,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testAsPercent() {
+  void testAsPercent() {
     double[] values = {4, 1, 1, 2, 2}; // sums to 10
     DoubleColumn test = DoubleColumn.create("test", values);
     DoubleColumn result = test.asPercent();
@@ -43,7 +43,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testAdd() {
+  void testAdd() {
     double[] values = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
     DoubleColumn result = test.add(4);
@@ -53,7 +53,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testAdd2() {
+  void testAdd2() {
     double[] values = {4, 1, 1, 2, 2};
     double[] values2 = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
@@ -65,7 +65,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testSubtract() {
+  void testSubtract() {
     double[] values = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
     DoubleColumn result = test.subtract(4);
@@ -75,7 +75,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testSubtract2() {
+  void testSubtract2() {
     double[] values = {4, 1, 1, 2, 2};
     double[] values2 = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
@@ -87,7 +87,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testMultiply() {
+  void testMultiply() {
     double[] values = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
     DoubleColumn result = test.multiply(4);
@@ -97,7 +97,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testMultiply2() {
+  void testMultiply2() {
     double[] values = {4, 1, 1, 2, 2};
     double[] values2 = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
@@ -109,7 +109,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testDivide() {
+  void testDivide() {
     double[] values = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
     DoubleColumn result = test.divide(2);
@@ -119,7 +119,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testDivide2() {
+  void testDivide2() {
     double[] values = {4, 1, 1, 2, 2};
     double[] values2 = {4, 1, 1, 2, 2};
     DoubleColumn test = DoubleColumn.create("test", values);
@@ -131,7 +131,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void lag() {
+  void lag() {
     IntColumn n1 = IntColumn.indexColumn("index", 4, 0);
     Table t = Table.create("tst");
     t.addColumns(n1, n1.lag(-2));
@@ -153,7 +153,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void lead() {
+  void lead() {
     IntColumn n1 = IntColumn.indexColumn("index", 4, 0);
     Table t = Table.create("tst");
     t.addColumns(n1, n1.lead(1));
@@ -175,7 +175,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testNeg() {
+  void testNeg() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
@@ -186,7 +186,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testRoundInt() {
+  void testRoundInt() {
     double[] values = {4.4, 1.9, 1.5, 2.3, 2.0};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     DoubleColumn newDoubles = doubles.roundInt();
@@ -198,7 +198,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testMod() {
+  void testMod() {
     double[] values = {4, 1, 1, 2, 2};
     double[] values2 = {4, 1, 1, 2, 2};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
@@ -209,7 +209,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testSquareAndSqrt() {
+  void testSquareAndSqrt() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
@@ -223,7 +223,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testCubeAndCbrt() {
+  void testCubeAndCbrt() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
@@ -236,7 +236,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testLog1p() {
+  void testLog1p() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
@@ -246,7 +246,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testAbs() {
+  void testAbs() {
     double[] values = {4.4, -1.9, -1.5, 2.3, 0.0};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     DoubleColumn newDoubles = doubles.abs();
@@ -258,7 +258,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testRound() {
+  void testRound() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
@@ -268,7 +268,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testLogN() {
+  void testLogN() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));
@@ -278,7 +278,7 @@ public class NumberMapFunctionsTest {
   }
 
   @Test
-  public void testLog10() {
+  void testLog10() {
     DoubleColumn doubles = DoubleColumn.create("doubles", 100);
     for (int i = 0; i < 100; i++) {
       doubles.append(RandomUtils.secure().randomDouble(0, 10_000));

@@ -21,7 +21,7 @@ import static tech.tablesaw.api.ColumnType.INSTANT;
 import static tech.tablesaw.api.ColumnType.STRING;
 
 import com.google.common.collect.ImmutableMap;
-import java.io.IOException;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,10 +31,10 @@ import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.Source;
 
-public class JsonReaderTest {
+class JsonReaderTest {
 
   @Test
-  public void arrayOfArraysWithHeader() {
+  void arrayOfArraysWithHeader() {
     String json =
         "[[\"Date\",\"Value\"],[1453438800000,-2.1448117025014],[1454043600000,-2.9763153817574],[1454648400000,-2.9545283436391]]";
     Table table = Table.read().string(json, "json");
@@ -47,7 +47,7 @@ public class JsonReaderTest {
   }
 
   @Test
-  public void arrayOfArraysNoHeader() {
+  void arrayOfArraysNoHeader() {
     String json =
         "[[1453438800000,-2.1448117025014],[1454043600000,-2.9763153817574],[1454648400000,-2.9545283436391]]";
     Table table = Table.read().string(json, "json");
@@ -57,7 +57,7 @@ public class JsonReaderTest {
   }
 
   @Test
-  public void arrayOfNestedObjects() {
+  void arrayOfNestedObjects() {
     String json =
         "[{\"a\":1453438800000,\"b\":{\"c\":-2.1448117025014}},{\"a\":1454043600000,\"b\":{\"c\":-2.9763153817574}},{\"a\":1454648400000,\"b\":{\"c\":-2.9545283436391}}]";
     Table table = Table.read().string(json, "json");
@@ -69,7 +69,7 @@ public class JsonReaderTest {
   }
 
   @Test
-  public void arrayOfRowsWithIncompleteIndexes() {
+  void arrayOfRowsWithIncompleteIndexes() {
     String json =
         "[" + "{\"A\" : \"123\", \"B\" : \"456\"}," + "{\"B\" : \"789\", \"C\" : \"123\"}" + "]";
 
@@ -87,7 +87,7 @@ public class JsonReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypesMixedWithDetection() throws IOException {
+  void testCustomizedColumnTypesMixedWithDetection() {
     String json =
         "[[\"Date\",\"Value\"],[\"2007-12-03T10:15:30.00Z\",-2.1448117025014],[\"2020-12-03T10:15:30.00Z\",-2.9763153817574],[\"2021-12-03T10:15:30.00Z\",-2.9545283436391]]";
 
@@ -103,7 +103,7 @@ public class JsonReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypeAllCustomized() throws IOException {
+  void testCustomizedColumnTypeAllCustomized() {
     String json =
         "[[\"Date\",\"Value\"],[\"2007-12-03T10:15:30.00Z\",-2.1448117025014],[\"2020-12-03T10:15:30.00Z\",-2.9763153817574],[\"2021-12-03T10:15:30.00Z\",-2.9545283436391]]";
 

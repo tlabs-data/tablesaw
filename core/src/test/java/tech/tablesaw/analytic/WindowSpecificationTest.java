@@ -11,7 +11,7 @@ import tech.tablesaw.sorting.Sort;
 class WindowSpecificationTest {
 
   @Test
-  public void testToSqlString() {
+  void testToSqlString() {
     WindowSpecification windowSpecification =
         WindowSpecification.builder()
             .setWindowName("mainWindow")
@@ -26,7 +26,7 @@ class WindowSpecificationTest {
   }
 
   @Test
-  public void partitionDuplicates() {
+  void partitionDuplicates() {
     Throwable thrown =
         assertThrows(
             IllegalArgumentException.class,

@@ -18,7 +18,6 @@ import static java.lang.Double.NaN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,7 @@ import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.html.HtmlWriteOptions.ElementCreator;
 
-public class HtmlWriterTest {
+class HtmlWriterTest {
 
   private static final String LINE_END = "\n";
 
@@ -37,7 +36,7 @@ public class HtmlWriterTest {
       Table.create("t", DoubleColumn.create("v", v1), DoubleColumn.create("v2", v2));
 
   @Test
-  public void basic() {
+  void basic() {
     String output = table.write().toString("html");
     assertEquals(
         "<table>"
@@ -87,7 +86,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void alternatingRows() throws IOException {
+  void alternatingRows() {
     OutputStream baos = new ByteArrayOutputStream();
     ElementCreator elementCreator =
         (elementName, column, row) -> {
@@ -149,7 +148,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void noEscape() throws IOException {
+  void noEscape() {
     String[] data = {"<p>foo</p>"};
     Table table = Table.create("t", StringColumn.create("data", data));
 
@@ -185,7 +184,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void escape() throws IOException {
+  void escape() {
     String[] data = {"<p>foo</p>"};
     Table table = Table.create("t", StringColumn.create("data", data));
 

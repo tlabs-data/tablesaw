@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
 
-public class FixedWidthWriterTest {
+class FixedWidthWriterTest {
   private static final String LINE_END = System.lineSeparator();
 
   private double[] v1 = {1, 2, NaN};
@@ -21,7 +21,7 @@ public class FixedWidthWriterTest {
       Table.create("t", DoubleColumn.create("v1", v1), DoubleColumn.create("v2", v2));
 
   @Test
-  public void testOutputInFixedWidthFormat() {
+  void testOutputInFixedWidthFormat() {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     FixedWidthFields fwf = new FixedWidthFields(10, 10);
     FixedWidthWriteOptions options =
@@ -48,7 +48,7 @@ public class FixedWidthWriterTest {
   }
 
   @Test
-  public void testFileOutputStreamWhetherClose() throws IOException {
+  void testFileOutputStreamWhetherClose() throws IOException {
     // Create directory if it doesn't exist
     String DEFAULT_OUTPUT_FOLDER = "../testoutput";
     Path path = Paths.get(DEFAULT_OUTPUT_FOLDER, "testOutput.txt");
@@ -126,7 +126,7 @@ public class FixedWidthWriterTest {
   }
 
   @Test
-  public void testOutputStreamWriterWhetherClose() throws IOException {
+  void testOutputStreamWriterWhetherClose() {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     OutputStreamWriter osw = new OutputStreamWriter(baos);
     FixedWidthFields fwf = new FixedWidthFields(10, 10);

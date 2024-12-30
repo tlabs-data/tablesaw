@@ -12,10 +12,10 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
-public class NumberFiltersTest {
+class NumberFiltersTest {
 
   @Test
-  public void testIsEqualTo() {
+  void testIsEqualTo() {
     double[] values = {4, 1, 1, 2, 2};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isEqualTo(1.0);
@@ -25,7 +25,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsNotEqualTo() {
+  void testIsNotEqualTo() {
     double[] values = {4, 1, 1, 2, 2};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isNotEqualTo(1.0);
@@ -36,7 +36,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsZero() {
+  void testIsZero() {
     double[] values = {4, 0, -1};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isZero();
@@ -45,7 +45,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsPositive() {
+  void testIsPositive() {
     double[] values = {4, 0, -1};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isPositive();
@@ -54,28 +54,28 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void asIntArray() {
+  void asIntArray() {
     int[] values = {4, 1, 1, 2, 2, 5, 7};
     IntColumn int1 = IntColumn.create("ints", values);
     assertArrayEquals(values, int1.asIntArray());
   }
 
   @Test
-  public void asFloatArray() {
+  void asFloatArray() {
     float[] values = {4, 1, 1, 2, 2, 5, 7};
     FloatColumn c1 = FloatColumn.create("f", values);
     assertArrayEquals(values, c1.asFloatArray());
   }
 
   @Test
-  public void asDoubleArray() {
+  void asDoubleArray() {
     double[] values = {4, 1, 1, 2, 2, 5, 7};
     DoubleColumn c1 = DoubleColumn.create("f", values);
     assertArrayEquals(values, c1.asDoubleArray());
   }
 
   @Test
-  public void testIsNegative() {
+  void testIsNegative() {
     double[] values = {4, 0, -0.00001};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isNegative();
@@ -84,7 +84,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsNonNegative() {
+  void testIsNonNegative() {
     double[] values = {4, 0, -0.00001};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isNonNegative();
@@ -94,7 +94,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsGreaterThanOrEqualTo() {
+  void testIsGreaterThanOrEqualTo() {
     double[] values = {4, 0, -0.00001};
     double[] otherValues = {4, -1.3, 0.00001, NaN};
 
@@ -114,7 +114,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsLessThanOrEqualTo() {
+  void testIsLessThanOrEqualTo() {
     double[] values = {4, 0, -0.00001};
     double[] otherValues = {4, -1.3, 0.00001, NaN};
 
@@ -132,7 +132,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsLessThan() {
+  void testIsLessThan() {
     double[] values = {4, 0, -0.00001, 5.0};
     double[] values2 = {4, 11, -3.00001, 5.1};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
@@ -144,7 +144,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsGreaterThan() {
+  void testIsGreaterThan() {
 
     double[] values = {4, 0, -0.00001, 5.0};
     double[] otherValues = {4, -1.3, 0.00001, NaN};
@@ -164,7 +164,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsEqualTo1() {
+  void testIsEqualTo1() {
     double[] values = {4, 0, -0.00001, 5.0, 4.44443};
     double[] values2 = {4, 11, -3.00001, 5.1, 4.44443};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
@@ -176,7 +176,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsNotEqualTo1() {
+  void testIsNotEqualTo1() {
     double[] values = {4, 0, -0.00001, 5.0, 4.44443};
     double[] values2 = {4, 11, -3.00001, 5.1, 4.44443};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
@@ -195,7 +195,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsMissing() {
+  void testIsMissing() {
     double[] values = {4, 1, NaN, 2, 2};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isMissing();
@@ -204,7 +204,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsNotMissing() {
+  void testIsNotMissing() {
     double[] values = {4, 1, NaN, 2, 2};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     Selection selection = doubles.isNotMissing();
@@ -214,7 +214,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testNotIn() {
+  void testNotIn() {
     double[] values = {4, 1, NaN, 2, 2};
     DoubleColumn doubles = DoubleColumn.create("doubles", values);
     double[] comparison = {1, 2};
@@ -225,7 +225,7 @@ public class NumberFiltersTest {
   }
 
   @Test
-  public void testIsBetweenInclusive() throws Exception {
+  void testIsBetweenInclusive() throws Exception {
     Table bush = Table.read().csv(CsvReadOptions.builder("../data/bush.csv"));
     Table result = bush.where(bush.numberColumn("approval").isBetweenInclusive(0, 49));
     assertEquals(10, result.rowCount());

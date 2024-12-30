@@ -28,7 +28,7 @@ import tech.tablesaw.columns.numbers.NumberPredicates;
 import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
-public class IntIndexTest {
+class IntIndexTest {
 
   private ColumnType[] types = {
     ColumnType.LOCAL_DATE, // date of poll
@@ -41,21 +41,21 @@ public class IntIndexTest {
   private Table table;
 
   @BeforeEach
-  public void setUp() throws Exception {
+  void setUp() throws Exception {
     table = Table.read().csv(CsvReadOptions.builder("../data/bush.csv").columnTypes(types));
     index = new DoubleIndex(table.doubleColumn("approval"));
     dateIndex = new IntIndex(table.dateColumn("date"));
   }
 
   @Test
-  public void testGet() {
+  void testGet() {
     Selection fromCol = table.numberColumn("approval").eval(NumberPredicates.isEqualTo(71));
     Selection fromIdx = index.get(71);
     assertEquals(fromCol, fromIdx);
   }
 
   @Test
-  public void testGet2() {
+  void testGet2() {
     LocalDate date = LocalDate.of(2001, 12, 12);
     int packedDate = PackedLocalDate.pack(date);
     Selection fromCol = table.dateColumn("date").eval(DateAndTimePredicates.isEqualTo, packedDate);
@@ -66,7 +66,7 @@ public class IntIndexTest {
   }
 
   @Test
-  public void testGTE() {
+  void testGTE() {
     Selection fromCol =
         table.numberColumn("approval").eval(NumberPredicates.isGreaterThanOrEqualTo(71));
     Selection fromIdx = index.atLeast(71);
@@ -74,7 +74,7 @@ public class IntIndexTest {
   }
 
   @Test
-  public void testGTE2() {
+  void testGTE2() {
     LocalDate date = LocalDate.of(2001, 12, 12);
     int packedDate = PackedLocalDate.pack(date);
     Selection fromCol =
@@ -84,7 +84,7 @@ public class IntIndexTest {
   }
 
   @Test
-  public void testLTE() {
+  void testLTE() {
     Selection fromCol =
         table.numberColumn("approval").eval(NumberPredicates.isLessThanOrEqualTo(71));
     Selection fromIdx = index.atMost(71);
@@ -92,21 +92,21 @@ public class IntIndexTest {
   }
 
   @Test
-  public void testLT() {
+  void testLT() {
     Selection fromCol = table.numberColumn("approval").eval(NumberPredicates.isLessThan(71));
     Selection fromIdx = index.lessThan(71);
     assertEquals(fromCol, fromIdx);
   }
 
   @Test
-  public void testGT() {
+  void testGT() {
     Selection fromCol = table.numberColumn("approval").eval(NumberPredicates.isGreaterThan(71));
     Selection fromIdx = index.greaterThan(71);
     assertEquals(fromCol, fromIdx);
   }
 
   @Test
-  public void testGT1() {
+  void testGT1() {
     LocalDate date = LocalDate.of(2002, 4, 1);
     int value = PackedLocalDate.pack(date);
     Selection fromCol = table.dateColumn("date").eval(DateAndTimePredicates.isGreaterThan, value);
@@ -117,7 +117,7 @@ public class IntIndexTest {
   }
 
   @Test
-  public void testLT1() {
+  void testLT1() {
     LocalDate date = LocalDate.of(2002, 4, 1);
     int value = PackedLocalDate.pack(date);
     Selection fromCol = table.dateColumn("date").eval(DateAndTimePredicates.isLessThan, value);
@@ -126,7 +126,7 @@ public class IntIndexTest {
   }
 
   @Test
-  public void testAtMost() {
+  void testAtMost() {
     LocalDate date = LocalDate.of(2002, 4, 1);
     int value = PackedLocalDate.pack(date);
     Selection fromCol =

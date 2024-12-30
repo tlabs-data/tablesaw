@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static tech.tablesaw.columns.strings.StringPredicates.isEqualToIgnoringCase;
 
 import com.google.common.base.Joiner;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,12 +33,12 @@ import tech.tablesaw.columns.strings.StringParser;
 import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.selection.Selection;
 
-public class TextColumnTest {
+class TextColumnTest {
 
   private final TextColumn column = TextColumn.create("testing");
 
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     column.append("Value 1");
     column.append("Value 2");
     column.append("Value 3");
@@ -46,7 +46,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testAppendObj() {
+  void testAppendObj() {
     TextColumn column = TextColumn.create("testing");
     column.appendObj("Value 1");
     column.appendObj(null);
@@ -55,14 +55,14 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testConditionalSet() {
+  void testConditionalSet() {
     column.set(column.isEqualTo("Value 4"), "no Value");
     assertTrue(column.contains("no Value"));
     assertFalse(column.contains("Value 4"));
   }
 
   @Test
-  public void lag() {
+  void lag() {
     TextColumn c1 = column.lag(1);
     Table t = Table.create("Test");
     t.addColumns(column, c1);
@@ -72,7 +72,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void lag2() {
+  void lag2() {
     TextColumn c1 = column.lag(-1);
     Table t = Table.create("Test");
     t.addColumns(column, c1);
@@ -82,7 +82,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void joinTablesWithStringColumnsSuccess() throws IOException {
+  void joinTablesWithStringColumnsSuccess() {
     Table t1 =
         Table.read()
             .usingOptions(
@@ -128,7 +128,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testCustomParser() {
+  void testCustomParser() {
     // Just do enough to ensure the parser is wired up correctly
     final TextColumn sc = TextColumn.create("sc");
     StringParser customParser = new StringParser(ColumnType.TEXT);
@@ -142,7 +142,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void lead() {
+  void lead() {
     TextColumn c1 = column.lead(1);
     Table t = Table.create("Test");
     t.addColumns(column, c1);
@@ -152,52 +152,52 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testSelectWhere() {
+  void testSelectWhere() {
     TextColumn result = column.where(column.equalsIgnoreCase("VALUE 1"));
     assertEquals(1, result.size());
   }
 
   @Test
-  public void testDefaultReturnValue() {
+  void testDefaultReturnValue() {
     assertEquals(-1, column.firstIndexOf("test"));
   }
 
   @Test
-  public void testType() {
+  void testType() {
     assertEquals(ColumnType.TEXT, column.type());
   }
 
   @Test
-  public void testGetString() {
+  void testGetString() {
     assertEquals("Value 2", column.getString(1));
   }
 
   @Test
-  public void testSize() {
+  void testSize() {
     assertEquals(4, column.size());
   }
 
   @Test
-  public void testToString() {
+  void testToString() {
     assertEquals("Text column: testing", column.toString());
   }
 
   @Test
-  public void testMax() {
+  void testMax() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
     assertEquals("Wyoming", stringColumn.top(5).get(0));
   }
 
   @Test
-  public void testMin() {
+  void testMin() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
     assertEquals("Alabama", stringColumn.bottom(5).get(0));
   }
 
   @Test
-  public void testStartsWith() {
+  void testStartsWith() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
 
@@ -213,7 +213,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testFormattedPrinting() {
+  void testFormattedPrinting() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
 
@@ -224,7 +224,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testSelectWithFilter() {
+  void testSelectWithFilter() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
 
@@ -236,7 +236,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testIsNotEqualTo() {
+  void testIsNotEqualTo() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
 
@@ -248,7 +248,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testColumnEqualIgnoringCase() {
+  void testColumnEqualIgnoringCase() {
     TextColumn other = column.copy();
     other.set(1, "Some other thing");
     other.set(2, other.get(2).toUpperCase());
@@ -264,7 +264,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testIsEqualTo() {
+  void testIsEqualTo() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
     stringColumn.append("Alabama"); // so we have two entries
@@ -281,7 +281,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testIsNotEqualTo2() {
+  void testIsNotEqualTo2() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
 
@@ -292,7 +292,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testIsIn() {
+  void testIsIn() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
     TextColumn selection = stringColumn.where(stringColumn.isIn("Alabama", "Texas"));
@@ -302,7 +302,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testIsNotIn() {
+  void testIsNotIn() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
     TextColumn selection = stringColumn.where(stringColumn.isNotIn("Alabama", "Texas"));
@@ -313,7 +313,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testToList() {
+  void testToList() {
     TextColumn stringColumn = TextColumn.create("US States");
     stringColumn.addAll(TestDataUtil.usStates());
     List<String> states = stringColumn.asList();
@@ -321,7 +321,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testFormatting() {
+  void testFormatting() {
     String[] names = {"John White", "George Victor"};
     TextColumn nameColumn = TextColumn.create("names", names);
     StringColumn formatted = nameColumn.format("Name: %s");
@@ -329,7 +329,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testDistance() {
+  void testDistance() {
     String[] words = {"canary", "banana", "island", "reggae"};
     String[] words2 = {"cancel", "bananas", "islander", "calypso"};
     TextColumn wordColumn = TextColumn.create("words", words);
@@ -340,7 +340,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testCommonSuffix() {
+  void testCommonSuffix() {
     String[] words = {"running", "icecube", "regular", "reggae"};
     String[] words2 = {"rowing", "cube", "premium", "place"};
     TextColumn wordColumn = TextColumn.create("words", words);
@@ -352,7 +352,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testCommonPrefix() {
+  void testCommonPrefix() {
     String[] words = {"running", "icecube", "back"};
     String[] words2 = {"rowing", "iceland", "backup"};
     TextColumn wordColumn = TextColumn.create("words", words);
@@ -364,7 +364,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testPadStart() {
+  void testPadStart() {
     String[] words = {"running", "icecube", "back"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.padStart(8, ' ');
@@ -374,7 +374,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testPadEnd() {
+  void testPadEnd() {
     String[] words = {"running", "icecube", "back"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.padEnd(8, 'X');
@@ -384,7 +384,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testSubstring() {
+  void testSubstring() {
     String[] words = {"running", "icecube", "back"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.substring(3);
@@ -394,7 +394,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testSubstring2() {
+  void testSubstring2() {
     String[] words = {"running", "icecube", "back"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.substring(1, 3);
@@ -404,7 +404,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testReplaceFirst() {
+  void testReplaceFirst() {
     String[] words = {"running", "run run run"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.replaceFirst("run", "walk");
@@ -413,7 +413,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testReplaceAll() {
+  void testReplaceAll() {
     String[] words = {"running", "run run run"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.replaceAll("run", "walk");
@@ -422,7 +422,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testReplaceAll2() {
+  void testReplaceAll2() {
     String[] words = {"running", "run run run"};
     String[] regex = {"n", "g"};
     TextColumn wordColumn = TextColumn.create("words", words);
@@ -432,7 +432,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testJoin() {
+  void testJoin() {
     String[] words = {"running", "run"};
     String[] words2 = {"walking", "walk"};
     String[] words3 = {"swimming", "swim"};
@@ -445,7 +445,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testAsStringColumn() throws Exception {
+  void testAsStringColumn() throws Exception {
     Table table = Table.read().csv("../data/first_names.csv");
     StringColumn name = table.stringColumn("emma");
     TextColumn name2 = name.asTextColumn();
@@ -456,7 +456,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testTrim() {
+  void testTrim() {
     String[] words = {" running ", " run run run "};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.trim();
@@ -465,7 +465,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testUpperCase() {
+  void testUpperCase() {
     String[] words = {"running", "run run run"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.upperCase();
@@ -474,7 +474,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testLowerCase() {
+  void testLowerCase() {
     String[] words = {"RUNNING", "RUN RUN RUN"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.lowerCase();
@@ -483,7 +483,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testAbbreviate() {
+  void testAbbreviate() {
     String[] words = {"running", "Stop Breaking Down", "Backwards Writing"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.abbreviate(10);
@@ -493,7 +493,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void tokenizeAndSort() {
+  void tokenizeAndSort() {
     String[] words = {"Stop Breaking Down", "Backwards Writing"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.tokenizeAndSort();
@@ -516,7 +516,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void tokenizeAndSort1() {
+  void tokenizeAndSort1() {
     String[] words = {"Stop,Breaking,Down", "Writing Backwards"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.tokenizeAndSort(",");
@@ -525,7 +525,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void tokenizeAndRemoveDuplicates() {
+  void tokenizeAndRemoveDuplicates() {
     String[] words = {"Stop Breaking Stop Down", "walk run run"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.tokenizeAndRemoveDuplicates(" ");
@@ -534,7 +534,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void chainMaps() {
+  void chainMaps() {
     String[] words = {"Stop Breaking Stop Down", "walk run run"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.tokenizeAndRemoveDuplicates(" ").tokenizeAndSort();
@@ -543,7 +543,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void chainMaps1() {
+  void chainMaps1() {
     String[] words = {"foo", "bar"};
     TextColumn wordColumn = TextColumn.create("words", words);
     StringColumn result = wordColumn.concatenate(" bam");
@@ -552,7 +552,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void testCountUnique() {
+  void testCountUnique() {
     TextColumn col1 = TextColumn.create("col1");
     col1.append("1");
     col1.append("1");
