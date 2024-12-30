@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.traces.ViolinTrace;
 
-@Disabled
 class ViolinTest {
 
     private final Object[] x = {
@@ -32,20 +31,23 @@ class ViolinTest {
         assertNotNull(trace.asJavascript(1));
     }
 
+    @Disabled
     @Test
     void showWithMeanLine() {
         ViolinTrace trace = ViolinTrace.builder(x, y).meanLine(true).build();
         Figure figure = new Figure(trace);
         assertNotNull(figure);
-        Plot.show(figure, "target");
+        Plot.show(figure);
     }
 
+    
+    @Disabled
     @Test
     void showWithBoxPlot() {
         ViolinTrace trace = ViolinTrace.builder(x, y).boxPlot(true).build();
         Figure figure = new Figure(trace);
         assertNotNull(figure);
-        Plot.show(figure, "target");
+        Plot.show(figure);
     }
 
     /** Test ensures that the name() method returns a ViolinTraceBuilder as expected. */

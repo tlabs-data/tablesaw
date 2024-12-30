@@ -2,13 +2,13 @@ package tech.tablesaw.plotly.components;
 
 import static tech.tablesaw.plotly.components.Marker.SizeMode.DIAMETER;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.base.Preconditions;
 import java.util.HashMap;
 import java.util.Map;
 import tech.tablesaw.api.NumericColumn;
-import tech.tablesaw.plotly.Utils;
 
-public class Marker extends Component {
+public class Marker extends JSONComponent {
 
   public enum SizeMode {
     AREA("area"),
@@ -20,6 +20,7 @@ public class Marker extends Component {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -53,6 +54,7 @@ public class Marker extends Component {
       this.value = value;
     }
 
+    @JsonValue
     @Override
     public String toString() {
       return value;
@@ -107,37 +109,32 @@ public class Marker extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJavascript("marker_template.html");
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
-    context.put("size", size.length == 1 ? size[0] : Utils.dataAsString(size));
+    context.put("size", size.length == 1 ? size[0] : size);
     if (colorScalePalette != null) {
-      context.put("colorScale", colorScalePalette);
+      context.put("colorscale", colorScalePalette.toString());
     }
-    if (cAuto != DEFAULT_C_AUTO) context.put("cAuto", cAuto);
+    if (cAuto != DEFAULT_C_AUTO) context.put("cauto", cAuto);
     if (color != null && color.length > 0) {
       if (color.length > 1) {
-        context.put("color", Utils.dataAsString(color));
-        context.put("cMin", cMin);
-        context.put("cMax", cMax);
+        context.put("color", color);
+        context.put("cmin", cMin);
+        context.put("cmax", cMax);
       } else {
-        context.put("color", Utils.quote(color[0]));
+        context.put("color", color[0]);
       }
     } else if (colorArray != null) {
-      context.put("color", Utils.dataAsString(colorArray));
+      context.put("color", colorArray);
     }
-    if (line != null) context.put("line", line.asJavascript());
-    if (autoColorScale != DEFAULT_AUTO_COLOR_SCALE) context.put("autoColorScale", autoColorScale);
-    if (showScale != DEFAULT_SHOW_SCALE) context.put("showScale", showScale);
-    if (reverseScale != DEFAULT_REVERSE_SCALE) context.put("reverseScale", reverseScale);
+    if (line != null) context.put("line", line.getJSONContext());
+    if (autoColorScale != DEFAULT_AUTO_COLOR_SCALE) context.put("autoColorscale", autoColorScale);
+    if (showScale != DEFAULT_SHOW_SCALE) context.put("showscale", showScale);
+    if (reverseScale != DEFAULT_REVERSE_SCALE) context.put("reversescale", reverseScale);
     if (opacity != DEFAULT_OPACITY) context.put("opacity", opacity);
-    if (sizeMode != DEFAULT_SIZE_MODE) context.put("sizeMode", sizeMode);
+    if (sizeMode != DEFAULT_SIZE_MODE) context.put("sizemode", sizeMode);
     if (gradient != null) context.put("gradient", gradient);
-    if (colorBar != null) context.put("colorBar", colorBar.asJavascript());
+    if (colorBar != null) context.put("colorbar", colorBar.getJSONContext());
     context.put("symbol", symbol);
     return context;
   }

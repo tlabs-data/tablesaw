@@ -3,9 +3,29 @@ package tech.tablesaw.plotly.components;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Config extends Component {
+import com.fasterxml.jackson.annotation.JsonValue;
 
-  private final Boolean displayModeBar;
+public class Config extends TemplateComponent {
+
+  public static enum ModeBarDisplay {
+    ALWAYS("true"),
+    NEVER("false"),
+    ON_HOVER("on-hover"); // This is the default
+
+    private final String value;
+
+    ModeBarDisplay(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    @Override
+    public String toString() {
+      return value;
+    }
+  }
+
+  private final ModeBarDisplay displayModeBar;
   private final Boolean responsive;
   private final Boolean displayLogo;
 
@@ -21,18 +41,18 @@ public class Config extends Component {
 
   @Override
   public String asJavascript() {
-    return "var config = " + asJSON();
+    return "var config = " + asJSON() +";\n";
   }
 
   @Override
   protected Map<String, Object> getJSONContext() {
-    return getContext();
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
     Map<String, Object> context = new HashMap<>();
-    context.put("displayModeBar", displayModeBar);
+    // handle modebar display. ON_HOVER is the default, so we do nothing
+    if (displayModeBar == ModeBarDisplay.NEVER) {
+      context.put("displayModeBar", false);
+    } else if (displayModeBar == ModeBarDisplay.ALWAYS) {
+      context.put("displayModeBar", true);
+    }
     context.put("responsive", responsive);
     context.put("displaylogo", displayLogo);
     return context;
@@ -40,13 +60,13 @@ public class Config extends Component {
 
   public static class Builder {
 
-    Boolean displayModeBar;
+    ModeBarDisplay displayModeBar;
     Boolean responsive;
     Boolean displayLogo;
 
     private Builder() {}
 
-    public Builder displayModeBar(boolean displayModeBar) {
+    public Builder displayModeBar(ModeBarDisplay displayModeBar) {
       this.displayModeBar = displayModeBar;
       return this;
     }

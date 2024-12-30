@@ -1,7 +1,5 @@
 package tech.tablesaw.plotly;
 
-import java.io.File;
-import java.nio.file.Paths;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Axis;
@@ -28,7 +26,6 @@ public class ScatterTest {
   @Test
   public void testAsJavascript() {
     ScatterTrace trace = ScatterTrace.builder(x, y).text(labels).build();
-
     System.out.println(trace.asJavascript(1));
   }
 
@@ -44,8 +41,7 @@ public class ScatterTest {
             .build();
 
     Figure figure = new Figure(trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
@@ -68,9 +64,7 @@ public class ScatterTest {
             .build();
 
     Figure figure = new Figure(layout, trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
@@ -118,8 +112,7 @@ public class ScatterTest {
     ScatterTrace trace2 = ScatterTrace.builder(x2, y2).mode(ScatterTrace.Mode.LINE).build();
 
     Figure figure = new Figure(layout, trace1, trace2, trace3);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
@@ -129,9 +122,7 @@ public class ScatterTest {
         ScatterTrace.builder(x, y).mode(ScatterTrace.Mode.LINE_AND_MARKERS).build();
 
     Figure figure = new Figure(trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 
   @Test
@@ -141,8 +132,6 @@ public class ScatterTest {
         ScatterTrace.builder(x, y).mode(ScatterTrace.Mode.TEXT).text(labels).build();
 
     Figure figure = new Figure(trace);
-    File outputFile = Paths.get("testoutput/output.html").toFile();
-
-    Plot.show(figure, "target", outputFile);
+    Plot.show(figure);
   }
 }

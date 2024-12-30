@@ -5,13 +5,12 @@ import com.google.common.base.Preconditions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Annotation extends Component {
-
-  /**
-   * This is to supply annotation in Plot.ly reference to
-   * https://plotly.com/javascript/reference/layout/annotations/. Support most of
-   * apis there.
-   */
+/**
+ * This is to supply annotation in Plot.ly reference to
+ * https://plotly.com/javascript/reference/layout/annotations/. Support most of
+ * apis there.
+ */
+public class Annotation extends JSONComponent {
 
   /**
    * The horizontal alignment of the 'text' within the box.
@@ -68,7 +67,7 @@ public class Annotation extends Component {
   }
 
   public enum Yanchor {
-    AUTO("auto"), TOP("top"), MIDDLE("center"), BOTTOM("right");
+    AUTO("auto"), TOP("top"), MIDDLE("center"), BOTTOM("bottom");
 
     private final String value;
 
@@ -221,12 +220,7 @@ public class Annotation extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJavascript("annotation_template.html");
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     if (DEFAULT_VISIBLE != visible)
       context.put("visible", visible);
@@ -258,10 +252,18 @@ public class Annotation extends Component {
       context.put("arrowhead", arrowhead);
     if (startarrowhead != DEFAULT_STARTARROWHEAD)
       context.put("startarrowhead", startarrowhead);
+    if(arrowside != DEFAULT_ARROWSIDE)
+      context.put("arrowside", arrowside);
+    if(arrowsize != DEFAULT_ARROWSIZE)
+      context.put("arrowsize", arrowsize);
+    if(startarrowsize != DEFAULT_STARTARROWSIZE)
+      context.put("startarrowsize", startarrowsize);
     if (arrowwidth != DEFAULT_ARROWWIDTH)
       context.put("arrowwidth", arrowwidth);
     if (standoff != DEFAULT_STANDOFF)
       context.put("standoff", standoff);
+    if (startstandoff != DEFAULT_STARTSTANDOFF)
+      context.put("startstandoff", startstandoff);
     if (ax != null)
       context.put("ax", ax);
     if (ay != null)
@@ -292,6 +294,8 @@ public class Annotation extends Component {
       context.put("xclick", xclick);
     if (yclick != null)
       context.put("yclick", yclick);
+    if (hovertext != null)
+      context.put("hovertext", hovertext);
     if (hoverlabel != null)
       context.put("hoverlabel", hoverlabel);
     if (captureevents != DEFAULT_CAPTUREEVENTS)

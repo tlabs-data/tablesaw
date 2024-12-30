@@ -1,11 +1,5 @@
 package tech.tablesaw.plotly.components.threeD;
 
-import io.pebbletemplates.pebble.error.PebbleException;
-import io.pebbletemplates.pebble.template.PebbleTemplate;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.UncheckedIOException;
-import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 import tech.tablesaw.plotly.components.Axis;
@@ -28,7 +22,8 @@ public class Scene extends Component {
     this.camera = builder.camera;
   }
 
-  protected Map<String, Object> getContext() {
+  @Override
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     if (xAxis != null) {
       context.put("xAxis", xAxis);
@@ -47,21 +42,6 @@ public class Scene extends Component {
 
   public static Scene.SceneBuilder sceneBuilder() {
     return new Scene.SceneBuilder();
-  }
-
-  @Override
-  public String asJavascript() {
-    Writer writer = new StringWriter();
-    PebbleTemplate compiledTemplate;
-    try {
-      compiledTemplate = getEngine().getTemplate("scene_template.html");
-      compiledTemplate.evaluate(writer, getContext());
-    } catch (PebbleException e) {
-      throw new IllegalStateException(e);
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    }
-    return writer.toString();
   }
 
   public static class SceneBuilder {

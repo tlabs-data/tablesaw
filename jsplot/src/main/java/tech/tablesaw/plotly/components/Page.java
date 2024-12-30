@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /** Represents an entire html page that contains a figure */
-public class Page extends Component {
+public class Page extends TemplateComponent {
 
   private final Figure figure;
   private final String divName;
@@ -23,7 +23,7 @@ public class Page extends Component {
   }
 
   @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     context.put("figureScript", figure.asJavascript(divName));
     context.put("targetDiv", figure.divString(divName));

@@ -1,16 +1,18 @@
 package tech.tablesaw.plotly.components;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.base.Preconditions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Grid extends Component {
+public class Grid extends JSONComponent {
 
   public enum RowOrder {
     ENUMERATED,
     TOP_TO_BOTTOM,
     BOTTOM_TO_TOP;
 
+    @JsonValue
     @Override
     public String toString() {
       return this.name().toLowerCase().replace("_", " ");
@@ -23,6 +25,7 @@ public class Grid extends Component {
     TOP,
     TOP_PLOT;
 
+    @JsonValue
     @Override
     public String toString() {
       return this.name().toLowerCase().replace("_", " ");
@@ -35,6 +38,7 @@ public class Grid extends Component {
     RIGHT,
     RIGHT_PLOT;
 
+    @JsonValue
     @Override
     public String toString() {
       return this.name().toLowerCase().replace("_", " ");
@@ -45,6 +49,7 @@ public class Grid extends Component {
     INDEPENDENT,
     COUPLED;
 
+    @JsonValue
     @Override
     public String toString() {
       return this.name().toLowerCase();
@@ -108,21 +113,16 @@ public class Grid extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJavascript("grid_template.html");
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
-    context.put("xGap", xGap);
-    context.put("yGap", yGap);
+    context.put("xgap", xGap);
+    context.put("ygap", yGap);
     context.put("rows", rows);
     context.put("columns", columns);
-    context.put("rowOrder", rowOrder);
+    context.put("roworder", rowOrder);
     context.put("pattern", pattern);
-    context.put("xSide", xSide);
-    context.put("ySide", ySide);
+    context.put("xside", xSide);
+    context.put("yside", ySide);
     return context;
   }
 

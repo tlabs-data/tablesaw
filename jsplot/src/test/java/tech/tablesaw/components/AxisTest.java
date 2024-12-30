@@ -1,15 +1,15 @@
 package tech.tablesaw.components;
 
-import org.junit.jupiter.api.Disabled;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.components.Axis;
 import tech.tablesaw.plotly.components.Font;
 
-@Disabled
 public class AxisTest {
 
   @Test
-  public void asJavascript() {
+  public void testAsJSON() {
     Axis x =
         Axis.builder()
             .title("x Axis 1")
@@ -17,7 +17,14 @@ public class AxisTest {
             .type(Axis.Type.DEFAULT)
             .titleFont(Font.builder().family(Font.Family.ARIAL).size(8).color("red").build())
             .build();
-
-    System.out.println(x);
+    String expected = "{\n"
+      + "  title : \"x Axis 1\",\n"
+      + "  titlefont : {\n"
+      + "    color : \"red\",\n"
+      + "    family : \"arial\",\n"
+      + "    size : 8\n"
+      + "  }\n"
+      + "}";
+    assertEquals(expected, x.asJSON());
   }
 }

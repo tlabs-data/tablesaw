@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Gradient extends Component {
+public class Gradient extends JSONComponent {
 
   /** Defines the gradient type */
   public enum Type {
@@ -35,17 +35,7 @@ public class Gradient extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJSON();
-  }
-
-  @Override
   protected Map<String, Object> getJSONContext() {
-    return getContext();
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
     Map<String, Object> context = new HashMap<>();
     context.put("type", type);
     if (color != null && color.length > 0) {
@@ -55,7 +45,6 @@ public class Gradient extends Component {
         context.put("color", color[0]);
       }
     }
-
     return context;
   }
 

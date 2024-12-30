@@ -13,7 +13,6 @@
  */
 package tech.tablesaw.examples;
 
-import java.io.IOException;
 import tech.tablesaw.api.NumericColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.Plot;
@@ -26,7 +25,7 @@ import tech.tablesaw.selection.Selection;
 /** */
 public class BubbleExample {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) {
     Table marketShare = Table.read().csv("../data/market_share.csv");
     Table sub = marketShare.where(Selection.withRange(0, 4));
     NumericColumn<?> x = sub.nCol("Products");
@@ -34,7 +33,7 @@ public class BubbleExample {
     NumericColumn<?> data = sub.nCol("Market_Share");
 
     Layout layout = Layout.builder().title("Market Share").build();
-    Marker marker = Marker.builder().size(data).sizeMode(Marker.SizeMode.AREA).build();
+    Marker marker = Marker.builder().size(data).sizeMode(Marker.SizeMode.DIAMETER).build();
     ScatterTrace trace = ScatterTrace.builder(x, y).marker(marker).build();
 
     Plot.show(new Figure(layout, trace));

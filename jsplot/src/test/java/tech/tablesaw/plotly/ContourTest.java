@@ -8,8 +8,6 @@ import tech.tablesaw.plotly.api.ContourPlot;
 import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.traces.ContourTrace;
 
-import java.io.IOException;
-
 @Disabled
 public class ContourTest {
 
@@ -37,7 +35,7 @@ public class ContourTest {
   }
 
   @Test
-  public void testContourPlot() throws IOException {
+  public void testContourPlot() {
     Table table = Table.read().csv("../data/bush.csv");
     StringColumn yearsMonth = table.dateColumn("date").yearMonth();
     String name = "Year and month";

@@ -14,6 +14,7 @@
 
 package tech.tablesaw.examples;
 
+import tech.tablesaw.aggregate.AggregateFunctions;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.Plot;
 import tech.tablesaw.plotly.components.Figure;
@@ -26,10 +27,10 @@ public class PieExample {
   public static void main(String[] args) throws Exception {
     Table table = Table.read().csv("../data/tornadoes_1950-2014.csv");
 
-    Table t2 = table.countBy(table.categoricalColumn("Scale"));
+    Table t2 = table.summarize("Fatalities", AggregateFunctions.sum).by(table.categoricalColumn("Scale"));
 
     PieTrace trace =
-        PieTrace.builder(t2.categoricalColumn("Category"), t2.numberColumn("Count")).build();
+        PieTrace.builder(t2.categoricalColumn("Scale"), t2.numberColumn("Sum [Fatalities]")).build();
     Layout layout = Layout.builder().title("Total fatalities by scale").build();
 
     Plot.show(new Figure(layout, trace));

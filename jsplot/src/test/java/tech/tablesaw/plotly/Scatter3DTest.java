@@ -13,7 +13,6 @@ import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.components.Layout;
 import tech.tablesaw.plotly.traces.Scatter3DTrace;
 
-@Disabled
 public class Scatter3DTest {
 
   private final double[] x = {1, 2, 3, 4, 5, 6};
@@ -28,17 +27,19 @@ public class Scatter3DTest {
     assertNotNull(trace.asJavascript(1));
   }
 
+  @Disabled
   @Test
   public void showScatter() {
 
     Scatter3DTrace trace =
         Scatter3DTrace.builder(x, y, z).mode(Scatter3DTrace.Mode.MARKERS).text(labels).build();
 
-    Layout layout = Layout.builder().xAxis(Axis.builder().title("x title").build()).build();
+    Layout layout = Layout.builder("x title", "x title").xAxis(Axis.builder().build()).build();
     assertEquals("x title", layout.getTitle());
     Plot.show(new Figure(layout, trace));
   }
 
+  @Disabled
   @Test
   public void showLineAndMarkers() {
 
@@ -49,6 +50,7 @@ public class Scatter3DTest {
     Plot.show(new Figure(layout, trace));
   }
 
+  @Disabled
   @Test
   public void showText() {
 

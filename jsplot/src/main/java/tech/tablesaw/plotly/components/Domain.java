@@ -3,7 +3,7 @@ package tech.tablesaw.plotly.components;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Domain extends Component {
+public class Domain extends JSONComponent {
 
   private final Integer row;
   private final Integer column;
@@ -18,23 +18,13 @@ public class Domain extends Component {
   }
 
   @Override
-  public String asJavascript() {
-    return asJSON();
-  }
-
-  @Override
-  protected Map<String, Object> getContext() {
+  protected Map<String, Object> getJSONContext() {
     Map<String, Object> context = new HashMap<>();
     context.put("column", column);
     context.put("row", row);
     context.put("x", x);
     context.put("y", y);
     return context;
-  }
-
-  @Override
-  protected Map<String, Object> getJSONContext() {
-    return getContext();
   }
 
   public static DomainBuilder builder() {

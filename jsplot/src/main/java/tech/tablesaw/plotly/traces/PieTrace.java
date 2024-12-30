@@ -50,7 +50,7 @@ public class PieTrace extends AbstractTrace {
       context.put("labels", Utils.dataAsString(labels));
     }
     if (domain != null) {
-      context.put("domain", domain.asJavascript());
+      context.put("domain", domain.asJSON());
     }
     return context;
   }
