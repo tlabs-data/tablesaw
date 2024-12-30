@@ -41,7 +41,7 @@ public class Config extends TemplateComponent {
 
   @Override
   public String asJavascript() {
-    return "var config = " + asJSON() +";\n";
+    return "var config = " + asJSON() +";" + System.lineSeparator();
   }
 
   @Override

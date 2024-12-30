@@ -30,7 +30,7 @@ public class LayoutTest {
     final String asJavascript = layout.asJavascript();
     assertTrue(asJavascript.startsWith("var layout = {"));
     assertTrue(asJavascript.contains("title : \"foobar\""));
-    assertTrue(asJavascript.contains("  margin : {\n"
+    assertTrue(asJavascript.contains("  margin : {" + LINE_END
       + "    autoexpand : true"));
   }
 

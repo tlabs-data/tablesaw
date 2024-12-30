@@ -8,6 +8,8 @@ import tech.tablesaw.plotly.components.Font;
 
 public class AxisTest {
 
+  private static final String LINE_END = System.lineSeparator();
+
   @Test
   public void testAsJSON() {
     Axis x =
@@ -17,13 +19,13 @@ public class AxisTest {
             .type(Axis.Type.DEFAULT)
             .titleFont(Font.builder().family(Font.Family.ARIAL).size(8).color("red").build())
             .build();
-    String expected = "{\n"
-      + "  title : \"x Axis 1\",\n"
-      + "  titlefont : {\n"
-      + "    color : \"red\",\n"
-      + "    family : \"arial\",\n"
-      + "    size : 8\n"
-      + "  }\n"
+    String expected = "{" + LINE_END
+      + "  title : \"x Axis 1\"," + LINE_END
+      + "  titlefont : {" + LINE_END
+      + "    color : \"red\"," + LINE_END
+      + "    family : \"arial\"," + LINE_END
+      + "    size : 8" + LINE_END
+      + "  }" + LINE_END
       + "}";
     assertEquals(expected, x.asJSON());
   }

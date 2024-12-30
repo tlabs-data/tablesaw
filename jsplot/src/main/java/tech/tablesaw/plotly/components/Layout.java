@@ -207,7 +207,7 @@ public class Layout extends TemplateComponent {
 
   @Override
   public String asJavascript() {
-    return "var layout = " + asJSON() + ";\n";
+    return "var layout = " + asJSON() + ";" + System.lineSeparator();
   }
 
   @Override
