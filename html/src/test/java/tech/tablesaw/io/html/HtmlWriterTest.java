@@ -18,7 +18,6 @@ import static java.lang.Double.NaN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
@@ -87,7 +86,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void alternatingRows() throws IOException {
+  public void alternatingRows() {
     OutputStream baos = new ByteArrayOutputStream();
     ElementCreator elementCreator =
         (elementName, column, row) -> {
@@ -149,7 +148,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void noEscape() throws IOException {
+  public void noEscape() {
     String[] data = {"<p>foo</p>"};
     Table table = Table.create("t", StringColumn.create("data", data));
 
@@ -185,7 +184,7 @@ public class HtmlWriterTest {
   }
 
   @Test
-  public void escape() throws IOException {
+  public void escape() {
     String[] data = {"<p>foo</p>"};
     Table table = Table.create("t", StringColumn.create("data", data));
 

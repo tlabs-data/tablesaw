@@ -18,7 +18,6 @@ import static tech.tablesaw.api.ColumnType.TEXT;
 
 import com.google.common.collect.Streams;
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -72,7 +71,7 @@ public class RowTest {
   }
 
   @Test
-  public void columnNames() throws IOException {
+  public void columnNames() {
     Row row = new Row(bush);
     assertEquals(bush.columnNames(), row.columnNames());
   }

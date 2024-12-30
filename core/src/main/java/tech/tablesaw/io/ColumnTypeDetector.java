@@ -164,10 +164,9 @@ public class ColumnTypeDetector {
     }
     if (hasNonMissingValues) {
       return selectType(typeCandidates);
-    } else {
-      // the last type in the typeArray is the default
-      return typeArray.get(typeArray.size() - 1);
     }
+    // the last type in the typeArray is the default
+    return typeArray.get(typeArray.size() - 1);
   }
 
   /**

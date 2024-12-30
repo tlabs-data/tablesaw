@@ -154,7 +154,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testSheetIndex() throws IOException {
+  public void testSheetIndex() {
     Table table =
         new XlsxReader()
             .read(XlsxReadOptions.builder("../data/multiplesheets.xlsx").sheetIndex(1).build());
@@ -185,7 +185,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testEmptyFileThrowsIllegalArgumentNoTableFound() throws IOException {
+  public void testEmptyFileThrowsIllegalArgumentNoTableFound() {
     assertThrows(
         IllegalArgumentException.class,
         () -> {
@@ -194,7 +194,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypesMixedWithDetection() throws IOException {
+  public void testCustomizedColumnTypesMixedWithDetection() {
     Table table =
         new XlsxReader()
             .read(
@@ -227,7 +227,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypeAllCustomized() throws IOException {
+  public void testCustomizedColumnTypeAllCustomized() {
     Table table =
         new XlsxReader()
             .read(
@@ -241,7 +241,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedEmptyColumnsArePreserved() throws IOException {
+  public void testCustomizedEmptyColumnsArePreserved() {
     Table table =
         new XlsxReader()
             .read(
@@ -256,8 +256,7 @@ public class XlsxReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnStringShouldTryToPreserveValuesFromOtherExcelTypes()
-      throws IOException {
+  public void testCustomizedColumnStringShouldTryToPreserveValuesFromOtherExcelTypes() {
     Table table =
         new XlsxReader()
             .read(

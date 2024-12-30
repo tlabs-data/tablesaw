@@ -1,7 +1,6 @@
 package tech.tablesaw.io.html;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 import org.jsoup.nodes.Element;
@@ -40,11 +39,11 @@ public class HtmlWriteOptions extends WriteOptions {
     return new Builder(dest);
   }
 
-  public static Builder builder(File dest) throws IOException {
+  public static Builder builder(File dest) {
     return new Builder(dest);
   }
 
-  public static Builder builder(String fileName) throws IOException {
+  public static Builder builder(String fileName) {
     return builder(new File(fileName));
   }
 
@@ -57,11 +56,11 @@ public class HtmlWriteOptions extends WriteOptions {
       super(dest);
     }
 
-    protected Builder(File file) throws IOException {
+    protected Builder(File file) {
       super(file);
     }
 
-    public Builder escapeText(boolean escapeText) throws IOException {
+    public Builder escapeText(boolean escapeText) {
       this.escapeText = escapeText;
       return this;
     }

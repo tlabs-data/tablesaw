@@ -22,7 +22,7 @@ import com.google.common.collect.Range;
 import com.google.common.collect.RangeSet;
 import com.google.common.collect.TreeRangeSet;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
-import java.io.IOException;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -153,8 +153,7 @@ public class TimeDependentFilteringTest {
     return t;
   }
 
-  private static void generateTestData(Table t, int numberOfRecordsInTable, Stopwatch stopwatch)
-      throws IOException {
+  private static void generateTestData(Table t, int numberOfRecordsInTable, Stopwatch stopwatch) {
     stopwatch.reset().start();
     out.println("Generating test data");
     generateData(numberOfRecordsInTable, t);

@@ -126,7 +126,7 @@ public class FixedWidthWriterTest {
   }
 
   @Test
-  public void testOutputStreamWriterWhetherClose() throws IOException {
+  public void testOutputStreamWriterWhetherClose() {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     OutputStreamWriter osw = new OutputStreamWriter(baos);
     FixedWidthFields fwf = new FixedWidthFields(10, 10);

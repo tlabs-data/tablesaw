@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static tech.tablesaw.io.csv.UnicodeBomHandlingTest.BOM.UTF_8;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,7 @@ public class UnicodeBomHandlingTest {
 
   @Test
   @Disabled
-  public void javaBehaviour() throws IOException {
+  public void javaBehaviour() {
 
     Table t =
         Table.read()

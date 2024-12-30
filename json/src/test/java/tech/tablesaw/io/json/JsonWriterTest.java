@@ -16,7 +16,6 @@ package tech.tablesaw.io.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.IOException;
 import java.io.StringWriter;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.Table;
@@ -24,7 +23,7 @@ import tech.tablesaw.api.Table;
 public class JsonWriterTest {
 
   @Test
-  public void arrayOfArraysWithHeader() throws IOException {
+  public void arrayOfArraysWithHeader() {
     String json =
         "[[\"Date\",\"Value\"],[1453438800000,-2.144],[1454043600000,-2.976],[1454648400000,-2.9541]]";
     Table table = Table.read().string(json, "json");
@@ -36,7 +35,7 @@ public class JsonWriterTest {
   }
 
   @Test
-  public void arrayOfArraysNoHeader() throws IOException {
+  public void arrayOfArraysNoHeader() {
     String json = "[[1453438800000,-2.144],[1454043600000,-2.976],[1454648400000,-2.954]]";
     Table table = Table.read().string(json, "json");
     StringWriter writer = new StringWriter();

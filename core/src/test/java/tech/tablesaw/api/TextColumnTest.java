@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static tech.tablesaw.columns.strings.StringPredicates.isEqualToIgnoringCase;
 
 import com.google.common.base.Joiner;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -82,7 +82,7 @@ public class TextColumnTest {
   }
 
   @Test
-  public void joinTablesWithStringColumnsSuccess() throws IOException {
+  public void joinTablesWithStringColumnsSuccess() {
     Table t1 =
         Table.read()
             .usingOptions(

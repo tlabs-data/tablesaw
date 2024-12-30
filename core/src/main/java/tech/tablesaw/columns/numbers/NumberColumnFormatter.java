@@ -158,17 +158,15 @@ public class NumberColumnFormatter extends ColumnFormatter {
   private boolean isMissingValue(double value) {
     if (columnType.equals(ColumnType.DOUBLE)) {
       return DoubleColumnType.valueIsMissing(value);
-    } else {
-      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
+    throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
   }
 
   private boolean isMissingValue(float value) {
     if (columnType.equals(ColumnType.FLOAT)) {
       return FloatColumnType.valueIsMissing(value);
-    } else {
-      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
+    throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
   }
 
   private boolean isMissingValue(int value) {
@@ -177,24 +175,21 @@ public class NumberColumnFormatter extends ColumnFormatter {
     }
     if (columnType.equals(ColumnType.SHORT)) {
       return ShortColumnType.valueIsMissing(value);
-    } else {
-      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
+    throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
   }
 
   private boolean isMissingValue(short value) {
     if (columnType.equals(ColumnType.SHORT)) {
       return ShortColumnType.valueIsMissing(value);
-    } else {
-      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
+    throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
   }
 
   private boolean isMissingValue(long value) {
     if (columnType.equals(ColumnType.LONG)) {
       return LongColumnType.valueIsMissing(value);
-    } else {
-      throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
     }
+    throw new RuntimeException(UNHANDLED_COLUMN_TYPE_DEFAULT_MESSAGE + columnType);
   }
 }

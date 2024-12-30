@@ -2,7 +2,6 @@ package tech.tablesaw.io.string;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.FloatColumn;
@@ -23,7 +22,7 @@ public class DataFramePrinterTest {
   }
 
   @Test
-  public void printOneRow() throws IOException {
+  public void printOneRow() {
     Table table = Table.read().csv("../data/bush.csv");
     String out = table.print(1);
     assertTrue(out.contains("2004-02-04"));

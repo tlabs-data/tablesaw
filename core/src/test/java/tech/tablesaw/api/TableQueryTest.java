@@ -2,14 +2,13 @@ package tech.tablesaw.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 public class TableQueryTest {
 
   @Test
-  public void testWithAnd() throws IOException {
+  public void testWithAnd() {
     Table t = Table.read().csv("../data/bush.csv");
     Table t1 =
         t.where(

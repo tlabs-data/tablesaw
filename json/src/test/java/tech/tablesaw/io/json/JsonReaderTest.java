@@ -21,7 +21,7 @@ import static tech.tablesaw.api.ColumnType.INSTANT;
 import static tech.tablesaw.api.ColumnType.STRING;
 
 import com.google.common.collect.ImmutableMap;
-import java.io.IOException;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -87,7 +87,7 @@ public class JsonReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypesMixedWithDetection() throws IOException {
+  public void testCustomizedColumnTypesMixedWithDetection() {
     String json =
         "[[\"Date\",\"Value\"],[\"2007-12-03T10:15:30.00Z\",-2.1448117025014],[\"2020-12-03T10:15:30.00Z\",-2.9763153817574],[\"2021-12-03T10:15:30.00Z\",-2.9545283436391]]";
 
@@ -103,7 +103,7 @@ public class JsonReaderTest {
   }
 
   @Test
-  public void testCustomizedColumnTypeAllCustomized() throws IOException {
+  public void testCustomizedColumnTypeAllCustomized() {
     String json =
         "[[\"Date\",\"Value\"],[\"2007-12-03T10:15:30.00Z\",-2.1448117025014],[\"2020-12-03T10:15:30.00Z\",-2.9763153817574],[\"2021-12-03T10:15:30.00Z\",-2.9545283436391]]";
 
