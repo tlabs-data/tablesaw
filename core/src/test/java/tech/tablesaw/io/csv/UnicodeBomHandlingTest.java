@@ -6,6 +6,9 @@ import static tech.tablesaw.io.csv.UnicodeBomHandlingTest.BOM.UTF_8;
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.OS;
+
 import tech.tablesaw.api.Table;
 
 class UnicodeBomHandlingTest {
@@ -21,8 +24,8 @@ class UnicodeBomHandlingTest {
   }
 
   @Test
-  void javaBehaviour() {
-
+  @DisabledOnOs(OS.WINDOWS)
+  void testRawContent() {
     Table t =
         Table.read()
             .csv(
@@ -31,7 +34,11 @@ class UnicodeBomHandlingTest {
                     .header(false)
                     .build());
     assertEquals(1, t.get(0, 0));
-    t =
+  }
+
+  @Test
+  void testUTF8BOMContent() {
+    Table t =
         Table.read()
             .csv(
                 CsvReadOptions.builder(
