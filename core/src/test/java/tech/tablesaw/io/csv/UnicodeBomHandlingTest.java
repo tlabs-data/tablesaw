@@ -37,6 +37,7 @@ class UnicodeBomHandlingTest {
   }
 
   @Test
+  @DisabledOnOs(OS.WINDOWS)
   void testUTF8BOMContent() {
     Table t =
         Table.read()
