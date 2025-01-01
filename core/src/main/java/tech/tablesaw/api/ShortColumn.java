@@ -230,18 +230,6 @@ public class ShortColumn extends NumberColumn<ShortColumn, Short>
 
   /** {@inheritDoc} */
   @Override
-  public ShortColumn emptyCopy() {
-    return super.emptyCopy();
-  }
-
-  /** {@inheritDoc} */
-  @Override
-  public ShortColumn emptyCopy(final int rowSize) {
-    return super.emptyCopy(rowSize);
-  }
-
-  /** {@inheritDoc} */
-  @Override
   public ShortColumn copy() {
     ShortColumn copy = new ShortColumn(name(), data.clone());
     copy.setPrintFormatter(getPrintFormatter());

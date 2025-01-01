@@ -82,10 +82,6 @@ public abstract class AbstractColumn<C extends Column<T>, T> implements Column<T
 
   /** {@inheritDoc} */
   @Override
-  public abstract Column<T> emptyCopy();
-
-  /** {@inheritDoc} */
-  @Override
   @SuppressWarnings({"unchecked"})
   public C filter(Predicate<? super T> test) {
     return (C) Column.super.filter(test);
