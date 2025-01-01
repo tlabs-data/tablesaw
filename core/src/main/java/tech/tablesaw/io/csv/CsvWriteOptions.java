@@ -77,11 +77,13 @@ public class CsvWriteOptions extends WriteOptions {
     return lineEnd;
   }
 
+  /** @deprecated */
   @Deprecated
   public DateTimeFormatter dateTimeFormatter() {
     return null;
   }
 
+  /** @deprecated */
   @Deprecated
   public DateTimeFormatter dateFormatter() {
     return null;
