@@ -107,6 +107,7 @@ public interface TimeMapFunctions extends Column<LocalTime> {
             newColumn.appendInternal(PackedLocalTime.plusMilliseconds(time, c1));
             timeUnitString = "ms";
             break;
+            //$CASES-OMITTED$
           default:
             throw new UnsupportedTemporalTypeException(
                 "Type " + unit + " is not currently supported");
@@ -142,6 +143,7 @@ public interface TimeMapFunctions extends Column<LocalTime> {
             newColumn.appendInternal(PackedLocalTime.minusMilliseconds(time, c1));
             timeUnitString = "ms";
             break;
+            //$CASES-OMITTED$
           default:
             throw new UnsupportedTemporalTypeException(
                 "Type " + unit + " is not currently supported");
@@ -177,6 +179,7 @@ public interface TimeMapFunctions extends Column<LocalTime> {
             newColumn.appendInternal(PackedLocalTime.withMillisecond(time, c1));
             timeUnitString = "ms";
             break;
+            //$CASES-OMITTED$
           default:
             throw new UnsupportedTemporalTypeException(
                 "Type " + unit + " is not currently supported");
@@ -360,6 +363,7 @@ public interface TimeMapFunctions extends Column<LocalTime> {
           result = PackedLocalTime.secondsUntil(packedTime, packedStartTime) / n;
           numberColumn.append(result);
           break;
+          //$CASES-OMITTED$
         default:
           throw new UnsupportedTemporalTypeException(
               "The ChronoUnit " + unit + " is not supported for timeWindows on times");

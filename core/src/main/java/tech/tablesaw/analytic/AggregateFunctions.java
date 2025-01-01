@@ -103,8 +103,9 @@ enum AggregateFunctions implements FunctionMetaData {
           return functionForAppendWindows();
         case SLIDING:
           return functionForSlidingWindows();
+        default:
+          throw new IllegalArgumentException("Unexpected growthType: " + growthType);
       }
-      throw new IllegalArgumentException("Unexpected growthType: " + growthType);
     }
   }
 

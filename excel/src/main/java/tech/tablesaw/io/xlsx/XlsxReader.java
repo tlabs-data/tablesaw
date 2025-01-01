@@ -158,6 +158,7 @@ public class XlsxReader implements DataReader<XlsxReadOptions> {
         break;
       case BLANK:
         return true;
+        //$CASES-OMITTED$
       default:
         break;
     }
@@ -405,6 +406,7 @@ public class XlsxReader implements DataReader<XlsxReadOptions> {
           stringColumn.append(val);
         }
         break;
+        //$CASES-OMITTED$
       default:
         break;
     }
@@ -455,6 +457,7 @@ public class XlsxReader implements DataReader<XlsxReadOptions> {
             : Optional.of(ColumnType.INTEGER);
       case BOOLEAN:
         return Optional.of(ColumnType.BOOLEAN);
+        //$CASES-OMITTED$
       default:
         return Optional.empty();
     }

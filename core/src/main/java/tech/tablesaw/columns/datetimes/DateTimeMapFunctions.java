@@ -362,6 +362,7 @@ public interface DateTimeMapFunctions extends TemporalMapFunctions<DateTimeColum
           result = yearsUntil(packedDate, packedStartDate) / n;
           numberColumn.set(i, result);
           break;
+          //$CASES-OMITTED$
         default:
           throw new UnsupportedTemporalTypeException(
               "The ChronoUnit " + unit + " is not supported for timeWindows on dates");

@@ -208,7 +208,8 @@ public class PackedLocalDate {
         return 3;
       case OCTOBER:
       case NOVEMBER:
-      default: // must be december
+      case DECEMBER:
+      default:
         return 4;
     }
   }
@@ -515,6 +516,7 @@ public class PackedLocalDate {
         return plusWeeks(valueToAdd, packedDate);
       case DAYS:
         return plusDays(valueToAdd, packedDate);
+        //$CASES-OMITTED$
       default:
         throw new IllegalArgumentException("Unsupported Temporal Unit");
     }
