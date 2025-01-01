@@ -62,7 +62,7 @@ class AggregateFunctionsTest {
   private Table table;
 
   @BeforeEach
-  void setUp() throws Exception {
+  void setUp() {
     table = Table.read().csv(CsvReadOptions.builder("../data/bush.csv"));
   }
 

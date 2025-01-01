@@ -12,7 +12,7 @@ import tech.tablesaw.api.Table;
 class CrossTabTest {
 
   @Test
-  void testCounts1() throws Exception {
+  void testCounts1() {
     Table bush = Table.read().csv("../data/bush.csv");
     Table counts = CrossTab.counts(bush, "who");
     Table pcts = CrossTab.percents(bush, "who");
@@ -23,7 +23,7 @@ class CrossTabTest {
   }
 
   @Test
-  void testCounts2() throws Exception {
+  void testCounts2() {
     Table bush = Table.read().csv("../data/bush.csv");
     Table counts = CrossTab.counts(bush, "date");
     Table pcts = CrossTab.percents(bush, "date");
@@ -34,7 +34,7 @@ class CrossTabTest {
   }
 
   @Test
-  void testCounts3() throws Exception {
+  void testCounts3() {
     Table bush = Table.read().csv("../data/bush.csv");
     IntColumn month = bush.dateColumn("date").monthValue();
     month.setName("month");
@@ -55,7 +55,7 @@ class CrossTabTest {
   }
 
   @Test
-  void testColumnPercents() throws Exception {
+  void testColumnPercents() {
     Table bush = Table.read().csv("../data/bush.csv");
     bush.addColumns(bush.dateColumn("date").year());
     Table xtab = CrossTab.columnPercents(bush, "who", "date year");
@@ -64,7 +64,7 @@ class CrossTabTest {
   }
 
   @Test
-  void testRowPercents() throws Exception {
+  void testRowPercents() {
     Table bush = Table.read().csv("../data/bush.csv");
     bush.addColumns(bush.dateColumn("date").year());
     Table xtab = CrossTab.rowPercents(bush, "who", "date year");
