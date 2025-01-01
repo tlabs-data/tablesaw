@@ -203,7 +203,7 @@ public class StringUtils {
       return str;
     }
 
-    final int newCodePoints[] = new int[strLen]; // cannot be longer than the char array
+    final int[] newCodePoints = new int[strLen]; // cannot be longer than the char array
     int outOffset = 0;
     newCodePoints[outOffset++] = newCodePoint; // copy the first codepoint
     for (int inOffset = Character.charCount(firstCodepoint); inOffset < strLen; ) {
