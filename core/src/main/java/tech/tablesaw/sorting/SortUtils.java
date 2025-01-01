@@ -38,9 +38,8 @@ public class SortUtils {
     IntComparator rowComparator = column.rowComparator();
     if (order == Sort.Order.DESCEND) {
       return ReversingIntComparator.reverse(rowComparator);
-    } else {
-      return rowComparator;
     }
+    return rowComparator;
   }
 
   /**
