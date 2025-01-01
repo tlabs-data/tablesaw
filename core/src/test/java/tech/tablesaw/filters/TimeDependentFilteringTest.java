@@ -98,9 +98,8 @@ public class TimeDependentFilteringTest {
       double patientId = Double.parseDouble(patientTable.name());
       if (!concepts.contains(conceptZ) || concepts.contains(conceptD)) {
         patientTables.remove(patientTable);
-      } else if (!ntPatients.contains(
-          patientId)) { // filtering out the non-temporal now constraints for
-        // efficiency
+      // filtering out the non-temporal now constraints for efficiency
+      } else if (!ntPatients.contains(patientId)) {
         patientTables.remove(patientTable);
       }
     }
