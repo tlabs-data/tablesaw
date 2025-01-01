@@ -725,7 +725,7 @@ public class Table extends Relation implements Iterable<Row> {
    * Returns a copy of this table sorted using the given comparator. This method sorts in a single
    * thread, as is required for using Comparator<Row>
    */
-  private Table sortOn(IntComparator rowComparator) {
+  private Table internalSortOn(IntComparator rowComparator) {
     Table newTable = emptyCopy(rowCount());
 
     int[] newRows = rows();
@@ -750,7 +750,7 @@ public class Table extends Relation implements Iterable<Row> {
   public Table sortOn(Comparator<Row> rowComparator) {
     Row row1 = new Row(this);
     Row row2 = new Row(this);
-    return sortOn( // Note: Never user parallel sort here as Row isn't remotely thread-safe
+    return internalSortOn( // Note: Never user parallel sort here as Row isn't remotely thread-safe
         (IntComparator)
             (k1, k2) -> {
               row1.at(k1);
