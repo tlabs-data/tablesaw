@@ -269,6 +269,7 @@ public interface DateMapFunctions extends Column<LocalDate> {
           case YEARS:
             newColumn.append(PackedLocalDate.yearsUntil(c2, c1));
             break;
+            //$CASES-OMITTED$
           default: // handle decades, etc.
             LocalDate value1 = PackedLocalDate.asLocalDate(c1);
             LocalDate value2 = PackedLocalDate.asLocalDate(c2);
@@ -356,6 +357,7 @@ public interface DateMapFunctions extends Column<LocalDate> {
           result = PackedLocalDate.yearsUntil(packedDate, packedStartDate) / n;
           numberColumn.set(i, result);
           break;
+          //$CASES-OMITTED$
         default:
           throw new UnsupportedTemporalTypeException(
               "The ChronoUnit " + unit + " is not supported for timeWindows on dates");

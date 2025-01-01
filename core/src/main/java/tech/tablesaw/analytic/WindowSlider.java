@@ -148,6 +148,7 @@ class WindowSlider {
         return i -> i;
       case SLIDING:
         return i -> i + 1;
+        //$CASES-OMITTED$
       default:
         throw new IllegalArgumentException(UNEXPECTED_GROWTH_TYPE + this.windowGrowthType);
     }
@@ -160,6 +161,7 @@ class WindowSlider {
       case FIXED_LEFT:
       case SLIDING:
         return i -> i + 1;
+        //$CASES-OMITTED$
       default:
         throw new IllegalArgumentException(UNEXPECTED_GROWTH_TYPE + this.windowGrowthType);
     }
@@ -177,6 +179,7 @@ class WindowSlider {
       case FIXED_LEFT:
       case SLIDING:
         return this.initialRightBound;
+        //$CASES-OMITTED$
       default:
         throw new IllegalArgumentException(UNEXPECTED_GROWTH_TYPE + this.windowGrowthType);
     }
