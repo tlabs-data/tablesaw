@@ -29,14 +29,11 @@ import java.sql.Statement;
  * @email jcouture@sdccd.edu
  */
 public class TestDb {
+  // NOTE: This value is specific for H2 in-memory DB.
+  private static final String DB_URL = "jdbc:h2:mem:CoffeeDB";
   public TestDb() {
-    try {
-      // Create a named constant for the URL.
-      // NOTE: This value is specific for H2 in-memory DB.
-      final String DB_URL = "jdbc:h2:mem:CoffeeDB";
-
-      // Create a connection to the database.
-      Connection conn = DriverManager.getConnection(DB_URL);
+    // Create a connection to the database.
+    try (Connection conn = DriverManager.getConnection(DB_URL)) {
 
       // If the DB already exists, drop the tables.
       dropTables(conn);
@@ -53,8 +50,6 @@ public class TestDb {
       // Build the OracleNumbers table.
       buildNumbersTable(conn);
 
-      // Close the connection.
-      conn.close();
     } catch (Exception e) {
       System.out.println("Error Creating the Coffee Table");
       System.out.println(e.getMessage());
