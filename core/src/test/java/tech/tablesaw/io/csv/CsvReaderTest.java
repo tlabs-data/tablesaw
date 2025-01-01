@@ -121,8 +121,8 @@ class CsvReaderTest {
                     .columnTypesToDetect(typesToDetect)
                     .build());
 
-    assertEquals(table.column("WorldRegion").type(), TEXT);
-    assertEquals(table2.column("WorldRegion").type(), STRING);
+    assertEquals(TEXT, table.column("WorldRegion").type());
+    assertEquals(STRING, table2.column("WorldRegion").type());
   }
 
   @Test
@@ -325,9 +325,9 @@ class CsvReaderTest {
         new StringReader(
             "Date"
                 + LINE_END
-                + "09-Nov-2014 13:03:04"
+                + "09-Nov-2014T13:03:04"
                 + LINE_END
-                + "09-Oct-2014 13:03:56"
+                + "09-Oct-2014T13:03:56"
                 + LINE_END);
 
     final boolean header = true;
@@ -335,7 +335,7 @@ class CsvReaderTest {
     CsvReadOptions options =
         CsvReadOptions.builder(reader)
             .header(header)
-            .dateTimeFormat(DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss"))
+            .dateTimeFormat(DateTimeFormatter.ofPattern("dd-MMM-yyyy'T'HH:mm:ss"))
             .build();
 
     final List<ColumnType> actual = asList(new CsvReader().detectColumnTypes(reader, options));
@@ -565,27 +565,7 @@ class CsvReaderTest {
   }
 
   @Test
-  void testDateWithFormatter1() {
-
-    final boolean header = false;
-    final char delimiter = ',';
-    final boolean useSampling = true;
-
-    CsvReadOptions options =
-        CsvReadOptions.builder("../data/date_format_test.txt")
-            .header(header)
-            .separator(delimiter)
-            .sample(useSampling)
-            .dateFormat(DateTimeFormatter.ofPattern("yyyy.MM.dd"))
-            .build();
-
-    final Table table = Table.read().csv(options);
-    DateColumn date = table.dateColumn(0);
-    assertFalse(date.isEmpty());
-  }
-
-  @Test
-  void testDateWithFormatter2() {
+  void testDateWithFormatter() {
 
     final boolean header = false;
     final char delimiter = ',';
@@ -763,7 +743,7 @@ class CsvReaderTest {
 
   @Test
   void testEmptyFileHeaderEnabled() {
-    Table table1 = Table.read().csv(CsvReadOptions.builder("../data/empty_file.csv").header(false));
+    Table table1 = Table.read().csv(CsvReadOptions.builder("../data/empty_file.csv").header(true));
     assertEquals("empty_file.csv: 0 rows X 0 cols", table1.shape());
   }
 

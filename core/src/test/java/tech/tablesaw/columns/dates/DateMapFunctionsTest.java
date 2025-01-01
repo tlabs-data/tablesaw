@@ -14,9 +14,8 @@
 
 package tech.tablesaw.columns.dates;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,7 +49,7 @@ class DateMapFunctionsTest {
     timeColumn.append(LocalTime.NOON);
     DateTimeColumn dateTimes = column1.atTime(timeColumn);
     assertNotNull(dateTimes);
-    assertTrue(dateTimes.get(0).toLocalTime().equals(LocalTime.NOON));
+    assertEquals(LocalTime.NOON, dateTimes.get(0).toLocalTime());
   }
 
   @Test
@@ -62,6 +61,6 @@ class DateMapFunctionsTest {
 
     DateTimeColumn dateTimes = column1.atTime(LocalTime.NOON);
     assertNotNull(dateTimes);
-    assertTrue(dateTimes.get(0).toLocalTime().equals(LocalTime.NOON));
+    assertEquals(LocalTime.NOON, dateTimes.get(0).toLocalTime());
   }
 }

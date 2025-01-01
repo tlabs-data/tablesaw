@@ -169,8 +169,8 @@ class LocalTimeFilterTest {
     t.addColumns(column1);
     fillColumn();
     Table result = t.where(t.timeColumn("Game time").isEqualTo(LocalTime.of(7, 4, 2, 0)));
-    assertEquals(result.rowCount(), 1);
-    assertEquals(result.getUnformatted(0, 0), toShortTimeString(pack(LocalTime.of(7, 4, 2))));
+    assertEquals(1, result.rowCount());
+    assertEquals(toShortTimeString(pack(LocalTime.of(7, 4, 2))), result.getUnformatted(0, 0));
   }
 
   @Test
