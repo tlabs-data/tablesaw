@@ -488,9 +488,8 @@ public class NanoBench {
         if ((ManagementFactory.getMemoryMXBean().getObjectPendingFinalizationCount() == 0)
             && (memUsedNow >= memUsedPrev)) {
           break;
-        } else {
-          memUsedPrev = memUsedNow;
         }
+        memUsedPrev = memUsedNow;
       }
     }
 
