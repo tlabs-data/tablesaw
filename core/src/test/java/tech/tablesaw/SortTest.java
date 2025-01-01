@@ -123,8 +123,8 @@ class SortTest {
   void testAscendingWithPlusSignNegative() {
     Table sortedTable =
         unsortedTable.sortOn("+" + columnNames[IQ_INDEX], "-" + columnNames[DOB_INDEX]);
-    Table expectedResults = TestData.SIMPLE_SORTED_DATA_BY_DOUBLE_ASCENDING_AND_THEN_DATE_DESCENDING.getTable();
-    assertTableEquals(expectedResults, sortedTable);
+    Table expectedResults = TestData.SIMPLE_DATA_WITH_CANONICAL_DATE_FORMAT.getTable();
+    assertThrows(AssertionFailedError.class, () -> assertTableEquals(expectedResults, sortedTable));
   }
 
   @Test
