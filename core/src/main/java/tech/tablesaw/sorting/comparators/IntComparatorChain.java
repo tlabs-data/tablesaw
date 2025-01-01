@@ -15,7 +15,6 @@
 package tech.tablesaw.sorting.comparators;
 
 import it.unimi.dsi.fastutil.ints.IntComparator;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Iterator;
@@ -28,9 +27,7 @@ import java.util.List;
  *
  * <p>The implementation is based on Apache Commons Collections
  */
-public class IntComparatorChain implements IntComparator, Serializable {
-
-  private static final long serialVersionUID = 1L;
+public class IntComparatorChain implements IntComparator {
 
   private final List<IntComparator> comparatorChain;
   private BitSet orderingBits;
