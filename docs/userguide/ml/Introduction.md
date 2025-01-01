@@ -35,6 +35,6 @@ The Tablesaw User Guide contains several examples of how to use Tablesaw and Smi
 
 ### Tutorials
 
-* [Linear Regression with Smile and Tablesaw: Moneyball Tutorial](https://jtablesaw.github.io/tablesaw/userguide/ml/Moneyball Linear regression)
-* [K-Means clustering with Smile and Tablesaw: NYC Uber Tutorial](https://jtablesaw.github.io/tablesaw/userguide/ml/Uber K Means)
-* [Classification using Random Forests with Smile and Tablesaw: Heart Tutorial](https://jtablesaw.github.io/tablesaw/userguide/ml/Heart Random forest)
+* [Linear Regression with Smile and Tablesaw: Moneyball Tutorial](https://tlabs-data.github.io/tablesaw/userguide/ml/Moneyball Linear regression)
+* [K-Means clustering with Smile and Tablesaw: NYC Uber Tutorial](https://tlabs-data.github.io/tablesaw/userguide/ml/Uber K Means)
+* [Classification using Random Forests with Smile and Tablesaw: Heart Tutorial](https://tlabs-data.github.io/tablesaw/userguide/ml/Heart Random forest)
